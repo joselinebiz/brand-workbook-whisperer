@@ -1,13 +1,14 @@
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
+import { BlueprintSection } from "@/components/BlueprintSection";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { LineChart, Target, Rocket, Users, ChevronDown } from "lucide-react";
+import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper } from "lucide-react";
 
 export default function Workbook4() {
   return (
@@ -357,6 +358,51 @@ Make it realistic for [solo/small team/company] execution.`}
         </Card>
         </Collapsible>
 
+        {/* Foundational Blueprint - After Section 3 */}
+        <BlueprintSection
+          title="📋 Your Foundational Blueprint"
+          description="Execute your brand and marketing strategy with this complete reference (Workbooks 0-3)"
+          sections={[
+            {
+              title: "MARKET OPPORTUNITY (Workbook 0)",
+              items: [
+                "White Space Declaration: Your unique market position",
+                "Target Customer: Who you serve and their #1 problem",
+                "Competitive Analysis: What gaps your competitors miss",
+                "Your Unique Advantage: Why customers choose you"
+              ]
+            },
+            {
+              title: "BRAND FOUNDATION (Workbook 1)",
+              items: [
+                "Mission, Vision & BHAG: Your purpose and direction",
+                "Core Values & Brand Promise: What you stand for",
+                "Visual & Verbal Identity: How you look and sound",
+                "Brand Story & Positioning: Your narrative in the market"
+              ]
+            },
+            {
+              title: "MARKETING STRATEGY (Workbook 2)",
+              items: [
+                "Business Model Canvas: How you create and capture value",
+                "5C Market Analysis: Company, Category, Customer, Competition, Context",
+                "4P Marketing Mix: Product, Price, Place, Promotion",
+                "90-Day Campaign Plan: Your execution roadmap"
+              ]
+            },
+            {
+              title: "CUSTOMER SYSTEMS (Workbook 3)",
+              items: [
+                "Customer Journey Map: 7 stages from awareness to loyalty",
+                "2-2-2 Follow-Up System: Automated relationship building",
+                "Standard Operating Procedures: Consistent delivery",
+                "Retention & Loyalty Programs: Turn customers into advocates"
+              ]
+            }
+          ]}
+          downloadText="Download Foundational Blueprint (WB 0-3)"
+        />
+
         {/* Section 4: Team & Scaling */}
         <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
@@ -471,30 +517,115 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
         </Card>
         </Collapsible>
 
-        {/* Final Section */}
-        <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary">
-          <h2 className="text-2xl font-bold mb-4">🎉 Congratulations!</h2>
-          <p className="text-lg mb-6">
-            You've completed the BLKBLD Master Blueprint. You now have a complete strategic foundation from market validation to systematic scaling.
-          </p>
-          
-          <div className="bg-background/50 p-6 rounded-lg mb-6">
-            <h3 className="font-bold mb-3">Your Next Steps:</h3>
-            <ol className="space-y-2 text-sm">
-              <li>1. <strong>Review</strong> your entire blueprint (all 5 workbooks)</li>
-              <li>2. <strong>Implement</strong> your 90-day sprint plan</li>
-              <li>3. <strong>Track</strong> your metrics dashboard weekly</li>
-              <li>4. <strong>Test</strong> one optimization per month</li>
-              <li>5. <strong>Scale</strong> what works, cut what doesn't</li>
-            </ol>
+        {/* Complete Master Blueprint - After Section 4 */}
+        <BlueprintSection
+          title="🏆 Your Complete Master Blueprint"
+          description="Your full strategic foundation from market validation to systematic scaling (Workbooks 0-4)"
+          sections={[
+            {
+              title: "FOUNDATION (Workbooks 0-3)",
+              items: [
+                "✓ Market Opportunity & White Space validated",
+                "✓ Brand Foundation with mission, values, and identity",
+                "✓ Marketing Strategy with 4P mix and campaigns",
+                "✓ Customer Journey Systems automated and documented"
+              ]
+            },
+            {
+              title: "MEASUREMENT & GROWTH (Workbook 4)",
+              items: [
+                "Performance Dashboard: Leading and lagging indicators",
+                "Testing Framework: Scientific approach to optimization",
+                "90-Day Growth Sprint: Structured roadmap to 20% improvement",
+                "Team Building Strategy: Scale through delegation and systems"
+              ]
+            },
+            {
+              title: "IMPLEMENTATION ROADMAP",
+              items: [
+                "Week 1-2: Review complete blueprint and set priorities",
+                "Month 1: Execute foundational systems (WB 0-3)",
+                "Month 2: Launch growth sprint and track metrics (WB 4)",
+                "Month 3: Optimize based on data and scale what works",
+                "Ongoing: Weekly reviews, monthly tests, quarterly strategy updates"
+              ]
+            }
+          ]}
+          downloadText="Download Complete Master Blueprint (WB 0-4)"
+        />
+
+        {/* Congratulations Section */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
+          <div className="flex items-center gap-4 mb-4">
+            <PartyPopper className="w-12 h-12 text-primary" />
+            <div>
+              <h2 className="text-2xl font-bold">🎉 Congratulations!</h2>
+              <p className="text-muted-foreground">You've Completed the BLKBLD Master Blueprint</p>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <p className="text-lg">
+              You now have a <strong>complete strategic foundation</strong> from market validation to systematic scaling. This is the same framework that generates six-figure consulting engagements.
+            </p>
+            <div className="bg-background/50 p-6 rounded-lg">
+              <h3 className="font-bold mb-3">What You've Accomplished:</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Market opportunity validated</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Brand foundation built</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Marketing strategy documented</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Customer systems automated</span>
+                  </li>
+                </ul>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Performance dashboard created</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Testing framework established</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Growth sprint planned</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Team strategy defined</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="bg-gradient-to-r from-accent/10 to-primary/10 p-4 rounded-lg border-2 border-accent/30">
+              <h3 className="font-bold mb-2">Your Next Steps:</h3>
+              <ol className="space-y-2 text-sm">
+                <li>1. <strong>Review</strong> your complete blueprint and identify quick wins</li>
+                <li>2. <strong>Implement</strong> your 90-day sprint plan starting this week</li>
+                <li>3. <strong>Track</strong> your metrics dashboard weekly (set a recurring calendar event)</li>
+                <li>4. <strong>Test</strong> one optimization hypothesis per month</li>
+                <li>5. <strong>Scale</strong> what works, cut what doesn't, iterate continuously</li>
+              </ol>
+            </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 mt-6">
             <Button variant="hero" size="lg" asChild className="flex-1">
               <a href="/">View All Workbooks</a>
             </Button>
             <Button variant="outline" size="lg" asChild className="flex-1">
-              <a href="/blueprint">Download Master Blueprint</a>
+              <a href="/blueprint">Download Complete Blueprint</a>
             </Button>
           </div>
         </Card>

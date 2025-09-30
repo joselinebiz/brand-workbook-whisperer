@@ -2,13 +2,14 @@ import { useState } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
+import { ExampleBox } from "@/components/ExampleBox";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Lightbulb, Target, Eye, Award, ChevronDown } from "lucide-react";
+import { Lightbulb, Target, Eye, Award, ChevronDown, PartyPopper } from "lucide-react";
 
 export default function Workbook1() {
   const [primaryColor, setPrimaryColor] = useState("#000000");
@@ -183,6 +184,28 @@ export default function Workbook1() {
                 rows={2}
                 placeholder="e.g., Build 100,000 strategic brands that transform their industries."
               />
+            </div>
+
+            {/* Examples Section */}
+            <div className="mt-8 pt-6 border-t">
+              <h3 className="font-semibold mb-4">Examples Across Different Brand Types:</h3>
+              <div className="space-y-3">
+                <ExampleBox
+                  icon="🏪"
+                  title="Brick-and-Mortar - FreshStart Café"
+                  content="Mission: We exist to help busy Phoenix families eat healthy without sacrificing time so that they can prioritize wellness without stress. Vision: In 5 years, healthy eating will be the norm in Phoenix, not the exception. BHAG: Make Arizona the healthiest state in America by 2035."
+                />
+                <ExampleBox
+                  icon="🎯"
+                  title="Service Brand - Business Coach"
+                  content="Mission: I exist to help overwhelmed solopreneurs build sustainable systems so that they can scale without burning out. Vision: In 5 years, 1,000 solopreneurs will have profitable, stress-free businesses. BHAG: Prove that you can build a $1M business while working 25 hours per week."
+                />
+                <ExampleBox
+                  icon="👤"
+                  title="Personal Brand - Marketing Executive"
+                  content="Mission: I exist to help B2B SaaS companies scale strategically so that they can reach $10M ARR without wasting marketing budget. Vision: In 5 years, I'll be known as the go-to growth strategist for B2B SaaS scaling. BHAG: Help 100 B2B SaaS companies reach $10M+ ARR by 2035."
+                />
+              </div>
             </div>
           </div>
 
@@ -567,12 +590,52 @@ Make it human, not corporate.`}
         </Card>
         </Collapsible>
 
+        {/* Congratulations Section */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
+          <div className="flex items-center gap-4 mb-4">
+            <PartyPopper className="w-12 h-12 text-primary" />
+            <div>
+              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+              <p className="text-muted-foreground">You've completed Workbook 1</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-lg">
+              Your <strong>brand foundation</strong> is complete! You now have the strategic clarity that makes every marketing decision easier.
+            </p>
+            <div className="bg-background/50 p-4 rounded-lg">
+              <p className="font-semibold mb-2">What You've Accomplished:</p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Defined your mission, vision, and BHAG</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Established core values and brand promise</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Created visual and verbal identity system</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Crafted your brand story and positioning</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-sm text-muted-foreground italic">
+              Next up: Workbook 2 will transform this foundation into a revenue-generating marketing strategy.
+            </p>
+          </div>
+        </Card>
+
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>
             <a href="/workbook/0">← Back to Workbook 0</a>
           </Button>
           <Button variant="hero" size="lg" asChild>
-            <a href="/workbook/2">Continue to Workbook 2 →</a>
+            <a href="/workbook/2">Continue to Workbook 2: Marketing Strategy →</a>
           </Button>
         </div>
       </div>

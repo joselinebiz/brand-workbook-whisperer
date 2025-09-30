@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Users, Mail, Zap, FileText, ChevronDown } from "lucide-react";
+import { Users, Mail, Zap, FileText, ChevronDown, PartyPopper } from "lucide-react";
 
 export default function Workbook3() {
   return (
@@ -426,12 +426,52 @@ Make it simple to understand and exciting to join.`}
         </Card>
         </Collapsible>
 
+        {/* Congratulations Section */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
+          <div className="flex items-center gap-4 mb-4">
+            <PartyPopper className="w-12 h-12 text-primary" />
+            <div>
+              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+              <p className="text-muted-foreground">You've completed Workbook 3</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-lg">
+              Your <strong>customer systems</strong> are ready! You now have automated processes that deliver consistent experiences and build loyalty.
+            </p>
+            <div className="bg-background/50 p-4 rounded-lg">
+              <p className="font-semibold mb-2">What You've Accomplished:</p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Mapped complete customer journey from awareness to loyalty</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Created the 2-2-2 follow-up system for automated relationship building</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Developed SOPs for consistency across all touchpoints</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Designed retention and loyalty systems to turn customers into advocates</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-sm text-muted-foreground italic">
+              Next up: Workbook 4 will help you measure performance, optimize what works, and scale systematically.
+            </p>
+          </div>
+        </Card>
+
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>
             <a href="/workbook/2">← Back to Workbook 2</a>
           </Button>
           <Button variant="hero" size="lg" asChild>
-            <a href="/workbook/4">Continue to Workbook 4 →</a>
+            <a href="/workbook/4">Continue to Workbook 4: Growth & Scaling →</a>
           </Button>
         </div>
       </div>

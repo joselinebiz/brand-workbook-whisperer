@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { TrendingUp, DollarSign, BarChart3, Megaphone, ChevronDown } from "lucide-react";
+import { TrendingUp, DollarSign, BarChart3, Megaphone, ChevronDown, PartyPopper } from "lucide-react";
 
 export default function Workbook2() {
   return (
@@ -432,12 +432,52 @@ Format as a week-by-week breakdown I can copy-paste.`}
         </Card>
         </Collapsible>
 
+        {/* Congratulations Section */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
+          <div className="flex items-center gap-4 mb-4">
+            <PartyPopper className="w-12 h-12 text-primary" />
+            <div>
+              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+              <p className="text-muted-foreground">You've completed Workbook 2</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-lg">
+              Your <strong>marketing strategy</strong> is built! You now have a complete roadmap to turn your brand foundation into revenue.
+            </p>
+            <div className="bg-background/50 p-4 rounded-lg">
+              <p className="font-semibold mb-2">What You've Accomplished:</p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Mapped your business model and validated alignment</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Completed 5C market analysis for strategic positioning</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Developed your 4P marketing mix (Product, Price, Place, Promotion)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Created a 90-day campaign plan ready to execute</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-sm text-muted-foreground italic">
+              Next up: Workbook 3 will automate your customer journey and build systems that turn leads into loyal advocates.
+            </p>
+          </div>
+        </Card>
+
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>
             <a href="/workbook/1">← Back to Workbook 1</a>
           </Button>
           <Button variant="hero" size="lg" asChild>
-            <a href="/workbook/3">Continue to Workbook 3 →</a>
+            <a href="/workbook/3">Continue to Workbook 3: Customer Journey →</a>
           </Button>
         </div>
       </div>

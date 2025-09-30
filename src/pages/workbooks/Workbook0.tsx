@@ -1,12 +1,13 @@
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
+import { ExampleBox } from "@/components/ExampleBox";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Target, Users, TrendingUp, ChevronDown } from "lucide-react";
+import { Target, Users, TrendingUp, ChevronDown, PartyPopper } from "lucide-react";
 
 export default function Workbook0() {
   return (
@@ -263,26 +264,23 @@ Give me 3 specific angles I could take.`}
           </div>
 
           <div className="mt-8 pt-6 border-t">
-            <h3 className="font-semibold mb-3">Examples:</h3>
-            <div className="space-y-3 text-sm">
-              <div className="p-3 bg-background rounded">
-                <p className="font-medium mb-1">💼 Consultant:</p>
-                <p className="text-muted-foreground italic">
-                  "I'm the only consultant who guarantees a clear Go-To-Market plan in 90 days for B2B SaaS founders because I've launched 12 products that hit $1M ARR."
-                </p>
-              </div>
-              <div className="p-3 bg-background rounded">
-                <p className="font-medium mb-1">🏪 Brick-and-Mortar:</p>
-                <p className="text-muted-foreground italic">
-                  "I'm the only café that guarantees healthy breakfast in under 5 minutes for busy Phoenix families because of our chef-made meals and dedicated pickup lane."
-                </p>
-              </div>
-              <div className="p-3 bg-background rounded">
-                <p className="font-medium mb-1">🎯 Service Brand:</p>
-                <p className="text-muted-foreground italic">
-                  "I'm the only business coach who helps overwhelmed solopreneurs build systems in 90 days because I've scaled 5 businesses myself without burning out."
-                </p>
-              </div>
+            <h3 className="font-semibold mb-4">Examples Across Different Brand Types:</h3>
+            <div className="space-y-3">
+              <ExampleBox
+                icon="🏪"
+                title="Brick-and-Mortar Brand - FreshStart Café"
+                content="I'm the only café that guarantees healthy breakfast in under 5 minutes for busy Phoenix families because of our chef-made meals and dedicated pickup lane."
+              />
+              <ExampleBox
+                icon="🎯"
+                title="Service Brand - Business Coach"
+                content="I'm the only business coach who helps overwhelmed solopreneurs build systems in 90 days because I've scaled 5 businesses myself without burning out."
+              />
+              <ExampleBox
+                icon="👤"
+                title="Personal Brand - Marketing Executive"
+                content="I'm the only marketing director you should hire who's helped B2B SaaS companies scale from $1M to $10M ARR using systematic growth frameworks because I've led 3 companies through this exact transition."
+              />
             </div>
           </div>
 
@@ -304,9 +302,45 @@ Give me a score out of 10 and suggest one improvement.`}
         </Card>
         </Collapsible>
 
+        {/* Congratulations Section */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
+          <div className="flex items-center gap-4 mb-4">
+            <PartyPopper className="w-12 h-12 text-primary" />
+            <div>
+              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+              <p className="text-muted-foreground">You've completed Workbook 0</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-lg">
+              You now have your <strong>white space</strong> — the unique position only you can own in your market. This is the foundation everything else builds on.
+            </p>
+            <div className="bg-background/50 p-4 rounded-lg">
+              <p className="font-semibold mb-2">What You've Accomplished:</p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Identified your specific customer and their #1 problem</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Analyzed your competition and found the gaps they miss</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1">✓</span>
+                  <span>Defined your unique market position with a clear white space statement</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-sm text-muted-foreground italic">
+              Next up: Workbook 1 will turn this white space into a complete brand foundation with visual identity, values, and voice.
+            </p>
+          </div>
+        </Card>
+
         <div className="flex justify-end">
           <Button variant="hero" size="lg" asChild>
-            <a href="/workbook/1">Save & Continue to Workbook 1 →</a>
+            <a href="/workbook/1">Continue to Workbook 1: Brand Strategy →</a>
           </Button>
         </div>
       </div>
