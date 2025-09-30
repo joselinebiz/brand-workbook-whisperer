@@ -358,51 +358,6 @@ Make it realistic for [solo/small team/company] execution.`}
         </Card>
         </Collapsible>
 
-        {/* Foundational Blueprint - After Section 3 */}
-        <BlueprintSection
-          title="📋 Your Foundational Blueprint"
-          description="Execute your brand and marketing strategy with this complete reference (Workbooks 0-3)"
-          sections={[
-            {
-              title: "MARKET OPPORTUNITY (Workbook 0)",
-              items: [
-                "White Space Declaration: Your unique market position",
-                "Target Customer: Who you serve and their #1 problem",
-                "Competitive Analysis: What gaps your competitors miss",
-                "Your Unique Advantage: Why customers choose you"
-              ]
-            },
-            {
-              title: "BRAND FOUNDATION (Workbook 1)",
-              items: [
-                "Mission, Vision & BHAG: Your purpose and direction",
-                "Core Values & Brand Promise: What you stand for",
-                "Visual & Verbal Identity: How you look and sound",
-                "Brand Story & Positioning: Your narrative in the market"
-              ]
-            },
-            {
-              title: "MARKETING STRATEGY (Workbook 2)",
-              items: [
-                "Business Model Canvas: How you create and capture value",
-                "5C Market Analysis: Company, Category, Customer, Competition, Context",
-                "4P Marketing Mix: Product, Price, Place, Promotion",
-                "90-Day Campaign Plan: Your execution roadmap"
-              ]
-            },
-            {
-              title: "CUSTOMER SYSTEMS (Workbook 3)",
-              items: [
-                "Customer Journey Map: 7 stages from awareness to loyalty",
-                "2-2-2 Follow-Up System: Automated relationship building",
-                "Standard Operating Procedures: Consistent delivery",
-                "Retention & Loyalty Programs: Turn customers into advocates"
-              ]
-            }
-          ]}
-          downloadText="Download Foundational Blueprint (WB 0-3)"
-        />
-
         {/* Section 4: Team & Scaling */}
         <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
