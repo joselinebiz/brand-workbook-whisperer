@@ -13,6 +13,13 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'chatone': ['CHATONE', 'sans-serif'],
+        'houston-serif': ['Houston Serif', 'serif'],
+        'houston-script': ['Houston Script', 'cursive'],
+        'houston-script-light': ['Houston Script Light', 'cursive'],
+        'sans': ['system-ui', '-apple-system', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
