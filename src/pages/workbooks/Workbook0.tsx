@@ -236,8 +236,8 @@ export default function Workbook0() {
         </Card>
 
         <div className="flex justify-end">
-          <Button variant="hero" size="lg">
-            Save & Continue to Workbook 1
+          <Button variant="hero" size="lg" asChild>
+            <a href="/workbook/1">Save & Continue to Workbook 1 →</a>
           </Button>
         </div>
       </div>
