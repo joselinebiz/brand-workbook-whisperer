@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -10,6 +11,42 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Lightbulb, Target, Eye, Award, ChevronDown } from "lucide-react";
 
 export default function Workbook1() {
+  const [primaryColor, setPrimaryColor] = useState("#000000");
+  const [secondaryColor, setSecondaryColor] = useState("#FFFFFF");
+  const [accentColor, setAccentColor] = useState("#FFCC00");
+
+  const getColorPsychology = (hex: string): string => {
+    // Convert hex to RGB
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+
+    // Determine dominant color
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    
+    // Black/White/Gray detection
+    if (max < 50 && min < 50) return "Elegance, Drama, Strength";
+    if (min > 200 && max > 200) return "Cleanliness, Purity, Freshness";
+    
+    // Color hue detection
+    if (r > g && r > b) {
+      // Red/Pink/Orange family
+      if (g > 150 && b > 150) return "Femininity, Compassion, Playfulness"; // Pink
+      if (g > 100 && g > b) return "Courage, Originality, Success"; // Orange
+      return "Power, Strength, Passion"; // Red
+    } else if (g > r && g > b) {
+      // Green/Yellow family
+      if (r > 150) return "Happiness, Originality, Energy"; // Yellow
+      return "Money, Growth, Freshness, Environmental-Friendliness"; // Green
+    } else if (b > r && b > g) {
+      // Blue/Purple family
+      if (r > 100) return "Royalty, Spirituality, Luxury"; // Purple
+      return "Integrity, Trust, Tranquility, Loyalty, Intelligence"; // Blue
+    }
+    
+    return "Trust, Power";
+  };
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
@@ -308,24 +345,62 @@ Challenge me if any value feels generic or marketing-speak.`}
                 <div>
                   <Label htmlFor="color-primary">Primary Color</Label>
                   <div className="flex gap-2">
-                    <Input id="color-primary" placeholder="#000000" />
-                    <input type="color" className="w-12 h-10 rounded border" />
+                    <Input 
+                      id="color-primary" 
+                      value={primaryColor}
+                      onChange={(e) => setPrimaryColor(e.target.value)}
+                      placeholder="#000000" 
+                    />
+                    <input 
+                      type="color" 
+                      value={primaryColor}
+                      onChange={(e) => setPrimaryColor(e.target.value)}
+                      className="w-12 h-10 rounded border cursor-pointer" 
+                    />
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Psychology: Trust, Power</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Psychology: {getColorPsychology(primaryColor)}
+                  </p>
                 </div>
                 <div>
                   <Label htmlFor="color-secondary">Secondary Color</Label>
                   <div className="flex gap-2">
-                    <Input id="color-secondary" placeholder="#FFFFFF" />
-                    <input type="color" className="w-12 h-10 rounded border" />
+                    <Input 
+                      id="color-secondary" 
+                      value={secondaryColor}
+                      onChange={(e) => setSecondaryColor(e.target.value)}
+                      placeholder="#FFFFFF" 
+                    />
+                    <input 
+                      type="color" 
+                      value={secondaryColor}
+                      onChange={(e) => setSecondaryColor(e.target.value)}
+                      className="w-12 h-10 rounded border cursor-pointer" 
+                    />
                   </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Psychology: {getColorPsychology(secondaryColor)}
+                  </p>
                 </div>
                 <div>
                   <Label htmlFor="color-accent">Accent Color</Label>
                   <div className="flex gap-2">
-                    <Input id="color-accent" placeholder="#FFCC00" />
-                    <input type="color" className="w-12 h-10 rounded border" />
+                    <Input 
+                      id="color-accent" 
+                      value={accentColor}
+                      onChange={(e) => setAccentColor(e.target.value)}
+                      placeholder="#FFCC00" 
+                    />
+                    <input 
+                      type="color" 
+                      value={accentColor}
+                      onChange={(e) => setAccentColor(e.target.value)}
+                      className="w-12 h-10 rounded border cursor-pointer" 
+                    />
                   </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Psychology: {getColorPsychology(accentColor)}
+                  </p>
                 </div>
               </div>
             </div>
