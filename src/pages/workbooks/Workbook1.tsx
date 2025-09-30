@@ -21,31 +21,58 @@ export default function Workbook1() {
     const g = parseInt(hex.slice(3, 5), 16);
     const b = parseInt(hex.slice(5, 7), 16);
 
-    // Determine dominant color
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
+    // Calculate luminance for black/white detection
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
     
-    // Black/White/Gray detection
-    if (max < 50 && min < 50) return "Elegance, Drama, Strength";
-    if (min > 200 && max > 200) return "Cleanliness, Purity, Freshness";
+    // Black detection (dark colors)
+    if (luminance < 0.2) return "Elegance, Drama, Strength";
     
-    // Color hue detection
-    if (r > g && r > b) {
-      // Red/Pink/Orange family
-      if (g > 150 && b > 150) return "Femininity, Compassion, Playfulness"; // Pink
-      if (g > 100 && g > b) return "Courage, Originality, Success"; // Orange
-      return "Power, Strength, Passion"; // Red
-    } else if (g > r && g > b) {
-      // Green/Yellow family
-      if (r > 150) return "Happiness, Originality, Energy"; // Yellow
-      return "Money, Growth, Freshness, Environmental-Friendliness"; // Green
-    } else if (b > r && b > g) {
-      // Blue/Purple family
-      if (r > 100) return "Royalty, Spirituality, Luxury"; // Purple
-      return "Integrity, Trust, Tranquility, Loyalty, Intelligence"; // Blue
+    // White detection (very light colors)
+    if (luminance > 0.9 && Math.abs(r - g) < 30 && Math.abs(g - b) < 30 && Math.abs(r - b) < 30) {
+      return "Cleanliness, Purity, Freshness";
     }
     
-    return "Trust, Power";
+    // Gray detection (neutral colors)
+    if (Math.abs(r - g) < 30 && Math.abs(g - b) < 30 && Math.abs(r - b) < 30) {
+      return "Neutrality, Balance, Sophistication";
+    }
+
+    // Color hue detection
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const delta = max - min;
+    
+    if (delta === 0) return "Neutrality, Balance, Sophistication";
+    
+    // Calculate hue
+    let hue = 0;
+    if (max === r) {
+      hue = ((g - b) / delta) % 6;
+    } else if (max === g) {
+      hue = (b - r) / delta + 2;
+    } else {
+      hue = (r - g) / delta + 4;
+    }
+    hue = Math.round(hue * 60);
+    if (hue < 0) hue += 360;
+    
+    // Calculate saturation
+    const saturation = max === 0 ? 0 : delta / max;
+    
+    // Color classification based on hue ranges
+    if (hue >= 0 && hue < 20) return "Power, Strength, Passion"; // Red
+    if (hue >= 20 && hue < 45) return "Courage, Originality, Success"; // Orange
+    if (hue >= 45 && hue < 70) return "Happiness, Originality, Energy"; // Yellow
+    if (hue >= 70 && hue < 160) return "Money, Growth, Freshness, Environmental-Friendliness"; // Green
+    if (hue >= 160 && hue < 250) return "Integrity, Trust, Tranquility, Loyalty, Intelligence"; // Blue
+    if (hue >= 250 && hue < 330) return "Royalty, Spirituality, Luxury"; // Purple
+    if (hue >= 330) {
+      // Pink vs Red distinction - pink has higher saturation and lighter
+      if (luminance > 0.6 && saturation < 0.8) return "Femininity, Compassion, Playfulness"; // Pink
+      return "Power, Strength, Passion"; // Red
+    }
+    
+    return "Creativity, Uniqueness";
   };
   return (
     <div className="min-h-screen bg-background">
