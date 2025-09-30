@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Target, Users, TrendingUp } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Target, Users, TrendingUp, ChevronDown } from "lucide-react";
 
 export default function Workbook0() {
   return (
@@ -60,10 +61,16 @@ export default function Workbook0() {
         </Card>
 
         {/* Part 1: The 10 Minute Market Scan */}
-        <Card className="p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6 pb-3 border-b">
-            PART 1: THE 10 MINUTE MARKET SCAN
-          </h2>
+        <Collapsible defaultOpen>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                PART 1: THE 10 MINUTE MARKET SCAN
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
+            </CollapsibleTrigger>
+            
+            <CollapsibleContent>
 
           {/* Your Customer */}
           <div className="mb-8">
@@ -198,12 +205,21 @@ Give me 3 specific angles I could take.`}
               </div>
             </div>
           </div>
+            </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* White Space Declaration */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary">
-          <h2 className="text-2xl font-bold mb-6">Your White Space Declaration</h2>
+          <CollapsibleTrigger className="w-full">
+            <h2 className="text-2xl font-bold mb-6 flex items-center justify-between hover:text-primary transition-colors">
+              Your White Space Declaration
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+            </h2>
+          </CollapsibleTrigger>
           
+          <CollapsibleContent>
           <div className="space-y-4">
             <p className="text-lg font-medium mb-4">
               "I'm the only one who
@@ -284,7 +300,9 @@ Is this:
 
 Give me a score out of 10 and suggest one improvement.`}
           />
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-end">
           <Button variant="hero" size="lg" asChild>

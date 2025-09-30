@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Lightbulb, Target, Eye, Award } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Lightbulb, Target, Eye, Award, ChevronDown } from "lucide-react";
 
 export default function Workbook1() {
   return (
@@ -53,15 +54,22 @@ export default function Workbook1() {
         </Card>
 
         {/* Section 1: Brand Purpose & Mission */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="1"
             title="Brand Purpose & Mission"
-            description="Why you exist beyond profit"
-            icon={<Target className="w-8 h-8" />}
-          />
+                description="Why you exist beyond profit"
+                icon={<Target className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-muted/30 p-4 rounded-lg mb-6">
               <h3 className="font-semibold mb-3">Quick Definitions:</h3>
               <div className="space-y-2 text-sm">
@@ -150,18 +158,27 @@ If not audacious enough, suggest 3 bolder versions.`}
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 2: Core Values */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="2"
             title="Core Values & Brand Pillars"
-            description="3-5 non-negotiable principles that guide every decision"
-            icon={<Award className="w-8 h-8" />}
-          />
+                description="3-5 non-negotiable principles that guide every decision"
+                icon={<Award className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
               <p className="text-sm font-medium">
                 Core values aren't marketing fluff—they're decision filters. If a value doesn't help you make hard choices, it's not a real value.
@@ -233,18 +250,27 @@ Challenge me if any value feels generic or marketing-speak.`}
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 3: Visual & Verbal Identity */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="3"
             title="Visual & Verbal Identity"
-            description="How you look and sound across all touchpoints"
-            icon={<Eye className="w-8 h-8" />}
-          />
+                description="How you look and sound across all touchpoints"
+                icon={<Eye className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div>
               <h3 className="text-lg font-bold mb-4">Brand Voice</h3>
               <div className="grid md:grid-cols-2 gap-6">
@@ -351,17 +377,26 @@ Rank them by impact.`}
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 4: Brand Story */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="4"
-            title="Brand Story & Positioning"
-            description="The narrative that connects with your audience"
-          />
+                title="Brand Story & Positioning"
+                description="The narrative that connects with your audience"
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div>
               <Label htmlFor="story">Brand Story (150 words)</Label>
               <p className="text-sm text-muted-foreground mb-3">
@@ -426,7 +461,9 @@ Make it human, not corporate.`}
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>

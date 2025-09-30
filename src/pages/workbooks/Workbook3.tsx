@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Users, Mail, Zap, FileText } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Users, Mail, Zap, FileText, ChevronDown } from "lucide-react";
 
 export default function Workbook3() {
   return (
@@ -47,15 +48,22 @@ export default function Workbook3() {
         </Card>
 
         {/* Section 1: Customer Journey Mapping */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="1"
             title="Customer Journey Mapping"
-            description="From stranger to advocate"
-            icon={<Users className="w-8 h-8" />}
-          />
+                description="From stranger to advocate"
+                icon={<Users className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
                 💡 A customer journey is all the steps someone takes from first hearing about you to becoming a loyal advocate. Think of it like a relationship progression.
@@ -118,18 +126,27 @@ For each stage:
 Focus on stages with lowest conversion.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 2: The 2-2-2 Follow-Up System */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="2"
             title="The 2-2-2 Follow-Up System"
-            description="Proprietary framework that builds loyalty automatically"
-            icon={<Zap className="w-8 h-8" />}
-          />
+                description="Proprietary framework that builds loyalty automatically"
+                icon={<Zap className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-gradient-to-r from-accent/10 to-accent/5 border-2 border-accent/30 p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-3">The 2-2-2 System</h3>
               <div className="space-y-3">
@@ -246,18 +263,27 @@ Match my brand voice. Make it human, not robotic.`}
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 3: Standard Operating Procedures */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="3"
             title="Standard Operating Procedures (SOPs)"
-            description="Ensure consistency regardless of who delivers"
-            icon={<FileText className="w-8 h-8" />}
-          />
+                description="Ensure consistency regardless of who delivers"
+                icon={<FileText className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
                 SOPs ensure your brand promise is delivered consistently. They're not bureaucracy—they're brand protection.
@@ -317,17 +343,26 @@ Provide:
 Make it simple enough for someone new to follow.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 4: Retention & Loyalty */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="4"
-            title="Retention & Loyalty Systems"
-            description="Turn customers into advocates"
-          />
+                title="Retention & Loyalty Systems"
+                description="Turn customers into advocates"
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div>
               <h3 className="text-lg font-bold mb-4">Loyalty Program Design</h3>
               <div className="space-y-4">
@@ -387,7 +422,9 @@ Create:
 Make it simple to understand and exciting to join.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>

@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { TrendingUp, DollarSign, BarChart3, Megaphone } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { TrendingUp, DollarSign, BarChart3, Megaphone, ChevronDown } from "lucide-react";
 
 export default function Workbook2() {
   return (
@@ -53,15 +54,22 @@ export default function Workbook2() {
         </Card>
 
         {/* Section 1: Business Model Canvas */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="1"
             title="Business Model Canvas"
-            description="Understanding how all pieces connect"
-            icon={<TrendingUp className="w-8 h-8" />}
-          />
+                description="Understanding how all pieces connect"
+                icon={<TrendingUp className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
                 💡 A Business Model Canvas maps how your business creates, delivers, and captures value. Think of it as a one-page business plan.
@@ -138,18 +146,27 @@ Identify:
 4. One quick win I can implement this week`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 2: 5C Market Analysis */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="2"
             title="5C Market Analysis"
-            description="Company, Category, Customer, Competition, Context"
-            icon={<BarChart3 className="w-8 h-8" />}
-          />
+                description="Company, Category, Customer, Competition, Context"
+                icon={<BarChart3 className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             {[
               { id: "company", title: "Company", question: "Top 3 strengths?" },
               { id: "category", title: "Category", question: "What's the market opportunity?" },
@@ -187,18 +204,27 @@ Provide:
 4. Warning: What could derail this strategy?`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 3: 4P Marketing Mix */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="3"
             title="4P Marketing Mix"
-            description="Product, Price, Place, Promotion"
-            icon={<DollarSign className="w-8 h-8" />}
-          />
+                description="Product, Price, Place, Promotion"
+                icon={<DollarSign className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-8">
+          <CollapsibleContent>
+          <div className="space-y-8 mt-6">
             {/* Product */}
             <div>
               <h3 className="text-xl font-bold mb-4">PRODUCT - Value Ladder</h3>
@@ -334,18 +360,27 @@ Recommend:
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 4: Campaign Planning */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="4"
             title="90-Day Campaign Plan"
-            description="Your first strategic marketing campaign"
-            icon={<Megaphone className="w-8 h-8" />}
-          />
+                description="Your first strategic marketing campaign"
+                icon={<Megaphone className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div>
               <Label htmlFor="campaign-goal">Campaign Goal</Label>
               <Input id="campaign-goal" placeholder="e.g., 100 email subscribers in 90 days" />
@@ -393,7 +428,9 @@ For each week, provide:
 Format as a week-by-week breakdown I can copy-paste.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>

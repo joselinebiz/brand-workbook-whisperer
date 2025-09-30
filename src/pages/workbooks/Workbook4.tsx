@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { LineChart, Target, Rocket, Users } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { LineChart, Target, Rocket, Users, ChevronDown } from "lucide-react";
 
 export default function Workbook4() {
   return (
@@ -47,15 +48,22 @@ export default function Workbook4() {
         </Card>
 
         {/* Section 1: Performance Dashboard */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="1"
             title="Your Performance Dashboard"
-            description="The numbers that actually matter"
-            icon={<LineChart className="w-8 h-8" />}
-          />
+                description="The numbers that actually matter"
+                icon={<LineChart className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
                 💡 Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
@@ -160,18 +168,27 @@ Recommend:
 Make it specific to my business model.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 2: Testing Framework */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="2"
             title="Testing & Optimization Framework"
-            description="Scientific approach to improvement"
-            icon={<Target className="w-8 h-8" />}
-          />
+                description="Scientific approach to improvement"
+                icon={<Target className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div className="bg-gradient-to-r from-accent/10 to-accent/5 border-2 border-accent/30 p-6 rounded-lg mb-6">
               <h3 className="text-xl font-bold mb-3">The Testing Protocol</h3>
               <ol className="space-y-2 text-sm">
@@ -248,18 +265,27 @@ Rank by:
 Recommend which test to run first and why.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 3: 90-Day Growth Sprint */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="3"
             title="90-Day Growth Sprint Plan"
-            description="Your roadmap to 20% improvement"
-            icon={<Rocket className="w-8 h-8" />}
-          />
+                description="Your roadmap to 20% improvement"
+                icon={<Rocket className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div>
               <Label htmlFor="sprint-goal" className="text-lg">Sprint Goal</Label>
               <Input
@@ -327,18 +353,27 @@ For each month, provide:
 Make it realistic for [solo/small team/company] execution.`}
             />
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Section 4: Team & Scaling */}
+        <Collapsible defaultOpen>
         <Card className="p-8 mb-8">
-          <SectionHeader
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+              <SectionHeader
             number="4"
             title="Team Building & Delegation"
-            description="Scale yourself by building systems"
-            icon={<Users className="w-8 h-8" />}
-          />
+                description="Scale yourself by building systems"
+                icon={<Users className="w-8 h-8" />}
+              />
+              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+            </div>
+          </CollapsibleTrigger>
 
-          <div className="space-y-6">
+          <CollapsibleContent>
+          <div className="space-y-6 mt-6">
             <div>
               <h3 className="text-lg font-bold mb-4">Role Mapping</h3>
               <p className="text-sm text-muted-foreground mb-4">
@@ -432,7 +467,9 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
               />
             </div>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Final Section */}
         <Card className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary">
