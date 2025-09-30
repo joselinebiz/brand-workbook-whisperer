@@ -49,7 +49,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground overflow-hidden">
+      <section className="relative bg-gradient-to-br from-black via-black to-black/90 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.1) 50px, rgba(255,255,255,0.1) 51px)`,
@@ -71,7 +71,7 @@ const Index = () => {
             <p className="text-2xl md:text-3xl font-semibold mb-4">
               BRAND & MARKETING MASTER BLUEPRINT
             </p>
-            <p className="text-lg md:text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
               Your Complete Strategic Foundation - From Market Validation to Systematic Scaling
             </p>
 
@@ -82,7 +82,7 @@ const Index = () => {
                   Start Your Journey
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary" asChild>
+              <Button variant="outline" size="lg" className="bg-transparent border-2 border-white hover:bg-black hover:text-white hover:border-white" asChild>
                 <a href="/blueprint">
                   <Target className="w-5 h-5" />
                   View Master Blueprint
