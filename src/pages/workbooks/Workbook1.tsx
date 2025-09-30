@@ -455,10 +455,14 @@ Challenge me if any value feels generic or marketing-speak.`}
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-3 gap-4">
               <div>
                 <Label htmlFor="font-heading">Heading Font</Label>
                 <Input id="font-heading" placeholder="e.g., Inter Bold" />
+              </div>
+              <div>
+                <Label htmlFor="font-subhead">Sub Head Font</Label>
+                <Input id="font-subhead" placeholder="e.g., Inter SemiBold" />
               </div>
               <div>
                 <Label htmlFor="font-body">Body Font</Label>
