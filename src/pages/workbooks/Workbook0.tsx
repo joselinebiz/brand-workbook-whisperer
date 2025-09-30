@@ -1,4 +1,5 @@
 import { WorkbookHeader } from "@/components/WorkbookHeader";
+import { AIPromptCard } from "@/components/AIPromptCard";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -98,6 +99,21 @@ export default function Workbook0() {
               <div className="bg-accent/10 border border-accent/20 p-3 rounded">
                 <p className="text-sm font-medium">💡 Stuck? Stop. Call 5 potential customers today.</p>
               </div>
+
+              <AIPromptCard
+                title="AI Prompt: Customer Research"
+                context="Use this after speaking with 5 potential customers"
+                prompt={`I interviewed 5 [type of customers]. Here's what they said about [problem]:
+
+[Paste quotes/notes]
+
+Analyze this and tell me:
+1. What's the #1 problem they ALL mentioned?
+2. What's costing them the most (time or money)?
+3. What band-aid solutions are they using now?
+
+Format as: Problem / Cost / Current Solution`}
+              />
             </div>
           </div>
 
@@ -143,6 +159,20 @@ export default function Workbook0() {
                 <Label htmlFor="pattern">The Pattern: What do ALL miss?</Label>
                 <Textarea id="pattern" rows={2} />
               </div>
+
+              <AIPromptCard
+                title="AI Prompt: Competitive Analysis"
+                context="Use this to identify market gaps"
+                prompt={`Here are 3 competitors in [your market]:
+
+1. [Name] - Promise: [X] - Price: $[Y] - Missing: [Z]
+2. [Name] - Promise: [X] - Price: $[Y] - Missing: [Z]
+3. [Name] - Promise: [X] - Price: $[Y] - Missing: [Z]
+
+What gap do ALL three competitors miss? What could someone own that none of them address?
+
+Give me 3 specific angles I could take.`}
+              />
             </div>
           </div>
 
@@ -220,6 +250,12 @@ export default function Workbook0() {
             <h3 className="font-semibold mb-3">Examples:</h3>
             <div className="space-y-3 text-sm">
               <div className="p-3 bg-background rounded">
+                <p className="font-medium mb-1">💼 Consultant:</p>
+                <p className="text-muted-foreground italic">
+                  "I'm the only consultant who guarantees a clear Go-To-Market plan in 90 days for B2B SaaS founders because I've launched 12 products that hit $1M ARR."
+                </p>
+              </div>
+              <div className="p-3 bg-background rounded">
                 <p className="font-medium mb-1">🏪 Brick-and-Mortar:</p>
                 <p className="text-muted-foreground italic">
                   "I'm the only café that guarantees healthy breakfast in under 5 minutes for busy Phoenix families because of our chef-made meals and dedicated pickup lane."
@@ -233,6 +269,21 @@ export default function Workbook0() {
               </div>
             </div>
           </div>
+
+          <AIPromptCard
+            title="AI Prompt: White Space Validation"
+            context="Use this to test your positioning"
+            prompt={`My white space statement is:
+
+"I'm the only one who [your action] for [your customer] because [your advantage]."
+
+Is this:
+1. Specific enough that someone would say "that's for me"?
+2. Different enough that competitors can't easily copy it?
+3. Believable based on my advantage?
+
+Give me a score out of 10 and suggest one improvement.`}
+          />
         </Card>
 
         <div className="flex justify-end">
