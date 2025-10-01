@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -9,12 +9,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Lightbulb, Target, Eye, Award, ChevronDown, PartyPopper } from "lucide-react";
+import { Lightbulb, Target, Eye, Award, ChevronDown, PartyPopper, Save } from "lucide-react";
+import { useWorkbook } from "@/contexts/WorkbookContext";
 
 export default function Workbook1() {
-  const [primaryColor, setPrimaryColor] = useState("#000000");
-  const [secondaryColor, setSecondaryColor] = useState("#FFFFFF");
-  const [accentColor, setAccentColor] = useState("#FFCC00");
+  const { data, updateData } = useWorkbook();
+  const [isSaving, setIsSaving] = useState(false);
+  const [primaryColor, setPrimaryColor] = useState(data.primaryColor || "#000000");
+  const [secondaryColor, setSecondaryColor] = useState(data.secondaryColor || "#FFFFFF");
+  const [accentColor, setAccentColor] = useState(data.accentColor || "#FFCC00");
+
+  useEffect(() => {
+    setIsSaving(true);
+    const timer = setTimeout(() => setIsSaving(false), 1000);
+    return () => clearTimeout(timer);
+  }, [data]);
 
   const getColorPsychology = (hex: string): string => {
     // Convert hex to RGB
@@ -84,6 +93,14 @@ export default function Workbook1() {
       />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
+        {/* Save Indicator */}
+        {isSaving && (
+          <div className="fixed top-4 right-4 bg-accent text-accent-foreground px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+            <Save className="w-4 h-4" />
+            <span className="text-sm font-medium">Saved</span>
+          </div>
+        )}
+
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
           <h2 className="text-2xl font-bold mb-4">What You'll Walk Away With</h2>
@@ -119,7 +136,7 @@ export default function Workbook1() {
         </Card>
 
         {/* Section 1: Brand Purpose & Mission */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -155,6 +172,8 @@ export default function Workbook1() {
                 id="mission"
                 rows={3}
                 placeholder="e.g., We exist to help small business owners build strategic brands so that they can compete with larger competitors and win their market."
+                value={data.mission}
+                onChange={(e) => updateData('mission', e.target.value)}
               />
             </div>
 
@@ -169,6 +188,8 @@ export default function Workbook1() {
                 id="vision"
                 rows={2}
                 placeholder="e.g., In 5 years, 10,000 entrepreneurs will have built profitable brands using our frameworks."
+                value={data.vision5Year}
+                onChange={(e) => updateData('vision5Year', e.target.value)}
               />
             </div>
 
@@ -183,6 +204,8 @@ export default function Workbook1() {
                 id="bhag"
                 rows={2}
                 placeholder="e.g., Build 100,000 strategic brands that transform their industries."
+                value={data.bhag10Year}
+                onChange={(e) => updateData('bhag10Year', e.target.value)}
               />
             </div>
 
@@ -250,7 +273,7 @@ If not audacious enough, suggest 3 bolder versions.`}
         </Collapsible>
 
         {/* Section 2: Core Values */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -342,7 +365,7 @@ Challenge me if any value feels generic or marketing-speak.`}
         </Collapsible>
 
         {/* Section 3: Visual & Verbal Identity */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -363,18 +386,33 @@ Challenge me if any value feels generic or marketing-speak.`}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="voice-are">We ARE (3 words)</Label>
-                  <Input id="voice-are" placeholder="e.g., Direct, Strategic, Empowering" />
+                  <Input 
+                    id="voice-are" 
+                    placeholder="e.g., Direct, Strategic, Empowering"
+                    value={data.brandVoiceAre}
+                    onChange={(e) => updateData('brandVoiceAre', e.target.value)}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="voice-not">We are NOT (3 words)</Label>
-                  <Input id="voice-not" placeholder="e.g., Corporate, Jargon-heavy, Passive" />
+                  <Input 
+                    id="voice-not" 
+                    placeholder="e.g., Corporate, Jargon-heavy, Passive"
+                    value={data.brandVoiceNot}
+                    onChange={(e) => updateData('brandVoiceNot', e.target.value)}
+                  />
                 </div>
               </div>
             </div>
 
             <div>
               <Label htmlFor="tagline">Tagline (7 words or less)</Label>
-              <Input id="tagline" placeholder="e.g., MBA Strategy. Battle-Tested Results." />
+              <Input 
+                id="tagline" 
+                placeholder="e.g., MBA Strategy. Battle-Tested Results."
+                value={data.tagline}
+                onChange={(e) => updateData('tagline', e.target.value)}
+              />
             </div>
 
             <div>
@@ -386,6 +424,8 @@ Challenge me if any value feels generic or marketing-speak.`}
                 id="oneliner"
                 rows={2}
                 placeholder="e.g., We help entrepreneurs build strategic brands through proven MBA frameworks so they can compete with industry leaders and win."
+                value={data.oneLiner}
+                onChange={(e) => updateData('oneLiner', e.target.value)}
               />
             </div>
 
@@ -511,7 +551,7 @@ Rank them by impact.`}
         </Collapsible>
 
         {/* Section 4: Brand Story */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">

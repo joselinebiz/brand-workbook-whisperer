@@ -7,9 +7,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Target, Users, TrendingUp, ChevronDown, PartyPopper } from "lucide-react";
+import { Target, Users, TrendingUp, ChevronDown, PartyPopper, Save } from "lucide-react";
+import { useWorkbook } from "@/contexts/WorkbookContext";
+import { useEffect, useState } from "react";
 
 export default function Workbook0() {
+  const { data, updateData } = useWorkbook();
+  const [isSaving, setIsSaving] = useState(false);
+
+  // Show save indicator briefly when data changes
+  useEffect(() => {
+    setIsSaving(true);
+    const timer = setTimeout(() => setIsSaving(false), 1000);
+    return () => clearTimeout(timer);
+  }, [data]);
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
@@ -19,6 +30,14 @@ export default function Workbook0() {
       />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
+        {/* Save Indicator */}
+        {isSaving && (
+          <div className="fixed top-4 right-4 bg-accent text-accent-foreground px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+            <Save className="w-4 h-4" />
+            <span className="text-sm font-medium">Saved</span>
+          </div>
+        )}
+
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
           <h2 className="text-2xl font-bold mb-4">Who This Is For</h2>
@@ -62,7 +81,7 @@ export default function Workbook0() {
         </Card>
 
         {/* Part 1: The 10 Minute Market Scan */}
-        <Collapsible defaultOpen>
+        <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -85,12 +104,22 @@ export default function Workbook0() {
             <div className="space-y-4 pl-10">
               <div>
                 <Label htmlFor="customer">One specific person</Label>
-                <Input id="customer" placeholder="e.g., Small business owners in Phoenix" />
+                <Input 
+                  id="customer" 
+                  placeholder="e.g., Small business owners in Phoenix"
+                  value={data.targetCustomer}
+                  onChange={(e) => updateData('targetCustomer', e.target.value)}
+                />
               </div>
 
               <div>
                 <Label htmlFor="problem">Their #1 problem</Label>
-                <Input id="problem" placeholder="e.g., No time to create marketing content" />
+                <Input 
+                  id="problem" 
+                  placeholder="e.g., No time to create marketing content"
+                  value={data.customerProblem}
+                  onChange={(e) => updateData('customerProblem', e.target.value)}
+                />
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -211,7 +240,7 @@ Give me 3 specific angles I could take.`}
         </Collapsible>
 
         {/* White Space Declaration */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary">
           <CollapsibleTrigger className="w-full">
             <h2 className="text-2xl font-bold mb-6 flex items-center justify-between hover:text-primary transition-colors">
@@ -233,6 +262,8 @@ Give me 3 specific angles I could take.`}
                   id="ws-action" 
                   className="text-lg"
                   placeholder="guarantees healthy breakfast in under 5 minutes"
+                  value={data.solution}
+                  onChange={(e) => updateData('solution', e.target.value)}
                 />
               </div>
 
@@ -256,6 +287,8 @@ Give me 3 specific angles I could take.`}
                   className="text-lg"
                   rows={2}
                   placeholder="of our chef-made meals and dedicated pickup lane"
+                  value={data.whiteSpaceDeclaration}
+                  onChange={(e) => updateData('whiteSpaceDeclaration', e.target.value)}
                 />
               </div>
             </div>

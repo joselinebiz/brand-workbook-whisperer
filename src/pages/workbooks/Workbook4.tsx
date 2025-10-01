@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -8,9 +9,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper } from "lucide-react";
+import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper, Save } from "lucide-react";
+import { useWorkbook } from "@/contexts/WorkbookContext";
 
 export default function Workbook4() {
+  const { data, updateData } = useWorkbook();
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    setIsSaving(true);
+    const timer = setTimeout(() => setIsSaving(false), 1000);
+    return () => clearTimeout(timer);
+  }, [data]);
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
@@ -20,6 +30,14 @@ export default function Workbook4() {
       />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
+        {/* Save Indicator */}
+        {isSaving && (
+          <div className="fixed top-4 right-4 bg-accent text-accent-foreground px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+            <Save className="w-4 h-4" />
+            <span className="text-sm font-medium">Saved</span>
+          </div>
+        )}
+
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
           <h2 className="text-2xl font-bold mb-4">What You'll Walk Away With</h2>
@@ -49,7 +67,7 @@ export default function Workbook4() {
         </Card>
 
         {/* Section 1: Performance Dashboard */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -174,7 +192,7 @@ Make it specific to my business model.`}
         </Collapsible>
 
         {/* Section 2: Testing Framework */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -271,7 +289,7 @@ Recommend which test to run first and why.`}
         </Collapsible>
 
         {/* Section 3: 90-Day Growth Sprint */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -359,7 +377,7 @@ Make it realistic for [solo/small team/company] execution.`}
         </Collapsible>
 
         {/* Section 4: Team & Scaling */}
-        <Collapsible defaultOpen>
+        <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
