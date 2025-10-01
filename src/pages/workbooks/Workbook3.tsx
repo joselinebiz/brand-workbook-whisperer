@@ -445,14 +445,22 @@ Make it simple to understand and exciting to join.`}
         </Collapsible>
 
         {/* Congratulations Section */}
+        <Collapsible>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
-          <div className="flex items-center gap-4 mb-4">
-            <PartyPopper className="w-12 h-12 text-primary" />
-            <div>
-              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
-              <p className="text-muted-foreground">You've completed Workbook 3</p>
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
+              <div className="flex items-center gap-4">
+                <PartyPopper className="w-12 h-12 text-primary" />
+                <div className="text-left">
+                  <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+                  <p className="text-muted-foreground">You've completed Workbook 3</p>
+                </div>
+              </div>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
             </div>
-          </div>
+          </CollapsibleTrigger>
+          
+          <CollapsibleContent>
           <div className="space-y-3">
             <p className="text-lg">
               Your <strong>customer systems</strong> are ready! You now have automated processes that deliver consistent experiences and build loyalty.
@@ -482,7 +490,9 @@ Make it simple to understand and exciting to join.`}
               Next up: Workbook 4 will help you measure performance, optimize what works, and scale systematically.
             </p>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         {/* Blueprint Call-to-Action */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">

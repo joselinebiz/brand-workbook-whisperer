@@ -451,14 +451,22 @@ Format as a week-by-week breakdown I can copy-paste.`}
         </Collapsible>
 
         {/* Congratulations Section */}
+        <Collapsible>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
-          <div className="flex items-center gap-4 mb-4">
-            <PartyPopper className="w-12 h-12 text-primary" />
-            <div>
-              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
-              <p className="text-muted-foreground">You've completed Workbook 2</p>
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
+              <div className="flex items-center gap-4">
+                <PartyPopper className="w-12 h-12 text-primary" />
+                <div className="text-left">
+                  <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+                  <p className="text-muted-foreground">You've completed Workbook 2</p>
+                </div>
+              </div>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
             </div>
-          </div>
+          </CollapsibleTrigger>
+          
+          <CollapsibleContent>
           <div className="space-y-3">
             <p className="text-lg">
               Your <strong>marketing strategy</strong> is built! You now have a complete roadmap to turn your brand foundation into revenue.
@@ -488,7 +496,9 @@ Format as a week-by-week breakdown I can copy-paste.`}
               Next up: Workbook 3 will automate your customer journey and build systems that turn leads into loyal advocates.
             </p>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-between">
           <Button variant="outline" size="lg" asChild>

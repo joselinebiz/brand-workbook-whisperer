@@ -528,14 +528,22 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
         />
 
         {/* Congratulations Section */}
+        <Collapsible>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
-          <div className="flex items-center gap-4 mb-4">
-            <PartyPopper className="w-12 h-12 text-primary" />
-            <div>
-              <h2 className="text-2xl font-bold">🎉 Congratulations!</h2>
-              <p className="text-muted-foreground">You've Completed the BLKBLD Master Blueprint</p>
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
+              <div className="flex items-center gap-4">
+                <PartyPopper className="w-12 h-12 text-primary" />
+                <div className="text-left">
+                  <h2 className="text-2xl font-bold">🎉 Congratulations!</h2>
+                  <p className="text-muted-foreground">You've Completed the BLKBLD Master Blueprint</p>
+                </div>
+              </div>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
             </div>
-          </div>
+          </CollapsibleTrigger>
+          
+          <CollapsibleContent>
           <div className="space-y-4">
             <p className="text-lg">
               You now have a <strong>complete strategic foundation</strong> from market validation to systematic scaling. This is the same framework that generates six-figure consulting engagements.
@@ -601,7 +609,9 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
               <a href="/blueprint">Download Complete Blueprint</a>
             </Button>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-start mt-8">
           <Button variant="outline" size="lg" asChild>
