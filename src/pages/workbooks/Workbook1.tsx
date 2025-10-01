@@ -561,34 +561,43 @@ DELIVER:
                 <div className="space-y-6">
                   {/* Interactive Color Pickers */}
                   <Card className="p-6 bg-muted/20">
-                    <h4 className="font-semibold mb-4">Your Visual Kit</h4>
+                    <h4 className="font-semibold mb-4">Your Visual Identity</h4>
                     <div className="space-y-4">
-                      {[
+                      {([
                         { id: "primary", label: "Primary Color", desc: "Main recognition", field: "primaryColor" },
                         { id: "secondary", label: "Secondary Color", desc: "Support", field: "secondaryColor" },
                         { id: "accent", label: "Accent Color", desc: "CTAs only", field: "accentColor" }
-                      ].map((color) => (
-                        <div key={color.id}>
-                          <Label htmlFor={color.id} className="mb-2 block">{color.label}</Label>
-                          <p className="text-xs text-muted-foreground mb-2">{color.desc}</p>
-                          <div className="flex items-center gap-4">
-                            <input
-                              type="color"
-                              id={color.id}
-                              className="w-20 h-10 rounded cursor-pointer border-2 border-border"
-                              defaultValue="#000000"
-                            />
-                            <Input
-                              defaultValue="#000000"
-                              placeholder="#000000"
-                              className="w-32"
-                            />
-                            <p className="text-sm text-muted-foreground flex-1">
-                              Varies by color chosen
-                            </p>
+                      ] as const).map((color) => {
+                        const colorValue = (data[color.field] as string) || "#000000";
+                        const psychology = color.id === "primary" ? getColorPsychology(colorValue) : "";
+                        
+                        return (
+                          <div key={color.id}>
+                            <Label htmlFor={color.id} className="mb-2 block">{color.label}</Label>
+                            <p className="text-xs text-muted-foreground mb-2">{color.desc}</p>
+                            <div className="flex items-center gap-4">
+                              <input
+                                type="color"
+                                id={color.id}
+                                className="w-20 h-10 rounded cursor-pointer border-2 border-border"
+                                value={colorValue}
+                                onChange={(e) => updateData(color.field, e.target.value)}
+                              />
+                              <Input
+                                value={colorValue}
+                                onChange={(e) => updateData(color.field, e.target.value)}
+                                placeholder="#000000"
+                                className="w-32"
+                              />
+                              {color.id === "primary" && psychology && (
+                                <p className="text-sm text-muted-foreground flex-1">
+                                  Psychology: {psychology}
+                                </p>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
 
                       <div>
                         <Label htmlFor="heading-font">Heading Font</Label>
@@ -797,7 +806,7 @@ CREATE:
                 <div className="space-y-2 text-sm">
                   <label className="flex items-center gap-2">
                     <input type="checkbox" className="w-4 h-4" />
-                    <span>Visual kit created (colors, fonts)</span>
+                    <span>Visual identity created (colors, fonts)</span>
                   </label>
                   <label className="flex items-center gap-2">
                     <input type="checkbox" className="w-4 h-4" />
