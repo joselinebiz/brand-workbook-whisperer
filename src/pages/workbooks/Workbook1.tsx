@@ -168,7 +168,7 @@ export default function Workbook1() {
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Pre-Work: Brand Health Assessment (5 min)
+                Pre-Work: Brand Health Assessment
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -1238,64 +1238,26 @@ DELIVER:
         </Collapsible>
 
         {/* Troubleshooting Guide */}
-        <Collapsible>
-          <Card className="p-8 mb-8">
-            <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Troubleshooting Guide
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
-            </CollapsibleTrigger>
-            
-            <CollapsibleContent>
-              <div className="space-y-4 mt-6">
-                {[
-                  { problem: "Can't define purpose", solution: "Interview 5 customers/colleagues about why they chose you" },
-                  { problem: "Brand feels generic", solution: "Narrow target audience by 50%" },
-                  { problem: "No time for this", solution: "15 minutes daily beats 4-hour blocks" },
-                  { problem: "Can't afford design", solution: "Consistency beats fancy. Use Canva free." }
-                ].map((item, idx) => (
-                  <Card key={idx} className="p-4 bg-muted/30">
-                    <p className="font-semibold mb-2">"{item.problem}"</p>
-                    <p className="text-sm text-muted-foreground">→ {item.solution}</p>
-                  </Card>
-                ))}
-              </div>
-            </CollapsibleContent>
-          </Card>
-        </Collapsible>
+        <Card className="p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-6 pb-3 border-b">
+            Troubleshooting Guide
+          </h2>
+          
+          <div className="space-y-4">
+            {[
+              { problem: "Can't define purpose", solution: "Interview 5 customers/colleagues about why they chose you" },
+              { problem: "Brand feels generic", solution: "Narrow target audience by 50%" },
+              { problem: "No time for this", solution: "15 minutes daily beats 4-hour blocks" },
+              { problem: "Can't afford design", solution: "Consistency beats fancy. Use Canva free." }
+            ].map((item, idx) => (
+              <Card key={idx} className="p-4 bg-muted/30">
+                <p className="font-semibold mb-2">"{item.problem}"</p>
+                <p className="text-sm text-muted-foreground">→ {item.solution}</p>
+              </Card>
+            ))}
+          </div>
+        </Card>
 
-        {/* Quick Wins */}
-        <Collapsible>
-          <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent/30">
-            <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 flex items-center justify-between hover:text-primary transition-colors">
-                Quick Wins (Next Hour)
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
-            </CollapsibleTrigger>
-            
-            <CollapsibleContent>
-              <ul className="space-y-3 mt-6">
-                {[
-                  { task: "Write mission", time: "5 min" },
-                  { task: "Pick 3 colors", time: "5 min" },
-                  { task: "Update all bios", time: "10 min" },
-                  { task: "Create email signature", time: "5 min" },
-                  { task: "Define 3 values", time: "5 min" }
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-center justify-between p-3 bg-background rounded">
-                    <label className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" className="w-5 h-5" />
-                      <span className="font-medium">{item.task}</span>
-                    </label>
-                    <span className="text-sm text-muted-foreground">({item.time})</span>
-                  </li>
-                ))}
-              </ul>
-            </CollapsibleContent>
-          </Card>
-        </Collapsible>
 
         {/* Recommended Tech Stack */}
         <Collapsible>
