@@ -569,7 +569,7 @@ DELIVER:
                         { id: "accent", label: "Accent Color", desc: "CTAs only", field: "accentColor" }
                       ] as const).map((color) => {
                         const colorValue = (data[color.field] as string) || "#000000";
-                        const psychology = color.id === "primary" ? getColorPsychology(colorValue) : "";
+                        const psychology = getColorPsychology(colorValue);
                         
                         return (
                           <div key={color.id}>
@@ -589,7 +589,7 @@ DELIVER:
                                 placeholder="#000000"
                                 className="w-32"
                               />
-                              {color.id === "primary" && psychology && (
+                              {psychology && (
                                 <p className="text-sm text-muted-foreground flex-1">
                                   Psychology: {psychology}
                                 </p>
