@@ -336,14 +336,22 @@ Give me a score out of 10 and suggest one improvement.`}
         </Collapsible>
 
         {/* Congratulations Section */}
+        <Collapsible>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
-          <div className="flex items-center gap-4 mb-4">
-            <PartyPopper className="w-12 h-12 text-primary" />
-            <div>
-              <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
-              <p className="text-muted-foreground">You've completed Workbook 0</p>
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
+              <div className="flex items-center gap-4">
+                <PartyPopper className="w-12 h-12 text-primary" />
+                <div className="text-left">
+                  <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+                  <p className="text-muted-foreground">You've completed Workbook 0</p>
+                </div>
+              </div>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
             </div>
-          </div>
+          </CollapsibleTrigger>
+          
+          <CollapsibleContent>
           <div className="space-y-3">
             <p className="text-lg">
               You now have your <strong>white space</strong> — the unique position only you can own in your market. This is the foundation everything else builds on.
@@ -369,7 +377,9 @@ Give me a score out of 10 and suggest one improvement.`}
               Next up: Workbook 1 will turn this white space into a complete brand foundation with visual identity, values, and voice.
             </p>
           </div>
+          </CollapsibleContent>
         </Card>
+        </Collapsible>
 
         <div className="flex justify-end">
           <Button variant="hero" size="lg" asChild>
