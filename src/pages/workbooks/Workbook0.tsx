@@ -113,7 +113,7 @@ export default function Workbook0() {
 
         {/* THE ONLY 3 QUESTIONS */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent/30">
-          <h2 className="text-2xl font-bold mb-4">THE ONLY 3 QUESTIONS THAT MATTER</h2>
+          <h2 className="text-2xl font-bold mb-4">The Only 3 Questions That Matter</h2>
           <p className="text-muted-foreground mb-4">Before building anything:</p>
           <ol className="space-y-3 mb-4">
             <li className="flex items-start gap-3">
@@ -146,7 +146,7 @@ export default function Workbook0() {
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                PART 1: THE 10 MINUTE MARKET SCAN
+                Part 1: The 10 Minute Market Scan
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -305,7 +305,7 @@ Give me 3 specific angles I could take.`}
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                PART 2: THE 15-MINUTE BUSINESS MODEL
+                Part 2: The 15-Minute Business Model
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -399,7 +399,7 @@ Provide:
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                PART 3: THE 5-MINUTE VALIDATION
+                Part 3: The 5-Minute Validation
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -514,7 +514,7 @@ Provide:
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary">
           <CollapsibleTrigger className="w-full">
             <h2 className="text-2xl font-bold mb-6 flex items-center justify-between hover:text-primary transition-colors">
-              YOUR WHITE SPACE DECLARATION
+              Your White Space Declaration
               <ChevronDown className="h-6 w-6 transition-transform duration-200" />
             </h2>
           </CollapsibleTrigger>
@@ -523,7 +523,7 @@ Provide:
           <div className="space-y-6">
             {/* THE OPPORTUNITY */}
             <div>
-              <h3 className="text-xl font-bold mb-4 text-primary">THE OPPORTUNITY</h3>
+              <h3 className="text-xl font-bold mb-4 text-primary">The Opportunity</h3>
               <p className="text-lg font-medium mb-4">
                 "While everyone else fights over
               </p>
@@ -593,7 +593,7 @@ Provide:
 
             {/* THE VALIDATION */}
             <div className="pt-6 border-t">
-              <h3 className="text-xl font-bold mb-4 text-primary">THE VALIDATION</h3>
+              <h3 className="text-xl font-bold mb-4 text-primary">The Validation</h3>
               <div className="space-y-3 mb-4">
                 <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
                   <input type="checkbox" className="w-5 h-5 mt-0.5" />
@@ -655,122 +655,7 @@ Give me a score out of 10 and suggest one improvement.`}
         </Card>
         </Collapsible>
 
-        {/* Bridge to Workbook 1 */}
-        <Collapsible>
-        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary/50">
-          <CollapsibleTrigger className="w-full">
-            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <h2 className="text-2xl font-bold text-primary">🔗 BRIDGE TO WORKBOOK 1</h2>
-              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-            </div>
-          </CollapsibleTrigger>
-          
-          <CollapsibleContent>
-          <div className="mt-6 space-y-4">
-            <p className="text-lg font-semibold">You validated demand. Now build the brand foundation that attracts it.</p>
-            
-            <div className="bg-background/50 p-6 rounded-lg">
-              <p className="font-semibold mb-3">You're ready for Workbook 1 if:</p>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
-                  <span>Named your customer (even roughly)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
-                  <span>Found your gap (even roughly)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
-                  <span>Math checks out (even roughly)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
-                  <span>Energy is high</span>
-                </li>
-              </ul>
-            </div>
 
-            <p className="text-sm text-muted-foreground italic">
-              Remember: Whether you're building the next great brick-and-mortar business, launching a premium consultancy, or establishing yourself as a thought leader in your industry, this validation ensures you're building something people actually want.
-            </p>
-          </div>
-          </CollapsibleContent>
-        </Card>
-        </Collapsible>
-
-        {/* The Complete BLKBLD Journey */}
-        <Collapsible>
-        <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10 border-2 border-accent/50">
-          <CollapsibleTrigger className="w-full">
-            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <h2 className="text-2xl font-bold">THE COMPLETE BLKBLD JOURNEY</h2>
-              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-            </div>
-          </CollapsibleTrigger>
-          
-          <CollapsibleContent>
-          <div className="mt-6 space-y-6">
-            <div>
-              <p className="text-lg font-semibold mb-4">You've identified your unique market opportunity across three proven pathways:</p>
-              <div className="space-y-2">
-                <div className="flex items-start gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-2xl">🏪</span>
-                  <div>
-                    <p className="font-semibold">Brick-and-Mortar Brand</p>
-                    <p className="text-sm text-muted-foreground">Build a local business that serves a specific community need</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-2xl">🎯</span>
-                  <div>
-                    <p className="font-semibold">Service Brand</p>
-                    <p className="text-sm text-muted-foreground">Launch expertise-based services or consulting</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-2xl">👤</span>
-                  <div>
-                    <p className="font-semibold">Personal Brand</p>
-                    <p className="text-sm text-muted-foreground">Establish thought leadership for career advancement</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t pt-6">
-              <p className="font-semibold mb-4">Your Complete Transformation Path:</p>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3 p-3 bg-primary/10 rounded border-l-4 border-primary">
-                  <span className="text-primary font-bold">✅</span>
-                  <span className="font-semibold">WORKBOOK 0: Market opportunity validated (you're here!)</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-muted-foreground">→</span>
-                  <span>WORKBOOK 1: Brand foundation that guides every decision</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-muted-foreground">→</span>
-                  <span>WORKBOOK 2: Strategic marketing system aligned with your brand</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-muted-foreground">→</span>
-                  <span>WORKBOOK 3: Automated customer experience that builds loyalty</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded">
-                  <span className="text-muted-foreground">→</span>
-                  <span>WORKBOOK 4: Data-driven optimization and systematic scaling</span>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-sm text-muted-foreground italic pt-4">
-              Your job today wasn't perfection—it was validation. Now let's transform this rough diamond into a polished brand that attracts the right opportunities and scales systematically.
-            </p>
-          </div>
-          </CollapsibleContent>
-        </Card>
-        </Collapsible>
 
         {/* Recommended Tech Stack */}
         <Collapsible>
