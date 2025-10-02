@@ -13,7 +13,7 @@ import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper, Save } from
 import { useWorkbook } from "@/contexts/WorkbookContext";
 
 export default function Workbook4() {
-  const { data, updateData } = useWorkbook();
+  const { data, updateData, getBlueprintData } = useWorkbook();
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -21,6 +21,87 @@ export default function Workbook4() {
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
   }, [data]);
+
+  const handleDownloadMasterBlueprint = () => {
+    const blueprintData = getBlueprintData();
+    const blueprintText = `
+===========================================
+BLKBLD MASTER BLUEPRINT
+Complete Strategic Foundation (Workbooks 0-4)
+===========================================
+
+WORKBOOK 0: MARKET OPPORTUNITY & WHITE SPACE
+-------------------------------------------
+White Space Declaration: ${blueprintData.whiteSpaceDeclaration || 'Not specified'}
+Target Customer: ${blueprintData.targetCustomer || 'Not specified'}
+Customer Problem: ${blueprintData.customerProblem || 'Not specified'}
+Solution: ${blueprintData.solution || 'Not specified'}
+
+WORKBOOK 1: BRAND FOUNDATION
+-------------------------------------------
+Mission Statement: ${blueprintData.mission || 'Not specified'}
+5-Year Vision: ${blueprintData.vision5Year || 'Not specified'}
+10-Year BHAG: ${blueprintData.bhag10Year || 'Not specified'}
+Core Values: ${blueprintData.coreValues.map(v => v.value).join(', ') || 'Not specified'}
+Brand Promise: ${blueprintData.brandPromise || 'Not specified'}
+Brand Voice (We Are): ${blueprintData.brandVoiceAre || 'Not specified'}
+Brand Voice (We're Not): ${blueprintData.brandVoiceNot || 'Not specified'}
+Tagline: ${blueprintData.tagline || 'Not specified'}
+One-Liner: ${blueprintData.oneLiner || 'Not specified'}
+Primary Color: ${blueprintData.primaryColor || 'Not specified'}
+Secondary Color: ${blueprintData.secondaryColor || 'Not specified'}
+Accent Color: ${blueprintData.accentColor || 'Not specified'}
+
+WORKBOOK 2: MARKETING STRATEGY
+-------------------------------------------
+Value Proposition: ${blueprintData.valueProposition || 'Not specified'}
+Value Ladder (Free): ${blueprintData.valueLadder.free || 'Not specified'}
+Value Ladder (Core): ${blueprintData.valueLadder.core || 'Not specified'}
+Pricing Model: ${blueprintData.pricingModel || 'Not specified'}
+Primary Channel: ${blueprintData.primaryChannel || 'Not specified'}
+Secondary Channel: ${blueprintData.secondaryChannel || 'Not specified'}
+Content Pillars: ${blueprintData.contentPillars || 'Not specified'}
+Primary Platform: ${blueprintData.primaryPlatform || 'Not specified'}
+
+WORKBOOK 3: CUSTOMER JOURNEY & SYSTEMS
+-------------------------------------------
+Journey Stages: ${blueprintData.journeyStages.map(s => s.stage).join(', ') || 'Not specified'}
+Email Automation: ${blueprintData.emailAutomation || 'Not specified'}
+Key SOPs: ${blueprintData.keySOP || 'Not specified'}
+Loyalty Tiers: ${blueprintData.loyaltyTiers || 'Not specified'}
+Referral System: ${blueprintData.referralSystem || 'Not specified'}
+
+WORKBOOK 4: MEASUREMENT, SCALING & GROWTH
+-------------------------------------------
+Leading Indicators: ${blueprintData.leadingIndicators.map(i => i.indicator).join(', ') || 'Not specified'}
+Revenue: ${blueprintData.revenue || 'Not specified'}
+Customer Acquisition Cost (CAC): ${blueprintData.cac || 'Not specified'}
+Lifetime Value (LTV): ${blueprintData.ltv || 'Not specified'}
+LTV:CAC Ratio: ${blueprintData.ltvCacRatio || 'Not specified'}
+
+IMPLEMENTATION ROADMAP
+-------------------------------------------
+Week 1-2: Review complete blueprint and set priorities
+Month 1: Execute foundational systems (WB 0-3)
+Month 2: Launch growth sprint and track metrics (WB 4)
+Month 3: Optimize based on data and scale what works
+Ongoing: Weekly reviews, monthly tests, quarterly strategy updates
+
+===========================================
+Generated: ${new Date().toLocaleDateString()}
+===========================================
+    `.trim();
+
+    const blob = new Blob([blueprintText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'BLKBLD-Master-Blueprint.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
@@ -525,6 +606,7 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
             }
           ]}
           downloadText="Download Complete Master Blueprint (WB 0-4)"
+          onDownload={handleDownloadMasterBlueprint}
         />
 
         {/* Congratulations Section */}

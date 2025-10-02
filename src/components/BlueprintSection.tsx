@@ -10,13 +10,15 @@ interface BlueprintSectionProps {
     items: string[];
   }[];
   downloadText?: string;
+  onDownload?: () => void;
 }
 
 export const BlueprintSection = ({ 
   title, 
   description, 
   sections,
-  downloadText = "Download Blueprint"
+  downloadText = "Download Blueprint",
+  onDownload
 }: BlueprintSectionProps) => {
   return (
     <Card className="p-8 mb-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary">
@@ -44,13 +46,14 @@ export const BlueprintSection = ({
         ))}
       </div>
 
-      <div className="flex gap-4 mt-8 pt-6 border-t">
-        <Button variant="outline" className="flex-1">
+      <div className="flex mt-8 pt-6 border-t">
+        <Button 
+          variant="outline" 
+          className="w-full"
+          onClick={onDownload}
+        >
           <Download className="w-4 h-4 mr-2" />
           {downloadText}
-        </Button>
-        <Button variant="hero" className="flex-1">
-          View Complete Blueprint
         </Button>
       </div>
     </Card>
