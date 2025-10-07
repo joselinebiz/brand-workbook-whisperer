@@ -23,7 +23,11 @@ export default function Workbook0() {
       bandaid: '',
       competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '' }),
       pattern: '',
+      competitiveAnalysisResponse: '',
       opportunities: [] as string[],
+      quickMathPrice: '',
+      quickMathCost: '',
+      quickMathRatio: '',
       businessModel: {
         who: '',
         problem: '',
@@ -78,6 +82,14 @@ export default function Workbook0() {
             <span className="text-sm font-medium">Saved</span>
           </div>
         )}
+
+        {/* Top Save Button */}
+        <div className="mb-6 flex justify-end">
+          <Button onClick={handleManualSave} className="gap-2">
+            <Save className="w-4 h-4" />
+            Save All Changes
+          </Button>
+        </div>
 
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
@@ -364,6 +376,18 @@ What gap do ALL three competitors miss? What could someone own that none of them
 
 Give me 3 specific angles I could take.`}
               />
+
+              <div className="mt-4">
+                <Label htmlFor="competitive-analysis-response">AI Response</Label>
+                <Textarea
+                  id="competitive-analysis-response"
+                  rows={6}
+                  placeholder="Paste your AI response here..."
+                  value={localData.competitiveAnalysisResponse || ''}
+                  onChange={(e) => setLocalData(prev => ({ ...prev, competitiveAnalysisResponse: e.target.value }))}
+                  className="mt-2"
+                />
+              </div>
             </div>
           </div>
 
@@ -434,8 +458,57 @@ Give me 3 specific angles I could take.`}
               </div>
 
               <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
-                <p className="font-semibold mb-2">Quick Math:</p>
-                <p className="text-sm mb-2">Price ÷ Cost per sale = _____ (Must be ≥ 3 to survive)</p>
+                <p className="font-semibold mb-3">Quick Math:</p>
+                <div className="grid md:grid-cols-3 gap-4 mb-3">
+                  <div>
+                    <Label htmlFor="quick-math-price" className="text-xs">Price per sale ($)</Label>
+                    <Input
+                      id="quick-math-price"
+                      type="number"
+                      placeholder="0"
+                      value={localData.quickMathPrice}
+                      onChange={(e) => {
+                        const price = e.target.value;
+                        setLocalData(prev => {
+                          const cost = parseFloat(prev.quickMathCost) || 0;
+                          const priceNum = parseFloat(price) || 0;
+                          const ratio = cost > 0 ? (priceNum / cost).toFixed(2) : '';
+                          return { ...prev, quickMathPrice: price, quickMathRatio: ratio };
+                        });
+                      }}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="quick-math-cost" className="text-xs">Cost per sale ($)</Label>
+                    <Input
+                      id="quick-math-cost"
+                      type="number"
+                      placeholder="0"
+                      value={localData.quickMathCost}
+                      onChange={(e) => {
+                        const cost = e.target.value;
+                        setLocalData(prev => {
+                          const price = parseFloat(prev.quickMathPrice) || 0;
+                          const costNum = parseFloat(cost) || 0;
+                          const ratio = costNum > 0 ? (price / costNum).toFixed(2) : '';
+                          return { ...prev, quickMathCost: cost, quickMathRatio: ratio };
+                        });
+                      }}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="quick-math-ratio" className="text-xs">Ratio (must be ≥ 3)</Label>
+                    <Input
+                      id="quick-math-ratio"
+                      value={localData.quickMathRatio}
+                      readOnly
+                      placeholder="—"
+                      className={`mt-1 font-bold ${parseFloat(localData.quickMathRatio) >= 3 ? 'text-green-600' : parseFloat(localData.quickMathRatio) > 0 ? 'text-red-600' : ''}`}
+                    />
+                  </div>
+                </div>
                 <p className="text-xs text-muted-foreground italic">Include recurring costs (software, ads, payment fees)</p>
               </div>
 

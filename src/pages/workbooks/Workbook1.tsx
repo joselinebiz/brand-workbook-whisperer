@@ -91,6 +91,14 @@ export default function Workbook1() {
           </div>
         )}
 
+        {/* Top Save Button */}
+        <div className="mb-6 flex justify-end">
+          <Button onClick={handleManualSave} className="gap-2">
+            <Save className="w-4 h-4" />
+            Save All Changes
+          </Button>
+        </div>
+
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
           <h2 className="text-2xl font-bold mb-4">Who This Is For</h2>
