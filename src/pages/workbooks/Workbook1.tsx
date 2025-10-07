@@ -293,7 +293,7 @@ export default function Workbook1() {
                   context="Use this to craft your complete purpose"
                   prompt={`You are a brand strategist. Help me craft my purpose:
 
-My Business/Product/Service/expertise: [what you do] | Personal story: [why you started] | Target audience: [who] | Brand type: [Brick-and-Mortar/Service/Personal]
+My Business/Product/Service/expertise: [what you do] | Personal story: [why you started] | Target audience: [who] | Brand type: [Brick-and-Mortar/Product/Service/Personal]
 
 OUTPUT:
 • MISSION: [We/I exist to... format] + [Emotional test: Does this energize you?]
@@ -594,7 +594,7 @@ DELIVER:
                   context="Use this to get AI guidance on your visual identity"
                   prompt={`You are a visual brand designer. Create my brand identity:
 
-My brand personality: [3 adjectives] | Target audience: [demographics] | Competitors/peers use: [their colors, style] | Brand type: [Brick-and-Mortar/Service/Personal]
+My brand personality: [3 adjectives] | Target audience: [demographics] | Competitors/peers use: [their colors, style] | Brand type: [Brick-and-Mortar/Product/Service/Personal]
 
 SUGGEST:
 • COLOR PALETTE: [3 hex codes] + [Psychology behind each]
@@ -657,7 +657,7 @@ SUGGEST:
                   <div>
                     <Label htmlFor="oneliner" className="mb-2 block">One-Liner</Label>
                     <p className="text-sm text-muted-foreground mb-3">
-                      Brick-and-Mortar/Service: "We help [who] achieve [what] through [how] so they can [benefit]."<br/>
+                      Brick-and-Mortar/Product/Service: "We help [who] achieve [what] through [how] so they can [benefit]."<br/>
                       Personal Brand: "I help [who] achieve [what] through [how] so they can [benefit]."
                     </p>
                     <Textarea
@@ -811,21 +811,34 @@ CREATE:
 
                 <div className="space-y-4 mb-6">
                   <h4 className="font-semibold">Competitor Analysis</h4>
-                  {[1, 2, 3].map((i) => (
-                    <Card key={i} className="p-4 bg-muted/30">
-                      <p className="text-sm font-semibold mb-3">Competitor {i}</p>
-                      <div className="grid md:grid-cols-2 gap-3">
-                        <div>
-                          <Label htmlFor={`comp-promise-${i}`} className="text-xs">What They Promise</Label>
-                          <Input id={`comp-promise-${i}`} className="mt-1" />
-                        </div>
-                        <div>
-                          <Label htmlFor={`comp-miss-${i}`} className="text-xs">What They Miss</Label>
-                          <Input id={`comp-miss-${i}`} className="mt-1" />
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
+                  <p className="text-xs text-muted-foreground mb-3">Data automatically pulled from Workbook 0</p>
+                  {(() => {
+                    // Get competitor data from localStorage
+                    const saved = localStorage.getItem('workbook0LocalData');
+                    const workbook0Data = saved ? JSON.parse(saved) : { competitors: Array(3).fill({ name: '', promise: '', miss: '' }) };
+                    
+                    return [1, 2, 3].map((i) => {
+                      const competitor = workbook0Data.competitors[i-1] || { name: '', promise: '', miss: '' };
+                      return (
+                        <Card key={i} className="p-4 bg-muted/30">
+                          <p className="text-sm font-semibold mb-3">
+                            Competitor {i}
+                            {competitor.name && <span className="text-muted-foreground font-normal ml-2">- {competitor.name}</span>}
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-3">
+                            <div>
+                              <Label className="text-xs">What They Promise</Label>
+                              <p className="text-sm mt-1 p-2 bg-background rounded border">{competitor.promise || 'N/A'}</p>
+                            </div>
+                            <div>
+                              <Label className="text-xs">What They Miss</Label>
+                              <p className="text-sm mt-1 p-2 bg-background rounded border">{competitor.miss || 'N/A'}</p>
+                            </div>
+                          </div>
+                        </Card>
+                      );
+                    });
+                  })()}
 
                   <div>
                     <Label htmlFor="gap">The Gap: What do ALL competitors miss?</Label>
