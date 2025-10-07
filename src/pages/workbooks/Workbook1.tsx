@@ -321,6 +321,8 @@ export default function Workbook1() {
                     id="promise"
                     rows={2}
                     placeholder="e.g., Every time you visit, you can count on fresh food fast with a genuine smile."
+                    value={data.brandPromise}
+                    onChange={(e) => updateData('brandPromise', e.target.value)}
                   />
                 </div>
 
@@ -736,6 +738,8 @@ SUGGEST:
                     id="story"
                     rows={6}
                     placeholder="Write your brand story here..."
+                    value={data.brandStory}
+                    onChange={(e) => updateData('brandStory', e.target.value)}
                   />
                 </div>
 
@@ -875,6 +879,8 @@ CREATE:
                     id="positioning"
                     rows={3}
                     placeholder="e.g., For busy Phoenix families, FreshStart is the neighborhood spot for chef-quality breakfasts ready fast, thanks to daily local farm deliveries."
+                    value={data.positioningStatement}
+                    onChange={(e) => updateData('positioningStatement', e.target.value)}
                   />
                 </div>
 
@@ -883,15 +889,30 @@ CREATE:
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor="demographics">Demographics</Label>
-                      <Input id="demographics" placeholder="Age, income, location" />
+                      <Input 
+                        id="demographics" 
+                        placeholder="Age, income, location"
+                        value={data.targetAudience.demographics}
+                        onChange={(e) => updateData('targetAudience', { ...data.targetAudience, demographics: e.target.value })}
+                      />
                     </div>
                     <div>
                       <Label htmlFor="psychographics">Psychographics</Label>
-                      <Input id="psychographics" placeholder="Values, fears, dreams" />
+                      <Input 
+                        id="psychographics" 
+                        placeholder="Values, fears, dreams"
+                        value={data.targetAudience.painPoints}
+                        onChange={(e) => updateData('targetAudience', { ...data.targetAudience, painPoints: e.target.value })}
+                      />
                     </div>
                     <div>
                       <Label htmlFor="find-them">Where to find them</Label>
-                      <Input id="find-them" placeholder="e.g., Local parent Facebook groups, school partnerships" />
+                      <Input 
+                        id="find-them" 
+                        placeholder="e.g., Local parent Facebook groups, school partnerships"
+                        value={data.targetAudience.whereToFind}
+                        onChange={(e) => updateData('targetAudience', { ...data.targetAudience, whereToFind: e.target.value })}
+                      />
                     </div>
                   </div>
                 </div>
