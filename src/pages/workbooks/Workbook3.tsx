@@ -14,6 +14,15 @@ import { useWorkbook } from "@/contexts/WorkbookContext";
 export default function Workbook3() {
   const { data, updateData } = useWorkbook();
   const [isSaving, setIsSaving] = useState(false);
+  const [preWorkScores, setPreWorkScores] = useState({
+    followUp: 0,
+    satisfaction: 0,
+    repeatBusiness: 0,
+    teamConsistency: 0,
+    timeOnAdmin: 0
+  });
+
+  const totalScore = Object.values(preWorkScores).reduce((sum, score) => sum + score, 0);
 
   useEffect(() => {
     setIsSaving(true);
@@ -176,35 +185,75 @@ export default function Workbook3() {
             <div className="p-4 bg-background rounded-lg">
               <p className="font-semibold mb-2">Follow-Up System - Consistent communication after first contact?</p>
               <p className="text-sm text-muted-foreground mb-2">Automated (3) | Manual but consistent (2) | Random/none (1)</p>
-              <Input type="number" min="1" max="3" placeholder="Score (1-3)" className="w-24" />
+              <Input 
+                type="number" 
+                min="1" 
+                max="3" 
+                placeholder="Score (1-3)" 
+                className="w-24"
+                value={preWorkScores.followUp || ""}
+                onChange={(e) => setPreWorkScores({...preWorkScores, followUp: Number(e.target.value)})}
+              />
             </div>
 
             <div className="p-4 bg-background rounded-lg">
               <p className="font-semibold mb-2">Customer Satisfaction - Do you regularly check satisfaction?</p>
               <p className="text-sm text-muted-foreground mb-2">Systematic (3) | Occasional (2) | Never (1)</p>
-              <Input type="number" min="1" max="3" placeholder="Score (1-3)" className="w-24" />
+              <Input 
+                type="number" 
+                min="1" 
+                max="3" 
+                placeholder="Score (1-3)" 
+                className="w-24"
+                value={preWorkScores.satisfaction || ""}
+                onChange={(e) => setPreWorkScores({...preWorkScores, satisfaction: Number(e.target.value)})}
+              />
             </div>
 
             <div className="p-4 bg-background rounded-lg">
               <p className="font-semibold mb-2">Repeat Business - Customers return/refer others?</p>
               <p className="text-sm text-muted-foreground mb-2">Often (3) | Sometimes (2) | Rarely (1)</p>
-              <Input type="number" min="1" max="3" placeholder="Score (1-3)" className="w-24" />
+              <Input 
+                type="number" 
+                min="1" 
+                max="3" 
+                placeholder="Score (1-3)" 
+                className="w-24"
+                value={preWorkScores.repeatBusiness || ""}
+                onChange={(e) => setPreWorkScores({...preWorkScores, repeatBusiness: Number(e.target.value)})}
+              />
             </div>
 
             <div className="p-4 bg-background rounded-lg">
               <p className="font-semibold mb-2">Team Consistency - Same experience regardless of who helps?</p>
               <p className="text-sm text-muted-foreground mb-2">Always (3) | Usually (2) | Depends on person (1)</p>
-              <Input type="number" min="1" max="3" placeholder="Score (1-3)" className="w-24" />
+              <Input 
+                type="number" 
+                min="1" 
+                max="3" 
+                placeholder="Score (1-3)" 
+                className="w-24"
+                value={preWorkScores.teamConsistency || ""}
+                onChange={(e) => setPreWorkScores({...preWorkScores, teamConsistency: Number(e.target.value)})}
+              />
             </div>
 
             <div className="p-4 bg-background rounded-lg">
               <p className="font-semibold mb-2">Time on Admin - Hours weekly on follow-up/admin?</p>
               <p className="text-sm text-muted-foreground mb-2">&lt;2 hours (3) | 2-5 hours (2) | &gt;5 hours (1)</p>
-              <Input type="number" min="1" max="3" placeholder="Score (1-3)" className="w-24" />
+              <Input 
+                type="number" 
+                min="1" 
+                max="3" 
+                placeholder="Score (1-3)" 
+                className="w-24"
+                value={preWorkScores.timeOnAdmin || ""}
+                onChange={(e) => setPreWorkScores({...preWorkScores, timeOnAdmin: Number(e.target.value)})}
+              />
             </div>
 
             <div className="p-4 bg-primary/10 rounded-lg border-2 border-primary">
-              <p className="font-bold mb-2">Total Score: ___/15</p>
+              <p className="font-bold mb-2">Total Score: {totalScore}/15</p>
               <ul className="text-sm space-y-1">
                 <li>13-15: Focus on optimization and automation</li>
                 <li>9-12: Build systems first, then automate</li>
