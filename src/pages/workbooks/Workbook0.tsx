@@ -140,25 +140,16 @@ export default function Workbook0() {
           </div>
 
           <div className="border-t pt-6">
-            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
-            <p className="text-muted-foreground mb-3">
+            <h3 className="text-xl font-semibold mb-3">Why This Framework Works</h3>
+            <p className="text-muted-foreground mb-4">
               This isn't theory from a textbook. This framework is built on:
             </p>
             <ul className="space-y-2 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-1">•</span>
-                <span><strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-1">•</span>
-                <span><strong>Industry Battle-Tested:</strong> Refined through years of building and scaling multiple businesses</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-1">•</span>
-                <span><strong>Results-Driven:</strong> Every exercise connects directly to revenue, customers, and sustainable growth</span>
-              </li>
+              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</li>
+              <li>• <strong>Industry Battle-Tested:</strong> Refined through years of building and scaling multiple businesses</li>
+              <li>• <strong>Results-Driven:</strong> Every exercise connects directly to revenue, customers, and sustainable growth</li>
             </ul>
-            <p className="text-sm text-muted-foreground mt-3 italic">
+            <p className="text-sm text-muted-foreground mt-4 italic">
               You're not just learning concepts—you're implementing the same systems that generate six-figure consulting engagements, now available in a structured, self-paced format.
             </p>
           </div>

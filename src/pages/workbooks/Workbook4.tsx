@@ -140,14 +140,14 @@ Generated: ${new Date().toLocaleDateString()}
             Business owners who have built systems (Workbooks 0-3) and are ready to scale intelligently using data. If guesswork is costing you money, this workbook transforms data into decisions.
           </p>
 
-          <h3 className="text-xl font-bold mb-3">✅ Prerequisites</h3>
+          <h3 className="text-xl font-semibold mb-3">✅ Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Completed Workbooks 0-3 (Foundation through Customer Journey)</li>
             <li>• Active business with trackable metrics</li>
             <li>• 5-10 hours of focused time</li>
           </ul>
 
-          <h3 className="text-xl font-bold mb-3">What You'll Walk Away With</h3>
+          <h3 className="text-xl font-semibold mb-3">What You'll Walk Away With</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Custom performance dashboard</li>
             <li>• 90-day growth sprint plan</li>
@@ -160,26 +160,28 @@ Generated: ${new Date().toLocaleDateString()}
             <p className="text-sm">20% improvement in key metrics within 90 days</p>
           </div>
 
-          <div className="border-t pt-6 mb-6">
-            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
-            <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
-            <ul className="space-y-2 text-sm">
-              <li><strong>WORKBOOK 0:</strong> Market opportunity validated</li>
-              <li><strong>WORKBOOK 1:</strong> Brand foundation built</li>
-              <li><strong>WORKBOOK 2:</strong> Strategic marketing system</li>
-              <li><strong>WORKBOOK 3:</strong> Automated customer experience</li>
-              <li className="text-accent"><strong>WORKBOOK 4:</strong> Data-driven scaling (you're here!)</li>
+          <div className="bg-muted/50 border-l-4 border-muted-foreground p-4 rounded mb-6">
+            <p className="font-semibold mb-2">🔗 Bridge to Success - The Complete BLKBLD Journey:</p>
+            <ul className="text-sm space-y-1">
+              <li>WORKBOOK 0: Market opportunity validated</li>
+              <li>WORKBOOK 1: Brand foundation built</li>
+              <li>WORKBOOK 2: Strategic marketing system</li>
+              <li>WORKBOOK 3: Automated customer experience</li>
+              <li className="font-semibold text-primary">WORKBOOK 4: Data-driven scaling (you're here!)</li>
             </ul>
           </div>
 
           <div className="border-t pt-6">
-            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
+            <h3 className="text-xl font-semibold mb-3">Why This Framework Works</h3>
             <p className="text-muted-foreground mb-4">This isn't theory from a textbook. This framework is built on:</p>
             <ul className="space-y-2 text-muted-foreground">
-              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education</li>
-              <li>• <strong>Industry Battle-Tested:</strong> Refined through scaling multiple businesses</li>
-              <li>• <strong>Results-Driven:</strong> Every metric connects to sustainable growth</li>
+              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</li>
+              <li>• <strong>Industry Battle-Tested:</strong> Refined through years of building and scaling multiple businesses</li>
+              <li>• <strong>Results-Driven:</strong> Every exercise connects directly to revenue, customers, and sustainable growth</li>
             </ul>
+            <p className="text-sm text-muted-foreground mt-4 italic">
+              You're not just learning concepts—you're implementing the same systems that generate six-figure consulting engagements, now available in a structured, self-paced format.
+            </p>
           </div>
         </Card>
 

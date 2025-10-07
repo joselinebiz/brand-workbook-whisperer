@@ -60,14 +60,14 @@ export default function Workbook2() {
             Businesses ready to move from random marketing to strategic execution. If you've completed Workbook 1, you have your brand foundation—now we build the revenue-generating engine.
           </p>
 
-          <h3 className="text-xl font-bold mb-3">✅ Prerequisites</h3>
+          <h3 className="text-xl font-semibold mb-3">✅ Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Completed Workbook 1 (Brand Strategy Foundation)</li>
             <li>• 5-10 hours of focused time</li>
             <li>• Access to competitive research tools (Google, social platforms)</li>
           </ul>
 
-          <h3 className="text-xl font-bold mb-3">What You'll Walk Away With</h3>
+          <h3 className="text-xl font-semibold mb-3">What You'll Walk Away With</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Complete business model and market analysis</li>
             <li>• Proprietary 4P marketing mix strategy</li>
@@ -80,26 +80,28 @@ export default function Workbook2() {
             <p className="text-sm">Complete marketing plan with measurable goals for each channel</p>
           </div>
 
-          <div className="border-t pt-6 mb-6">
-            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
-            <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
-            <ul className="space-y-2 text-sm">
-              <li><strong>WORKBOOK 0:</strong> Market opportunity validated</li>
-              <li><strong>WORKBOOK 1:</strong> Brand foundation built</li>
-              <li className="text-accent"><strong>WORKBOOK 2:</strong> Strategic marketing system (you're here!)</li>
-              <li><strong>WORKBOOK 3:</strong> Automated customer experience</li>
-              <li><strong>WORKBOOK 4:</strong> Data-driven optimization and scaling</li>
+          <div className="bg-muted/50 border-l-4 border-muted-foreground p-4 rounded mb-6">
+            <p className="font-semibold mb-2">🔗 Bridge to Success - The Complete BLKBLD Journey:</p>
+            <ul className="text-sm space-y-1">
+              <li>WORKBOOK 0: Market opportunity validated</li>
+              <li>WORKBOOK 1: Brand foundation built</li>
+              <li className="font-semibold text-primary">WORKBOOK 2: Strategic marketing system (you're here!)</li>
+              <li>→ WORKBOOK 3: Automated customer experience</li>
+              <li>→ WORKBOOK 4: Data-driven optimization and scaling</li>
             </ul>
           </div>
 
           <div className="border-t pt-6">
-            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
+            <h3 className="text-xl font-semibold mb-3">Why This Framework Works</h3>
             <p className="text-muted-foreground mb-4">This isn't theory from a textbook. This framework is built on:</p>
             <ul className="space-y-2 text-muted-foreground">
-              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education</li>
-              <li>• <strong>Industry Battle-Tested:</strong> Refined through years of building businesses</li>
-              <li>• <strong>Results-Driven:</strong> Every exercise connects to revenue and growth</li>
+              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</li>
+              <li>• <strong>Industry Battle-Tested:</strong> Refined through years of building and scaling multiple businesses</li>
+              <li>• <strong>Results-Driven:</strong> Every exercise connects directly to revenue, customers, and sustainable growth</li>
             </ul>
+            <p className="text-sm text-muted-foreground mt-4 italic">
+              You're not just learning concepts—you're implementing the same systems that generate six-figure consulting engagements, now available in a structured, self-paced format.
+            </p>
           </div>
         </Card>
 
