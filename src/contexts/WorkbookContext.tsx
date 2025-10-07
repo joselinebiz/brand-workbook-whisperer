@@ -52,6 +52,9 @@ interface WorkbookData {
     core: string;
   };
   pricingModel: string;
+  fixedCosts: string;
+  variableCost: string;
+  yourPrice: string;
   breakEven: string;
   pricingTiers: string;
   primaryChannel: string;
@@ -139,6 +142,9 @@ const defaultData: WorkbookData = {
     core: '',
   },
   pricingModel: '',
+  fixedCosts: '',
+  variableCost: '',
+  yourPrice: '',
   breakEven: '',
   pricingTiers: '',
   primaryChannel: '',

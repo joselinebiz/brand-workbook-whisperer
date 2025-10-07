@@ -104,197 +104,205 @@ export default function Workbook2() {
         </Card>
 
         {/* SECTION 1: Business Model Canvas */}
-        <Card className="p-8 mb-8">
-          <SectionHeader
-            number="1"
-            title="Business Model Canvas"
-            description="Understanding how all pieces connect"
-            icon={<TrendingUp className="w-8 h-8" />}
-          />
-
-          <div className="space-y-6 mt-6">
-            <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
-              <p className="text-sm font-medium">
-                <strong>Why This Matters:</strong> Your brand promise from Workbook 1 must align with business reality. This canvas ensures marketing promises match what you can actually deliver.
-              </p>
-            </div>
-
-            <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded">
-              <p className="text-sm font-medium">
-                💡 <strong>New to This?</strong> A Business Model Canvas maps how your business creates, delivers, and captures value. Think of it as a one-page business plan.
-              </p>
-            </div>
-
-            {/* Sprint 1 */}
-            <h3 className="text-xl font-bold mb-4">Sprint 1: Core Elements</h3>
-            <Card className="p-6 bg-muted/20 mb-6">
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="customer-segments">Customer Segments</Label>
-                  <p className="text-xs text-muted-foreground mb-2">Who needs you most?</p>
-                  <Textarea 
-                    id="customer-segments" 
-                    rows={2}
-                    value={data.customerSegments || ""}
-                    onChange={(e) => updateData('customerSegments', e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="value-prop">Value Proposition</Label>
-                  <p className="text-xs text-muted-foreground mb-2">What problem do you solve?</p>
-                  <Textarea 
-                    id="value-prop" 
-                    rows={2}
-                    value={data.valueProposition || ""}
-                    onChange={(e) => updateData('valueProposition', e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="channels">Channels</Label>
-                  <p className="text-xs text-muted-foreground mb-2">How do they find/buy from you?</p>
-                  <Textarea 
-                    id="channels" 
-                    rows={2}
-                    value={data.primaryChannel || ""}
-                    onChange={(e) => updateData('primaryChannel', e.target.value)}
-                  />
-                </div>
+        <Collapsible defaultOpen={true}>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                <SectionHeader
+                  number="1"
+                  title="Business Model Canvas"
+                  description="Understanding how all pieces connect"
+                  icon={<TrendingUp className="w-8 h-8" />}
+                />
+                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
               </div>
-            </Card>
+            </CollapsibleTrigger>
 
-            {/* Sprint 2 */}
-            <h3 className="text-xl font-bold mb-4">Sprint 2: Operations</h3>
-            <Card className="p-6 bg-muted/20 mb-6">
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="key-resources">Key Resources</Label>
-                  <p className="text-xs text-muted-foreground mb-2">What do you need to operate?</p>
-                  <Textarea id="key-resources" rows={2} />
-                </div>
-                <div>
-                  <Label htmlFor="key-activities">Key Activities</Label>
-                  <p className="text-xs text-muted-foreground mb-2">What must happen daily?</p>
-                  <Textarea 
-                    id="key-activities" 
-                    rows={2}
-                    value={data.keyActivities || ""}
-                    onChange={(e) => updateData('keyActivities', e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="revenue-streams">Revenue Streams</Label>
-                  <p className="text-xs text-muted-foreground mb-2">How do you make money?</p>
-                  <Textarea 
-                    id="revenue-streams" 
-                    rows={2}
-                    value={data.revenueStreams || ""}
-                    onChange={(e) => updateData('revenueStreams', e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="cost-structure">Cost Structure</Label>
-                  <p className="text-xs text-muted-foreground mb-2">What are the biggest expenses?</p>
-                  <Textarea id="cost-structure" rows={2} />
-                </div>
-              </div>
-            </Card>
+            <CollapsibleContent>
 
-            <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-              <p className="text-sm font-medium">
-                💡 <strong>Quick Win:</strong> Overwhelmed? Only fill 'Value Prop' and 'Customer Segments' first.
-              </p>
-            </div>
+              <div className="space-y-6 mt-6">
+                <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
+                  <p className="text-sm font-medium">
+                    <strong>Why This Matters:</strong> Your brand promise from Workbook 1 must align with business reality. This canvas ensures marketing promises match what you can actually deliver.
+                  </p>
+                </div>
 
-            {/* Bridge Check */}
-            <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-6">
-              <h4 className="font-semibold mb-3">🔗 Bridge Check from Workbook 1</h4>
-              <div className="space-y-2 text-sm">
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Value Prop = Your Brand Promise?</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Customer Segments = Your Target?</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Key Activities deliver your Pillars?</span>
-                </label>
-              </div>
-            </div>
+                <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded">
+                  <p className="text-sm font-medium">
+                    💡 <strong>New to This?</strong> A Business Model Canvas maps how your business creates, delivers, and captures value. Think of it as a one-page business plan.
+                  </p>
+                </div>
 
-            {/* Examples */}
-            <h3 className="text-xl font-bold mb-4">Examples Across Three Brand Types:</h3>
-            <div className="space-y-4">
-              <Collapsible>
-                <Card className="p-6 mb-4 bg-muted/20">
-                  <CollapsibleTrigger className="w-full">
-                    <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                      <h4 className="font-semibold flex items-center gap-2">
-                        💼 Brick-and-Mortar Brand - FreshStart Café
-                      </h4>
-                      <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                {/* Sprint 1 */}
+                <h3 className="text-xl font-bold mb-4">Sprint 1: Core Elements</h3>
+                <Card className="p-6 bg-muted/20 mb-6">
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="customer-segments">Customer Segments</Label>
+                      <p className="text-xs text-muted-foreground mb-2">Who needs you most?</p>
+                      <Textarea 
+                        id="customer-segments" 
+                        rows={2}
+                        value={data.customerSegments || ""}
+                        onChange={(e) => updateData('customerSegments', e.target.value)}
+                      />
                     </div>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="mt-4 space-y-2 text-sm">
-                      <p><strong>Customer Segments:</strong> Busy Phoenix families with kids</p>
-                      <p><strong>Value Proposition:</strong> Healthy breakfast</p>
-                      <p><strong>Channels:</strong> Physical location + pre-order app</p>
-                      <p><strong>Revenue Streams:</strong> Food sales + catering + loyalty program</p>
+                    <div>
+                      <Label htmlFor="value-prop">Value Proposition</Label>
+                      <p className="text-xs text-muted-foreground mb-2">What problem do you solve?</p>
+                      <Textarea 
+                        id="value-prop" 
+                        rows={2}
+                        value={data.valueProposition || ""}
+                        onChange={(e) => updateData('valueProposition', e.target.value)}
+                      />
                     </div>
-                  </CollapsibleContent>
+                    <div>
+                      <Label htmlFor="channels">Channels</Label>
+                      <p className="text-xs text-muted-foreground mb-2">How do they find/buy from you?</p>
+                      <Textarea 
+                        id="channels" 
+                        rows={2}
+                        value={data.primaryChannel || ""}
+                        onChange={(e) => updateData('primaryChannel', e.target.value)}
+                      />
+                    </div>
+                  </div>
                 </Card>
-              </Collapsible>
 
-              <Collapsible>
-                <Card className="p-6 mb-4 bg-muted/20">
-                  <CollapsibleTrigger className="w-full">
-                    <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                      <h4 className="font-semibold flex items-center gap-2">
-                        🎯 Service Brand - Business Coach
-                      </h4>
-                      <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                {/* Sprint 2 */}
+                <h3 className="text-xl font-bold mb-4">Sprint 2: Operations</h3>
+                <Card className="p-6 bg-muted/20 mb-6">
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="key-resources">Key Resources</Label>
+                      <p className="text-xs text-muted-foreground mb-2">What do you need to operate?</p>
+                      <Textarea id="key-resources" rows={2} />
                     </div>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="mt-4 space-y-2 text-sm">
-                      <p><strong>Revenue Streams:</strong> Coaching + group programs + workshops</p>
-                      <p><strong>Value Proposition:</strong> Systematic marketing frameworks for predictable scale</p>
-                      <p><strong>Customer Segments:</strong> Overwhelmed solopreneurs ($50K-$200K revenue)</p>
-                      <p><strong>Channels:</strong> LinkedIn thought leadership + conference speaking + industry networks</p>
+                    <div>
+                      <Label htmlFor="key-activities">Key Activities</Label>
+                      <p className="text-xs text-muted-foreground mb-2">What must happen daily?</p>
+                      <Textarea 
+                        id="key-activities" 
+                        rows={2}
+                        value={data.keyActivities || ""}
+                        onChange={(e) => updateData('keyActivities', e.target.value)}
+                      />
                     </div>
-                  </CollapsibleContent>
+                    <div>
+                      <Label htmlFor="revenue-streams">Revenue Streams</Label>
+                      <p className="text-xs text-muted-foreground mb-2">How do you make money?</p>
+                      <Textarea 
+                        id="revenue-streams" 
+                        rows={2}
+                        value={data.revenueStreams || ""}
+                        onChange={(e) => updateData('revenueStreams', e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="cost-structure">Cost Structure</Label>
+                      <p className="text-xs text-muted-foreground mb-2">What are the biggest expenses?</p>
+                      <Textarea id="cost-structure" rows={2} />
+                    </div>
+                  </div>
                 </Card>
-              </Collapsible>
 
-              <Collapsible>
-                <Card className="p-6 bg-muted/20">
-                  <CollapsibleTrigger className="w-full">
-                    <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                      <h4 className="font-semibold flex items-center gap-2">
-                        👤 Personal Brand - Marketing Executive
-                      </h4>
-                      <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                    </div>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="mt-4 space-y-2 text-sm">
-                      <p><strong>Revenue Streams:</strong> Salary advancement + consulting opportunities + speaking fees</p>
-                      <p><strong>Customer Segments:</strong> B2B SaaS CEOs struggling with unpredictable growth</p>
-                    </div>
-                  </CollapsibleContent>
-                </Card>
-              </Collapsible>
-            </div>
+                <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                  <p className="text-sm font-medium">
+                    💡 <strong>Quick Win:</strong> Overwhelmed? Only fill 'Value Prop' and 'Customer Segments' first.
+                  </p>
+                </div>
 
-            {/* AI Boost */}
-            <div className="mt-8 pt-6 border-t">
-              <h3 className="text-xl font-bold mb-4">🤖 AI BOOST - Canvas Optimizer</h3>
-              <AIPromptCard
-                title="Canvas Optimizer"
-                prompt={`You are a senior business model strategist. Analyze this canvas and provide ACTIONABLE insights:
+                {/* Bridge Check */}
+                <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-6">
+                  <h4 className="font-semibold mb-3">🔗 Bridge Check from Workbook 1</h4>
+                  <div className="space-y-2 text-sm">
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Value Prop = Your Brand Promise?</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Customer Segments = Your Target?</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Key Activities deliver your Pillars?</span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Examples */}
+                <h3 className="text-xl font-bold mb-4">Examples Across Three Brand Types:</h3>
+                <div className="space-y-4">
+                  <Collapsible>
+                    <Card className="p-6 mb-4 bg-muted/20">
+                      <CollapsibleTrigger className="w-full">
+                        <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                          <h4 className="font-semibold flex items-center gap-2">
+                            💼 Brick-and-Mortar Brand - FreshStart Café
+                          </h4>
+                          <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                        </div>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div className="mt-4 space-y-2 text-sm">
+                          <p><strong>Customer Segments:</strong> Busy Phoenix families with kids</p>
+                          <p><strong>Value Proposition:</strong> Healthy breakfast</p>
+                          <p><strong>Channels:</strong> Physical location + pre-order app</p>
+                          <p><strong>Revenue Streams:</strong> Food sales + catering + loyalty program</p>
+                        </div>
+                      </CollapsibleContent>
+                    </Card>
+                  </Collapsible>
+
+                  <Collapsible>
+                    <Card className="p-6 mb-4 bg-muted/20">
+                      <CollapsibleTrigger className="w-full">
+                        <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                          <h4 className="font-semibold flex items-center gap-2">
+                            🎯 Service Brand - Business Coach
+                          </h4>
+                          <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                        </div>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div className="mt-4 space-y-2 text-sm">
+                          <p><strong>Revenue Streams:</strong> Coaching + group programs + workshops</p>
+                          <p><strong>Value Proposition:</strong> Systematic marketing frameworks for predictable scale</p>
+                          <p><strong>Customer Segments:</strong> Overwhelmed solopreneurs ($50K-$200K revenue)</p>
+                          <p><strong>Channels:</strong> LinkedIn thought leadership + conference speaking + industry networks</p>
+                        </div>
+                      </CollapsibleContent>
+                    </Card>
+                  </Collapsible>
+
+                  <Collapsible>
+                    <Card className="p-6 bg-muted/20">
+                      <CollapsibleTrigger className="w-full">
+                        <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                          <h4 className="font-semibold flex items-center gap-2">
+                            👤 Personal Brand - Marketing Executive
+                          </h4>
+                          <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                        </div>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div className="mt-4 space-y-2 text-sm">
+                          <p><strong>Revenue Streams:</strong> Salary advancement + consulting opportunities + speaking fees</p>
+                          <p><strong>Customer Segments:</strong> B2B SaaS CEOs struggling with unpredictable growth</p>
+                        </div>
+                      </CollapsibleContent>
+                    </Card>
+                  </Collapsible>
+                </div>
+
+                {/* AI Boost */}
+                <div className="mt-8 pt-6 border-t">
+                  <h3 className="text-xl font-bold mb-4">🤖 AI BOOST - Canvas Optimizer</h3>
+                  <AIPromptCard
+                    title="Canvas Optimizer"
+                    prompt={`You are a senior business model strategist. Analyze this canvas and provide ACTIONABLE insights:
 
 My business model: [Paste your canvas elements] | Brand type: [Business/Product/Service/Personal]
 
@@ -311,41 +319,51 @@ REQUIRED OUTPUT FORMAT:
 2. PROFIT OPPORTUNITY: [Specific element to optimize] + [Expected % improvement]
 3. MISSING REVENUE STREAM: [One realistic addition] + [Implementation steps]
 4. PARTNERSHIP IDEA: [Low-cost, high-impact suggestion] + [How to approach]`}
-              />
-            </div>
+                  />
+                </div>
 
-            {/* Section 1 Checkpoint */}
-            <div className="mt-8 p-6 bg-primary/10 border-l-4 border-primary rounded">
-              <h4 className="font-semibold mb-3">Section 1 Checkpoint ✓</h4>
-              <div className="space-y-2 text-sm">
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Business Model Canvas complete</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Business Model Canvas validated</span>
-                </label>
+                {/* Section 1 Checkpoint */}
+                <div className="mt-8 p-6 bg-primary/10 border-l-4 border-primary rounded">
+                  <h4 className="font-semibold mb-3">Section 1 Checkpoint ✓</h4>
+                  <div className="space-y-2 text-sm">
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Business Model Canvas complete</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Business Model Canvas validated</span>
+                    </label>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </Card>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
 
-        {/* SECTION 2: Market Intelligence + 4P Marketing Mix */}
-        <Card className="p-8 mb-8">
-          <SectionHeader
-            number="2"
-            title="Consolidated Market Intelligence Sprint"
-            description="Your complete market reality"
-            icon={<BarChart3 className="w-8 h-8" />}
-          />
+        {/* SECTION 2: Consolidated Market Intelligence Sprint */}
+        <Collapsible defaultOpen={false}>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                <SectionHeader
+                  number="2"
+                  title="Consolidated Market Intelligence Sprint"
+                  description="Your complete market reality"
+                  icon={<BarChart3 className="w-8 h-8" />}
+                />
+                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+              </div>
+            </CollapsibleTrigger>
 
-          <div className="space-y-6 mt-6">
-            <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
-              <p className="text-sm font-medium">
-                <strong>Why This Matters:</strong> You can't win a game you don't understand. The 5Cs give you a 360-degree view of your market landscape. The STP Framework helps you focus resources where they'll have maximum impact, rather than trying to serve everyone and serving no one well.
-              </p>
-            </div>
+            <CollapsibleContent>
+
+              <div className="space-y-6 mt-6">
+                <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
+                  <p className="text-sm font-medium">
+                    <strong>Why This Matters:</strong> You can't win a game you don't understand. The 5Cs give you a 360-degree view of your market landscape. The STP Framework helps you focus resources where they'll have maximum impact, rather than trying to serve everyone and serving no one well.
+                  </p>
+                </div>
 
             <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded">
               <p className="text-sm font-medium">
@@ -552,739 +570,739 @@ OUTPUT:
             icon={<DollarSign className="w-8 h-8" />}
           />
 
-          <div className="space-y-6 mt-6">
-            <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
-              <p className="text-sm font-medium">
-                <strong>Why This Section Matters:</strong> The 4Ps are your controllable levers: Product (what you sell), Price (what you charge), Place (where/how delivered), Promotion (how people find you). Get these aligned and marketing becomes systematic, not random.
-              </p>
-            </div>
+              <div className="space-y-6 mt-6">
+                <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
+                  <p className="text-sm font-medium">
+                    <strong>Why This Section Matters:</strong> The 4Ps are your controllable levers: Product (what you sell), Price (what you charge), Place (where/how delivered), Promotion (how people find you). Get these aligned and marketing becomes systematic, not random.
+                  </p>
+                </div>
 
-            {/* 3.1 Product Strategy */}
-            <div className="mt-8 pt-6 border-t">
-              <h3 className="text-2xl font-bold mb-2">3.1 Product Strategy</h3>
-              <p className="text-muted-foreground mb-6">What you're really selling</p>
+                {/* 3.1 Product Strategy */}
+                <div className="mt-8 pt-6 border-t">
+                  <h3 className="text-2xl font-bold mb-2">3.1 Product Strategy</h3>
+                  <p className="text-muted-foreground mb-6">What you're really selling</p>
 
-              <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  💡 <strong>New to This?</strong> People don't buy products—they buy transformations. Your "product" is the change you create.
-                </p>
-              </div>
+                  <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      💡 <strong>New to This?</strong> People don't buy products—they buy transformations. Your "product" is the change you create.
+                    </p>
+                  </div>
 
-              <h4 className="font-semibold mb-4">Value Ladder Design</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="value-ladder-free">Free Offer</Label>
-                      <p className="text-xs text-muted-foreground mb-2">Purpose: Attract leads | Good Enough: Gets 100% downloads</p>
-                      <Input 
-                        id="value-ladder-free" 
-                        placeholder="e.g., Free checklist, guide"
-                        value={data.valueLadder?.free || ""}
-                        onChange={(e) => updateData('valueLadder', { ...data.valueLadder, free: e.target.value })}
-                      />
+                  <h4 className="font-semibold mb-4">Value Ladder Design</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="value-ladder-free">Free Offer</Label>
+                          <p className="text-xs text-muted-foreground mb-2">Purpose: Attract leads | Good Enough: Gets 100% downloads</p>
+                          <Input 
+                            id="value-ladder-free" 
+                            placeholder="e.g., Free checklist, guide"
+                            value={data.valueLadder?.free || ""}
+                            onChange={(e) => updateData('valueLadder', { ...data.valueLadder, free: e.target.value })}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="value-ladder-entry">Entry ($)</Label>
+                          <p className="text-xs text-muted-foreground mb-2">Purpose: Validate interest | Good Enough: 10% conversion</p>
+                          <Input id="value-ladder-entry" placeholder="e.g., $27 mini-course" />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="value-ladder-core">Core ($$)</Label>
+                          <p className="text-xs text-muted-foreground mb-2">Purpose: Generate profit | Good Enough: Covers all costs + 30%</p>
+                          <Input 
+                            id="value-ladder-core" 
+                            placeholder="e.g., $497 program"
+                            value={data.valueLadder?.core || ""}
+                            onChange={(e) => updateData('valueLadder', { ...data.valueLadder, core: e.target.value })}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="value-ladder-premium">Premium ($$$)</Label>
+                          <p className="text-xs text-muted-foreground mb-2">Purpose: Maximize value | Good Enough: 3X core price</p>
+                          <Input id="value-ladder-premium" placeholder="e.g., $1,497 VIP" />
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <Label htmlFor="value-ladder-entry">Entry ($)</Label>
-                      <p className="text-xs text-muted-foreground mb-2">Purpose: Validate interest | Good Enough: 10% conversion</p>
-                      <Input id="value-ladder-entry" placeholder="e.g., $27 mini-course" />
+                  </Card>
+
+                  <h4 className="font-semibold mb-4">Feature-Emotion-Transformation Map</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="feature">Feature</Label>
+                        <p className="text-xs text-muted-foreground mb-2">What you provide</p>
+                        <Input id="feature" placeholder="e.g., 5-minute chef-made breakfast" />
+                      </div>
+                      <div>
+                        <Label htmlFor="benefit">Benefit</Label>
+                        <p className="text-xs text-muted-foreground mb-2">Immediate value</p>
+                        <Input id="benefit" placeholder="e.g., Save time, eat healthy" />
+                      </div>
+                      <div>
+                        <Label htmlFor="transformation">Transformation</Label>
+                        <p className="text-xs text-muted-foreground mb-2">Life/business change</p>
+                        <Input id="transformation" placeholder="e.g., Stress-free mornings, family connection" />
+                      </div>
+                      <div>
+                        <Label htmlFor="emotion">Emotion</Label>
+                        <p className="text-xs text-muted-foreground mb-2">How they feel</p>
+                        <Input id="emotion" placeholder="e.g., Calm, energized, confident" />
+                      </div>
                     </div>
+                  </Card>
+
+                  {/* Product Examples */}
+                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <div className="space-y-4">
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              💼 Brick-and-Mortar Brand - FreshStart Café
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Feature:</strong> 5-minute chef-made breakfast</p>
+                            <p><strong>Benefit:</strong> Save time, eat healthy</p>
+                            <p><strong>Transformation:</strong> Stress-free mornings, family connection</p>
+                            <p><strong>Emotion:</strong> Calm, energized, confident</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              🎯 Service Brand - Business Coach
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Feature:</strong> 90-day system implementation</p>
+                            <p><strong>Benefit:</strong> Organized processes, clear priorities</p>
+                            <p><strong>Transformation:</strong> Business that serves owner, not consumes them</p>
+                            <p><strong>Emotion:</strong> Relief, control, excitement about growth</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="value-ladder-core">Core ($$)</Label>
-                      <p className="text-xs text-muted-foreground mb-2">Purpose: Generate profit | Good Enough: Covers all costs + 30%</p>
-                      <Input 
-                        id="value-ladder-core" 
-                        placeholder="e.g., $497 program"
-                        value={data.valueLadder?.core || ""}
-                        onChange={(e) => updateData('valueLadder', { ...data.valueLadder, core: e.target.value })}
-                      />
+                </div>
+
+                {/* 3.2 Pricing Strategy */}
+                <div className="mt-8 pt-6 border-t">
+                  <h3 className="text-2xl font-bold mb-2">3.2 Pricing Strategy</h3>
+                  <p className="text-muted-foreground mb-6">What you charge and why</p>
+
+                  <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      <strong>Why This Matters:</strong> Price is the only P that generates revenue—everything else costs money. Your pricing signals quality and determines profitability.
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
+                    <p className="text-sm font-medium mb-2">💡 <strong>New to This?</strong></p>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>CAC</strong> = Customer Acquisition Cost (what you spend to get one customer)</li>
+                      <li>• <strong>LTV</strong> = Lifetime Value (total revenue from one customer)</li>
+                      <li>• <strong>Margin</strong> = Profit percentage after all costs</li>
+                    </ul>
+                  </div>
+
+                  <h4 className="font-semibold mb-4">Pricing Model Selection</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-2">
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>One-time purchase</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Subscription/recurring</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Tiered (good/better/best)</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Usage-based</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Project/package</span>
+                      </label>
                     </div>
-                    <div>
-                      <Label htmlFor="value-ladder-premium">Premium ($$$)</Label>
-                      <p className="text-xs text-muted-foreground mb-2">Purpose: Maximize value | Good Enough: 3X core price</p>
-                      <Input id="value-ladder-premium" placeholder="e.g., $1,497 VIP" />
+                  </Card>
+
+                  <h4 className="font-semibold mb-4">Break-Even Analysis Must-Do</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="fixed-costs">Fixed costs/month</Label>
+                          <Input 
+                            id="fixed-costs" 
+                            type="number" 
+                            placeholder="$0"
+                            value={data.fixedCosts || ""}
+                            onChange={(e) => updateData('fixedCosts', e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="variable-cost">Variable cost per sale</Label>
+                          <Input 
+                            id="variable-cost" 
+                            type="number" 
+                            placeholder="$0"
+                            value={data.variableCost || ""}
+                            onChange={(e) => updateData('variableCost', e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="your-price">Your price</Label>
+                          <Input 
+                            id="your-price" 
+                            type="number" 
+                            placeholder="$0"
+                            value={data.yourPrice || ""}
+                            onChange={(e) => updateData('yourPrice', e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="breakeven">Break-even units</Label>
+                          <Input 
+                            id="breakeven" 
+                            type="number" 
+                            placeholder="per month"
+                            value={data.breakEven || ""}
+                            onChange={(e) => updateData('breakEven', e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground italic">Formula: Fixed Costs ÷ (Price - Variable Cost) = Units needed</p>
                     </div>
-                  </div>
-                </div>
-              </Card>
-
-              <h4 className="font-semibold mb-4">Feature-Emotion-Transformation Map</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-4">
-                  <div>
-                    <Label htmlFor="feature">Feature</Label>
-                    <p className="text-xs text-muted-foreground mb-2">What you provide</p>
-                    <Input id="feature" placeholder="e.g., 5-minute chef-made breakfast" />
-                  </div>
-                  <div>
-                    <Label htmlFor="benefit">Benefit</Label>
-                    <p className="text-xs text-muted-foreground mb-2">Immediate value</p>
-                    <Input id="benefit" placeholder="e.g., Save time, eat healthy" />
-                  </div>
-                  <div>
-                    <Label htmlFor="transformation">Transformation</Label>
-                    <p className="text-xs text-muted-foreground mb-2">Life/business change</p>
-                    <Input id="transformation" placeholder="e.g., Stress-free mornings, family connection" />
-                  </div>
-                  <div>
-                    <Label htmlFor="emotion">Emotion</Label>
-                    <p className="text-xs text-muted-foreground mb-2">How they feel</p>
-                    <Input id="emotion" placeholder="e.g., Calm, energized, confident" />
-                  </div>
-                </div>
-              </Card>
-
-              {/* Product Examples */}
-              <h4 className="font-semibold mb-4">Examples:</h4>
-              <div className="space-y-4">
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          💼 Brick-and-Mortar Brand - FreshStart Café
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Feature:</strong> 5-minute chef-made breakfast</p>
-                        <p><strong>Benefit:</strong> Save time, eat healthy</p>
-                        <p><strong>Transformation:</strong> Stress-free mornings, family connection</p>
-                        <p><strong>Emotion:</strong> Calm, energized, confident</p>
-                      </div>
-                    </CollapsibleContent>
                   </Card>
-                </Collapsible>
 
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          🎯 Service Brand - Business Coach
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                  <h4 className="font-semibold mb-4">Good-Better-Best Tiers</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="tier-good">Good - Basic solution</Label>
+                        <Input id="tier-good" placeholder="$__" />
                       </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Feature:</strong> 90-day system implementation</p>
-                        <p><strong>Benefit:</strong> Organized processes, clear priorities</p>
-                        <p><strong>Transformation:</strong> Business that serves owner, not consumes them</p>
-                        <p><strong>Emotion:</strong> Relief, control, excitement about growth</p>
+                      <div>
+                        <Label htmlFor="tier-better">Better - Enhanced features</Label>
+                        <Input id="tier-better" placeholder="$__" />
                       </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-              </div>
-            </div>
-
-            {/* 3.2 Pricing Strategy */}
-            <div className="mt-8 pt-6 border-t">
-              <h3 className="text-2xl font-bold mb-2">3.2 Pricing Strategy</h3>
-              <p className="text-muted-foreground mb-6">What you charge and why</p>
-
-              <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  <strong>Why This Matters:</strong> Price is the only P that generates revenue—everything else costs money. Your pricing signals quality and determines profitability.
-                </p>
-              </div>
-
-              <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
-                <p className="text-sm font-medium mb-2">💡 <strong>New to This?</strong></p>
-                <ul className="text-sm space-y-1">
-                  <li>• <strong>CAC</strong> = Customer Acquisition Cost (what you spend to get one customer)</li>
-                  <li>• <strong>LTV</strong> = Lifetime Value (total revenue from one customer)</li>
-                  <li>• <strong>Margin</strong> = Profit percentage after all costs</li>
-                </ul>
-              </div>
-
-              <h4 className="font-semibold mb-4">Pricing Model Selection</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>One-time purchase</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Subscription/recurring</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Tiered (good/better/best)</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Usage-based</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Project/package</span>
-                  </label>
-                </div>
-              </Card>
-
-              <h4 className="font-semibold mb-4">Break-Even Analysis Must-Do</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="fixed-costs">Fixed costs/month</Label>
-                      <Input 
-                        id="fixed-costs" 
-                        type="number" 
-                        placeholder="$0"
-                        value={data.fixedCosts || ""}
-                        onChange={(e) => updateData('fixedCosts', e.target.value)}
-                      />
+                      <div>
+                        <Label htmlFor="tier-best">Best - Premium experience</Label>
+                        <Input id="tier-best" placeholder="$__" />
+                      </div>
                     </div>
-                    <div>
-                      <Label htmlFor="variable-cost">Variable cost per sale</Label>
-                      <Input 
-                        id="variable-cost" 
-                        type="number" 
-                        placeholder="$0"
-                        value={data.variableCost || ""}
-                        onChange={(e) => updateData('variableCost', e.target.value)}
-                      />
+                  </Card>
+
+                  <h4 className="font-semibold mb-4">Pricing Psychology Trade Secrets</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <ul className="space-y-2 text-sm">
+                      <li>• End in 7 or 9 for deals ($19, $99; $27, $97) - signals value</li>
+                      <li>• End in 0 for premium ($100, $500) - signals quality</li>
+                      <li>• Always show premium first (anchoring)</li>
+                      <li>• Bundle complementary items together</li>
+                    </ul>
+                  </Card>
+
+                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium mb-2"><strong>🚨 Troubleshooting:</strong></p>
+                    <ul className="text-sm space-y-1">
+                      <li>• "Low margins?" → Test premium tier at 3X current price</li>
+                      <li>• "Scared of pricing high?" → Use anchor pricing (show highest first)</li>
+                      <li>• "No one's buying?" → Price might be too low (signals poor quality)</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-muted/30 p-4 rounded-lg mb-6">
+                    <h4 className="font-semibold mb-3">Exercise (10 min): Price Testing</h4>
+                    <ol className="text-sm space-y-1 ml-4">
+                      <li>1. Calculate your true break-even</li>
+                      <li>2. Add 30% margin minimum</li>
+                      <li>3. Create 3 tiers</li>
+                      <li>4. Test with 5 prospects - gauge reaction</li>
+                    </ol>
+                  </div>
+
+                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      💡 <strong>Solo Founder Shortcut:</strong> Start with competitor price + 20%. Test for 2 weeks. Adjust based on objections.
+                    </p>
+                  </div>
+
+                  {/* Pricing Examples */}
+                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <div className="space-y-4">
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              💼 Brick-and-Mortar Brand - FreshStart Café
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Good:</strong> Single breakfast ($8)</p>
+                            <p><strong>Better:</strong> Family pack ($28)</p>
+                            <p><strong>Best:</strong> Weekly meal plan ($89)</p>
+                            <p><strong>Psychology:</strong> Pricing ends in 8/9 for value perception</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              🎯 Service Brand - Business Coach
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Good:</strong> DIY course ($297)</p>
+                            <p><strong>Better:</strong> Group coaching ($1,497)</p>
+                            <p><strong>Best:</strong> 1:1 intensive ($4,997)</p>
+                            <p><strong>Psychology:</strong> Premium positioning with high anchor price</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              👤 Personal Brand - Marketing Executive
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Good:</strong> LinkedIn consultation ($150/hr)</p>
+                            <p><strong>Better:</strong> Strategy audit ($2,500)</p>
+                            <p><strong>Best:</strong> Fractional CMO ($8,500/month)</p>
+                            <p><strong>Psychology:</strong> Premium pricing signals expertise and results</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+                  </div>
+                </div>
+
+                {/* 3.3 Place & Distribution Strategy */}
+                <div className="mt-8 pt-6 border-t">
+                  <h3 className="text-2xl font-bold mb-2">3.3 Place & Distribution Strategy</h3>
+                  <p className="text-muted-foreground mb-6">Where and how customers access you</p>
+
+                  <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      <strong>Why This Matters:</strong> The best product at the right price means nothing if customers can't easily find and buy it. Your distribution strategy determines accessibility and experience.
+                    </p>
+                  </div>
+
+                  <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      💡 <strong>New to This?</strong> "Place" = where/how customers can buy from you. More channels ≠ better. Start with one, master it, then expand.
+                    </p>
+                  </div>
+
+                  <h4 className="font-semibold mb-4">Channel ROI Decision Tree</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left pb-2">Channel</th>
+                            <th className="text-left pb-2">Setup Time</th>
+                            <th className="text-left pb-2">Monthly Cost</th>
+                            <th className="text-left pb-2">Conversion Rate</th>
+                            <th className="text-left pb-2">ROI Priority</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-xs">
+                          <tr>
+                            <td className="py-2">Website</td>
+                            <td><Input className="h-8" placeholder="__" /></td>
+                            <td><Input className="h-8" placeholder="$__" /></td>
+                            <td><Input className="h-8" placeholder="__%"/></td>
+                            <td><Input className="h-8" placeholder="High/Med/Low" /></td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">Social Commerce</td>
+                            <td><Input className="h-8" placeholder="__" /></td>
+                            <td><Input className="h-8" placeholder="$__" /></td>
+                            <td><Input className="h-8" placeholder="__%"/></td>
+                            <td><Input className="h-8" placeholder="High/Med/Low" /></td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">Marketplace</td>
+                            <td><Input className="h-8" placeholder="__" /></td>
+                            <td><Input className="h-8" placeholder="$__" /></td>
+                            <td><Input className="h-8" placeholder="__%"/></td>
+                            <td><Input className="h-8" placeholder="High/Med/Low" /></td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">Physical Location</td>
+                            <td><Input className="h-8" placeholder="__" /></td>
+                            <td><Input className="h-8" placeholder="$__" /></td>
+                            <td><Input className="h-8" placeholder="__%"/></td>
+                            <td><Input className="h-8" placeholder="High/Med/Low" /></td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">Partners/Affiliates</td>
+                            <td><Input className="h-8" placeholder="__" /></td>
+                            <td><Input className="h-8" placeholder="$__" /></td>
+                            <td><Input className="h-8" placeholder="__%"/></td>
+                            <td><Input className="h-8" placeholder="High/Med/Low" /></td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">Events</td>
+                            <td><Input className="h-8" placeholder="__" /></td>
+                            <td><Input className="h-8" placeholder="$__" /></td>
+                            <td><Input className="h-8" placeholder="__%"/></td>
+                            <td><Input className="h-8" placeholder="High/Med/Low" /></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
+                  </Card>
+
+                  <div className="bg-muted/30 p-4 rounded-lg mb-6">
+                    <h4 className="font-semibold mb-3">Exercise (10 min): Channel Audit</h4>
+                    <ol className="text-sm space-y-1 ml-4">
+                      <li>1. List everywhere customers can buy</li>
+                      <li>2. Track last month's sales by channel</li>
+                      <li>3. Calculate profit by channel</li>
+                      <li>4. Double down on #1, cut bottom performer</li>
+                    </ol>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="your-price">Your price</Label>
-                      <Input 
-                        id="your-price" 
-                        type="number" 
-                        placeholder="$0"
-                        value={data.yourPrice || ""}
-                        onChange={(e) => updateData('yourPrice', e.target.value)}
-                      />
+
+                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      💡 <strong>Quick Win:</strong> Double down on highest ROI channel, cut lowest performer.
+                    </p>
+                  </div>
+
+                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium mb-2"><strong>Solo Founder Shortcuts:</strong></p>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>Free:</strong> Social media + Google My Business</li>
+                      <li>• <strong>Low-cost:</strong> Simple website (Squarespace/Wix) + one marketplace</li>
+                      <li>• <strong>When ready:</strong> Add partnerships and paid advertising</li>
+                    </ul>
+                  </div>
+
+                  {/* Distribution Examples */}
+                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <div className="space-y-4">
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              💼 Brick-and-Mortar Brand - FreshStart Café
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Primary:</strong> Physical location with pickup lane</p>
+                            <p><strong>Secondary:</strong> Pre-order app for convenience</p>
+                            <p><strong>Growth:</strong> Catering partnerships with local businesses</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              🎯 Service Brand - Business Coach
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Primary:</strong> LinkedIn for thought leadership and direct outreach</p>
+                            <p><strong>Secondary:</strong> Referral partnerships with complementary coaches</p>
+                            <p><strong>Growth:</strong> Speaking at industry events and podcasts</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              👤 Personal Brand - Marketing Executive
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Primary:</strong> LinkedIn thought leadership and networking</p>
+                            <p><strong>Secondary:</strong> Industry conference speaking</p>
+                            <p><strong>Growth:</strong> Executive search firm relationships</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+                  </div>
+                </div>
+
+                {/* 3.4 Promotion Strategy */}
+                <div className="mt-8 pt-6 border-t">
+                  <h3 className="text-2xl font-bold mb-2">3.4 Promotion Strategy</h3>
+                  <p className="text-muted-foreground mb-6">How you reach and convert</p>
+
+                  <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      <strong>Why This Matters:</strong> Even the best product needs promotion. Your strategy ensures the right people know about you at the right time through the right channels.
+                    </p>
+                  </div>
+
+                  <h4 className="font-semibold mb-4">Channel Selection (Pick 3-4 to start)</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-2">
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Content marketing (blog/video)</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Social media</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Email marketing</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Paid ads (Google/Facebook)</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>Networking/partnerships</span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input type="checkbox" className="w-4 h-4" />
+                        <span>SEO/local search</span>
+                      </label>
                     </div>
-                    <div>
-                      <Label htmlFor="breakeven">Break-even units</Label>
-                      <Input 
-                        id="breakeven" 
-                        type="number" 
-                        placeholder="per month"
-                        value={data.breakeven || ""}
-                        onChange={(e) => updateData('breakeven', e.target.value)}
-                      />
+                  </Card>
+
+                  <h4 className="font-semibold mb-4">Content Pillars (3-5 topics you'll always discuss)</h4>
+                  <p className="text-sm text-muted-foreground mb-4">Based on Workbook 1, from your Brand Pillars, create content themes:</p>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-3">
+                      <div>
+                        <Label htmlFor="content-pillars">Your Content Pillars</Label>
+                        <Textarea 
+                          id="content-pillars" 
+                          rows={4}
+                          placeholder="e.g., 1) Educational: How-to guides&#10;2) Inspirational: Success stories&#10;3) Behind-the-scenes: Process reveals&#10;4) Promotional: Product features&#10;5) Community: User content, Q&A"
+                          value={data.contentPillars || ""}
+                          onChange={(e) => updateData('contentPillars', e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="primary-platform">Primary Platform</Label>
+                        <Input 
+                          id="primary-platform" 
+                          placeholder="e.g., Instagram, LinkedIn, TikTok"
+                          value={data.primaryPlatform || ""}
+                          onChange={(e) => updateData('primaryPlatform', e.target.value)}
+                        />
+                      </div>
                     </div>
+                  </Card>
+
+                  <h4 className="font-semibold mb-4">Content Repurposing Matrix (BLKBLD Proprietary - One Post = 9 Assets)</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="space-y-2 text-sm">
+                      <p><strong>1 Blog Post</strong> → 5 Social posts + 1 Email + 3 Stories</p>
+                      <p><strong>1 Video</strong> → 10 Short clips + 1 Podcast + Blog + Social posts</p>
+                      <p><strong>1 Webinar</strong> → 20 Tips + Email series + Course + Social content</p>
+                    </div>
+                  </Card>
+
+                  <h4 className="font-semibold mb-4">30 Day Content Calendar Template (Copy-Paste Ready)</h4>
+                  <Card className="p-6 bg-muted/20 mb-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left pb-2">Week</th>
+                            <th className="text-left pb-2">Mon</th>
+                            <th className="text-left pb-2">Wed</th>
+                            <th className="text-left pb-2">Fri</th>
+                            <th className="text-left pb-2">Content Mix</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-xs">
+                          <tr>
+                            <td className="py-2">1</td>
+                            <td>Educational</td>
+                            <td>Behind-the-scenes</td>
+                            <td>Inspirational</td>
+                            <td>60% Value, 40% Promotion</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">2</td>
+                            <td>Community</td>
+                            <td>Educational</td>
+                            <td>Promotional</td>
+                            <td>Focus on engagement</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">3</td>
+                            <td>Inspirational</td>
+                            <td>Behind-the-scenes</td>
+                            <td>Educational</td>
+                            <td>Build trust</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2">4</td>
+                            <td>Promotional</td>
+                            <td>Community</td>
+                            <td>Educational</td>
+                            <td>Convert warm audience</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </Card>
+
+                  {/* Promotion Examples */}
+                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <div className="space-y-4">
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              💼 Brick-and-Mortar Brand - FreshStart Café
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Channels:</strong> Instagram (food photos), Facebook (community), email (weekly specials)</p>
+                            <p><strong>Calendar:</strong> 60% health tips, 20% behind-the-scenes, 20% menu promotion</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 mb-4 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              🎯 Service Brand - Business Coach
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Content Pillars:</strong> System building, entrepreneur stories, productivity tips</p>
+                            <p><strong>Channels:</strong> LinkedIn (thought leadership)</p>
+                            <p><strong>Calendar:</strong> 70% education, 15% client stories, 15% program promotion</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
+
+                    <Collapsible>
+                      <Card className="p-6 bg-muted/20">
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold flex items-center gap-2">
+                              👤 Personal Brand - Marketing Executive
+                            </h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="mt-4 space-y-2 text-sm">
+                            <p><strong>Channels:</strong> LinkedIn (daily posts) + Medium (long-form)</p>
+                            <p><strong>Content Pillars:</strong> Marketing frameworks, B2B growth case studies, industry insights</p>
+                            <p><strong>Calendar:</strong> 80% education/insights, 10% case studies, 10% availability/expertise</p>
+                          </div>
+                        </CollapsibleContent>
+                      </Card>
+                    </Collapsible>
                   </div>
-                  <p className="text-xs text-muted-foreground italic">Formula: Fixed Costs ÷ (Price - Variable Cost) = Units needed</p>
-                </div>
-              </Card>
 
-              <h4 className="font-semibold mb-4">Good-Better-Best Tiers</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-4">
-                  <div>
-                    <Label htmlFor="tier-good">Good - Basic solution</Label>
-                    <Input id="tier-good" placeholder="$__" />
+                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6 mt-6">
+                    <p className="text-sm font-medium mb-2"><strong>🚨 Troubleshooting:</strong></p>
+                    <ul className="text-sm space-y-1">
+                      <li>• "Overwhelmed by content?" → Pick ONE platform, post 2x/week maximum</li>
+                      <li>• "No engagement?" → Ask questions, respond to every comment within 4 hours</li>
+                      <li>• "Running out of ideas?" → Survey audience monthly: "What's your biggest challenge with _____?"</li>
+                    </ul>
                   </div>
-                  <div>
-                    <Label htmlFor="tier-better">Better - Enhanced features</Label>
-                    <Input id="tier-better" placeholder="$__" />
+
+                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                    <p className="text-sm font-medium">
+                      💡 <strong>Quick Win:</strong> Batch create 1 month of content in 4 hours. Use templates and repurpose everything. One blog post = 5 social posts + 1 email + 3 stories
+                    </p>
                   </div>
-                  <div>
-                    <Label htmlFor="tier-best">Best - Premium experience</Label>
-                    <Input id="tier-best" placeholder="$__" />
+
+                  <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
+                    <p className="text-sm font-medium mb-2"><strong>What If I Don't Have:</strong></p>
+                    <ul className="text-sm space-y-1">
+                      <li>• <strong>Time for daily posts?</strong> → Schedule weekly, batch monthly</li>
+                      <li>• <strong>Design skills?</strong> → Use Canva templates + brand colors from Workbook 1</li>
+                      <li>• <strong>Video equipment?</strong> → Phone + good lighting + quiet space = professional enough</li>
+                    </ul>
                   </div>
-                </div>
-              </Card>
 
-              <h4 className="font-semibold mb-4">Pricing Psychology Trade Secrets</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <ul className="space-y-2 text-sm">
-                  <li>• End in 7 or 9 for deals ($19, $99; $27, $97) - signals value</li>
-                  <li>• End in 0 for premium ($100, $500) - signals quality</li>
-                  <li>• Always show premium first (anchoring)</li>
-                  <li>• Bundle complementary items together</li>
-                </ul>
-              </Card>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium mb-2"><strong>🚨 Troubleshooting:</strong></p>
-                <ul className="text-sm space-y-1">
-                  <li>• "Low margins?" → Test premium tier at 3X current price</li>
-                  <li>• "Scared of pricing high?" → Use anchor pricing (show highest first)</li>
-                  <li>• "No one's buying?" → Price might be too low (signals poor quality)</li>
-                </ul>
-              </div>
-
-              <div className="bg-muted/30 p-4 rounded-lg mb-6">
-                <h4 className="font-semibold mb-3">Exercise (10 min): Price Testing</h4>
-                <ol className="text-sm space-y-1 ml-4">
-                  <li>1. Calculate your true break-even</li>
-                  <li>2. Add 30% margin minimum</li>
-                  <li>3. Create 3 tiers</li>
-                  <li>4. Test with 5 prospects - gauge reaction</li>
-                </ol>
-              </div>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  💡 <strong>Solo Founder Shortcut:</strong> Start with competitor price + 20%. Test for 2 weeks. Adjust based on objections.
-                </p>
-              </div>
-
-              {/* Pricing Examples */}
-              <h4 className="font-semibold mb-4">Examples:</h4>
-              <div className="space-y-4">
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          💼 Brick-and-Mortar Brand - FreshStart Café
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Good:</strong> Single breakfast ($8)</p>
-                        <p><strong>Better:</strong> Family pack ($28)</p>
-                        <p><strong>Best:</strong> Weekly meal plan ($89)</p>
-                        <p><strong>Psychology:</strong> Pricing ends in 8/9 for value perception</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          🎯 Service Brand - Business Coach
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Good:</strong> DIY course ($297)</p>
-                        <p><strong>Better:</strong> Group coaching ($1,497)</p>
-                        <p><strong>Best:</strong> 1:1 intensive ($4,997)</p>
-                        <p><strong>Psychology:</strong> Premium positioning with high anchor price</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-
-                <Collapsible>
-                  <Card className="p-6 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          👤 Personal Brand - Marketing Executive
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Good:</strong> LinkedIn consultation ($150/hr)</p>
-                        <p><strong>Better:</strong> Strategy audit ($2,500)</p>
-                        <p><strong>Best:</strong> Fractional CMO ($8,500/month)</p>
-                        <p><strong>Psychology:</strong> Premium pricing signals expertise and results</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-              </div>
-            </div>
-
-            {/* 3.3 Place & Distribution Strategy */}
-            <div className="mt-8 pt-6 border-t">
-              <h3 className="text-2xl font-bold mb-2">3.3 Place & Distribution Strategy</h3>
-              <p className="text-muted-foreground mb-6">Where and how customers access you</p>
-
-              <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  <strong>Why This Matters:</strong> The best product at the right price means nothing if customers can't easily find and buy it. Your distribution strategy determines accessibility and experience.
-                </p>
-              </div>
-
-              <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  💡 <strong>New to This?</strong> "Place" = where/how customers can buy from you. More channels ≠ better. Start with one, master it, then expand.
-                </p>
-              </div>
-
-              <h4 className="font-semibold mb-4">Channel ROI Decision Tree</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b">
-                        <th className="text-left pb-2">Channel</th>
-                        <th className="text-left pb-2">Setup Time</th>
-                        <th className="text-left pb-2">Monthly Cost</th>
-                        <th className="text-left pb-2">Conversion Rate</th>
-                        <th className="text-left pb-2">ROI Priority</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-xs">
-                      <tr>
-                        <td className="py-2">Website</td>
-                        <td><Input className="h-8" placeholder="__" /></td>
-                        <td><Input className="h-8" placeholder="$__" /></td>
-                        <td><Input className="h-8" placeholder="__%"/></td>
-                        <td><Input className="h-8" placeholder="High/Med/Low" /></td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">Social Commerce</td>
-                        <td><Input className="h-8" placeholder="__" /></td>
-                        <td><Input className="h-8" placeholder="$__" /></td>
-                        <td><Input className="h-8" placeholder="__%"/></td>
-                        <td><Input className="h-8" placeholder="High/Med/Low" /></td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">Marketplace</td>
-                        <td><Input className="h-8" placeholder="__" /></td>
-                        <td><Input className="h-8" placeholder="$__" /></td>
-                        <td><Input className="h-8" placeholder="__%"/></td>
-                        <td><Input className="h-8" placeholder="High/Med/Low" /></td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">Physical Location</td>
-                        <td><Input className="h-8" placeholder="__" /></td>
-                        <td><Input className="h-8" placeholder="$__" /></td>
-                        <td><Input className="h-8" placeholder="__%"/></td>
-                        <td><Input className="h-8" placeholder="High/Med/Low" /></td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">Partners/Affiliates</td>
-                        <td><Input className="h-8" placeholder="__" /></td>
-                        <td><Input className="h-8" placeholder="$__" /></td>
-                        <td><Input className="h-8" placeholder="__%"/></td>
-                        <td><Input className="h-8" placeholder="High/Med/Low" /></td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">Events</td>
-                        <td><Input className="h-8" placeholder="__" /></td>
-                        <td><Input className="h-8" placeholder="$__" /></td>
-                        <td><Input className="h-8" placeholder="__%"/></td>
-                        <td><Input className="h-8" placeholder="High/Med/Low" /></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </Card>
-
-              <div className="bg-muted/30 p-4 rounded-lg mb-6">
-                <h4 className="font-semibold mb-3">Exercise (10 min): Channel Audit</h4>
-                <ol className="text-sm space-y-1 ml-4">
-                  <li>1. List everywhere customers can buy</li>
-                  <li>2. Track last month's sales by channel</li>
-                  <li>3. Calculate profit by channel</li>
-                  <li>4. Double down on #1, cut bottom performer</li>
-                </ol>
-              </div>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  💡 <strong>Quick Win:</strong> Double down on highest ROI channel, cut lowest performer.
-                </p>
-              </div>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium mb-2"><strong>Solo Founder Shortcuts:</strong></p>
-                <ul className="text-sm space-y-1">
-                  <li>• <strong>Free:</strong> Social media + Google My Business</li>
-                  <li>• <strong>Low-cost:</strong> Simple website (Squarespace/Wix) + one marketplace</li>
-                  <li>• <strong>When ready:</strong> Add partnerships and paid advertising</li>
-                </ul>
-              </div>
-
-              {/* Distribution Examples */}
-              <h4 className="font-semibold mb-4">Examples:</h4>
-              <div className="space-y-4">
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          💼 Brick-and-Mortar Brand - FreshStart Café
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Primary:</strong> Physical location with pickup lane</p>
-                        <p><strong>Secondary:</strong> Pre-order app for convenience</p>
-                        <p><strong>Growth:</strong> Catering partnerships with local businesses</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          🎯 Service Brand - Business Coach
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Primary:</strong> LinkedIn for thought leadership and direct outreach</p>
-                        <p><strong>Secondary:</strong> Referral partnerships with complementary coaches</p>
-                        <p><strong>Growth:</strong> Speaking at industry events and podcasts</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-
-                <Collapsible>
-                  <Card className="p-6 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          👤 Personal Brand - Marketing Executive
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Primary:</strong> LinkedIn thought leadership and networking</p>
-                        <p><strong>Secondary:</strong> Industry conference speaking</p>
-                        <p><strong>Growth:</strong> Executive search firm relationships</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-              </div>
-            </div>
-
-            {/* 3.4 Promotion Strategy */}
-            <div className="mt-8 pt-6 border-t">
-              <h3 className="text-2xl font-bold mb-2">3.4 Promotion Strategy</h3>
-              <p className="text-muted-foreground mb-6">How you reach and convert</p>
-
-              <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  <strong>Why This Matters:</strong> Even the best product needs promotion. Your strategy ensures the right people know about you at the right time through the right channels.
-                </p>
-              </div>
-
-              <h4 className="font-semibold mb-4">Channel Selection (Pick 3-4 to start)</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Content marketing (blog/video)</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Social media</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Email marketing</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Paid ads (Google/Facebook)</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Networking/partnerships</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>SEO/local search</span>
-                  </label>
-                </div>
-              </Card>
-
-              <h4 className="font-semibold mb-4">Content Pillars (3-5 topics you'll always discuss)</h4>
-              <p className="text-sm text-muted-foreground mb-4">Based on Workbook 1, from your Brand Pillars, create content themes:</p>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-3">
-                  <div>
-                    <Label htmlFor="content-pillars">Your Content Pillars</Label>
-                    <Textarea 
-                      id="content-pillars" 
-                      rows={4}
-                      placeholder="e.g., 1) Educational: How-to guides&#10;2) Inspirational: Success stories&#10;3) Behind-the-scenes: Process reveals&#10;4) Promotional: Product features&#10;5) Community: User content, Q&A"
-                      value={data.contentPillars || ""}
-                      onChange={(e) => updateData('contentPillars', e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="primary-platform">Primary Platform</Label>
-                    <Input 
-                      id="primary-platform" 
-                      placeholder="e.g., Instagram, LinkedIn, TikTok"
-                      value={data.primaryPlatform || ""}
-                      onChange={(e) => updateData('primaryPlatform', e.target.value)}
-                    />
-                  </div>
-                </div>
-              </Card>
-
-              <h4 className="font-semibold mb-4">Content Repurposing Matrix (BLKBLD Proprietary - One Post = 9 Assets)</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="space-y-2 text-sm">
-                  <p><strong>1 Blog Post</strong> → 5 Social posts + 1 Email + 3 Stories</p>
-                  <p><strong>1 Video</strong> → 10 Short clips + 1 Podcast + Blog + Social posts</p>
-                  <p><strong>1 Webinar</strong> → 20 Tips + Email series + Course + Social content</p>
-                </div>
-              </Card>
-
-              <h4 className="font-semibold mb-4">30 Day Content Calendar Template (Copy-Paste Ready)</h4>
-              <Card className="p-6 bg-muted/20 mb-6">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b">
-                        <th className="text-left pb-2">Week</th>
-                        <th className="text-left pb-2">Mon</th>
-                        <th className="text-left pb-2">Wed</th>
-                        <th className="text-left pb-2">Fri</th>
-                        <th className="text-left pb-2">Content Mix</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-xs">
-                      <tr>
-                        <td className="py-2">1</td>
-                        <td>Educational</td>
-                        <td>Behind-the-scenes</td>
-                        <td>Inspirational</td>
-                        <td>60% Value, 40% Promotion</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">2</td>
-                        <td>Community</td>
-                        <td>Educational</td>
-                        <td>Promotional</td>
-                        <td>Focus on engagement</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">3</td>
-                        <td>Inspirational</td>
-                        <td>Behind-the-scenes</td>
-                        <td>Educational</td>
-                        <td>Build trust</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">4</td>
-                        <td>Promotional</td>
-                        <td>Community</td>
-                        <td>Educational</td>
-                        <td>Convert warm audience</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </Card>
-
-              {/* Promotion Examples */}
-              <h4 className="font-semibold mb-4">Examples:</h4>
-              <div className="space-y-4">
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          💼 Brick-and-Mortar Brand - FreshStart Café
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Channels:</strong> Instagram (food photos), Facebook (community), email (weekly specials)</p>
-                        <p><strong>Calendar:</strong> 60% health tips, 20% behind-the-scenes, 20% menu promotion</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-
-                <Collapsible>
-                  <Card className="p-6 mb-4 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          🎯 Service Brand - Business Coach
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Content Pillars:</strong> System building, entrepreneur stories, productivity tips</p>
-                        <p><strong>Channels:</strong> LinkedIn (thought leadership)</p>
-                        <p><strong>Calendar:</strong> 70% education, 15% client stories, 15% program promotion</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-
-                <Collapsible>
-                  <Card className="p-6 bg-muted/20">
-                    <CollapsibleTrigger className="w-full">
-                      <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          👤 Personal Brand - Marketing Executive
-                        </h4>
-                        <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                      </div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="mt-4 space-y-2 text-sm">
-                        <p><strong>Channels:</strong> LinkedIn (daily posts) + Medium (long-form)</p>
-                        <p><strong>Content Pillars:</strong> Marketing frameworks, B2B growth case studies, industry insights</p>
-                        <p><strong>Calendar:</strong> 80% education/insights, 10% case studies, 10% availability/expertise</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Card>
-                </Collapsible>
-              </div>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6 mt-6">
-                <p className="text-sm font-medium mb-2"><strong>🚨 Troubleshooting:</strong></p>
-                <ul className="text-sm space-y-1">
-                  <li>• "Overwhelmed by content?" → Pick ONE platform, post 2x/week maximum</li>
-                  <li>• "No engagement?" → Ask questions, respond to every comment within 4 hours</li>
-                  <li>• "Running out of ideas?" → Survey audience monthly: "What's your biggest challenge with _____?"</li>
-                </ul>
-              </div>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-                <p className="text-sm font-medium">
-                  💡 <strong>Quick Win:</strong> Batch create 1 month of content in 4 hours. Use templates and repurpose everything. One blog post = 5 social posts + 1 email + 3 stories
-                </p>
-              </div>
-
-              <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
-                <p className="text-sm font-medium mb-2"><strong>What If I Don't Have:</strong></p>
-                <ul className="text-sm space-y-1">
-                  <li>• <strong>Time for daily posts?</strong> → Schedule weekly, batch monthly</li>
-                  <li>• <strong>Design skills?</strong> → Use Canva templates + brand colors from Workbook 1</li>
-                  <li>• <strong>Video equipment?</strong> → Phone + good lighting + quiet space = professional enough</li>
-                </ul>
-              </div>
-
-              {/* AI Boost - Content Calendar */}
-              <div className="mt-8 pt-6 border-t">
-                <h3 className="text-xl font-bold mb-4">🤖 AI BOOST - Content Calendar</h3>
-                <AIPromptCard
-                  title="Content Calendar"
-                  prompt={`You are a content strategist. Create my 30-day calendar that converts.
+                  {/* AI Boost - Content Calendar */}
+                  <div className="mt-8 pt-6 border-t">
+                    <h3 className="text-xl font-bold mb-4">🤖 AI BOOST - Content Calendar</h3>
+                    <AIPromptCard
+                      title="Content Calendar"
+                      prompt={`You are a content strategist. Create my 30-day calendar that converts.
 
 My business: [what you do] | Brand pillars: [from Workbook 1] | Brand voice: [from Workbook 1] | Product/service: [what you offer] | Target audience: [who + their pain] | Platform: [Instagram/LinkedIn/TikTok] | Brand type: [Business/Product/Service/Personal]
 
@@ -1299,63 +1317,59 @@ OUTPUT:
 - 30-DAY CALENDAR: [2 posts per week with titles, hooks, and CTAs]
 - HASHTAG STRATEGY: [3 hashtags in tiers: High/Medium/Low competition]
 - REPURPOSING MAP: [How to turn each post into 3 additional assets]`}
-                />
-              </div>
-            </div>
+                    />
+                  </div>
+                </div>
 
-            {/* Section 3 Checkpoint */}
-            <div className="mt-8 p-6 bg-primary/10 border-l-4 border-primary rounded">
-              <h4 className="font-semibold mb-3">Section 3 Checkpoint ✓</h4>
-              <div className="space-y-2 text-sm">
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Product ladder defined with "good enough" standards</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Pricing strategy set with break-even calculated</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>Distribution channels mapped and prioritized</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>3-4 promotion channels selected</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" className="w-4 h-4" />
-                  <span>30-day content calendar created</span>
-                </label>
+                {/* Section 3 Checkpoint */}
+                <div className="mt-8 p-6 bg-primary/10 border-l-4 border-primary rounded">
+                  <h4 className="font-semibold mb-3">Section 3 Checkpoint ✓</h4>
+                  <div className="space-y-2 text-sm">
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Product ladder defined with "good enough" standards</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Pricing strategy set with break-even calculated</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>Distribution channels mapped and prioritized</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>3-4 promotion channels selected</span>
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span>30-day content calendar created</span>
+                    </label>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </Card>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
 
         {/* Congratulations */}
         <Card className="p-8 text-center bg-gradient-to-br from-primary/10 to-accent/10">
           <PartyPopper className="w-16 h-16 mx-auto mb-4 text-primary" />
           <h2 className="text-3xl font-bold mb-4">Congratulations! 🎉</h2>
           <p className="text-lg text-muted-foreground mb-6">
-            You've completed the Marketing Strategy Execution workbook! You now have a comprehensive marketing plan ready to implement.
+            You've completed the Marketing Strategy Execution workbook!
           </p>
           <div className="bg-background/50 p-6 rounded-lg mb-6">
             <h3 className="font-bold mb-3">What You've Accomplished:</h3>
             <ul className="text-left space-y-2 text-sm max-w-2xl mx-auto">
               <li>✅ Business Model Canvas complete</li>
-              <li>✅ Market intelligence and target audience defined</li>
-              <li>✅ Product strategy and value ladder designed</li>
-              <li>✅ Pricing strategy with psychology principles</li>
-              <li>✅ Distribution channels mapped</li>
-              <li>✅ Promotion strategy and content calendar ready</li>
+              <li>✅ Market intelligence defined</li>
+              <li>✅ 4P Marketing Mix designed</li>
             </ul>
           </div>
           <p className="text-muted-foreground mb-4">
-            Next up: <strong>Workbook 3</strong> - Automated Customer Experience
+            Next: <strong>Workbook 3</strong> - Automated Customer Experience
           </p>
-          <Button size="lg" className="gap-2">
-            Continue to Workbook 3
-          </Button>
         </Card>
       </div>
     </div>
