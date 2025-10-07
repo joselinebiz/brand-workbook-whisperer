@@ -169,9 +169,9 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                   <div className="flex items-center gap-2">
                     <div 
                       className="w-12 h-12 rounded border-2 border-border"
-                      style={{ backgroundColor: data?.tertiaryColor || '#CCCCCC' }}
+                      style={{ backgroundColor: data?.accentColor || '#CCCCCC' }}
                     />
-                    <span className="text-xs font-mono">{data?.tertiaryColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.accentColor || "#_____"}</span>
                   </div>
                 </div>
               </div>
@@ -251,26 +251,37 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Journey Map</p>
                 <div className="grid grid-cols-1 gap-2 text-xs">
-                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                    <span className="font-semibold">Awareness:</span>
-                    <span>Clear value _____</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                    <span className="font-semibold">Consideration:</span>
-                    <span>Social proof _____</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                    <span className="font-semibold">Purchase/Hire:</span>
-                    <span>Easy process _____</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                    <span className="font-semibold">Delivery:</span>
-                    <span>Exceed promise _____</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                    <span className="font-semibold">Post-Purchase:</span>
-                    <span>Stay connected _____</span>
-                  </div>
+                  {data?.journeyStages && data.journeyStages.length > 0 ? (
+                    data.journeyStages.map((stage: any, i: number) => (
+                      <div key={i} className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                        <span className="font-semibold">{stage.stage}:</span>
+                        <span>{stage.action}</span>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                        <span className="font-semibold">Awareness:</span>
+                        <span>Clear value _____</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                        <span className="font-semibold">Consideration:</span>
+                        <span>Social proof _____</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                        <span className="font-semibold">Purchase/Hire:</span>
+                        <span>Easy process _____</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                        <span className="font-semibold">Delivery:</span>
+                        <span>Exceed promise _____</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                        <span className="font-semibold">Post-Purchase:</span>
+                        <span>Stay connected _____</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
