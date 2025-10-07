@@ -559,17 +559,26 @@ OUTPUT:
               </div>
             </div>
           </div>
-        </Card>
+        </CollapsibleContent>
+      </Card>
+    </Collapsible>
 
         {/* SECTION 3: 4P Marketing Mix */}
-        <Card className="p-8 mb-8">
-          <SectionHeader
-            number="3"
-            title="4P Marketing Mix"
-            description="Product, Price, Place, Promotion"
-            icon={<DollarSign className="w-8 h-8" />}
-          />
+        <Collapsible defaultOpen={false}>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                <SectionHeader
+                  number="3"
+                  title="4P Marketing Mix"
+                  description="Product, Price, Place, Promotion"
+                  icon={<DollarSign className="w-8 h-8" />}
+                />
+                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+              </div>
+            </CollapsibleTrigger>
 
+            <CollapsibleContent>
               <div className="space-y-6 mt-6">
                 <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
                   <p className="text-sm font-medium">
@@ -1353,24 +1362,42 @@ OUTPUT:
         </Collapsible>
 
         {/* Congratulations */}
-        <Card className="p-8 text-center bg-gradient-to-br from-primary/10 to-accent/10">
-          <PartyPopper className="w-16 h-16 mx-auto mb-4 text-primary" />
-          <h2 className="text-3xl font-bold mb-4">Congratulations! 🎉</h2>
-          <p className="text-lg text-muted-foreground mb-6">
-            You've completed the Marketing Strategy Execution workbook!
-          </p>
-          <div className="bg-background/50 p-6 rounded-lg mb-6">
-            <h3 className="font-bold mb-3">What You've Accomplished:</h3>
-            <ul className="text-left space-y-2 text-sm max-w-2xl mx-auto">
-              <li>✅ Business Model Canvas complete</li>
-              <li>✅ Market intelligence defined</li>
-              <li>✅ 4P Marketing Mix designed</li>
-            </ul>
-          </div>
-          <p className="text-muted-foreground mb-4">
-            Next: <strong>Workbook 3</strong> - Automated Customer Experience
-          </p>
-        </Card>
+        <Collapsible defaultOpen={false}>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                <div className="flex items-center gap-3">
+                  <PartyPopper className="w-8 h-8 text-primary" />
+                  <div>
+                    <h2 className="text-2xl font-bold text-left">Congratulations!</h2>
+                    <p className="text-sm text-muted-foreground text-left">You've completed Workbook 2</p>
+                  </div>
+                </div>
+                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+              </div>
+            </CollapsibleTrigger>
+
+            <CollapsibleContent>
+              <div className="space-y-6 mt-6 text-center">
+                <h2 className="text-3xl font-bold">🎉</h2>
+                <p className="text-lg text-muted-foreground">
+                  You've completed the Marketing Strategy Execution workbook!
+                </p>
+                <div className="bg-background/50 p-6 rounded-lg">
+                  <h3 className="font-bold mb-3">What You've Accomplished:</h3>
+                  <ul className="text-left space-y-2 text-sm max-w-2xl mx-auto">
+                    <li>✅ Business Model Canvas complete</li>
+                    <li>✅ Market intelligence defined</li>
+                    <li>✅ 4P Marketing Mix designed</li>
+                  </ul>
+                </div>
+                <p className="text-muted-foreground">
+                  Next: <strong>Workbook 3</strong> - Automated Customer Experience
+                </p>
+              </div>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
       </div>
     </div>
   );
