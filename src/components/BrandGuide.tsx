@@ -3,30 +3,7 @@ import { FileText, Download, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface BrandGuideProps {
-  data: {
-    mission?: string;
-    vision5Year?: string;
-    bhag10Year?: string;
-    tagline?: string;
-    primaryColor?: string;
-    secondaryColor?: string;
-    tertiaryColor?: string;
-    primaryFont?: string;
-    secondaryFont?: string;
-    accentFont?: string;
-    photographyStyle?: string;
-    brandVoiceAre?: string;
-    brandVoiceNot?: string;
-    brandStory?: string;
-    targetAudience?: {
-      demographics: string;
-      painPoints: string;
-      whereToFind: string;
-    };
-    positioningStatement?: string;
-    oneLiner?: string;
-    brandPromise?: string;
-  };
+  data: any; // Accept all data from WorkbookContext
 }
 
 export const BrandGuide = ({ data }: BrandGuideProps) => {
