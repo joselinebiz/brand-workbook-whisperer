@@ -207,9 +207,9 @@ export default function Workbook2() {
                   </div>
                 </Card>
 
-                <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-6">
                   <p className="text-sm font-medium">
-                    💡 <strong>Quick Win:</strong> Overwhelmed? Only fill 'Value Prop' and 'Customer Segments' first.
+                    💡 <strong className="text-gold">Quick Win:</strong> Overwhelmed? Only fill 'Value Prop' and 'Customer Segments' first.
                   </p>
                 </div>
 
@@ -1016,9 +1016,9 @@ OUTPUT:
                     </ol>
                   </div>
 
-                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                  <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-6">
                     <p className="text-sm font-medium">
-                      💡 <strong>Quick Win:</strong> Double down on highest ROI channel, cut lowest performer.
+                      💡 <strong className="text-gold">Quick Win:</strong> Double down on highest ROI channel, cut lowest performer.
                     </p>
                   </div>
 
@@ -1291,9 +1291,9 @@ OUTPUT:
                     </ul>
                   </div>
 
-                  <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
+                  <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-6">
                     <p className="text-sm font-medium">
-                      💡 <strong>Quick Win:</strong> Batch create 1 month of content in 4 hours. Use templates and repurpose everything. One blog post = 5 social posts + 1 email + 3 stories
+                      💡 <strong className="text-gold">Quick Win:</strong> Batch create 1 month of content in 4 hours. Use templates and repurpose everything. One blog post = 5 social posts + 1 email + 3 stories
                     </p>
                   </div>
 

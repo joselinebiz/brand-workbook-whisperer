@@ -340,9 +340,9 @@ export default function Workbook3() {
                   })}
                 </div>
 
-                <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
+                <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
                   <p className="text-sm font-medium">
-                    💡 <strong>Quick Win:</strong> In your content calendar from Workbook 2, you specifically requested that AI indicate which stage of the customer journey each piece of content targets. That was intentional and crucial because the goal is to deliver the right content to your audience at the right time.
+                    💡 <strong className="text-gold">Quick Win:</strong> In your content calendar from Workbook 2, you specifically requested that AI indicate which stage of the customer journey each piece of content targets. That was intentional and crucial because the goal is to deliver the right content to your audience at the right time.
                   </p>
                 </div>
 

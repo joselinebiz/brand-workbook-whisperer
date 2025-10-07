@@ -262,8 +262,8 @@ export default function Workbook1() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-accent/10 border border-accent/20 rounded mb-4">
-                  <p className="text-sm font-medium mb-2">💡 Quick Win:</p>
+                <div className="p-4 bg-gold/10 border border-gold/30 rounded mb-4">
+                  <p className="text-sm font-medium mb-2 text-gold">💡 Quick Win:</p>
                   <p className="text-sm">Can't find your purpose? Ask 5 customers/colleagues why they chose you.</p>
                 </div>
 
@@ -496,8 +496,8 @@ Well articulated mission, values, promise and differentiation that ensures I own
                   </ul>
                 </div>
 
-                <div className="p-4 bg-accent/10 border border-accent/20 rounded mb-4">
-                  <p className="text-sm font-medium mb-2">💡 Quick Win:</p>
+                <div className="p-4 bg-gold/10 border border-gold/30 rounded mb-4">
+                  <p className="text-sm font-medium mb-2 text-gold">💡 Quick Win:</p>
                   <p className="text-sm">"We're the only ones who _____ as proven by _____"</p>
                 </div>
 
@@ -651,8 +651,8 @@ Well articulated mission, values, promise and differentiation that ensures I own
                   </Card>
                 </div>
 
-                <div className="p-4 bg-accent/10 border border-accent/20 rounded">
-                  <p className="text-sm font-medium mb-2">💡 Quick Win:</p>
+                <div className="p-4 bg-gold/10 border border-gold/30 rounded">
+                  <p className="text-sm font-medium mb-2 text-gold">💡 Quick Win:</p>
                   <p className="text-sm">Create a Canva brand kit/Mood board - free and saves hours.</p>
                 </div>
 
@@ -1212,8 +1212,8 @@ IDENTIFY:
               {/* One-Page Brand Guide */}
               <BrandGuide data={data} />
 
-              <div className="mt-8 p-4 bg-accent/10 border border-accent/20 rounded">
-                <p className="text-sm font-medium mb-2">Exercise (30 min): Quick Win Sweep</p>
+              <div className="mt-8 p-4 bg-gold/10 border border-gold/30 rounded">
+                <p className="text-sm font-medium mb-2 text-gold">Exercise (30 min): Quick Win Sweep</p>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-center gap-2">
                     <input type="checkbox" className="w-4 h-4" />
