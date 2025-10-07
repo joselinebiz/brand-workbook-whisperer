@@ -1167,58 +1167,6 @@ DELIVER:
           </Card>
         </Collapsible>
 
-        {/* Final Brand Assessment */}
-        <Collapsible>
-          <Card className="p-8 mb-8">
-            <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Final Brand Assessment
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
-            </CollapsibleTrigger>
-            
-            <CollapsibleContent>
-              <p className="text-muted-foreground mb-6 mt-6">Retake initial assessment.</p>
-              
-              <div className="space-y-4 mb-6">
-                <div>
-                  <Label htmlFor="new-score">New Score:</Label>
-                  <Input id="new-score" placeholder="___/12" className="w-32 mt-2" />
-                </div>
-                <div>
-                  <Label htmlFor="improvement">Improvement:</Label>
-                  <Input id="improvement" placeholder="+ ___ points" className="w-32 mt-2" />
-                </div>
-              </div>
-
-              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
-                <p className="font-semibold mb-3">You're Ready for Workbook 2 if:</p>
-                <div className="space-y-2 text-sm">
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Score improved by 3+</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Promise in one sentence</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Consistent across 5 touchpoints</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Journey mapped</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
-                    <span>Week 1 implemented</span>
-                  </label>
-                </div>
-              </div>
-            </CollapsibleContent>
-          </Card>
-        </Collapsible>
 
         {/* Troubleshooting Guide */}
         <Card className="p-8 mb-8">
