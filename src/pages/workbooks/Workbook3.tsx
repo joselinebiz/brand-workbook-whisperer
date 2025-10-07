@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Users, Mail, Zap, FileText, ChevronDown, PartyPopper, Save, Target, TrendingUp } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
@@ -382,6 +383,59 @@ export default function Workbook3() {
                       <li>• Check-in (helpful, no selling)</li>
                       <li>• Ask (review or referral request)</li>
                     </ul>
+                  </div>
+
+                  {/* 2-2-2 Follow-Up Completion Tracking */}
+                  <div className="mt-6 bg-accent/10 border-2 border-accent/30 p-6 rounded-lg">
+                    <h4 className="font-semibold mb-4">Track Your Follow-Up Sequence Completion</h4>
+                    <p className="text-sm text-muted-foreground mb-4">Check off each follow-up as you write it:</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="day2-followup"
+                          checked={data.followUpSystem?.day2 || false}
+                          onCheckedChange={(checked) => {
+                            updateData('followUpSystem', {
+                              ...data.followUpSystem,
+                              day2: checked === true
+                            });
+                          }}
+                        />
+                        <Label htmlFor="day2-followup" className="cursor-pointer text-sm">
+                          <strong>Day 2 Follow-Up:</strong> Thank you + quick tip email written
+                        </Label>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="week2-followup"
+                          checked={data.followUpSystem?.week2 || false}
+                          onCheckedChange={(checked) => {
+                            updateData('followUpSystem', {
+                              ...data.followUpSystem,
+                              week2: checked === true
+                            });
+                          }}
+                        />
+                        <Label htmlFor="week2-followup" className="cursor-pointer text-sm">
+                          <strong>Week 2 Follow-Up:</strong> Check satisfaction + support offer email written
+                        </Label>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="month2-followup"
+                          checked={data.followUpSystem?.month2 || false}
+                          onCheckedChange={(checked) => {
+                            updateData('followUpSystem', {
+                              ...data.followUpSystem,
+                              month2: checked === true
+                            });
+                          }}
+                        />
+                        <Label htmlFor="month2-followup" className="cursor-pointer text-sm">
+                          <strong>Month 2 Follow-Up:</strong> Success story request + next offer email written
+                        </Label>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
