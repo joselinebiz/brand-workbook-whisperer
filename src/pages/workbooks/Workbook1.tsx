@@ -1464,7 +1464,10 @@ DELIVER:
           </div>
         </Card>
 
-        <div className="flex justify-end">
+        <div className="flex justify-between">
+          <Button variant="outline" size="lg" asChild>
+            <a href="/workbook/0">← Back to Workbook 0</a>
+          </Button>
           <Button variant="hero" size="lg" asChild>
             <a href="/workbook/2">Continue to Workbook 2: Marketing Strategy →</a>
           </Button>

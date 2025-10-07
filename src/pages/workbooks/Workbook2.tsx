@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -10,12 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { TrendingUp, DollarSign, BarChart3, ChevronDown, PartyPopper, Save, ArrowLeft, ArrowRight } from "lucide-react";
+import { TrendingUp, DollarSign, BarChart3, ChevronDown, PartyPopper, Save } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 
 export default function Workbook2() {
   const { data, updateData } = useWorkbook();
-  const navigate = useNavigate();
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -1396,41 +1394,36 @@ OUTPUT:
                     <li>✅ Promotion strategy and content calendar ready</li>
                   </ul>
                 </div>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground">
                   Next up: <strong>Workbook 3</strong> - Customer Journey & Systems
                 </p>
-
-                {/* Navigation Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-                  <Button 
-                    variant="outline" 
-                    onClick={() => navigate('/workbook/1')}
-                    className="gap-2 w-full sm:w-auto"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Back to Workbook 1
-                  </Button>
-                  
-                  <Button 
-                    onClick={handleManualSave}
-                    className="gap-2 w-full sm:w-auto"
-                  >
-                    <Save className="w-4 h-4" />
-                    Save Progress
-                  </Button>
-
-                  <Button 
-                    onClick={() => navigate('/workbook/3')}
-                    className="gap-2 w-full sm:w-auto"
-                  >
-                    Continue to Workbook 3
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </div>
               </div>
             </CollapsibleContent>
           </Card>
         </Collapsible>
+
+        {/* Manual Save Button */}
+        <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-bold text-lg mb-1">Save Your Work</h3>
+              <p className="text-sm text-muted-foreground">Your data auto-saves, but you can manually save anytime for peace of mind</p>
+            </div>
+            <Button onClick={handleManualSave} size="lg" className="gap-2">
+              <Save className="w-5 h-5" />
+              Save All Changes
+            </Button>
+          </div>
+        </Card>
+
+        <div className="flex justify-between">
+          <Button variant="outline" size="lg" asChild>
+            <a href="/workbook/1">← Back to Workbook 1</a>
+          </Button>
+          <Button variant="hero" size="lg" asChild>
+            <a href="/workbook/3">Continue to Workbook 3: Customer Journey →</a>
+          </Button>
+        </div>
       </div>
     </div>
   );
