@@ -615,22 +615,63 @@ Provide:
                 <div className="space-y-3 mb-4">
                   <div className="flex items-center gap-3">
                     <Label className="w-40">Excitement level:</Label>
-                    <Input type="number" min="1" max="10" placeholder="___" className="w-20" />
+                    <Input 
+                      type="number" 
+                      min="1" 
+                      max="10" 
+                      placeholder="___" 
+                      className="w-20"
+                      value={localData.gutCheck.excitement}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        gutCheck: { ...prev.gutCheck, excitement: e.target.value }
+                      }))}
+                    />
                     <span className="text-sm text-muted-foreground">/10</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Label className="w-40">Customer clarity:</Label>
-                    <Input type="number" min="1" max="10" placeholder="___" className="w-20" />
+                    <Input 
+                      type="number" 
+                      min="1" 
+                      max="10" 
+                      placeholder="___" 
+                      className="w-20"
+                      value={localData.gutCheck.clarity}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        gutCheck: { ...prev.gutCheck, clarity: e.target.value }
+                      }))}
+                    />
                     <span className="text-sm text-muted-foreground">/10</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Label className="w-40">Uniqueness:</Label>
-                    <Input type="number" min="1" max="10" placeholder="___" className="w-20" />
+                    <Input 
+                      type="number" 
+                      min="1" 
+                      max="10" 
+                      placeholder="___" 
+                      className="w-20"
+                      value={localData.gutCheck.uniqueness}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        gutCheck: { ...prev.gutCheck, uniqueness: e.target.value }
+                      }))}
+                    />
                     <span className="text-sm text-muted-foreground">/10</span>
                   </div>
                   <div className="flex items-center gap-3 pt-2 border-t">
                     <Label className="w-40 font-bold">Total:</Label>
-                    <Input type="number" placeholder="___" className="w-20" />
+                    <Input 
+                      type="number" 
+                      placeholder="___" 
+                      className="w-20 font-bold"
+                      value={(parseInt(localData.gutCheck.excitement || '0') + 
+                              parseInt(localData.gutCheck.clarity || '0') + 
+                              parseInt(localData.gutCheck.uniqueness || '0')) || ''}
+                      readOnly
+                    />
                     <span className="text-sm text-muted-foreground">/30</span>
                   </div>
                 </div>
