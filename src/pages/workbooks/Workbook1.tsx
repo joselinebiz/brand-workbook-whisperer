@@ -928,11 +928,11 @@ IDENTIFY:
                   <h4 className="font-semibold mb-4">Journey Mapping</h4>
                   <div className="space-y-4">
                     {[
-                      { stage: "Awareness", touchpoint: "First contact", feeling: "Curious", metric: "Views" },
-                      { stage: "Consideration", touchpoint: "Research", feeling: "Confident", metric: "Engagement" },
-                      { stage: "Purchase/Hire", touchpoint: "Transaction", feeling: "Certain", metric: "Conversion" },
-                      { stage: "Delivery", touchpoint: "Experience", feeling: "Delighted", metric: "Satisfaction" },
-                      { stage: "Post-Purchase", touchpoint: "Follow-up", feeling: "Valued", metric: "Referrals" }
+                      { stage: "Awareness", touchpoint: "First contact", feeling: "Curious", action: "Clear value", metric: "Views" },
+                      { stage: "Consideration", touchpoint: "Research", feeling: "Confident", action: "Social proof", metric: "Engagement" },
+                      { stage: "Purchase/Hire", touchpoint: "Transaction", feeling: "Certain", action: "Easy process", metric: "Conversion" },
+                      { stage: "Delivery", touchpoint: "Experience", feeling: "Delighted", action: "Exceed promise", metric: "Satisfaction" },
+                      { stage: "Post-Purchase", touchpoint: "Follow-up", feeling: "Valued", action: "Stay connected", metric: "Referrals" }
                     ].map((item, idx) => (
                       <Card key={idx} className="p-4 bg-muted/30">
                         <div className="grid md:grid-cols-5 gap-3 items-center">
@@ -950,7 +950,7 @@ IDENTIFY:
                           </div>
                           <div>
                             <Label htmlFor={`action-${idx}`} className="text-xs">Your Action</Label>
-                            <Input id={`action-${idx}`} className="mt-1" placeholder="How:" />
+                            <Input id={`action-${idx}`} className="mt-1" placeholder={`${item.action} _____`} />
                           </div>
                           <div>
                             <p className="text-xs text-muted-foreground">Metric</p>
