@@ -37,81 +37,81 @@
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
-BLK BLD & CO. Brand: Blue, green, white, tans - representing natural growth, freshness, tranquility
-Simple, elegant, modern, classic - light and airy aesthetic
+BLKBLD Premium Brand: Deep forest green (#1e322b), black, and refined neutrals - representing sophistication, premium quality, and timeless elegance
 */
 
 @layer base {
   :root {
-    --background: 30 30% 97%;
-    --foreground: 210 10% 20%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 10% 20%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 10% 20%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 160 30% 45%;
+    --primary: 158 28% 16%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 30 25% 85%;
-    --secondary-foreground: 210 10% 20%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 30 20% 92%;
-    --muted-foreground: 210 8% 50%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 200 35% 65%;
-    --accent-foreground: 210 10% 20%;
+    --accent: 158 28% 16%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 160 30% 45%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 158 28% 16%;
 
     --radius: 0.5rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(160 30% 45%), hsl(200 35% 65%));
-    --gradient-accent: linear-gradient(135deg, hsl(30 40% 75%), hsl(30 35% 85%));
-    --gradient-subtle: linear-gradient(180deg, hsl(30 30% 97%), hsl(0 0% 100%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0%), hsl(158 28% 16%));
+    --gradient-accent: linear-gradient(135deg, hsl(158 28% 16%), hsl(158 28% 22%));
+    --gradient-premium: linear-gradient(180deg, hsl(0 0% 0%), hsl(158 28% 12%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 100%));
     
-    --shadow-elegant: 0 10px 40px -10px hsl(210 10% 20% / 0.1);
-    --shadow-strong: 0 20px 60px -15px hsl(210 10% 20% / 0.15);
-    --shadow-soft: 0 4px 20px -5px hsl(160 30% 45% / 0.15);
+    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.2);
+    --shadow-strong: 0 20px 60px -15px hsl(158 28% 16% / 0.3);
+    --shadow-premium: 0 8px 32px -8px hsl(158 28% 16% / 0.25);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 210 15% 12%;
-    --foreground: 30 20% 90%;
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 210 15% 15%;
-    --card-foreground: 30 20% 90%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 210 15% 15%;
-    --popover-foreground: 30 20% 90%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 160 30% 55%;
-    --primary-foreground: 210 15% 12%;
+    --primary: 158 28% 25%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 12% 22%;
-    --secondary-foreground: 30 20% 90%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 12% 22%;
-    --muted-foreground: 30 15% 65%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 200 35% 60%;
-    --accent-foreground: 30 20% 90%;
+    --accent: 158 28% 25%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 12% 25%;
-    --input: 210 12% 25%;
-    --ring: 160 30% 55%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 158 28% 25%;
   }
 }
 
