@@ -346,99 +346,6 @@ export default function Workbook3() {
                   </p>
                 </div>
 
-                {/* The 2-2-2 Follow-Up System */}
-                <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4">The 2-2-2 Follow-Up System (Simple but powerful)</h3>
-                  <div className="bg-gradient-to-r from-accent/10 to-accent/5 border-2 border-accent/30 p-6 rounded-lg">
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-accent text-accent-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
-                        <div>
-                          <p className="font-semibold">2 Days: Thank you + quick tip</p>
-                          <p className="text-sm text-muted-foreground">(builds relationship)</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="bg-accent text-accent-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
-                        <div>
-                          <p className="font-semibold">2 Weeks: Check satisfaction + support offer</p>
-                          <p className="text-sm text-muted-foreground">(shows you care)</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="bg-accent text-accent-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
-                        <div>
-                          <p className="font-semibold">2 Months: Success story request + next offer</p>
-                          <p className="text-sm text-muted-foreground">(leverages success)</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 bg-muted/30 p-4 rounded">
-                    <p className="font-semibold mb-2">Exercise (10 min): Template Your Follow-Up</p>
-                    <p className="text-sm mb-2">Write these 3 emails now:</p>
-                    <ul className="text-sm space-y-1 ml-4">
-                      <li>• Welcome (warm, sets expectations)</li>
-                      <li>• Check-in (helpful, no selling)</li>
-                      <li>• Ask (review or referral request)</li>
-                    </ul>
-                  </div>
-
-                  {/* 2-2-2 Follow-Up Completion Tracking */}
-                  <div className="mt-6 bg-accent/10 border-2 border-accent/30 p-6 rounded-lg">
-                    <h4 className="font-semibold mb-4">Track Your Follow-Up Sequence Completion</h4>
-                    <p className="text-sm text-muted-foreground mb-4">Check off each follow-up as you write it:</p>
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <Checkbox
-                          id="day2-followup"
-                          checked={data.followUpSystem?.day2 || false}
-                          onCheckedChange={(checked) => {
-                            updateData('followUpSystem', {
-                              ...data.followUpSystem,
-                              day2: checked === true
-                            });
-                          }}
-                        />
-                        <Label htmlFor="day2-followup" className="cursor-pointer text-sm">
-                          <strong>Day 2 Follow-Up:</strong> Thank you + quick tip email written
-                        </Label>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Checkbox
-                          id="week2-followup"
-                          checked={data.followUpSystem?.week2 || false}
-                          onCheckedChange={(checked) => {
-                            updateData('followUpSystem', {
-                              ...data.followUpSystem,
-                              week2: checked === true
-                            });
-                          }}
-                        />
-                        <Label htmlFor="week2-followup" className="cursor-pointer text-sm">
-                          <strong>Week 2 Follow-Up:</strong> Check satisfaction + support offer email written
-                        </Label>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Checkbox
-                          id="month2-followup"
-                          checked={data.followUpSystem?.month2 || false}
-                          onCheckedChange={(checked) => {
-                            updateData('followUpSystem', {
-                              ...data.followUpSystem,
-                              month2: checked === true
-                            });
-                          }}
-                        />
-                        <Label htmlFor="month2-followup" className="cursor-pointer text-sm">
-                          <strong>Month 2 Follow-Up:</strong> Success story request + next offer email written
-                        </Label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Examples */}
                 <div className="mt-8">
                   <h3 className="text-xl font-bold mb-4">Examples Across Three Brand Types:</h3>
@@ -505,6 +412,99 @@ export default function Workbook3() {
                       </CollapsibleContent>
                     </Card>
                   </Collapsible>
+                </div>
+
+                {/* The 2-2-2 Follow-Up System */}
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold mb-4">The 2-2-2 Follow-Up System (Simple but powerful)</h3>
+                  <div className="bg-gradient-to-r from-accent/10 to-accent/5 border-2 border-accent/30 p-6 rounded-lg">
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <div className="bg-accent text-accent-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                        <div>
+                          <p className="font-semibold">2 Days: Thank you + quick tip</p>
+                          <p className="text-sm text-muted-foreground">(builds relationship)</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="bg-accent text-accent-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                        <div>
+                          <p className="font-semibold">2 Weeks: Check satisfaction + support offer</p>
+                          <p className="text-sm text-muted-foreground">(shows you care)</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="bg-accent text-accent-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                        <div>
+                          <p className="font-semibold">2 Months: Success story request + next offer</p>
+                          <p className="text-sm text-muted-foreground">(leverages success)</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 bg-muted/30 p-4 rounded">
+                    <p className="font-semibold mb-2">Exercise (10 min): Template Your Follow-Up</p>
+                    <p className="text-sm mb-2">Write these 3 emails now:</p>
+                    <ul className="text-sm space-y-1 ml-4">
+                      <li>• Welcome and/or Thank You (warm, sets expectations)</li>
+                      <li>• Check-in (helpful, no selling)</li>
+                      <li>• Ask (review or referral request)</li>
+                    </ul>
+                  </div>
+
+                  {/* 2-2-2 Follow-Up Completion Tracking */}
+                  <div className="mt-6 bg-accent/10 border-2 border-accent/30 p-6 rounded-lg">
+                    <h4 className="font-semibold mb-4">Track Your Follow-Up Sequence Completion</h4>
+                    <p className="text-sm text-muted-foreground mb-4">Check off each follow-up as you write it:</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="day2-followup"
+                          checked={data.followUpSystem?.day2 || false}
+                          onCheckedChange={(checked) => {
+                            updateData('followUpSystem', {
+                              ...data.followUpSystem,
+                              day2: checked === true
+                            });
+                          }}
+                        />
+                        <Label htmlFor="day2-followup" className="cursor-pointer text-sm">
+                          <strong>Day 2 Follow-Up:</strong> Thank you + quick tip email written
+                        </Label>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="week2-followup"
+                          checked={data.followUpSystem?.week2 || false}
+                          onCheckedChange={(checked) => {
+                            updateData('followUpSystem', {
+                              ...data.followUpSystem,
+                              week2: checked === true
+                            });
+                          }}
+                        />
+                        <Label htmlFor="week2-followup" className="cursor-pointer text-sm">
+                          <strong>Week 2 Follow-Up:</strong> Check satisfaction + support offer email written
+                        </Label>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="month2-followup"
+                          checked={data.followUpSystem?.month2 || false}
+                          onCheckedChange={(checked) => {
+                            updateData('followUpSystem', {
+                              ...data.followUpSystem,
+                              month2: checked === true
+                            });
+                          }}
+                        />
+                        <Label htmlFor="month2-followup" className="cursor-pointer text-sm">
+                          <strong>Month 2 Follow-Up:</strong> Success story request + next offer email written
+                        </Label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* AI Boost */}
