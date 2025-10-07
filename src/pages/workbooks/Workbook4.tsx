@@ -140,7 +140,7 @@ Generated: ${new Date().toLocaleDateString()}
             Business owners who have built systems (Workbooks 0-3) and are ready to scale intelligently using data. If guesswork is costing you money, this workbook transforms data into decisions.
           </p>
 
-          <h3 className="text-xl font-bold mb-3">Prerequisites ✅</h3>
+          <h3 className="text-xl font-bold mb-3">Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Completed Workbooks 0-3 (Foundation through Customer Journey)</li>
             <li>• Active business with trackable metrics</li>
@@ -161,14 +161,14 @@ Generated: ${new Date().toLocaleDateString()}
           </div>
 
           <div className="border-t pt-6 mb-6">
-            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
+            <h3 className="text-xl font-bold mb-3">Bridge to Success</h3>
             <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
             <ul className="space-y-2 text-sm">
-              <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
-              <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built</li>
-              <li>✅ <strong>WORKBOOK 2:</strong> Strategic marketing system</li>
-              <li>✅ <strong>WORKBOOK 3:</strong> Automated customer experience</li>
-              <li className="text-accent">✅ <strong>WORKBOOK 4:</strong> Data-driven scaling (you're here!)</li>
+              <li><strong>WORKBOOK 0:</strong> Market opportunity validated</li>
+              <li><strong>WORKBOOK 1:</strong> Brand foundation built</li>
+              <li><strong>WORKBOOK 2:</strong> Strategic marketing system</li>
+              <li><strong>WORKBOOK 3:</strong> Automated customer experience</li>
+              <li className="text-accent"><strong>WORKBOOK 4:</strong> Data-driven scaling (you're here!)</li>
             </ul>
           </div>
 
@@ -202,7 +202,7 @@ Generated: ${new Date().toLocaleDateString()}
           <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
-                💡 Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
+                Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
               </p>
             </div>
 
@@ -609,16 +609,16 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
 
         {/* Complete Master Blueprint - After Section 4 */}
         <BlueprintSection
-          title="🏆 Your Complete Master Blueprint"
+          title="Your Complete Master Blueprint"
           description="Your full strategic foundation from market validation to systematic scaling (Workbooks 0-4)"
           sections={[
             {
               title: "FOUNDATION (Workbooks 0-3)",
               items: [
-                "✓ Market Opportunity & White Space validated",
-                "✓ Brand Foundation with mission, values, and identity",
-                "✓ Marketing Strategy with 4P mix and campaigns",
-                "✓ Customer Journey Systems automated and documented"
+                "Market Opportunity & White Space validated",
+                "Brand Foundation with mission, values, and identity",
+                "Marketing Strategy with 4P mix and campaigns",
+                "Customer Journey Systems automated and documented"
               ]
             },
             {
@@ -671,37 +671,29 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
               <div className="grid md:grid-cols-2 gap-4">
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Market opportunity validated</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Brand foundation built</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Marketing strategy documented</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Customer systems automated</span>
                   </li>
                 </ul>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Performance dashboard created</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Testing framework established</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Growth sprint planned</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent mt-1">✓</span>
                     <span>Team strategy defined</span>
                   </li>
                 </ul>
