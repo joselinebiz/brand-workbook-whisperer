@@ -65,9 +65,6 @@ const Index = () => {
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              BLKBLD
-            </h1>
             <p className="text-2xl md:text-3xl font-semibold mb-4">
               BRAND & MARKETING MASTER BLUEPRINT
             </p>
