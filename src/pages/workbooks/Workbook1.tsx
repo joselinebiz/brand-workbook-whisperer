@@ -1030,32 +1030,46 @@ IDENTIFY:
                       { stage: "Purchase/Hire", touchpoint: "Transaction", feeling: "Certain", action: "Easy process", metric: "Conversion" },
                       { stage: "Delivery", touchpoint: "Experience", feeling: "Delighted", action: "Exceed promise", metric: "Satisfaction" },
                       { stage: "Post-Purchase", touchpoint: "Follow-up", feeling: "Valued", action: "Stay connected", metric: "Referrals" }
-                    ].map((item, idx) => (
-                      <Card key={idx} className="p-4 bg-muted/30">
-                        <div className="grid md:grid-cols-5 gap-3 items-center">
-                          <div>
-                            <p className="text-xs text-muted-foreground">Stage</p>
-                            <p className="text-sm font-semibold">{item.stage}</p>
+                    ].map((item, idx) => {
+                      const currentStage = data.journeyStages?.[idx] || { stage: item.stage, action: "", metric: item.metric };
+                      
+                      return (
+                        <Card key={idx} className="p-4 bg-muted/30">
+                          <div className="grid md:grid-cols-5 gap-3 items-center">
+                            <div>
+                              <p className="text-xs text-muted-foreground">Stage</p>
+                              <p className="text-sm font-semibold">{item.stage}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground">Touchpoint</p>
+                              <p className="text-sm">{item.touchpoint}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground">Desired Feeling</p>
+                              <p className="text-sm">{item.feeling}</p>
+                            </div>
+                            <div>
+                              <Label htmlFor={`action-${idx}`} className="text-xs">Your Action</Label>
+                              <Input 
+                                id={`action-${idx}`} 
+                                className="mt-1" 
+                                placeholder={`${item.action} _____`}
+                                value={currentStage.action || ""}
+                                onChange={(e) => {
+                                  const newStages = [...(data.journeyStages || [])];
+                                  newStages[idx] = { stage: item.stage, action: e.target.value, metric: item.metric };
+                                  updateData('journeyStages', newStages);
+                                }}
+                              />
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground">Metric</p>
+                              <p className="text-sm">{item.metric}</p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Touchpoint</p>
-                            <p className="text-sm">{item.touchpoint}</p>
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Desired Feeling</p>
-                            <p className="text-sm">{item.feeling}</p>
-                          </div>
-                          <div>
-                            <Label htmlFor={`action-${idx}`} className="text-xs">Your Action</Label>
-                            <Input id={`action-${idx}`} className="mt-1" placeholder={`${item.action} _____`} />
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Metric</p>
-                            <p className="text-sm">{item.metric}</p>
-                          </div>
-                        </div>
-                      </Card>
-                    ))}
+                        </Card>
+                      );
+                    })}
                   </div>
                 </div>
 
