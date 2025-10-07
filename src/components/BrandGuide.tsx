@@ -13,6 +13,7 @@ interface BrandGuideProps {
     tertiaryColor?: string;
     primaryFont?: string;
     secondaryFont?: string;
+    accentFont?: string;
     photographyStyle?: string;
     brandVoiceAre?: string;
     brandVoiceNot?: string;
@@ -186,7 +187,7 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Fonts</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                   <p className="text-sm">
-                    {data.primaryFont || "_____"}, {data.secondaryFont || "_____"}
+                    {data.primaryFont || "_____"}, {data.secondaryFont || "_____"}, {data.accentFont || "_____"}
                   </p>
                 </div>
               </div>

@@ -146,29 +146,6 @@ export default function Workbook1() {
             </ul>
           </div>
 
-          <div className="border-t pt-6">
-            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
-            <p className="text-muted-foreground mb-3">
-              This isn't theory from a textbook. This framework is built on:
-            </p>
-            <ul className="space-y-2 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-1">•</span>
-                <span><strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-1">•</span>
-                <span><strong>Industry Battle-Tested:</strong> Refined through years of building and scaling multiple businesses</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-1">•</span>
-                <span><strong>Results-Driven:</strong> Every exercise connects directly to revenue, customers, and sustainable growth</span>
-              </li>
-            </ul>
-            <p className="text-sm text-muted-foreground mt-3 italic">
-              You're not just learning concepts—you're implementing the same systems that generate six-figure consulting engagements, now available in a structured, self-paced format.
-            </p>
-          </div>
         </Card>
 
 
@@ -272,16 +249,6 @@ export default function Workbook1() {
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded mb-4">
-                  <p className="text-sm font-medium mb-3">Exercise (10 min): Purpose Draft</p>
-                  <ul className="space-y-1 text-sm">
-                    <li>1. Write the problem you MOST want to solve</li>
-                    <li>2. Why does it matter to YOU personally?</li>
-                    <li>3. Draft mission using template</li>
-                    <li>4. Read aloud - does it energize you?</li>
-                  </ul>
-                </div>
-
                 <div className="p-4 bg-accent/10 border border-accent/20 rounded mb-4">
                   <p className="text-sm font-medium mb-2">💡 Quick Win:</p>
                   <p className="text-sm">Can't find your purpose? Ask 5 customers/colleagues why they chose you.</p>
@@ -291,22 +258,6 @@ export default function Workbook1() {
                   <p className="text-sm font-medium mb-2">⚠️ Red Flag:</p>
                   <p className="text-sm">Generic mission statements don't inspire. Make it personal and specific to YOUR brand and YOUR story.</p>
                 </div>
-
-                <AIPromptCard
-                  title="🤖 AI Boost - Purpose Builder"
-                  context="Use this to craft your complete purpose"
-                  prompt={`You are a brand strategist. Help me craft my purpose:
-
-My Business/Product/Service/expertise: [what you do] | Personal story: [why you started] | Target audience: [who] | Brand type: [Brick-and-Mortar/Product/Service/Personal]
-
-• MISSION: [We/I exist to... format] 
-• VALUES: [3 core values] + [How each shows up for customers/colleagues]  
-• PROMISE: [What you guarantee]
-• DIFFERENTIATION: [What competitors/colleagues miss that you deliver]
-
-OUTPUT:
-Well articulated mission, values, promise and differentiation that ensures I own the white space in my industry.`}
-                />
               </div>
 
               {/* 1.2 Brand Values & Promise */}
@@ -350,7 +301,7 @@ Well articulated mission, values, promise and differentiation that ensures I own
                 <div>
                   <Label htmlFor="promise" className="text-base mb-2 block">Your Brand Promise</Label>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Brick-and-Mortar/Service: "Every time you work with [brand], you can count on _____"<br/>
+                    Brick-and-Mortar/Service/Product: "Every time you work with [brand], you can count on _____"<br/>
                     Personal Brand: "Every time someone works with me, they can count on _____"
                   </p>
                   <Textarea
@@ -394,19 +345,6 @@ Well articulated mission, values, promise and differentiation that ensures I own
                   <p className="text-sm">Choosing values and a brand promise you think people want vs. what you actually embody and can deliver leads to inconsistency and broken trust. Ask yourself, can you deliver on the worst day?</p>
                 </div>
 
-                <AIPromptCard
-                  title="🤖 AI Boost - Values Activator"
-                  context="Use this to validate your values"
-                  prompt={`You are a brand consultant. Validate my brand values:
-
-My values: [list 3-5] | My target customer/audience: [description] | My competitors/peers focus on: [what] | Brand type: [Brick-and-Mortar/Service/Personal]
-
-DELIVER:
-• VALUE CHECK: [Do these match your actions?] + [Customer/colleague evidence needed]
-• DIFFERENTIATION: [Which value competitors/peers ignore] + [How to own it]
-• PROMISE TEST: [Can you deliver this daily?] + [What to strengthen]
-• ACTIVATION: [3 ways each value shows up] + [Policies/behaviors that prove it]`}
-                />
               </div>
 
               {/* 1.3 Brand Pillars */}
@@ -593,37 +531,46 @@ DELIVER:
 
                       <div>
                         <Label htmlFor="heading-font">Heading Font</Label>
-                        <Input id="heading-font" placeholder="e.g., Montserrat" />
+                        <Input 
+                          id="heading-font" 
+                          placeholder="e.g., Montserrat"
+                          value={data.primaryFont}
+                          onChange={(e) => updateData('primaryFont', e.target.value)}
+                        />
                         <p className="text-xs text-muted-foreground mt-1">Titles and Headlines</p>
                       </div>
                       <div>
                         <Label htmlFor="body-font">Body Font</Label>
-                        <Input id="body-font" placeholder="e.g., Open Sans" />
+                        <Input 
+                          id="body-font" 
+                          placeholder="e.g., Open Sans"
+                          value={data.secondaryFont}
+                          onChange={(e) => updateData('secondaryFont', e.target.value)}
+                        />
                         <p className="text-xs text-muted-foreground mt-1">Reading/Body</p>
                       </div>
                       <div>
                         <Label htmlFor="accent-font">Accent Font</Label>
-                        <Input id="accent-font" placeholder="e.g., Playfair Display" />
+                        <Input 
+                          id="accent-font" 
+                          placeholder="e.g., Playfair Display"
+                          value={data.accentFont}
+                          onChange={(e) => updateData('accentFont', e.target.value)}
+                        />
                         <p className="text-xs text-muted-foreground mt-1">CTAs or Quotes</p>
                       </div>
                       <div>
                         <Label htmlFor="photo-style">Photography Style</Label>
-                        <Input id="photo-style" placeholder="e.g., bright, natural, bold" />
+                        <Input 
+                          id="photo-style" 
+                          placeholder="e.g., bright, natural, bold"
+                          value={data.photographyStyle}
+                          onChange={(e) => updateData('photographyStyle', e.target.value)}
+                        />
                         <p className="text-xs text-muted-foreground mt-1">Reflects brand personality</p>
                       </div>
                     </div>
                   </Card>
-                </div>
-
-                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded mb-4">
-                  <p className="text-sm font-medium mb-3">Exercise (15 min): Visual Foundation</p>
-                  <ul className="space-y-1 text-sm">
-                    <li>1. Pick 3 colors that match your brand personality</li>
-                    <li>2. Choose 3 fonts (heading + body + accent)</li>
-                    <li>3. Select a photography style (bright, natural, bold, etc.)</li>
-                    <li>4. Create one social template</li>
-                    <li>5. Use everywhere for 30 days</li>
-                  </ul>
                 </div>
 
                 <div className="p-4 bg-accent/10 border border-accent/20 rounded">
@@ -699,20 +646,17 @@ SUGGEST:
                   <div>
                     <Label htmlFor="oneliner" className="mb-2 block">One-Liner</Label>
                     <p className="text-sm text-muted-foreground mb-3">
-                      Brick-and-Mortar/Product/Service: "We help [who] achieve [what] through [how] so they can [benefit]."<br/>
+                      Brick-and-Mortar/Service/Product: "We help [who] achieve [what] through [how] so they can [benefit]."<br/>
                       Personal Brand: "I help [who] achieve [what] through [how] so they can [benefit]."
                     </p>
                     <Textarea
                       id="oneliner"
                       rows={2}
                       placeholder="e.g., We help busy families start their day right with 5-minute chef-quality breakfasts."
+                      value={data.oneLiner}
+                      onChange={(e) => updateData('oneLiner', e.target.value)}
                     />
                   </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded">
-                  <p className="text-sm font-medium mb-3">Exercise (10 min): Voice Test</p>
-                  <p className="text-sm">Write 3 social posts. Do they sound like the same person?</p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t">
@@ -798,7 +742,7 @@ SUGGEST:
                   context="Use this to craft your compelling brand story"
                   prompt={`You are a StoryBrand-certified copywriter. Create my brand story:
 
-My background: [experience] | Problem I solve: [what] | Solution: [how] | Customer/client transformation: [result] | Brand type: [Brick-and-Mortar/Service/Personal]
+My background: [experience] | Problem I solve: [what] | Solution: [how] | Customer/client transformation: [result] | Brand type: [Brick-and-Mortar/Service/Product/Personal]
 
 CREATE:
 • BRAND STORY: [250 words using StoryBrand framework]
@@ -896,7 +840,7 @@ CREATE:
                 <div className="mb-6">
                   <Label htmlFor="positioning" className="text-base mb-2 block">Your Positioning Statement</Label>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Brick-and-Mortar/Service: "For [target] who [need], [brand] is the [category] that [unique benefit] because [proof]."<br/>
+                    Brick-and-Mortar/Service/Product: "For [target] who [need], [brand] is the [category] that [unique benefit] because [proof]."<br/>
                     Personal Brand: "For [target] who [need], I'm the [role/expert] that [unique benefit] because [proof]."
                   </p>
                   <Textarea
@@ -959,7 +903,7 @@ CREATE:
                   context="Use this to identify your unique market position"
                   prompt={`You are a positioning strategist. Find my unique market position:
 
-My target: [who] | Competitors/peers: [list 3 with their positioning] | My strengths: [what you do best] | Brand type: [Brick-and-Mortar/Service/Personal]
+My target: [who] | Competitors/peers: [list 3 with their positioning] | My strengths: [what you do best] | Brand type: [Brick-and-Mortar/Service/Product/Personal]
 
 IDENTIFY:
 • WHITE SPACE: [Position no one owns] + [Why it's available]
@@ -1175,19 +1119,26 @@ IDENTIFY:
                 </ul>
               </div>
 
-              <AIPromptCard
-                title="🤖 AI Boost - Brand Validator"
-                context="Use this for a final audit of your brand foundation"
-                prompt={`You are a brand consultant. Audit my complete brand foundation:
+              <div className="mb-6">
+                <AIPromptCard
+                  title="🤖 AI Boost - Brand Validator"
+                  context="Use this for a final audit of your brand foundation"
+                  prompt={`You are a brand consultant. Audit my complete brand foundation:
 
-Foundation: [Mission, values, promise] | Visual: [Colors, fonts] | Voice: [3 traits] | Positioning: [statement] | Brand type: [Brick-and-Mortar/Service/Personal]
+Foundation: [Mission, values, promise] | Visual: [Colors, fonts] | Voice: [3 traits] | Positioning: [statement] | Brand type: [Brick-and-Mortar/Service/Product/Personal]
 
 DELIVER:
 • CLARITY SCORE: [1-10] + [Biggest confusion to fix]
 • MARKET FIT: [Strong/Weak] + [One positioning adjustment]
 • CONSISTENCY CHECK: [Where brand breaks down] + [Quick fix]
 • READY FOR MARKETING: [Yes/No] + [What to strengthen first]`}
-              />
+                />
+                <div className="mt-4 p-4 bg-accent/10 border border-accent/20 rounded">
+                  <p className="text-sm">
+                    <strong>Download the PDF</strong>, add it to your chat, and ask your AI assistant the following questions to validate your brand foundation.
+                  </p>
+                </div>
+              </div>
             </CollapsibleContent>
           </Card>
         </Collapsible>
@@ -1210,30 +1161,6 @@ DELIVER:
                 <p className="font-semibold mb-2">"{item.problem}"</p>
                 <p className="text-sm text-muted-foreground">→ {item.solution}</p>
               </Card>
-            ))}
-          </div>
-        </Card>
-
-        {/* Quick Wins */}
-        <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
-          <h2 className="text-2xl font-bold mb-6 pb-3 border-b">
-            Quick Wins (Next Hour)
-          </h2>
-          
-          <div className="space-y-3">
-            {[
-              { num: 1, task: "Write mission", time: "5 min" },
-              { num: 2, task: "Pick 3 colors", time: "5 min" },
-              { num: 3, task: "Update all bios", time: "10 min" },
-              { num: 4, task: "Create email signature", time: "5 min" },
-              { num: 5, task: "Define 3 values", time: "5 min" }
-            ].map((item) => (
-              <label key={item.num} className="flex items-center gap-3 p-3 bg-background rounded hover:bg-muted/50 transition-colors cursor-pointer">
-                <input type="checkbox" className="w-5 h-5" />
-                <span className="font-semibold text-lg">{item.num}.</span>
-                <span className="flex-1">{item.task}</span>
-                <span className="text-sm text-muted-foreground">({item.time})</span>
-              </label>
             ))}
           </div>
         </Card>

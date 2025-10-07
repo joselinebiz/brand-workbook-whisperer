@@ -20,7 +20,12 @@ interface WorkbookData {
   oneLiner: string;
   primaryColor: string;
   secondaryColor: string;
+  tertiaryColor: string;
   accentColor: string;
+  primaryFont: string;
+  secondaryFont: string;
+  accentFont: string;
+  photographyStyle: string;
   headingFont: string;
   subHeadFont: string;
   bodyFont: string;
@@ -104,7 +109,12 @@ const defaultData: WorkbookData = {
   oneLiner: '',
   primaryColor: '',
   secondaryColor: '',
+  tertiaryColor: '',
   accentColor: '',
+  primaryFont: '',
+  secondaryFont: '',
+  accentFont: '',
+  photographyStyle: '',
   headingFont: '',
   subHeadFont: '',
   bodyFont: '',
