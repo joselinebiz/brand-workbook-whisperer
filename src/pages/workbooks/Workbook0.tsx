@@ -257,8 +257,8 @@ export default function Workbook0() {
                 </div>
               </div>
 
-              <div className="bg-accent/10 border border-accent/20 p-3 rounded">
-                <p className="text-sm font-medium">💡 Stuck? Stop. Call 5 potential customers today.</p>
+              <div className="bg-gold/10 border border-gold/30 p-3 rounded">
+                <p className="text-sm font-medium text-gold">💡 Stuck? Stop. Call 5 potential customers today.</p>
               </div>
 
               <AIPromptCard
