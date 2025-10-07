@@ -140,7 +140,7 @@ Generated: ${new Date().toLocaleDateString()}
             Business owners who have built systems (Workbooks 0-3) and are ready to scale intelligently using data. If guesswork is costing you money, this workbook transforms data into decisions.
           </p>
 
-          <h3 className="text-xl font-bold mb-3">Prerequisites</h3>
+          <h3 className="text-xl font-bold mb-3">✅ Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Completed Workbooks 0-3 (Foundation through Customer Journey)</li>
             <li>• Active business with trackable metrics</li>
@@ -161,7 +161,7 @@ Generated: ${new Date().toLocaleDateString()}
           </div>
 
           <div className="border-t pt-6 mb-6">
-            <h3 className="text-xl font-bold mb-3">Bridge to Success</h3>
+            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
             <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
             <ul className="space-y-2 text-sm">
               <li><strong>WORKBOOK 0:</strong> Market opportunity validated</li>
@@ -202,7 +202,7 @@ Generated: ${new Date().toLocaleDateString()}
           <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
-                Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
+                💡 Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
               </p>
             </div>
 

@@ -68,7 +68,7 @@ export default function Workbook3() {
             Business owners getting leads from marketing, service providers ready to systematize client experience, and professionals building relationships for career advancement. Whether you're managing customers, clients, or professional connections, this automates your follow-up and builds long-term loyalty.
           </p>
 
-          <h3 className="text-xl font-semibold mb-3">Prerequisites</h3>
+          <h3 className="text-xl font-semibold mb-3">✅ Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">•</span>
@@ -288,13 +288,13 @@ export default function Workbook3() {
               <div className="space-y-6 mt-6">
                 <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>Why This Matters:</strong> Your brand isn't just your marketing—it's every interaction. Mapping ensures each touchpoint reinforces your brand promise and moves people toward loyalty.
+                    💡 <strong>Why This Matters:</strong> Your brand isn't just your marketing—it's every interaction. Mapping ensures each touchpoint reinforces your brand promise and moves people toward loyalty.
                   </p>
                 </div>
 
                 <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>New to This?</strong> A customer journey is all the steps someone takes from first hearing about you to becoming a loyal advocate. Think of it like a relationship progression.
+                    💡 <strong>New to This?</strong> A customer journey is all the steps someone takes from first hearing about you to becoming a loyal advocate. Think of it like a relationship progression.
                   </p>
                 </div>
 
@@ -341,7 +341,7 @@ export default function Workbook3() {
 
                 <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>Quick Win:</strong> In your content calendar from Workbook 2, you specifically requested that AI indicate which stage of the customer journey each piece of content targets. That was intentional and crucial because the goal is to deliver the right content to your audience at the right time.
+                    💡 <strong>Quick Win:</strong> In your content calendar from Workbook 2, you specifically requested that AI indicate which stage of the customer journey each piece of content targets. That was intentional and crucial because the goal is to deliver the right content to your audience at the right time.
                   </p>
                 </div>
 
@@ -394,7 +394,7 @@ export default function Workbook3() {
                       <CollapsibleTrigger className="w-full">
                         <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
                           <h4 className="font-semibold flex items-center gap-2">
-                            Brick-and-Mortar Brand - FreshStart Café Journey
+                            🏪 Brick-and-Mortar Brand - FreshStart Café Journey
                           </h4>
                           <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
                         </div>
@@ -415,7 +415,7 @@ export default function Workbook3() {
                       <CollapsibleTrigger className="w-full">
                         <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
                           <h4 className="font-semibold flex items-center gap-2">
-                            Service Brand - Business Coach Journey
+                            🎯 Service Brand - Business Coach Journey
                           </h4>
                           <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
                         </div>
@@ -509,13 +509,13 @@ Make them feel personal, not automated.`}
               <div className="space-y-6 mt-6">
                 <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>Why This Matters:</strong> Systems create consistency. Automation saves 10+ hours weekly. Together, they ensure quality at scale.
+                    💡 <strong>Why This Matters:</strong> Systems create consistency. Automation saves 10+ hours weekly. Together, they ensure quality at scale.
                   </p>
                 </div>
 
                 <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>New to This?</strong><br />
+                    💡 <strong>New to This?</strong><br />
                     Automation = Software doing tasks for you automatically<br />
                     SOP = Standard Operating Procedure = Step-by-step instructions so tasks get done the same way every time
                   </p>
@@ -719,12 +719,12 @@ Make them feel personal, not automated.`}
                   
                   <Collapsible>
                     <Card className="p-6 mb-4 bg-muted/20">
-                      <CollapsibleTrigger className="w-full">
-                        <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                          <h4 className="font-semibold">FreshStart Café Automation</h4>
-                          <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                        </div>
-                      </CollapsibleTrigger>
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold">🏪 FreshStart Café Automation</h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
                       <CollapsibleContent>
                         <div className="mt-4 space-y-2 text-sm">
                           <p><strong>Email:</strong> Welcome sequence with menu highlights and pickup instructions</p>
@@ -737,12 +737,12 @@ Make them feel personal, not automated.`}
 
                   <Collapsible>
                     <Card className="p-6 mb-4 bg-muted/20">
-                      <CollapsibleTrigger className="w-full">
-                        <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                          <h4 className="font-semibold">Business Coach Automation</h4>
-                          <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                        </div>
-                      </CollapsibleTrigger>
+                        <CollapsibleTrigger className="w-full">
+                          <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
+                            <h4 className="font-semibold">🎯 Business Coach Automation</h4>
+                            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                          </div>
+                        </CollapsibleTrigger>
                       <CollapsibleContent>
                         <div className="mt-4 space-y-2 text-sm">
                           <p><strong>Email:</strong> 5-part nurture sequence delivering free mini-training</p>
@@ -837,13 +837,13 @@ Recommend:
                 
                 <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>Why Track Success:</strong> Happy customers buy more and refer others. Systematic tracking ensures you know who's thriving and who needs attention before they become problems.
+                    💡 <strong>Why Track Success:</strong> Happy customers buy more and refer others. Systematic tracking ensures you know who's thriving and who needs attention before they become problems.
                   </p>
                 </div>
 
                 <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded">
                   <p className="text-sm font-medium">
-                    <strong>New to This?</strong> Customer success tracking is like taking the pulse of your relationships. You check in regularly to make sure people are getting value and staying happy.
+                    💡 <strong>New to This?</strong> Customer success tracking is like taking the pulse of your relationships. You check in regularly to make sure people are getting value and staying happy.
                   </p>
                 </div>
 
@@ -944,13 +944,13 @@ Recommend:
                   
                   <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-4">
                     <p className="text-sm font-medium">
-                      <strong>Why Loyalty Systems Work:</strong> It costs 5x more to acquire a new customer than retain existing ones. Referrals convert 4x higher than cold leads and have higher lifetime value.
+                      💡 <strong>Why Loyalty Systems Work:</strong> It costs 5x more to acquire a new customer than retain existing ones. Referrals convert 4x higher than cold leads and have higher lifetime value.
                     </p>
                   </div>
 
                   <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
                     <p className="text-sm font-medium">
-                      <strong>New to This?</strong> A loyalty system rewards customers for sticking with you and referring others. Think of it like a frequent flyer program - the more they engage, the better the perks.
+                      💡 <strong>New to This?</strong> A loyalty system rewards customers for sticking with you and referring others. Think of it like a frequent flyer program - the more they engage, the better the perks.
                     </p>
                   </div>
 
@@ -1012,10 +1012,10 @@ Recommend:
                       </ul>
                       <p><strong>Referral Timing (When to Ask):</strong></p>
                       <ul className="ml-6 space-y-1">
-                        <li>After positive feedback/testimonial</li>
-                        <li>When they achieve a key result</li>
-                        <li>During regular check-ins (2-month mark)</li>
-                        <li>NOT during onboarding or problem resolution</li>
+                        <li>✅ After positive feedback/testimonial</li>
+                        <li>✅ When they achieve a key result</li>
+                        <li>✅ During regular check-ins (2-month mark)</li>
+                        <li>❌ During onboarding or problem resolution</li>
                       </ul>
                     </div>
                   </Card>
@@ -1028,7 +1028,7 @@ Recommend:
                       <Card className="p-6 mb-4 bg-muted/20">
                         <CollapsibleTrigger className="w-full">
                           <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                            <h5 className="font-semibold">FreshStart Café Loyalty</h5>
+                            <h5 className="font-semibold">🏪 FreshStart Café Loyalty</h5>
                             <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
                           </div>
                         </CollapsibleTrigger>
@@ -1050,7 +1050,7 @@ Recommend:
                       <Card className="p-6 mb-4 bg-muted/20">
                         <CollapsibleTrigger className="w-full">
                           <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                            <h5 className="font-semibold">Business Coach Loyalty</h5>
+                            <h5 className="font-semibold">🎯 Business Coach Loyalty</h5>
                             <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
                           </div>
                         </CollapsibleTrigger>
@@ -1309,24 +1309,24 @@ DESIGN:
 
         {/* Bridge to Workbook 4 */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10">
-          <h2 className="text-2xl font-bold mb-4">Bridge to Workbook 4</h2>
+          <h2 className="text-2xl font-bold mb-4">🔗 Bridge to Workbook 4</h2>
           <p className="mb-4">Your customer systems are automated and working! Now scale what's successful.</p>
-          <p className="font-semibold mb-2">You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
+          <p className="font-semibold mb-2">✅ You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
           <ul className="space-y-2 mb-4">
             <li className="flex items-center gap-2">
-              <span>Customer journey mapped and automated</span>
+              <span>✅ Customer journey mapped and automated</span>
             </li>
             <li className="flex items-center gap-2">
-              <span>Consistent follow-up system running</span>
+              <span>✅ Consistent follow-up system running</span>
             </li>
             <li className="flex items-center gap-2">
-              <span>Customer satisfaction scores tracked</span>
+              <span>✅ Customer satisfaction scores tracked</span>
             </li>
             <li className="flex items-center gap-2">
-              <span>Some loyal customers referring others</span>
+              <span>✅ Some loyal customers referring others</span>
             </li>
             <li className="flex items-center gap-2">
-              <span>Ready to optimize and expand successful systems</span>
+              <span>✅ Ready to optimize and expand successful systems</span>
             </li>
           </ul>
           <p className="text-sm text-muted-foreground">
@@ -1360,19 +1360,19 @@ DESIGN:
                   <p className="font-semibold mb-2">What You've Accomplished:</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">✓</span>
+                      <span className="text-accent mt-1">✅</span>
                       <span><strong>Consistency:</strong> Every customer gets the same high-quality experience</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">✓</span>
+                      <span className="text-accent mt-1">✅</span>
                       <span><strong>Automation:</strong> Systems work while you focus on high-value activities</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">✓</span>
+                      <span className="text-accent mt-1">✅</span>
                       <span><strong>Retention:</strong> Customers stay longer and buy more</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">✓</span>
+                      <span className="text-accent mt-1">✅</span>
                       <span><strong>Growth:</strong> Satisfied customers bring referrals systematically</span>
                     </li>
                   </ul>

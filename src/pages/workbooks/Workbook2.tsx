@@ -58,7 +58,7 @@ export default function Workbook2() {
             Businesses ready to move from random marketing to strategic execution. If you've completed Workbook 1, you have your brand foundation—now we build the revenue-generating engine.
           </p>
 
-          <h3 className="text-xl font-bold mb-3">Prerequisites</h3>
+          <h3 className="text-xl font-bold mb-3">✅ Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• Completed Workbook 1 (Brand Strategy Foundation)</li>
             <li>• 5-10 hours of focused time</li>
@@ -79,7 +79,7 @@ export default function Workbook2() {
           </div>
 
           <div className="border-t pt-6 mb-6">
-            <h3 className="text-xl font-bold mb-3">Bridge to Success</h3>
+            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
             <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
             <ul className="space-y-2 text-sm">
               <li><strong>WORKBOOK 0:</strong> Market opportunity validated</li>
@@ -120,7 +120,7 @@ export default function Workbook2() {
           <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
               <p className="text-sm font-medium">
-                A Business Model Canvas maps how your business creates, delivers, and captures value. Think of it as a one-page business plan.
+                💡 A Business Model Canvas maps how your business creates, delivers, and captures value. Think of it as a one-page business plan.
               </p>
             </div>
 
@@ -596,19 +596,19 @@ Format as a week-by-week breakdown I can copy-paste.`}
               <p className="font-semibold mb-2">What You've Accomplished:</p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
+                  <span className="text-accent mt-1">✅</span>
                   <span>Mapped your business model and validated alignment</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
+                  <span className="text-accent mt-1">✅</span>
                   <span>Completed 5C market analysis for strategic positioning</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
+                  <span className="text-accent mt-1">✅</span>
                   <span>Developed your 4P marketing mix (Product, Price, Place, Promotion)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">✓</span>
+                  <span className="text-accent mt-1">✅</span>
                   <span>Created a 90-day campaign plan ready to execute</span>
                 </li>
               </ul>
