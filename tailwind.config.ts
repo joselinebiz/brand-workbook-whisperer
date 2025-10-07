@@ -18,7 +18,7 @@ export default {
         'houston-serif': ['Houston Serif', 'serif'],
         'houston-script': ['Houston Script', 'cursive'],
         'houston-script-light': ['Houston Script Light', 'cursive'],
-        'sans': ['system-ui', '-apple-system', 'sans-serif'],
+        'sans': ['Montserrat', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
