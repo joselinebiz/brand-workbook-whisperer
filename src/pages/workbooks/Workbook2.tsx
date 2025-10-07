@@ -53,35 +53,51 @@ export default function Workbook2() {
 
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
-          <h2 className="text-2xl font-bold mb-4">What You'll Walk Away With</h2>
+          <h2 className="text-2xl font-bold mb-4">Who This Is For</h2>
+          <p className="text-muted-foreground mb-6 leading-relaxed">
+            Businesses ready to move from random marketing to strategic execution. If you've completed Workbook 1, you have your brand foundation—now we build the revenue-generating engine.
+          </p>
+
+          <h3 className="text-xl font-bold mb-3">Prerequisites ✅</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Complete market analysis and positioning</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Proprietary 4P marketing mix strategy</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>90-day content calendar—copy-paste ready</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Marketing ROI tracking framework</span>
-            </li>
+            <li>• Completed Workbook 1 (Brand Strategy Foundation)</li>
+            <li>• 5-10 hours of focused time</li>
+            <li>• Access to competitive research tools (Google, social platforms)</li>
           </ul>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 bg-background rounded-lg border">
-              <p className="text-sm font-medium mb-1">Prerequisites</p>
-              <p className="text-xs text-muted-foreground">Completed Workbook 1</p>
-            </div>
-            <div className="p-4 bg-background rounded-lg border">
-              <p className="text-sm font-medium mb-1">Time Required</p>
-              <p className="text-xs text-muted-foreground">5-10 hours</p>
-            </div>
+          <h3 className="text-xl font-bold mb-3">What You'll Walk Away With</h3>
+          <ul className="space-y-2 text-muted-foreground mb-6">
+            <li>• Complete market analysis and positioning</li>
+            <li>• Proprietary 4P marketing mix strategy</li>
+            <li>• 90-day content calendar—copy-paste ready</li>
+            <li>• Marketing ROI tracking framework</li>
+          </ul>
+
+          <div className="bg-background/50 p-4 rounded mb-6">
+            <p className="font-semibold mb-1">Success Metric:</p>
+            <p className="text-sm">Complete 90-day marketing plan with measurable goals for each channel</p>
+          </div>
+
+          <div className="border-t pt-6 mb-6">
+            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
+            <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
+            <ul className="space-y-2 text-sm">
+              <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
+              <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built</li>
+              <li className="text-accent">✅ <strong>WORKBOOK 2:</strong> Strategic marketing system (you're here!)</li>
+              <li>→ <strong>WORKBOOK 3:</strong> Automated customer experience</li>
+              <li>→ <strong>WORKBOOK 4:</strong> Data-driven optimization and scaling</li>
+            </ul>
+          </div>
+
+          <div className="border-t pt-6">
+            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
+            <p className="text-muted-foreground mb-4">This isn't theory from a textbook. This framework is built on:</p>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education</li>
+              <li>• <strong>Industry Battle-Tested:</strong> Refined through years of building businesses</li>
+              <li>• <strong>Results-Driven:</strong> Every exercise connects to revenue and growth</li>
+            </ul>
           </div>
         </Card>
 
@@ -115,17 +131,32 @@ export default function Workbook2() {
                   <div>
                     <Label htmlFor="customer-segments">Customer Segments</Label>
                     <p className="text-xs text-muted-foreground mb-2">Who needs you most?</p>
-                    <Textarea id="customer-segments" rows={2} />
+                    <Textarea 
+                      id="customer-segments" 
+                      rows={2}
+                      value={data.customerSegments}
+                      onChange={(e) => updateData('customerSegments', e.target.value)}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="value-prop">Value Proposition</Label>
                     <p className="text-xs text-muted-foreground mb-2">What problem do you solve?</p>
-                    <Textarea id="value-prop" rows={2} />
+                    <Textarea 
+                      id="value-prop" 
+                      rows={2}
+                      value={data.valueProposition}
+                      onChange={(e) => updateData('valueProposition', e.target.value)}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="channels">Channels</Label>
                     <p className="text-xs text-muted-foreground mb-2">How do they find/buy from you?</p>
-                    <Textarea id="channels" rows={2} />
+                    <Textarea 
+                      id="channels" 
+                      rows={2}
+                      value={data.primaryChannel}
+                      onChange={(e) => updateData('primaryChannel', e.target.value)}
+                    />
                   </div>
                 </div>
               </Card>
@@ -141,7 +172,12 @@ export default function Workbook2() {
                   <div>
                     <Label htmlFor="key-activities">Key Activities</Label>
                     <p className="text-xs text-muted-foreground mb-2">What do you do daily?</p>
-                    <Textarea id="key-activities" rows={2} />
+                    <Textarea 
+                      id="key-activities" 
+                      rows={2}
+                      value={data.keyActivities}
+                      onChange={(e) => updateData('keyActivities', e.target.value)}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="cost-structure">Cost Structure</Label>
@@ -155,7 +191,13 @@ export default function Workbook2() {
             <div>
               <Label htmlFor="revenue-streams">Revenue Streams</Label>
               <p className="text-sm text-muted-foreground mb-2">How do you make money?</p>
-              <Textarea id="revenue-streams" rows={3} placeholder="List all ways you generate revenue" />
+              <Textarea 
+                id="revenue-streams" 
+                rows={3} 
+                placeholder="List all ways you generate revenue"
+                value={data.revenueStreams}
+                onChange={(e) => updateData('revenueStreams', e.target.value)}
+              />
             </div>
           </div>
 
@@ -199,21 +241,56 @@ Identify:
 
           <CollapsibleContent>
           <div className="space-y-6 mt-6">
-            {[
-              { id: "company", title: "Company", question: "Top 3 strengths?" },
-              { id: "category", title: "Category", question: "What's the market opportunity?" },
-              { id: "customer", title: "Customer", question: "Top 3 needs/desires?" },
-              { id: "competition", title: "Competition", question: "What gap do they all miss?" },
-              { id: "context", title: "Context/Trend", question: "What trend can you ride?" },
-            ].map((item) => (
-              <div key={item.id}>
-                <Label htmlFor={item.id} className="text-lg font-semibold">
-                  {item.title}
-                </Label>
-                <p className="text-sm text-muted-foreground mb-2">{item.question}</p>
-                <Textarea id={item.id} rows={3} />
-              </div>
-            ))}
+            <div>
+              <Label htmlFor="company" className="text-lg font-semibold">Company</Label>
+              <p className="text-sm text-muted-foreground mb-2">Top 3 strengths?</p>
+              <Textarea 
+                id="company" 
+                rows={3}
+                value={data.companyStrengths}
+                onChange={(e) => updateData('companyStrengths', e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="category" className="text-lg font-semibold">Category</Label>
+              <p className="text-sm text-muted-foreground mb-2">What's the market opportunity?</p>
+              <Textarea 
+                id="category" 
+                rows={3}
+                value={data.categoryOpportunity}
+                onChange={(e) => updateData('categoryOpportunity', e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="customer" className="text-lg font-semibold">Customer</Label>
+              <p className="text-sm text-muted-foreground mb-2">Top 3 needs/desires?</p>
+              <Textarea 
+                id="customer" 
+                rows={3}
+                value={data.customerInsights}
+                onChange={(e) => updateData('customerInsights', e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="competition" className="text-lg font-semibold">Competition</Label>
+              <p className="text-sm text-muted-foreground mb-2">What gap do they all miss?</p>
+              <Textarea 
+                id="competition" 
+                rows={3}
+                value={data.competitionGap}
+                onChange={(e) => updateData('competitionGap', e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="context" className="text-lg font-semibold">Context/Trend</Label>
+              <p className="text-sm text-muted-foreground mb-2">What trend can you ride?</p>
+              <Textarea 
+                id="context" 
+                rows={3}
+                value={data.contextTrend}
+                onChange={(e) => updateData('contextTrend', e.target.value)}
+              />
+            </div>
           </div>
 
           {/* AI Boost */}
@@ -264,12 +341,22 @@ Provide:
                 <div>
                   <Label htmlFor="free-offer">Free Offer</Label>
                   <p className="text-xs text-muted-foreground mb-2">Validate interest, build trust</p>
-                  <Input id="free-offer" placeholder="e.g., Brand Strategy Quiz" />
+                  <Input 
+                    id="free-offer" 
+                    placeholder="e.g., Brand Strategy Quiz"
+                    value={data.valueLadder.free}
+                    onChange={(e) => updateData('valueLadder', { ...data.valueLadder, free: e.target.value })}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="core-offer">Core Offer</Label>
                   <p className="text-xs text-muted-foreground mb-2">Maximum value, main revenue driver</p>
-                  <Input id="core-offer" placeholder="e.g., Complete Workbook System" />
+                  <Input 
+                    id="core-offer" 
+                    placeholder="e.g., Complete Workbook System"
+                    value={data.valueLadder.core}
+                    onChange={(e) => updateData('valueLadder', { ...data.valueLadder, core: e.target.value })}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="premium-offer">Premium Offer (Optional)</Label>
@@ -317,11 +404,21 @@ Provide:
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="primary-channel">Primary Channel</Label>
-                  <Input id="primary-channel" placeholder="e.g., Direct website sales" />
+                  <Input 
+                    id="primary-channel" 
+                    placeholder="e.g., Direct website sales"
+                    value={data.primaryChannel}
+                    onChange={(e) => updateData('primaryChannel', e.target.value)}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="secondary-channel">Secondary Channel</Label>
-                  <Input id="secondary-channel" placeholder="e.g., Partner referrals" />
+                  <Input 
+                    id="secondary-channel" 
+                    placeholder="e.g., Partner referrals"
+                    value={data.secondaryChannel}
+                    onChange={(e) => updateData('secondaryChannel', e.target.value)}
+                  />
                 </div>
               </div>
             </div>
@@ -332,11 +429,21 @@ Provide:
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="content-pillars">Content Pillars (3-4 themes)</Label>
-                  <Input id="content-pillars" placeholder="e.g., Strategy, Systems, Scaling, Stories" />
+                  <Input 
+                    id="content-pillars" 
+                    placeholder="e.g., Strategy, Systems, Scaling, Stories"
+                    value={data.contentPillars}
+                    onChange={(e) => updateData('contentPillars', e.target.value)}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="primary-platform">Primary Platform</Label>
-                  <Input id="primary-platform" placeholder="e.g., LinkedIn" />
+                  <Input 
+                    id="primary-platform" 
+                    placeholder="e.g., LinkedIn"
+                    value={data.primaryPlatform}
+                    onChange={(e) => updateData('primaryPlatform', e.target.value)}
+                  />
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div>

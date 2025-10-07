@@ -135,29 +135,51 @@ Generated: ${new Date().toLocaleDateString()}
 
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
-          <h2 className="text-2xl font-bold mb-4">What You'll Walk Away With</h2>
+          <h2 className="text-2xl font-bold mb-4">Who This Is For</h2>
+          <p className="text-muted-foreground mb-6 leading-relaxed">
+            Business owners who have built systems (Workbooks 0-3) and are ready to scale intelligently using data. If guesswork is costing you money, this workbook transforms data into decisions.
+          </p>
+
+          <h3 className="text-xl font-bold mb-3">Prerequisites ✅</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Custom performance dashboard</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>90-day growth sprint plan</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Testing framework for optimization</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-accent mt-1">•</span>
-              <span>Team building and delegation frameworks</span>
-            </li>
+            <li>• Completed Workbooks 0-3 (Foundation through Customer Journey)</li>
+            <li>• Active business with trackable metrics</li>
+            <li>• 5-10 hours of focused time</li>
           </ul>
 
-          <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
+          <h3 className="text-xl font-bold mb-3">What You'll Walk Away With</h3>
+          <ul className="space-y-2 text-muted-foreground mb-6">
+            <li>• Custom performance dashboard</li>
+            <li>• 90-day growth sprint plan</li>
+            <li>• Testing framework for optimization</li>
+            <li>• Team building and delegation frameworks</li>
+          </ul>
+
+          <div className="bg-background/50 p-4 rounded mb-6">
             <p className="font-semibold mb-1">Success Metric:</p>
             <p className="text-sm">20% improvement in key metrics within 90 days</p>
+          </div>
+
+          <div className="border-t pt-6 mb-6">
+            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
+            <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
+            <ul className="space-y-2 text-sm">
+              <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
+              <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built</li>
+              <li>✅ <strong>WORKBOOK 2:</strong> Strategic marketing system</li>
+              <li>✅ <strong>WORKBOOK 3:</strong> Automated customer experience</li>
+              <li className="text-accent">✅ <strong>WORKBOOK 4:</strong> Data-driven scaling (you're here!)</li>
+            </ul>
+          </div>
+
+          <div className="border-t pt-6">
+            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
+            <p className="text-muted-foreground mb-4">This isn't theory from a textbook. This framework is built on:</p>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education</li>
+              <li>• <strong>Industry Battle-Tested:</strong> Refined through scaling multiple businesses</li>
+              <li>• <strong>Results-Driven:</strong> Every metric connects to sustainable growth</li>
+            </ul>
           </div>
         </Card>
 
