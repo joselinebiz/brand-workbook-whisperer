@@ -177,59 +177,6 @@ export default function Workbook1() {
           </div>
         </Card>
 
-        {/* Pre-Work: Brand Health Assessment */}
-        <Collapsible>
-          <Card className="p-8 mb-8">
-            <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Pre-Work: Brand Health Assessment
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
-            </CollapsibleTrigger>
-            
-            <CollapsibleContent>
-              <p className="text-sm text-muted-foreground mb-6">Rate each area 1-3 points:</p>
-              
-              <div className="space-y-6 mb-6">
-                {/* Assessment items */}
-                {[
-                  { label: "Brand Purpose - Why you exist beyond money", options: ["Clear (3)", "Fuzzy (2)", "Just profit/paycheck (1)"] },
-                  { label: "Visual Consistency - Look the same everywhere?", options: ["Always (3)", "Sometimes (2)", "Never (1)"] },
-                  { label: "Voice Consistency - Sound the same everywhere?", options: ["Always (3)", "Sometimes (2)", "Never (1)"] },
-                  { label: "Customer Experience - Intentionally designed?", options: ["Designed (3)", "Random (2)", "Unplanned (1)"] }
-                ].map((item, idx) => (
-                  <Card key={idx} className="p-4 bg-muted/30">
-                    <p className="font-semibold mb-3">{item.label}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {item.options.map((option, optIdx) => (
-                        <label key={optIdx} className="flex items-center gap-2 p-2 hover:bg-muted/50 rounded cursor-pointer">
-                          <input type="radio" name={`assessment-${idx}`} className="w-4 h-4" />
-                          <span className="text-sm">{option}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </Card>
-                ))}
-              </div>
-
-              <div className="bg-accent/10 border border-accent/20 p-4 rounded mb-4">
-                <Label htmlFor="total-score" className="font-semibold mb-2 block">Total Score:</Label>
-                <Input id="total-score" placeholder="___/12" className="w-32" />
-              </div>
-
-              <div className="bg-background/50 p-4 rounded">
-                <p className="font-semibold mb-2">Decision Guide:</p>
-                <ul className="space-y-1 text-sm">
-                  <li>• 10-12: Jump to Section 2</li>
-                  <li>• 6-9: Start with Section 1</li>
-                  <li>• 3-5: Complete everything</li>
-                </ul>
-              </div>
-
-              <p className="text-xs text-muted-foreground mt-4 italic">📸 Screenshot this to compare later.</p>
-            </CollapsibleContent>
-          </Card>
-        </Collapsible>
 
         {/* Section 1: Brand Foundation */}
         <Collapsible>
