@@ -1148,6 +1148,12 @@ IDENTIFY:
               </div>
 
               <div className="mb-6">
+                <div className="mb-4 p-4 bg-accent/10 border border-accent/20 rounded">
+                  <p className="text-sm">
+                    <strong>Download the PDF</strong>, add it to your chat, and ask your AI assistant the following questions to validate your brand foundation.
+                  </p>
+                </div>
+                
                 <AIPromptCard
                   title="🤖 AI Boost - Brand Validator"
                   context="Use this for a final audit of your brand foundation"
@@ -1161,11 +1167,6 @@ DELIVER:
 • CONSISTENCY CHECK: [Where brand breaks down] + [Quick fix]
 • READY FOR MARKETING: [Yes/No] + [What to strengthen first]`}
                 />
-                <div className="mt-4 p-4 bg-accent/10 border border-accent/20 rounded">
-                  <p className="text-sm">
-                    <strong>Download the PDF</strong>, add it to your chat, and ask your AI assistant the following questions to validate your brand foundation.
-                  </p>
-                </div>
               </div>
             </CollapsibleContent>
           </Card>
