@@ -22,6 +22,12 @@ export default function Workbook4() {
     return () => clearTimeout(timer);
   }, [data]);
 
+  const handleManualSave = () => {
+    localStorage.setItem('workbookData', JSON.stringify(data));
+    setIsSaving(true);
+    setTimeout(() => setIsSaving(false), 2000);
+  };
+
   const handleDownloadMasterBlueprint = () => {
     const blueprintData = getBlueprintData();
     const blueprintText = `
@@ -694,6 +700,20 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
           </CollapsibleContent>
         </Card>
         </Collapsible>
+
+        {/* Manual Save Button */}
+        <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-bold text-lg mb-1">Save Your Work</h3>
+              <p className="text-sm text-muted-foreground">Your data auto-saves, but you can manually save anytime for peace of mind</p>
+            </div>
+            <Button onClick={handleManualSave} size="lg" className="gap-2">
+              <Save className="w-5 h-5" />
+              Save All Changes
+            </Button>
+          </div>
+        </Card>
 
         <div className="flex justify-start mt-8">
           <Button variant="outline" size="lg" asChild>

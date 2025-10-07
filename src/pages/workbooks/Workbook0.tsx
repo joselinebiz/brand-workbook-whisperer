@@ -15,31 +15,39 @@ export default function Workbook0() {
   const { data, updateData } = useWorkbook();
   const [isSaving, setIsSaving] = useState(false);
   
-  // Local state for fields not yet in WorkbookData
-  const [localData, setLocalData] = useState({
-    cost: '',
-    bandaid: '',
-    competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '' }),
-    pattern: '',
-    opportunities: [] as string[],
-    businessModel: {
-      who: '',
-      problem: '',
-      solution: '',
-      delivery: '',
-      discovery: '',
-      price: '',
-      costs: '',
-      activities: '',
-      partners: ''
-    },
-    pitch: '',
-    gutCheck: { excitement: '', clarity: '', uniqueness: '', total: '' },
-    coffeeTest: ['', '', ''],
-    competitorsChase: '',
-    yourWhitespace: '',
-    specificAudience: ''
+  // Local state for fields not yet in WorkbookData - load from localStorage
+  const [localData, setLocalData] = useState(() => {
+    const saved = localStorage.getItem('workbook0LocalData');
+    return saved ? JSON.parse(saved) : {
+      cost: '',
+      bandaid: '',
+      competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '' }),
+      pattern: '',
+      opportunities: [] as string[],
+      businessModel: {
+        who: '',
+        problem: '',
+        solution: '',
+        delivery: '',
+        discovery: '',
+        price: '',
+        costs: '',
+        activities: '',
+        partners: ''
+      },
+      pitch: '',
+      gutCheck: { excitement: '', clarity: '', uniqueness: '', total: '' },
+      coffeeTest: ['', '', ''],
+      competitorsChase: '',
+      yourWhitespace: '',
+      specificAudience: ''
+    };
   });
+
+  // Save localData to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('workbook0LocalData', JSON.stringify(localData));
+  }, [localData]);
 
   // Show save indicator briefly when data changes
   useEffect(() => {
@@ -47,6 +55,13 @@ export default function Workbook0() {
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
   }, [data, localData]);
+
+  const handleManualSave = () => {
+    localStorage.setItem('workbookData', JSON.stringify(data));
+    localStorage.setItem('workbook0LocalData', JSON.stringify(localData));
+    setIsSaving(true);
+    setTimeout(() => setIsSaving(false), 2000);
+  };
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
@@ -868,6 +883,20 @@ Give me a score out of 10 and suggest one improvement.`}
           </CollapsibleContent>
         </Card>
         </Collapsible>
+
+        {/* Manual Save Button */}
+        <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-bold text-lg mb-1">Save Your Work</h3>
+              <p className="text-sm text-muted-foreground">Your data auto-saves, but you can manually save anytime for peace of mind</p>
+            </div>
+            <Button onClick={handleManualSave} size="lg" className="gap-2">
+              <Save className="w-5 h-5" />
+              Save All Changes
+            </Button>
+          </div>
+        </Card>
 
         <div className="flex justify-end">
           <Button variant="hero" size="lg" asChild>
