@@ -1090,48 +1090,8 @@ IDENTIFY:
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-xl font-bold mb-4">One-Page Brand Guide</h3>
-                <p className="text-sm text-muted-foreground mb-4">Create and print this:</p>
-                
-                <Card className="p-6 bg-muted/30">
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="font-semibold mb-2">FOUNDATION</h4>
-                      <div className="space-y-2 text-sm">
-                        <p>Purpose: [mission, Vision, BHAG]</p>
-                        <p>Values: [3-5]</p>
-                        <p>Promise: [guarantee]</p>
-                        <p>Pillars: [3-5]</p>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">VISUAL</h4>
-                      <div className="space-y-2 text-sm">
-                        <p>Colors: #_____, #_____, #_____</p>
-                        <p>Fonts: _____, _____, _____</p>
-                        <p>Photography style: _____</p>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">VERBAL</h4>
-                      <div className="space-y-2 text-sm">
-                        <p>Voice: _____, _____, _____</p>
-                        <p>Tagline: "_____"</p>
-                        <p>One-liner: "_____"</p>
-                        <p>Brand story: [150 - 250 words]</p>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">POSITIONING & EXPERIENCE</h4>
-                      <div className="space-y-2 text-sm">
-                        <p>Brand Position: _____</p>
-                        <p>Journey Map: _____</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </div>
+              {/* One-Page Brand Guide */}
+              <BrandGuide data={data} />
 
               <div className="mt-8 p-4 bg-accent/10 border border-accent/20 rounded">
                 <p className="text-sm font-medium mb-2">Exercise (30 min): Quick Win Sweep</p>
@@ -1319,9 +1279,6 @@ DELIVER:
             </CollapsibleContent>
           </Card>
         </Collapsible>
-
-        {/* One-Page Brand Guide */}
-        <BrandGuide data={data} />
 
         {/* Manual Save Button */}
         <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">

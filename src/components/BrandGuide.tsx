@@ -6,11 +6,17 @@ interface BrandGuideProps {
   data: {
     mission?: string;
     vision5Year?: string;
+    bhag10Year?: string;
     tagline?: string;
     primaryColor?: string;
     secondaryColor?: string;
+    tertiaryColor?: string;
+    primaryFont?: string;
+    secondaryFont?: string;
+    photographyStyle?: string;
     brandVoiceAre?: string;
     brandVoiceNot?: string;
+    brandStory?: string;
     targetAudience?: {
       demographics: string;
       painPoints: string;
@@ -94,138 +100,184 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
         <div id="brand-guide-content">
           {/* Header */}
           <div className="text-center mb-8 pb-6 border-b-2 border-primary">
-            <h1 className="text-3xl font-bold mb-2">MY BRAND GUIDE</h1>
-            <p className="text-sm text-muted-foreground">One-page reference for consistent brand presence</p>
+            <h1 className="text-3xl font-bold mb-2">ONE-PAGE BRAND GUIDE</h1>
+            <p className="text-sm text-muted-foreground">Your quick reference for consistent brand presence</p>
           </div>
 
-          {/* Brand Foundation */}
+          {/* FOUNDATION */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Brand Foundation</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Foundation</h2>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Mission Statement</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.mission || "_____________________________________"}</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Purpose</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">
+                  <p><strong>Mission:</strong> {data.mission || "_____"}</p>
+                  <p><strong>Vision:</strong> {data.vision5Year || "_____"}</p>
+                  <p><strong>BHAG:</strong> {data.bhag10Year || "_____"}</p>
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Vision (5 Years)</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Values</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.vision5Year || "_____________________________________"}</p>
+                  <p className="text-sm">3-5 core values _____</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Who We Serve</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">
+                    {data.targetAudience?.demographics || "_____"}
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Promise</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">{data.brandPromise || "_____"}</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Pillars</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">3-5 content pillars _____</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* VISUAL */}
+          <div className="mb-6">
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Visual</h2>
+            
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Colors</p>
+                <div className="flex gap-3 items-center p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className="w-12 h-12 rounded border-2 border-border"
+                      style={{ backgroundColor: data.primaryColor || '#000000' }}
+                    />
+                    <span className="text-xs font-mono">{data.primaryColor || "#_____"}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className="w-12 h-12 rounded border-2 border-border"
+                      style={{ backgroundColor: data.secondaryColor || '#666666' }}
+                    />
+                    <span className="text-xs font-mono">{data.secondaryColor || "#_____"}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className="w-12 h-12 rounded border-2 border-border"
+                      style={{ backgroundColor: data.tertiaryColor || '#CCCCCC' }}
+                    />
+                    <span className="text-xs font-mono">{data.tertiaryColor || "#_____"}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Fonts</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">
+                    {data.primaryFont || "_____"}, {data.secondaryFont || "_____"}
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Photography Style</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">{data.photographyStyle || "_____"}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* VERBAL */}
+          <div className="mb-6">
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Verbal</h2>
+            
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Voice</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                    <p className="text-xs font-semibold mb-1">We Are:</p>
+                    <p className="text-sm">{data.brandVoiceAre || "_____"}</p>
+                  </div>
+                  <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                    <p className="text-xs font-semibold mb-1">We Are Not:</p>
+                    <p className="text-sm">{data.brandVoiceNot || "_____"}</p>
+                  </div>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Tagline</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.tagline || "_____________________________________"}</p>
+                  <p className="text-sm">"{data.tagline || "_____"}"</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">One-liner</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">"{data.oneLiner || "_____"}"</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Story</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <p className="text-sm">{data.brandStory || "[150-250 words] _____"}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Target Audience */}
+          {/* POSITIONING & EXPERIENCE */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Who We Serve</h2>
-            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-              <p className="text-sm">
-                {data.targetAudience?.demographics || data.targetAudience?.painPoints 
-                  ? `${data.targetAudience.demographics}${data.targetAudience.painPoints ? ` - ${data.targetAudience.painPoints}` : ''}`
-                  : "_____________________________________"}
-              </p>
-            </div>
-          </div>
-
-          {/* Positioning & Promise */}
-          <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Our Position & Promise</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Positioning & Experience</h2>
+            
             <div className="space-y-3">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Positioning Statement</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Position</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.positioningStatement || "_____________________________________"}</p>
+                  <p className="text-sm">{data.positioningStatement || "_____"}</p>
                 </div>
               </div>
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Promise</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.brandPromise || "_____________________________________"}</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Visual Identity */}
-          <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Visual Identity</h2>
-            <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Primary Color</p>
-                <div className="flex items-center gap-3">
-                  <div 
-                    className="w-16 h-16 rounded border-2 border-border"
-                    style={{ backgroundColor: data.primaryColor || '#000000' }}
-                  />
-                  <span className="text-sm font-mono">{data.primaryColor || "#000000"}</span>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Journey Map</p>
+                <div className="grid grid-cols-1 gap-2 text-xs">
+                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                    <span className="font-semibold">Awareness:</span>
+                    <span>Clear value _____</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                    <span className="font-semibold">Consideration:</span>
+                    <span>Social proof _____</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                    <span className="font-semibold">Purchase/Hire:</span>
+                    <span>Easy process _____</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                    <span className="font-semibold">Delivery:</span>
+                    <span>Exceed promise _____</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                    <span className="font-semibold">Post-Purchase:</span>
+                    <span>Stay connected _____</span>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Secondary Color</p>
-                <div className="flex items-center gap-3">
-                  <div 
-                    className="w-16 h-16 rounded border-2 border-border"
-                    style={{ backgroundColor: data.secondaryColor || '#666666' }}
-                  />
-                  <span className="text-sm font-mono">{data.secondaryColor || "#666666"}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Brand Voice */}
-          <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Brand Voice</h2>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">We Are</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.brandVoiceAre || "_____________________________________"}</p>
-                </div>
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">We're Not</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.brandVoiceNot || "_____________________________________"}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Customer Journey Quick Reference */}
-          <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Customer Journey Quick Reference</h2>
-            <div className="grid grid-cols-1 gap-2 text-xs">
-              <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                <span className="font-semibold">Awareness:</span>
-                <span>Clear value _____</span>
-              </div>
-              <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                <span className="font-semibold">Consideration:</span>
-                <span>Social proof _____</span>
-              </div>
-              <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                <span className="font-semibold">Purchase/Hire:</span>
-                <span>Easy process _____</span>
-              </div>
-              <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                <span className="font-semibold">Delivery:</span>
-                <span>Exceed promise _____</span>
-              </div>
-              <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                <span className="font-semibold">Post-Purchase:</span>
-                <span>Stay connected _____</span>
               </div>
             </div>
           </div>
