@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ExampleBox } from "@/components/ExampleBox";
+import { BrandGuide } from "@/components/BrandGuide";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -1318,6 +1319,9 @@ DELIVER:
             </CollapsibleContent>
           </Card>
         </Collapsible>
+
+        {/* One-Page Brand Guide */}
+        <BrandGuide data={data} />
 
         {/* Manual Save Button */}
         <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
