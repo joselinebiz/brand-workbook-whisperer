@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -10,12 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { TrendingUp, DollarSign, BarChart3, Megaphone, ChevronDown, PartyPopper, Save, MapPin, Package, ArrowLeft, ArrowRight } from "lucide-react";
+import { TrendingUp, DollarSign, BarChart3, ChevronDown, PartyPopper, Save } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 
 export default function Workbook2() {
   const { data, updateData } = useWorkbook();
-  const navigate = useNavigate();
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
@@ -1389,41 +1387,16 @@ OUTPUT:
                   <h3 className="font-bold mb-3">What You've Accomplished:</h3>
                   <ul className="text-left space-y-2 text-sm max-w-2xl mx-auto">
                     <li>✅ Business Model Canvas complete</li>
-                    <li>✅ Market intelligence defined</li>
-                    <li>✅ 4P Marketing Mix designed</li>
+                    <li>✅ Market intelligence and target audience defined</li>
+                    <li>✅ Product strategy and value ladder designed</li>
+                    <li>✅ Pricing strategy with psychology principles</li>
+                    <li>✅ Distribution channels mapped</li>
+                    <li>✅ Promotion strategy and content calendar ready</li>
                   </ul>
                 </div>
-                <p className="text-muted-foreground mb-6">
-                  Next: <strong>Workbook 3</strong> - Automated Customer Experience
+                <p className="text-muted-foreground">
+                  Next up: <strong>Workbook 3</strong> - Customer Journey & Systems
                 </p>
-
-                {/* Navigation Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-                  <Button 
-                    variant="outline" 
-                    onClick={() => navigate('/workbook/1')}
-                    className="gap-2 w-full sm:w-auto"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Back to Workbook 1
-                  </Button>
-                  
-                  <Button 
-                    onClick={handleManualSave}
-                    className="gap-2 w-full sm:w-auto bg-primary"
-                  >
-                    <Save className="w-4 h-4" />
-                    Save Progress
-                  </Button>
-
-                  <Button 
-                    onClick={() => navigate('/workbook/3')}
-                    className="gap-2 w-full sm:w-auto"
-                  >
-                    Continue to Workbook 3
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </div>
               </div>
             </CollapsibleContent>
           </Card>
