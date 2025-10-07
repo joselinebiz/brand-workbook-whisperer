@@ -90,16 +90,24 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Purpose</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">
-                  <p><strong>Mission:</strong> {data.mission || "_____"}</p>
-                  <p><strong>Vision:</strong> {data.vision5Year || "_____"}</p>
-                  <p><strong>BHAG:</strong> {data.bhag10Year || "_____"}</p>
+                  <p><strong>Mission:</strong> {data?.mission || "_____"}</p>
+                  <p><strong>Vision:</strong> {data?.vision5Year || "_____"}</p>
+                  <p><strong>BHAG:</strong> {data?.bhag10Year || "_____"}</p>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Values</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">3-5 core values _____</p>
+                  {data?.coreValues && data.coreValues.length > 0 ? (
+                    <div className="text-sm space-y-1">
+                      {data.coreValues.map((v: any, i: number) => (
+                        <p key={i}>{v.value} → {v.showsUpAs}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm">3-5 core values _____</p>
+                  )}
                 </div>
               </div>
 
@@ -107,7 +115,7 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Who We Serve</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                   <p className="text-sm">
-                    {data.targetAudience?.demographics || "_____"}
+                    {data?.targetAudience?.demographics || "_____"}
                   </p>
                 </div>
               </div>
@@ -115,14 +123,22 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Promise</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.brandPromise || "_____"}</p>
+                  <p className="text-sm">{data?.brandPromise || "_____"}</p>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Pillars</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">3-5 content pillars _____</p>
+                  {data?.brandPillars && data.brandPillars.length > 0 ? (
+                    <div className="text-sm space-y-1">
+                      {data.brandPillars.map((p: any, i: number) => (
+                        <p key={i}>{p.pillar}: {p.showsUp} | Proof: {p.proof}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm">3-5 brand pillars _____</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -139,23 +155,23 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                   <div className="flex items-center gap-2">
                     <div 
                       className="w-12 h-12 rounded border-2 border-border"
-                      style={{ backgroundColor: data.primaryColor || '#000000' }}
+                      style={{ backgroundColor: data?.primaryColor || '#000000' }}
                     />
-                    <span className="text-xs font-mono">{data.primaryColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.primaryColor || "#_____"}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div 
                       className="w-12 h-12 rounded border-2 border-border"
-                      style={{ backgroundColor: data.secondaryColor || '#666666' }}
+                      style={{ backgroundColor: data?.secondaryColor || '#666666' }}
                     />
-                    <span className="text-xs font-mono">{data.secondaryColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.secondaryColor || "#_____"}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div 
                       className="w-12 h-12 rounded border-2 border-border"
-                      style={{ backgroundColor: data.tertiaryColor || '#CCCCCC' }}
+                      style={{ backgroundColor: data?.tertiaryColor || '#CCCCCC' }}
                     />
-                    <span className="text-xs font-mono">{data.tertiaryColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.tertiaryColor || "#_____"}</span>
                   </div>
                 </div>
               </div>
@@ -164,7 +180,7 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Fonts</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                   <p className="text-sm">
-                    {data.primaryFont || "_____"}, {data.secondaryFont || "_____"}, {data.accentFont || "_____"}
+                    {data?.primaryFont || "_____"}, {data?.secondaryFont || "_____"}, {data?.accentFont || "_____"}
                   </p>
                 </div>
               </div>
@@ -172,7 +188,7 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Photography Style</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.photographyStyle || "_____"}</p>
+                  <p className="text-sm">{data?.photographyStyle || "_____"}</p>
                 </div>
               </div>
             </div>
@@ -188,11 +204,11 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                     <p className="text-xs font-semibold mb-1">We Are:</p>
-                    <p className="text-sm">{data.brandVoiceAre || "_____"}</p>
+                    <p className="text-sm">{data?.brandVoiceAre || "_____"}</p>
                   </div>
                   <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                     <p className="text-xs font-semibold mb-1">We Are Not:</p>
-                    <p className="text-sm">{data.brandVoiceNot || "_____"}</p>
+                    <p className="text-sm">{data?.brandVoiceNot || "_____"}</p>
                   </div>
                 </div>
               </div>
@@ -200,21 +216,21 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Tagline</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">"{data.tagline || "_____"}"</p>
+                  <p className="text-sm">"{data?.tagline || "_____"}"</p>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">One-liner</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">"{data.oneLiner || "_____"}"</p>
+                  <p className="text-sm">"{data?.oneLiner || "_____"}"</p>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Story</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.brandStory || "[150-250 words] _____"}</p>
+                  <p className="text-sm">{data?.brandStory || "[150-250 words] _____"}</p>
                 </div>
               </div>
             </div>
@@ -228,7 +244,7 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Position</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data.positioningStatement || "_____"}</p>
+                  <p className="text-sm">{data?.positioningStatement || "_____"}</p>
                 </div>
               </div>
 
