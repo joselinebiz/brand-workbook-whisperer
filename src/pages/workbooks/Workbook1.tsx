@@ -358,6 +358,21 @@ export default function Workbook1() {
                   <p className="text-sm">Choosing values and a brand promise you think people want vs. what you actually embody and can deliver leads to inconsistency and broken trust. Ask yourself, can you deliver on the worst day?</p>
                 </div>
 
+                <AIPromptCard
+                  title="🤖 AI BOOST - Purpose Builder"
+                  prompt={`You are a brand strategist. Help me craft my purpose:
+
+My Business/Product/Service/expertise: [what you do] | Personal story: [why you started] | Target audience: [who] | Brand type: [Brick-and-Mortar/Product/Service/Personal]
+
+• MISSION: [We/I exist to... format] 
+• VALUES: [3 core values] + [How each shows up for customers/colleagues]  
+• PROMISE: [What you guarantee]
+• DIFFERENTIATION: [What competitors/colleagues miss that you deliver]
+
+OUTPUT:
+Well articulated mission, values, promise and differentiation that ensures I own the white space in my industry.`}
+                />
+
               </div>
 
               {/* 1.3 Brand Pillars */}
