@@ -272,12 +272,22 @@ export default function Workbook1() {
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded">
+                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded mb-4">
+                  <p className="text-sm font-medium mb-3">Exercise (10 min): Purpose Draft</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>1. Write the problem you MOST want to solve</li>
+                    <li>2. Why does it matter to YOU personally?</li>
+                    <li>3. Draft mission using template</li>
+                    <li>4. Read aloud - does it energize you?</li>
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-accent/10 border border-accent/20 rounded mb-4">
                   <p className="text-sm font-medium mb-2">💡 Quick Win:</p>
                   <p className="text-sm">Can't find your purpose? Ask 5 customers/colleagues why they chose you.</p>
                 </div>
 
-                <div className="mt-4 p-4 bg-destructive/10 border border-destructive/20 rounded">
+                <div className="p-4 bg-destructive/10 border border-destructive/20 rounded">
                   <p className="text-sm font-medium mb-2">⚠️ Red Flag:</p>
                   <p className="text-sm">Generic mission statements don't inspire. Make it personal and specific to YOUR brand and YOUR story.</p>
                 </div>
@@ -289,11 +299,13 @@ export default function Workbook1() {
 
 My Business/Product/Service/expertise: [what you do] | Personal story: [why you started] | Target audience: [who] | Brand type: [Brick-and-Mortar/Product/Service/Personal]
 
+• MISSION: [We/I exist to... format] 
+• VALUES: [3 core values] + [How each shows up for customers/colleagues]  
+• PROMISE: [What you guarantee]
+• DIFFERENTIATION: [What competitors/colleagues miss that you deliver]
+
 OUTPUT:
-• MISSION: [We/I exist to... format] + [Emotional test: Does this energize you?]
-• VALUES: [3 core values] + [How each shows up for customers/colleagues]
-• PROMISE: [What you guarantee] + [Can you deliver on worst day?]
-• DIFFERENTIATION: [What competitors/colleagues miss that you deliver]`}
+Well articulated mission, values, promise and differentiation that ensures I own the white space in my industry.`}
                 />
               </div>
 
@@ -369,9 +381,17 @@ OUTPUT:
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-destructive/10 border border-destructive/20 rounded">
+                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded mb-4">
+                  <p className="text-sm font-medium mb-3">Exercise (5 min): The Promise Test</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>• Think of your favorite customer/colleague. Write three adjectives they'd use to describe you—these often reveal your authentic values</li>
+                    <li>• Can you deliver this promise on your WORST day? If no, simplify until yes.</li>
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-destructive/10 border border-destructive/20 rounded">
                   <p className="text-sm font-medium mb-2">⚠️ Red Flag:</p>
-                  <p className="text-sm">Choosing values and a brand promise you think people want vs. what you actually embody and can deliver leads to inconsistency and broken trust.</p>
+                  <p className="text-sm">Choosing values and a brand promise you think people want vs. what you actually embody and can deliver leads to inconsistency and broken trust. Ask yourself, can you deliver on the worst day?</p>
                 </div>
 
                 <AIPromptCard
@@ -441,6 +461,23 @@ DELIVER:
                       content="Scale Experience → Led 3 companies $1M to $10M → Portfolio of results | Framework-Driven → Systematic approach → Documented methodologies | Data-Focused → Measure everything → Track record of ROI improvements"
                     />
                   </div>
+                </div>
+
+                <div className="p-4 bg-accent/10 border border-accent/20 rounded mb-4">
+                  <p className="text-sm font-medium mb-3">Exercise (10 min): Pillar Discovery</p>
+                  <p className="text-sm font-semibold mb-2">For Established Businesses/Careers:</p>
+                  <ul className="space-y-1 text-sm mb-3">
+                    <li>1. List 10 recent compliments from customers/colleagues</li>
+                    <li>2. Find patterns - what's mentioned most?</li>
+                    <li>3. Can you deliver this at 3x volume? That's a pillar.</li>
+                  </ul>
+                  <p className="text-sm font-semibold mb-2">For New Businesses/Career Transitions (No Customers Yet):</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>1. List your 10 strongest capabilities/experiences</li>
+                    <li>2. Identify 3-5 things you can do better than most</li>
+                    <li>3. Match these to customer needs from your research</li>
+                    <li>4. Validate: "I can deliver this consistently because _____"</li>
+                  </ul>
                 </div>
 
                 <div className="p-4 bg-accent/10 border border-accent/20 rounded mb-4">
@@ -578,7 +615,18 @@ DELIVER:
                   </Card>
                 </div>
 
-                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded">
+                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded mb-4">
+                  <p className="text-sm font-medium mb-3">Exercise (15 min): Visual Foundation</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>1. Pick 3 colors that match your brand personality</li>
+                    <li>2. Choose 3 fonts (heading + body + accent)</li>
+                    <li>3. Select a photography style (bright, natural, bold, etc.)</li>
+                    <li>4. Create one social template</li>
+                    <li>5. Use everywhere for 30 days</li>
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-accent/10 border border-accent/20 rounded">
                   <p className="text-sm font-medium mb-2">💡 Quick Win:</p>
                   <p className="text-sm">Create a Canva brand kit/Mood board - free and saves hours.</p>
                 </div>
@@ -660,6 +708,11 @@ SUGGEST:
                       placeholder="e.g., We help busy families start their day right with 5-minute chef-quality breakfasts."
                     />
                   </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded">
+                  <p className="text-sm font-medium mb-3">Exercise (10 min): Voice Test</p>
+                  <p className="text-sm">Write 3 social posts. Do they sound like the same person?</p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t">
@@ -892,6 +945,15 @@ CREATE:
                   </div>
                 </div>
 
+                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded">
+                  <p className="text-sm font-medium mb-3">Exercise (15 min): Position Validation</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>1. Share positioning with 5 target customers/connections.</li>
+                    <li>2. Ask: "Does this describe what you need?"</li>
+                    <li>3. Refine based on feedback.</li>
+                  </ul>
+                </div>
+
                 <AIPromptCard
                   title="🤖 AI Boost - Position Finder"
                   context="Use this to identify your unique market position"
@@ -1013,6 +1075,15 @@ IDENTIFY:
                       content="Research company thoroughly → Prepare data-backed insights → Present frameworks, not tactics → Address specific challenges → Follow up with detailed plan | Quality: Strategic depth, actionable recommendations"
                     />
                   </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded">
+                  <p className="text-sm font-medium mb-3">Exercise (10 min): Peak Moment Design</p>
+                  <ul className="space-y-1 text-sm">
+                    <li>1. Identify customer's best moment with you</li>
+                    <li>2. Add one unexpected delight</li>
+                    <li>3. Test with next 5 customers</li>
+                  </ul>
                 </div>
               </div>
 
@@ -1143,6 +1214,77 @@ DELIVER:
           </div>
         </Card>
 
+        {/* Quick Wins */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
+          <h2 className="text-2xl font-bold mb-6 pb-3 border-b">
+            Quick Wins (Next Hour)
+          </h2>
+          
+          <div className="space-y-3">
+            {[
+              { num: 1, task: "Write mission", time: "5 min" },
+              { num: 2, task: "Pick 3 colors", time: "5 min" },
+              { num: 3, task: "Update all bios", time: "10 min" },
+              { num: 4, task: "Create email signature", time: "5 min" },
+              { num: 5, task: "Define 3 values", time: "5 min" }
+            ].map((item) => (
+              <label key={item.num} className="flex items-center gap-3 p-3 bg-background rounded hover:bg-muted/50 transition-colors cursor-pointer">
+                <input type="checkbox" className="w-5 h-5" />
+                <span className="font-semibold text-lg">{item.num}.</span>
+                <span className="flex-1">{item.task}</span>
+                <span className="text-sm text-muted-foreground">({item.time})</span>
+              </label>
+            ))}
+          </div>
+        </Card>
+
+        {/* Bridge to Workbook 2 */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary">
+          <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center gap-2">
+            <span>🔗</span> Bridge to Workbook 2
+          </h2>
+          
+          <p className="text-muted-foreground mb-4">
+            Your brand foundation becomes your marketing filter:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-3 mb-6">
+            {[
+              { label: "Purpose", becomes: "Content themes" },
+              { label: "Pillars", becomes: "Content categories" },
+              { label: "Voice", becomes: "Message consistency" },
+              { label: "Journey", becomes: "Campaign flow" },
+              { label: "Position", becomes: "Targeting focus" }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2 p-3 bg-background rounded">
+                <span className="font-semibold">{item.label}</span>
+                <span className="text-muted-foreground">→</span>
+                <span className="text-sm">{item.becomes}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-primary/10 border-l-4 border-primary p-4 rounded">
+            <p className="font-semibold mb-3">You're ready for Workbook 2: Marketing Strategy Execution when you have:</p>
+            <div className="space-y-2">
+              {[
+                "Clear brand foundation that energizes you",
+                "Consistent visual and verbal identity",
+                "Customer experience mapped",
+                "Brand guide documented"
+              ].map((item, idx) => (
+                <label key={idx} className="flex items-center gap-2">
+                  <span className="text-accent">✅</span>
+                  <span className="text-sm">{item}</span>
+                </label>
+              ))}
+            </div>
+            <p className="text-sm mt-4 font-medium">
+              Next step: Build a strategic marketing system that amplifies your brand and drives systematic growth.
+            </p>
+          </div>
+        </Card>
+
 
         {/* Recommended Tech Stack */}
         <Collapsible>
@@ -1248,24 +1390,20 @@ DELIVER:
                   Whether you're building a brick-and-mortar business, launching a service, or establishing thought leadership, your brand is no longer a mystery—it's a magnet.
                 </p>
 
-                <div className="bg-primary/10 border-l-4 border-primary p-4 rounded">
-                  <p className="font-semibold text-lg mb-2">🔗 Bridge to Workbook 2</p>
-                  <p className="text-sm mb-3">
-                    Your brand foundation becomes your marketing filter:
-                  </p>
-                  <ul className="space-y-1 text-sm">
-                    <li>• Purpose → Content themes</li>
-                    <li>• Pillars → Content categories</li>
-                    <li>• Voice → Message consistency</li>
-                    <li>• Journey → Campaign flow</li>
-                    <li>• Position → Targeting focus</li>
+                <div className="bg-background/50 p-4 rounded-lg">
+                  <p className="font-semibold mb-3">The Complete BLKBLD Journey Ahead:</p>
+                  <ul className="space-y-2 text-sm">
+                    <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
+                    <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built</li>
+                    <li>→ <strong>WORKBOOK 2:</strong> Strategic marketing system aligned with your brand</li>
+                    <li>→ <strong>WORKBOOK 3:</strong> Automated customer experience that builds loyalty</li>
+                    <li>→ <strong>WORKBOOK 4:</strong> Data-driven optimization and systematic scaling</li>
                   </ul>
-                  <p className="text-sm mt-4">
-                    Next step: Build a strategic marketing system that amplifies your brand and drives systematic growth.
-                  </p>
                 </div>
 
-                <p className="text-sm text-muted-foreground italic text-center">
+                <p className="text-lg font-semibold mt-6 mb-2">Ready for Workbook 2: Marketing Strategy Execution!</p>
+
+                <p className="text-sm text-muted-foreground italic">
                   This workbook works for brick-and-mortar brands, service brands, and personal brands. Same strategic foundation, different applications. You now have the clarity to build, market, and scale with confidence.
                 </p>
               </div>
