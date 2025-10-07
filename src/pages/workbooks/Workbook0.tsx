@@ -14,13 +14,39 @@ import { useEffect, useState } from "react";
 export default function Workbook0() {
   const { data, updateData } = useWorkbook();
   const [isSaving, setIsSaving] = useState(false);
+  
+  // Local state for fields not yet in WorkbookData
+  const [localData, setLocalData] = useState({
+    cost: '',
+    bandaid: '',
+    competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '' }),
+    pattern: '',
+    opportunities: [] as string[],
+    businessModel: {
+      who: '',
+      problem: '',
+      solution: '',
+      delivery: '',
+      discovery: '',
+      price: '',
+      costs: '',
+      activities: '',
+      partners: ''
+    },
+    pitch: '',
+    gutCheck: { excitement: '', clarity: '', uniqueness: '', total: '' },
+    coffeeTest: ['', '', ''],
+    competitorsChase: '',
+    yourWhitespace: '',
+    specificAudience: ''
+  });
 
   // Show save indicator briefly when data changes
   useEffect(() => {
     setIsSaving(true);
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
-  }, [data]);
+  }, [data, localData]);
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
@@ -186,11 +212,21 @@ export default function Workbook0() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="cost">What this problem costs them</Label>
-                  <Input id="cost" placeholder="e.g., $500/month or 10 hours/week" />
+                  <Input 
+                    id="cost" 
+                    placeholder="e.g., $500/month or 10 hours/week"
+                    value={localData.cost}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, cost: e.target.value }))}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="bandaid">Current band-aid solution</Label>
-                  <Input id="bandaid" placeholder="e.g., DIY using Canva" />
+                  <Input 
+                    id="bandaid" 
+                    placeholder="e.g., DIY using Canva"
+                    value={localData.bandaid}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, bandaid: e.target.value }))}
+                  />
                 </div>
               </div>
 
@@ -235,27 +271,69 @@ Format as: Problem / Cost / Current Solution`}
                   <div className="grid md:grid-cols-3 gap-3">
                     <div>
                       <Label htmlFor={`comp-name-${i}`} className="text-xs">Name</Label>
-                      <Input id={`comp-name-${i}`} className="mt-1" />
+                      <Input 
+                        id={`comp-name-${i}`} 
+                        className="mt-1"
+                        value={localData.competitors[i-1]?.name || ''}
+                        onChange={(e) => {
+                          const newComps = [...localData.competitors];
+                          newComps[i-1] = { ...newComps[i-1], name: e.target.value };
+                          setLocalData(prev => ({ ...prev, competitors: newComps }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`comp-promise-${i}`} className="text-xs">Promise</Label>
-                      <Input id={`comp-promise-${i}`} className="mt-1" />
+                      <Input 
+                        id={`comp-promise-${i}`} 
+                        className="mt-1"
+                        value={localData.competitors[i-1]?.promise || ''}
+                        onChange={(e) => {
+                          const newComps = [...localData.competitors];
+                          newComps[i-1] = { ...newComps[i-1], promise: e.target.value };
+                          setLocalData(prev => ({ ...prev, competitors: newComps }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`comp-price-${i}`} className="text-xs">Price</Label>
-                      <Input id={`comp-price-${i}`} className="mt-1" placeholder="$" />
+                      <Input 
+                        id={`comp-price-${i}`} 
+                        className="mt-1" 
+                        placeholder="$"
+                        value={localData.competitors[i-1]?.price || ''}
+                        onChange={(e) => {
+                          const newComps = [...localData.competitors];
+                          newComps[i-1] = { ...newComps[i-1], price: e.target.value };
+                          setLocalData(prev => ({ ...prev, competitors: newComps }));
+                        }}
+                      />
                     </div>
                   </div>
                   <div className="mt-3">
                     <Label htmlFor={`comp-miss-${i}`} className="text-xs">What They Miss</Label>
-                    <Input id={`comp-miss-${i}`} className="mt-1" />
+                    <Input 
+                      id={`comp-miss-${i}`} 
+                      className="mt-1"
+                      value={localData.competitors[i-1]?.miss || ''}
+                      onChange={(e) => {
+                        const newComps = [...localData.competitors];
+                        newComps[i-1] = { ...newComps[i-1], miss: e.target.value };
+                        setLocalData(prev => ({ ...prev, competitors: newComps }));
+                      }}
+                    />
                   </div>
                 </Card>
               ))}
 
               <div>
                 <Label htmlFor="pattern">The Pattern: What do ALL miss?</Label>
-                <Textarea id="pattern" rows={2} />
+                <Textarea 
+                  id="pattern" 
+                  rows={2}
+                  value={localData.pattern}
+                  onChange={(e) => setLocalData(prev => ({ ...prev, pattern: e.target.value }))}
+                />
               </div>
 
               <AIPromptCard
@@ -431,7 +509,14 @@ Provide:
                 </div>
 
                 <Label htmlFor="pitch">Write yours:</Label>
-                <Textarea id="pitch" rows={3} placeholder="I help..." className="mt-2" />
+                <Textarea 
+                  id="pitch" 
+                  rows={3} 
+                  placeholder="I help..." 
+                  className="mt-2"
+                  value={localData.pitch}
+                  onChange={(e) => setLocalData(prev => ({ ...prev, pitch: e.target.value }))}
+                />
               </div>
 
               {/* The Gut Check */}
@@ -535,6 +620,8 @@ Provide:
                     id="competitors-chase" 
                     className="text-lg"
                     placeholder="e.g., same day delivery"
+                    value={localData.competitorsChase}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, competitorsChase: e.target.value }))}
                   />
                 </div>
 
@@ -546,6 +633,8 @@ Provide:
                     id="your-whitespace" 
                     className="text-lg"
                     placeholder="e.g., under 5-minute breakfast guarantee"
+                    value={localData.yourWhitespace}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, yourWhitespace: e.target.value }))}
                   />
                 </div>
 
@@ -570,6 +659,8 @@ Provide:
                     id="specific-audience" 
                     className="text-lg"
                     placeholder="e.g., busy Phoenix families with kids"
+                    value={localData.specificAudience}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, specificAudience: e.target.value }))}
                   />
                 </div>
 
