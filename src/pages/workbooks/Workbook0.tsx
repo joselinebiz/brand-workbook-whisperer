@@ -185,8 +185,8 @@ export default function Workbook0() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="cost">Cost to them ($/month or hours/week)</Label>
-                  <Input id="cost" placeholder="$500/month OR 10 hours/week" />
+                  <Label htmlFor="cost">What this problem costs them</Label>
+                  <Input id="cost" placeholder="e.g., $500/month or 10 hours/week" />
                 </div>
                 <div>
                   <Label htmlFor="bandaid">Current band-aid solution</Label>
@@ -207,7 +207,7 @@ export default function Workbook0() {
 
 Analyze this and tell me:
 1. What's the #1 problem they ALL mentioned?
-2. What's costing them the most (time or money)?
+2. What's this problem costing them in time or money?
 3. What band-aid solutions are they using now?
 
 Format as: Problem / Cost / Current Solution`}
@@ -675,11 +675,11 @@ Give me a score out of 10 and suggest one improvement.`}
               <div className="border-l-4 border-accent p-4 bg-accent/5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">📧</span>
-                  <h3 className="font-bold text-lg">EMAIL & CRM</h3>
+                  <h3 className="font-bold text-lg">EMAIL</h3>
                 </div>
-                <p className="font-semibold mb-1">Constant Contact</p>
-                <p className="text-sm text-muted-foreground mb-2">All-in-one platform for email, landing pages, social scheduling, and CRM</p>
-                <p className="text-xs italic">Why it works: Manage customer research, surveys, and early lead nurturing in one place</p>
+                <p className="font-semibold mb-1">Mailchimp</p>
+                <p className="text-sm text-muted-foreground mb-2">Email marketing platform for building subscriber lists and sending campaigns</p>
+                <p className="text-xs italic">Why it works: Free tier for up to 500 contacts; perfect for early customer research and validation</p>
               </div>
 
               <div className="border-l-4 border-accent p-4 bg-accent/5">
@@ -707,7 +707,7 @@ Give me a score out of 10 and suggest one improvement.`}
                   <span className="text-2xl">🌐</span>
                   <h3 className="font-bold text-lg">DOMAIN & HOSTING</h3>
                 </div>
-                <p className="font-semibold mb-1">GoDaddy</p>
+                <p className="font-semibold mb-1"><a href="https://blkbld.host" target="_blank" rel="noopener noreferrer" className="hover:underline text-accent">BlkBld Host</a></p>
                 <p className="text-sm text-muted-foreground mb-2">Secure your business domain early; BlkBld is a reseller of GoDaddy</p>
                 <p className="text-xs italic">Why it works: Securing your domain early on websites and social media ensures your brand's name belongs to you. Professional email addresses build credibility during validation phase</p>
               </div>
