@@ -139,11 +139,24 @@ export default function Workbook1() {
             <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
             <ul className="space-y-2 text-sm">
               <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
-              <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built (you're here!)</li>
+              <li className="text-accent">✅ <strong>WORKBOOK 1:</strong> Brand foundation built (you're here!)</li>
               <li>→ <strong>WORKBOOK 2:</strong> Strategic marketing system that aligns with your brand</li>
               <li>→ <strong>WORKBOOK 3:</strong> Automated customer experience that builds loyalty</li>
               <li>→ <strong>WORKBOOK 4:</strong> Data-driven optimization and systematic scaling</li>
             </ul>
+          </div>
+
+          <div className="border-t pt-6">
+            <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
+            <p className="text-muted-foreground mb-4">This isn't theory from a textbook. This framework is built on:</p>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</li>
+              <li>• <strong>Industry Battle-Tested:</strong> Refined through years of building and scaling multiple businesses</li>
+              <li>• <strong>Results-Driven:</strong> Every exercise connects directly to revenue, customers, and sustainable growth</li>
+            </ul>
+            <p className="text-muted-foreground mt-4">
+              You're not just learning concepts—you're implementing the same systems that generate six-figure consulting engagements, now available in a structured, self-paced format.
+            </p>
           </div>
 
         </Card>
