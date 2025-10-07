@@ -296,15 +296,33 @@ export default function Workbook1() {
                   </div>
 
                   <div className="space-y-4">
-                    {[1, 2, 3].map((i) => (
+                    {[0, 1, 2].map((i) => (
                       <div key={i} className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <Label htmlFor={`value-${i}`}>Your Value {i}</Label>
-                          <Input id={`value-${i}`} placeholder="e.g., Quality" />
+                          <Label htmlFor={`value-${i}`}>Your Value {i + 1}</Label>
+                          <Input 
+                            id={`value-${i}`} 
+                            placeholder="e.g., Quality"
+                            value={data.coreValues[i]?.value || ''}
+                            onChange={(e) => {
+                              const newValues = [...data.coreValues];
+                              newValues[i] = { ...newValues[i], value: e.target.value, showsUpAs: newValues[i]?.showsUpAs || '' };
+                              updateData('coreValues', newValues);
+                            }}
+                          />
                         </div>
                         <div>
                           <Label htmlFor={`value-shows-${i}`}>Shows up as:</Label>
-                          <Input id={`value-shows-${i}`} placeholder="e.g., Scratch-made daily" />
+                          <Input 
+                            id={`value-shows-${i}`} 
+                            placeholder="e.g., Scratch-made daily"
+                            value={data.coreValues[i]?.showsUpAs || ''}
+                            onChange={(e) => {
+                              const newValues = [...data.coreValues];
+                              newValues[i] = { ...newValues[i], value: newValues[i]?.value || '', showsUpAs: e.target.value };
+                              updateData('coreValues', newValues);
+                            }}
+                          />
                         </div>
                       </div>
                     ))}
@@ -389,21 +407,51 @@ Well articulated mission, values, promise and differentiation that ensures I own
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  {[1, 2, 3].map((i) => (
+                  {[0, 1, 2].map((i) => (
                     <Card key={i} className="p-4 bg-muted/30">
-                      <p className="text-sm font-semibold mb-3">Pillar {i}</p>
+                      <p className="text-sm font-semibold mb-3">Pillar {i + 1}</p>
                       <div className="grid md:grid-cols-3 gap-3">
                         <div>
                           <Label htmlFor={`pillar-${i}`} className="text-xs">Pillar</Label>
-                          <Input id={`pillar-${i}`} className="mt-1" placeholder="e.g., Speed" />
+                          <Input 
+                            id={`pillar-${i}`} 
+                            className="mt-1" 
+                            placeholder="e.g., Speed"
+                            value={data.brandPillars[i]?.pillar || ''}
+                            onChange={(e) => {
+                              const newPillars = [...data.brandPillars];
+                              newPillars[i] = { ...newPillars[i], pillar: e.target.value, showsUp: newPillars[i]?.showsUp || '', proof: newPillars[i]?.proof || '' };
+                              updateData('brandPillars', newPillars);
+                            }}
+                          />
                         </div>
                         <div>
                           <Label htmlFor={`pillar-shows-${i}`} className="text-xs">How It Shows Up</Label>
-                          <Input id={`pillar-shows-${i}`} className="mt-1" placeholder="e.g., Under 5 min" />
+                          <Input 
+                            id={`pillar-shows-${i}`} 
+                            className="mt-1" 
+                            placeholder="e.g., Under 5 min"
+                            value={data.brandPillars[i]?.showsUp || ''}
+                            onChange={(e) => {
+                              const newPillars = [...data.brandPillars];
+                              newPillars[i] = { ...newPillars[i], pillar: newPillars[i]?.pillar || '', showsUp: e.target.value, proof: newPillars[i]?.proof || '' };
+                              updateData('brandPillars', newPillars);
+                            }}
+                          />
                         </div>
                         <div>
                           <Label htmlFor={`pillar-proof-${i}`} className="text-xs">Proof</Label>
-                          <Input id={`pillar-proof-${i}`} className="mt-1" placeholder="e.g., Avg: 4:32" />
+                          <Input 
+                            id={`pillar-proof-${i}`} 
+                            className="mt-1" 
+                            placeholder="e.g., Avg: 4:32"
+                            value={data.brandPillars[i]?.proof || ''}
+                            onChange={(e) => {
+                              const newPillars = [...data.brandPillars];
+                              newPillars[i] = { ...newPillars[i], pillar: newPillars[i]?.pillar || '', showsUp: newPillars[i]?.showsUp || '', proof: e.target.value };
+                              updateData('brandPillars', newPillars);
+                            }}
+                          />
                         </div>
                       </div>
                     </Card>
