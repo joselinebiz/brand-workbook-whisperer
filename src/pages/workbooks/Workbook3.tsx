@@ -250,44 +250,44 @@ export default function Workbook3() {
                 </div>
 
                 <h3 className="text-xl font-bold">Customer Journey Mapping Template</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse text-sm">
-                    <thead>
-                      <tr className="bg-muted">
-                        <th className="border p-3 text-left font-semibold">Stage</th>
-                        <th className="border p-3 text-left font-semibold">Touchpoint</th>
-                        <th className="border p-3 text-left font-semibold">Action</th>
-                        <th className="border p-3 text-left font-semibold">Timing</th>
-                        <th className="border p-3 text-left font-semibold">Email Template/Content</th>
-                        <th className="border p-3 text-left font-semibold">Success Metric</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        { stage: "Awareness", touchpoint: "First visit", action: "Welcome", timing: "0-24hr", metric: "40%+ open rate" },
-                        { stage: "Interest", touchpoint: "Download/inquiry", action: "Educational content", timing: "Day 2", metric: "25%+ click rate" },
-                        { stage: "Consideration", touchpoint: "Engagement", action: "Address objections", timing: "Day 7", metric: "15%+ reply rate" },
-                        { stage: "Purchase", touchpoint: "Transaction", action: "Thank you + next steps", timing: "Instant", metric: "90%+ satisfaction" },
-                        { stage: "Delivery", touchpoint: "Fulfillment", action: "Progress updates", timing: "As needed", metric: "<5% complaint rate" },
-                        { stage: "Post-Delivery", touchpoint: "Post-delivery", action: "Check-in + testimonial ask", timing: "Day 30", metric: "20%+ reviews" },
-                        { stage: "Loyalty", touchpoint: "Ongoing", action: "Surprise and Delight", timing: "Monthly/Bi-annually", metric: "Referrals" },
-                      ].map((row, i) => (
-                        <tr key={i} className="hover:bg-muted/50">
-                          <td className="border p-3 font-medium">{row.stage}</td>
-                          <td className="border p-3 text-muted-foreground">{row.touchpoint}</td>
-                          <td className="border p-3 text-muted-foreground">{row.action}</td>
-                          <td className="border p-3 text-muted-foreground">{row.timing}</td>
-                          <td className="border p-3">
-                            <div className="flex items-center gap-2">
-                              <input type="checkbox" className="w-4 h-4" />
-                              <span className="text-xs">Written</span>
-                            </div>
-                          </td>
-                          <td className="border p-3 text-muted-foreground">{row.metric}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <p className="text-sm text-muted-foreground mb-4">Define your customer journey stages and actions:</p>
+                
+                <div className="space-y-4">
+                  {["Awareness", "Interest", "Consideration", "Purchase", "Delivery", "Post-Delivery", "Loyalty"].map((stageName, index) => {
+                    const currentStage = data.journeyStages?.[index] || { stage: stageName, action: "", metric: "" };
+                    
+                    return (
+                      <div key={index} className="p-4 bg-muted/30 rounded-lg border-l-4 border-accent">
+                        <Label className="font-semibold text-base mb-2 block">{stageName}</Label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div>
+                            <Label className="text-xs text-muted-foreground">Action/Touchpoint</Label>
+                            <Input
+                              placeholder={`What happens during ${stageName.toLowerCase()}?`}
+                              value={currentStage.action || ""}
+                              onChange={(e) => {
+                                const newStages = [...(data.journeyStages || [])];
+                                newStages[index] = { ...currentStage, stage: stageName, action: e.target.value };
+                                updateData('journeyStages', newStages);
+                              }}
+                            />
+                          </div>
+                          <div>
+                            <Label className="text-xs text-muted-foreground">Success Metric (Optional)</Label>
+                            <Input
+                              placeholder="e.g., 40%+ open rate"
+                              value={currentStage.metric || ""}
+                              onChange={(e) => {
+                                const newStages = [...(data.journeyStages || [])];
+                                newStages[index] = { ...currentStage, stage: stageName, metric: e.target.value };
+                                updateData('journeyStages', newStages);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
