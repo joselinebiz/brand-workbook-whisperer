@@ -107,40 +107,21 @@ export default function Workbook1() {
             New entrepreneurs, stuck business owners, and those looking to build or enhance their personal brand need clarity on who they are, what they stand for, and how to show up in the market consistently.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4 mb-6">
-            <div className="flex items-center gap-3 p-4 bg-background rounded-lg">
-              <Target className="w-5 h-5 text-accent" />
-              <div>
-                <p className="text-sm font-medium">Prerequisites</p>
-                <p className="text-xs text-muted-foreground">Workbook 0</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-4 bg-background rounded-lg">
-              <Users className="w-5 h-5 text-accent" />
-              <div>
-                <p className="text-sm font-medium">Time Required</p>
-                <p className="text-xs text-muted-foreground">2-4 hours</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-4 bg-background rounded-lg">
-              <TrendingUp className="w-5 h-5 text-accent" />
-              <div>
-                <p className="text-sm font-medium">Outcome</p>
-                <p className="text-xs text-muted-foreground">Brand Foundation</p>
-              </div>
-            </div>
-          </div>
+          <h3 className="text-xl font-bold mb-3">Prerequisites ✅</h3>
+          <ul className="space-y-2 text-muted-foreground mb-6">
+            <li>• A business idea, service offering, or career positioning goal</li>
+            <li>• 2-4 hours of focused time</li>
+            <li>• Completed Workbook 0 (or validated your market opportunity)</li>
+          </ul>
 
-          <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-6">
-            <p className="font-semibold mb-2">What You'll Walk Away With:</p>
-            <ul className="space-y-1 text-sm">
-              <li>• Clear brand foundation that guides every decision</li>
-              <li>• Visual and verbal identity system</li>
-              <li>• Customer experience blueprint</li>
-              <li>• Ready-to-use templates</li>
-              <li>• Enhanced AI prompts for consultant-level guidance</li>
-            </ul>
-          </div>
+          <h3 className="text-xl font-bold mb-3">What You'll Walk Away With</h3>
+          <ul className="space-y-2 text-muted-foreground mb-6">
+            <li>• Clear brand foundation that guides every decision</li>
+            <li>• Visual and verbal identity system</li>
+            <li>• Customer experience blueprint</li>
+            <li>• Ready-to-use templates</li>
+            <li>• Enhanced AI prompts for consultant-level guidance</li>
+          </ul>
 
           <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-6">
             <p className="text-sm">
@@ -148,12 +129,24 @@ export default function Workbook1() {
             </p>
           </div>
 
-          <div className="bg-background/50 p-4 rounded">
+          <div className="bg-background/50 p-4 rounded mb-6">
             <p className="font-semibold mb-1">Success Metric:</p>
             <p className="text-sm">Score 10+ on final assessment AND consistent brand across 5 touchpoints</p>
           </div>
 
-          <div className="border-t pt-6 mt-6">
+          <div className="border-t pt-6 mb-6">
+            <h3 className="text-xl font-bold mb-3">🔗 Bridge to Success</h3>
+            <p className="font-semibold mb-3">The Complete BLKBLD Journey:</p>
+            <ul className="space-y-2 text-sm">
+              <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
+              <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built (you're here!)</li>
+              <li>→ <strong>WORKBOOK 2:</strong> Strategic marketing system that aligns with your brand</li>
+              <li>→ <strong>WORKBOOK 3:</strong> Automated customer experience that builds loyalty</li>
+              <li>→ <strong>WORKBOOK 4:</strong> Data-driven optimization and systematic scaling</li>
+            </ul>
+          </div>
+
+          <div className="border-t pt-6">
             <h3 className="text-xl font-bold mb-3">Why This Framework Works</h3>
             <p className="text-muted-foreground mb-3">
               This isn't theory from a textbook. This framework is built on:
