@@ -79,12 +79,6 @@ const Index = () => {
                   Start Your Journey
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="bg-transparent border-2 border-white hover:bg-black hover:text-white hover:border-white" asChild>
-                <a href="/blueprint">
-                  <Target className="w-5 h-5" />
-                  View Master Blueprint
-                </a>
-              </Button>
             </div>
           </div>
         </div>

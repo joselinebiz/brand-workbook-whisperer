@@ -158,7 +158,7 @@ Satisfaction Tracking: ${data.satisfactionTracking ? 'Active' : 'Not active'}
       <WorkbookHeader
         number="📋"
         title="Your Foundational Blueprint"
-        subtitle="Complete Strategic Foundation - Workbooks 0-3"
+        subtitle="Complete Strategic Foundation - Unlocked after Workbook 2"
       />
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
