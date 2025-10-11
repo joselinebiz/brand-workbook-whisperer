@@ -59,6 +59,16 @@ const Index = () => {
       productType: "workbook_4",
       price: 19700,
     },
+    {
+      number: "📦",
+      title: "COMPLETE BUNDLE",
+      subtitle: "All Workbooks 1-4 - Save $391",
+      timeRequired: "15-25 hours",
+      description: "Get complete access to all four workbooks: Brand Strategy, Marketing Execution, Customer Journey, and Growth Scaling. The complete system to build and scale your business.",
+      path: "/workbook/1",
+      productType: "bundle",
+      price: 39700,
+    },
   ];
 
   return (
