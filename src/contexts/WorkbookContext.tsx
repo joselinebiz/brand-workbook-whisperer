@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-interface WorkbookData {
+export interface WorkbookData {
   // Workbook 0 - Market Opportunity
   whiteSpaceDeclaration: string;
   targetCustomer: string;

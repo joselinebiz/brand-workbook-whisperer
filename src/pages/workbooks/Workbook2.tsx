@@ -10,8 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { TrendingUp, DollarSign, BarChart3, ChevronDown, PartyPopper, Save } from "lucide-react";
+import { TrendingUp, DollarSign, BarChart3, ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
+import { generateWorkbook2Content, downloadWorkbook } from "@/utils/workbookDownload";
 
 export default function Workbook2() {
   const { data, updateData } = useWorkbook();
@@ -27,6 +28,11 @@ export default function Workbook2() {
     localStorage.setItem('workbookData', JSON.stringify(data));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
+  };
+
+  const handleDownload = () => {
+    const content = generateWorkbook2Content(data);
+    downloadWorkbook(content, 2);
   };
 
   return (
@@ -1425,9 +1431,13 @@ OUTPUT:
           </div>
         </Card>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-4">
           <Button variant="outline" size="lg" asChild>
             <a href="/workbook/1">← Back to Workbook 1</a>
+          </Button>
+          <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
+            <Download className="w-5 h-5" />
+            Download My Workbook
           </Button>
           <Button variant="hero" size="lg" asChild>
             <a href="/workbook/3">Continue to Workbook 3: Customer Journey →</a>

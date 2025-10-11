@@ -10,8 +10,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper, Save } from "lucide-react";
+import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
+import { generateWorkbook4Content, downloadWorkbook } from "@/utils/workbookDownload";
 
 export default function Workbook4() {
   const { data, updateData, getBlueprintData } = useWorkbook();
@@ -27,6 +28,11 @@ export default function Workbook4() {
     localStorage.setItem('workbookData', JSON.stringify(data));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
+  };
+
+  const handleDownload = () => {
+    const content = generateWorkbook4Content(data);
+    downloadWorkbook(content, 4);
   };
 
   const handleDownloadMasterBlueprint = () => {
@@ -747,9 +753,13 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
           </div>
         </Card>
 
-        <div className="flex justify-start mt-8">
+        <div className="flex justify-between gap-4 mt-8">
           <Button variant="outline" size="lg" asChild>
             <a href="/workbook/3">← Back to Workbook 3</a>
+          </Button>
+          <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
+            <Download className="w-5 h-5" />
+            Download My Workbook
           </Button>
         </div>
       </div>

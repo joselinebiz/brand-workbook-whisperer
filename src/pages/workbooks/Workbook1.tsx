@@ -10,8 +10,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, PartyPopper, Save, Target, Award, Eye, Users, TrendingUp } from "lucide-react";
+import { ChevronDown, PartyPopper, Save, Target, Award, Eye, Users, TrendingUp, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
+import { generateWorkbook1Content, downloadWorkbook } from "@/utils/workbookDownload";
 
 export default function Workbook1() {
   const { data, updateData } = useWorkbook();
@@ -27,6 +28,11 @@ export default function Workbook1() {
     localStorage.setItem('workbookData', JSON.stringify(data));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
+  };
+
+  const handleDownload = () => {
+    const content = generateWorkbook1Content(data);
+    downloadWorkbook(content, 1);
   };
 
   const getColorPsychology = (hex: string): string => {
@@ -1474,9 +1480,13 @@ DELIVER:
           </div>
         </Card>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-4">
           <Button variant="outline" size="lg" asChild>
             <a href="/workbook/0">← Back to Workbook 0</a>
+          </Button>
+          <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
+            <Download className="w-5 h-5" />
+            Download My Workbook
           </Button>
           <Button variant="hero" size="lg" asChild>
             <a href="/workbook/2">Continue to Workbook 2: Marketing Strategy →</a>
