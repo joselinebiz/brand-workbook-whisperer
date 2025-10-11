@@ -65,7 +65,7 @@ const Index = () => {
               </div>
             </div>
             
-            <h1 className="text-2xl md:text-3xl font-chatone mb-4">
+            <h1 className="text-4xl font-chatone mb-4">
               BRAND & MARKETING MASTER BLUEPRINT
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
