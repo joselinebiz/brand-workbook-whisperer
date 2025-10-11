@@ -60,7 +60,7 @@ const Index = () => {
       price: 19700,
     },
     {
-      number: "📦",
+      number: "01-04 📦",
       title: "COMPLETE BUNDLE",
       subtitle: "All Workbooks 1-4 - Save $391",
       timeRequired: "15-25 hours",

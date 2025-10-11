@@ -35,8 +35,7 @@ export const WorkbookCard = ({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   
-  const isFree = productType === 'workbook_0' || !productType;
-  const hasAccess = isFree || checkAccess(productType || '');
+  const hasAccess = checkAccess(productType || '');
 
   const handlePurchase = async () => {
     if (!user) {
@@ -69,21 +68,10 @@ export const WorkbookCard = ({
   };
 
   const getButtonContent = () => {
-    if (isFree) {
-      return (
-        <Link to={path} className="w-full">
-          <Button variant="outline" className="w-full group/btn">
-            Start Workbook
-            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-          </Button>
-        </Link>
-      );
-    }
-
     if (!user) {
       return (
         <Button variant="outline" className="w-full group/btn" onClick={() => navigate('/auth')}>
-          Sign In to Purchase
+          {productType === 'workbook_0' ? 'Sign In to Start for Free' : 'Sign In to Purchase'}
           <Lock className="w-4 h-4" />
         </Button>
       );
@@ -93,8 +81,24 @@ export const WorkbookCard = ({
       return (
         <Link to={path} className="w-full">
           <Button variant="outline" className="w-full group/btn">
-            Access Workbook
-            <CheckCircle2 className="w-4 h-4 text-accent" />
+            {productType === 'workbook_0' ? 'Start Workbook' : 'Access Workbook'}
+            {productType === 'workbook_0' ? (
+              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            ) : (
+              <CheckCircle2 className="w-4 h-4 text-accent" />
+            )}
+          </Button>
+        </Link>
+      );
+    }
+
+    if (productType === 'workbook_0') {
+      // User is signed in but hasn't "registered" for workbook 0 yet
+      return (
+        <Link to={path} className="w-full">
+          <Button variant="outline" className="w-full group/btn">
+            Start for Free
+            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </Button>
         </Link>
       );
@@ -121,8 +125,8 @@ export const WorkbookCard = ({
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl font-bold text-primary">{number}</span>
-            {hasAccess && !isFree && <CheckCircle2 className="w-6 h-6 text-accent" />}
-            {!isFree && !hasAccess && <Lock className="w-6 h-6 text-muted-foreground" />}
+            {hasAccess && productType !== 'workbook_0' && <CheckCircle2 className="w-6 h-6 text-accent" />}
+            {!hasAccess && productType !== 'workbook_0' && <Lock className="w-6 h-6 text-muted-foreground" />}
           </div>
           <span className="text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">
             {timeRequired}

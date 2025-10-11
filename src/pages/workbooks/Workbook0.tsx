@@ -9,11 +9,48 @@ import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Target, Users, TrendingUp, ChevronDown, PartyPopper, Save } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function Workbook0() {
   const { data, updateData } = useWorkbook();
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
   const [isSaving, setIsSaving] = useState(false);
+
+  // Auto-grant free access to Workbook 0 for logged-in users
+  useEffect(() => {
+    const grantFreeAccess = async () => {
+      if (!user) return;
+
+      const expiresAt = new Date();
+      expiresAt.setMonth(expiresAt.getMonth() + 6);
+
+      await supabase
+        .from('purchases')
+        .upsert({
+          user_id: user.id,
+          product_type: 'workbook_0',
+          amount: 0,
+          expires_at: expiresAt.toISOString(),
+        }, {
+          onConflict: 'user_id,product_type'
+        });
+    };
+
+    if (user) {
+      grantFreeAccess();
+    }
+  }, [user]);
+
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/auth');
+    }
+  }, [user, loading, navigate]);
   
   // Local state for fields not yet in WorkbookData - load from localStorage
   const [localData, setLocalData] = useState(() => {
@@ -66,6 +103,22 @@ export default function Workbook0() {
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null; // Will redirect in useEffect
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <WorkbookHeader
