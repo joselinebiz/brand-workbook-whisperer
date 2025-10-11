@@ -60,8 +60,8 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-6">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full border border-white/20">
-                <Zap className="w-4 h-4 text-accent" />
-                <span className="text-sm font-medium">MBA-Level Strategy, Battle-Tested Results</span>
+                <Zap className="w-4 h-4" style={{ color: '#9f774b' }} />
+                <span className="text-sm font-medium" style={{ color: '#9f774b' }}>Hamilton Signature</span>
               </div>
             </div>
             
