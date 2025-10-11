@@ -61,7 +61,7 @@ const Index = () => {
             <div className="inline-block mb-6">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full border border-white/20">
                 <Zap className="w-4 h-4 text-gold" />
-                <span className="text-sm font-houston-script text-gold">MBA-Level Strategy, Battle-Tested Results</span>
+                <span className="text-sm font-sans font-light text-gold">MBA-Level Strategy, Battle-Tested Results</span>
               </div>
             </div>
             
