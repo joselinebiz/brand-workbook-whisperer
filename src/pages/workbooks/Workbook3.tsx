@@ -1362,12 +1362,16 @@ DESIGN:
         </Card>
 
         {/* Bridge to Workbook 4 */}
-        <Collapsible>
+        <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10">
-            <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-2xl font-bold mb-4">🔗 Bridge to Workbook 4</h2>
+            <CollapsibleTrigger className="w-full text-left flex items-center justify-between group">
+              <h2 className="text-2xl font-bold">🔗 Bridge to Workbook 4</h2>
+              <ChevronDown 
+                className="transition-transform duration-200 group-data-[state=open]:rotate-180"
+                size={24}
+              />
             </CollapsibleTrigger>
-            <CollapsibleContent>
+            <CollapsibleContent className="mt-4">
               <p className="mb-4">Your customer systems are automated and working! Now scale what's successful.</p>
               <p className="font-semibold mb-2">You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
               <ul className="space-y-2 mb-4">
