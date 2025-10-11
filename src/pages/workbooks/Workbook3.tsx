@@ -1362,41 +1362,31 @@ DESIGN:
         </Card>
 
         {/* Bridge to Workbook 4 */}
-        <Collapsible defaultOpen={false}>
-          <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10">
-            <CollapsibleTrigger className="w-full text-left flex items-center justify-between group">
-              <h2 className="text-2xl font-bold">🔗 Bridge to Workbook 4</h2>
-              <ChevronDown 
-                className="transition-transform duration-200 group-data-[state=open]:rotate-180"
-                size={24}
-              />
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-4">
-              <p className="mb-4">Your customer systems are automated and working! Now scale what's successful.</p>
-              <p className="font-semibold mb-2">You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-center gap-2">
-                  <span>✅ Customer journey mapped and automated</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span>✅ Consistent follow-up system running</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span>✅ Customer satisfaction scores tracked</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span>✅ Some loyal customers referring others</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span>✅ Ready to optimize and expand successful systems</span>
-                </li>
-              </ul>
-              <p className="text-sm text-muted-foreground">
-                Workbook 4 covers: Advanced analytics, A/B testing, scaling successful campaigns, team building, and systematic growth.
-              </p>
-            </CollapsibleContent>
-          </Card>
-        </Collapsible>
+        <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10">
+          <h2 className="text-2xl font-bold mb-4">🔗 Bridge to Workbook 4</h2>
+          <p className="mb-4">Your customer systems are automated and working! Now scale what's successful.</p>
+          <p className="font-semibold mb-2">You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
+          <ul className="space-y-2 mb-4">
+            <li className="flex items-center gap-2">
+              <span>✅ Customer journey mapped and automated</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅ Consistent follow-up system running</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅ Customer satisfaction scores tracked</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅ Some loyal customers referring others</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅ Ready to optimize and expand successful systems</span>
+            </li>
+          </ul>
+          <p className="text-sm text-muted-foreground">
+            Workbook 4 covers: Advanced analytics, A/B testing, scaling successful campaigns, team building, and systematic growth.
+          </p>
+        </Card>
 
         {/* Congratulations */}
         <Collapsible>
@@ -1487,31 +1477,41 @@ DESIGN:
         </Collapsible>
 
         {/* Recommended Tech Stack */}
-        <Card className="p-8 mb-8 bg-muted/20">
-          <h2 className="text-2xl font-bold mb-4">Recommended Tech Stack For Customer Systems</h2>
-          <div className="space-y-4">
-            <div className="p-4 bg-background rounded-lg">
-              <h3 className="font-semibold mb-2">📧 CRM & AUTOMATION</h3>
-              <p className="text-sm mb-1"><strong>Constant Contact</strong> – Centralize customer data, automate follow-ups, track engagement</p>
-              <p className="text-xs text-muted-foreground">Why it works: CRM + email marketing + social = complete customer view</p>
-            </div>
-            <div className="p-4 bg-background rounded-lg">
-              <h3 className="font-semibold mb-2">📅 SEAMLESS SCHEDULING</h3>
-              <p className="text-sm mb-1"><strong>Calendly</strong> – Automate booking, reminders, and follow-ups</p>
-              <p className="text-xs text-muted-foreground">Why it works: Reduces no-shows; integrates with your CRM for full customer journey</p>
-            </div>
-            <div className="p-4 bg-background rounded-lg">
-              <h3 className="font-semibold mb-2">💻 CUSTOMER COMMUNICATION</h3>
-              <p className="text-sm mb-1"><strong>Zoom</strong> – Professional video calls with recording for training/onboarding</p>
-              <p className="text-xs text-muted-foreground">Why it works: Face-to-face builds trust; recordings create reusable content</p>
-            </div>
-            <div className="p-4 bg-background rounded-lg">
-              <h3 className="font-semibold mb-2">💳 SUBSCRIPTION MANAGEMENT</h3>
-              <p className="text-sm mb-1"><strong>Stripe</strong> – Recurring billing for retainers, memberships, and service packages</p>
-              <p className="text-xs text-muted-foreground">Why it works: Automate monthly revenue; reduce payment collection friction</p>
-            </div>
-          </div>
-        </Card>
+        <Collapsible defaultOpen={false}>
+          <Card className="p-8 mb-8 bg-muted/20">
+            <CollapsibleTrigger className="w-full text-left flex items-center justify-between group">
+              <h2 className="text-2xl font-bold">Recommended Tech Stack For Customer Systems</h2>
+              <ChevronDown 
+                className="transition-transform duration-200 group-data-[state=open]:rotate-180"
+                size={24}
+              />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-4">
+              <div className="space-y-4">
+                <div className="p-4 bg-background rounded-lg">
+                  <h3 className="font-semibold mb-2">📧 CRM & AUTOMATION</h3>
+                  <p className="text-sm mb-1"><strong>Constant Contact</strong> – Centralize customer data, automate follow-ups, track engagement</p>
+                  <p className="text-xs text-muted-foreground">Why it works: CRM + email marketing + social = complete customer view</p>
+                </div>
+                <div className="p-4 bg-background rounded-lg">
+                  <h3 className="font-semibold mb-2">📅 SEAMLESS SCHEDULING</h3>
+                  <p className="text-sm mb-1"><strong>Calendly</strong> – Automate booking, reminders, and follow-ups</p>
+                  <p className="text-xs text-muted-foreground">Why it works: Reduces no-shows; integrates with your CRM for full customer journey</p>
+                </div>
+                <div className="p-4 bg-background rounded-lg">
+                  <h3 className="font-semibold mb-2">💻 CUSTOMER COMMUNICATION</h3>
+                  <p className="text-sm mb-1"><strong>Zoom</strong> – Professional video calls with recording for training/onboarding</p>
+                  <p className="text-xs text-muted-foreground">Why it works: Face-to-face builds trust; recordings create reusable content</p>
+                </div>
+                <div className="p-4 bg-background rounded-lg">
+                  <h3 className="font-semibold mb-2">💳 SUBSCRIPTION MANAGEMENT</h3>
+                  <p className="text-sm mb-1"><strong>Stripe</strong> – Recurring billing for retainers, memberships, and service packages</p>
+                  <p className="text-xs text-muted-foreground">Why it works: Automate monthly revenue; reduce payment collection friction</p>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
 
         {/* Blueprint Call-to-Action */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
