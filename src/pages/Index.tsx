@@ -65,9 +65,9 @@ const Index = () => {
               </div>
             </div>
             
-            <p className="text-2xl md:text-3xl font-semibold mb-4">
+            <h1 className="text-2xl md:text-3xl font-chatone mb-4">
               BRAND & MARKETING MASTER BLUEPRINT
-            </p>
+            </h1>
             <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
               Your Complete Strategic Foundation - From Market Validation to Systematic Scaling
             </p>
@@ -134,7 +134,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">The Complete Journey</h2>
+              <h1 className="text-4xl font-chatone mb-4">The Complete Journey</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Five workbooks that take you from market validation to systematic scaling
               </p>
