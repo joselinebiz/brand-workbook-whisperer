@@ -29,7 +29,7 @@ export const WorkbookHeader = ({ number, title, subtitle }: WorkbookHeaderProps)
         <div className="flex items-baseline gap-4">
           <span className="text-5xl font-bold text-primary">{number}</span>
           <div>
-            <h1 className="text-3xl font-bold mb-1">{title}</h1>
+            <h1 className="text-3xl font-chatone mb-1">{title}</h1>
             <p className="text-lg text-muted-foreground">{subtitle}</p>
           </div>
         </div>

@@ -78,7 +78,7 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
         <div id="brand-guide-content">
           {/* Header */}
           <div className="text-center mb-8 pb-6 border-b-2 border-primary">
-            <h1 className="text-3xl font-bold mb-2">ONE-PAGE BRAND GUIDE</h1>
+            <h1 className="text-3xl font-chatone mb-2">ONE-PAGE BRAND GUIDE</h1>
             <p className="text-sm text-muted-foreground">Your quick reference for consistent brand presence</p>
           </div>
 
