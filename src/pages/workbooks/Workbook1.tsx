@@ -3,6 +3,7 @@ import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ExampleBox } from "@/components/ExampleBox";
 import { BrandGuide } from "@/components/BrandGuide";
+import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -76,12 +77,18 @@ export default function Workbook1() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <WorkbookHeader
-        number="01"
-        title="BRAND STRATEGY FOUNDATION"
-        subtitle="Build the Foundation That Makes Marketing Easier and More Effective"
-      />
+    <ProtectedWorkbook
+      productType="workbook_1"
+      priceId="price_1SHBiWAnYzcngRwoJCYzqIEr"
+      price={19700}
+      workbookTitle="Workbook 1 - Brand Strategy Foundation"
+    >
+      <div className="min-h-screen bg-background">
+        <WorkbookHeader
+          number="01"
+          title="BRAND STRATEGY FOUNDATION"
+          subtitle="Build the Foundation That Makes Marketing Easier and More Effective"
+        />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Save Indicator */}
@@ -1476,6 +1483,7 @@ DELIVER:
           </Button>
         </div>
       </div>
-    </div>
+      </div>
+    </ProtectedWorkbook>
   );
 }

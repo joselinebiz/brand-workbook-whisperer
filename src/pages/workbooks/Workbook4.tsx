@@ -3,6 +3,7 @@ import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { BlueprintSection } from "@/components/BlueprintSection";
+import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -108,13 +109,20 @@ Generated: ${new Date().toLocaleDateString()}
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+  
   return (
-    <div className="min-h-screen bg-background">
-      <WorkbookHeader
-        number="04"
-        title="MEASUREMENT, SCALING & GROWTH"
-        subtitle="Transform Data into Decisions and Scale What Works"
-      />
+    <ProtectedWorkbook
+      productType="workbook_4"
+      priceId="price_1SHBj5AnYzcngRwoUKYMf5Mc"
+      price={19700}
+      workbookTitle="Workbook 4 - Measurement, Scaling & Growth"
+    >
+      <div className="min-h-screen bg-background">
+        <WorkbookHeader
+          number="04"
+          title="MEASUREMENT, SCALING & GROWTH"
+          subtitle="Transform Data into Decisions and Scale What Works"
+        />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Save Indicator */}
@@ -745,6 +753,7 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
           </Button>
         </div>
       </div>
-    </div>
+      </div>
+    </ProtectedWorkbook>
   );
 }

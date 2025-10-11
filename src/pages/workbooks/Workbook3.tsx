@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
+import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,12 +39,18 @@ export default function Workbook3() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <WorkbookHeader
-        number="03"
-        title="CUSTOMER JOURNEY & SYSTEMS"
-        subtitle="Turn Leads into Loyal Customers with Automated Systems"
-      />
+    <ProtectedWorkbook
+      productType="workbook_3"
+      priceId="price_1SHBitAnYzcngRwoM3KUCNLK"
+      price={19700}
+      workbookTitle="Workbook 3 - Customer Journey & Systems"
+    >
+      <div className="min-h-screen bg-background">
+        <WorkbookHeader
+          number="03"
+          title="CUSTOMER JOURNEY & SYSTEMS"
+          subtitle="Turn Leads into Loyal Customers with Automated Systems"
+        />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Save Indicator */}
@@ -1550,6 +1557,7 @@ DESIGN:
           </Button>
         </div>
       </div>
-    </div>
+      </div>
+    </ProtectedWorkbook>
   );
 }

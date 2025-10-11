@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
+import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,12 +30,18 @@ export default function Workbook2() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <WorkbookHeader
-        number="02"
-        title="MARKETING STRATEGY EXECUTION"
-        subtitle="Turn Your Brand Foundation into a Revenue-Generating Machine"
-      />
+    <ProtectedWorkbook
+      productType="workbook_2"
+      priceId="price_1SHBiiAnYzcngRwozXR4UtDC"
+      price={19700}
+      workbookTitle="Workbook 2 - Marketing Strategy Execution"
+    >
+      <div className="min-h-screen bg-background">
+        <WorkbookHeader
+          number="02"
+          title="MARKETING STRATEGY EXECUTION"
+          subtitle="Turn Your Brand Foundation into a Revenue-Generating Machine"
+        />
 
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Save Indicator */}
@@ -1427,6 +1434,7 @@ OUTPUT:
           </Button>
         </div>
       </div>
-    </div>
+      </div>
+    </ProtectedWorkbook>
   );
 }
