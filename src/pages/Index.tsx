@@ -1,8 +1,13 @@
 import { WorkbookCard } from "@/components/WorkbookCard";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Target, Zap } from "lucide-react";
+import { BookOpen, Target, Zap, LogOut, User } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
   const workbooks = [
     {
       number: "00",
@@ -11,6 +16,8 @@ const Index = () => {
       timeRequired: "45 min",
       description: "Validate your market opportunity with one clear sentence that defines your unique position.",
       path: "/workbook/0",
+      productType: "workbook_0",
+      price: 0,
     },
     {
       number: "01",
@@ -19,6 +26,8 @@ const Index = () => {
       timeRequired: "2-4 hours",
       description: "Create a clear brand foundation that guides every decision with visual and verbal identity systems.",
       path: "/workbook/1",
+      productType: "workbook_1",
+      price: 19700,
     },
     {
       number: "02",
@@ -27,6 +36,8 @@ const Index = () => {
       timeRequired: "5-10 hours",
       description: "Complete market analysis, positioning strategy, and 90-day content calendar ready to execute.",
       path: "/workbook/2",
+      productType: "workbook_2",
+      price: 19700,
     },
     {
       number: "03",
@@ -35,6 +46,8 @@ const Index = () => {
       timeRequired: "2-4 hours",
       description: "Map your customer journey and automate 80% of touchpoints with the proprietary 2-2-2 follow-up system.",
       path: "/workbook/3",
+      productType: "workbook_3",
+      price: 19700,
     },
     {
       number: "04",
@@ -43,6 +56,8 @@ const Index = () => {
       timeRequired: "3-5 hours",
       description: "Build your custom performance dashboard and 90-day growth sprint plan with testing frameworks.",
       path: "/workbook/4",
+      productType: "workbook_4",
+      price: 19700,
     },
   ];
 
@@ -57,6 +72,25 @@ const Index = () => {
         </div>
         
         <div className="container mx-auto px-4 py-24 relative z-10">
+          <div className="absolute top-4 right-4">
+            {user ? (
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 text-white/80">
+                  <User className="w-4 h-4" />
+                  <span className="text-sm">{user.email}</span>
+                </div>
+                <Button variant="outline" size="sm" onClick={signOut} className="bg-transparent border-white/20 text-white hover:bg-white/10">
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Button variant="outline" size="sm" onClick={() => navigate('/auth')} className="bg-transparent border-white/20 text-white hover:bg-white/10">
+                Sign In
+              </Button>
+            )}
+          </div>
+
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-6">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full">

@@ -4,9 +4,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WorkbookProvider } from "@/contexts/WorkbookContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Blueprint from "./pages/Blueprint";
+import Auth from "./pages/Auth";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import Workbook0 from "./pages/workbooks/Workbook0";
 import Workbook1 from "./pages/workbooks/Workbook1";
 import Workbook2 from "./pages/workbooks/Workbook2";
@@ -17,25 +20,29 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <WorkbookProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/blueprint" element={<Blueprint />} />
-            <Route path="/workbook/0" element={<Workbook0 />} />
-            <Route path="/workbook/1" element={<Workbook1 />} />
-            <Route path="/workbook/2" element={<Workbook2 />} />
-            <Route path="/workbook/3" element={<Workbook3 />} />
-            <Route path="/workbook/4" element={<Workbook4 />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </WorkbookProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <WorkbookProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/blueprint" element={<Blueprint />} />
+              <Route path="/workbook/0" element={<Workbook0 />} />
+              <Route path="/workbook/1" element={<Workbook1 />} />
+              <Route path="/workbook/2" element={<Workbook2 />} />
+              <Route path="/workbook/3" element={<Workbook3 />} />
+              <Route path="/workbook/4" element={<Workbook4 />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </TooltipProvider>
+        </WorkbookProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
