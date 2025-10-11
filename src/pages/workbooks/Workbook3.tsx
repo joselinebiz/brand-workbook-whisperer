@@ -1362,31 +1362,37 @@ DESIGN:
         </Card>
 
         {/* Bridge to Workbook 4 */}
-        <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10">
-          <h2 className="text-2xl font-bold mb-4">🔗 Bridge to Workbook 4</h2>
-          <p className="mb-4">Your customer systems are automated and working! Now scale what's successful.</p>
-          <p className="font-semibold mb-2">✅ You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
-          <ul className="space-y-2 mb-4">
-            <li className="flex items-center gap-2">
-              <span>✅ Customer journey mapped and automated</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>✅ Consistent follow-up system running</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>✅ Customer satisfaction scores tracked</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>✅ Some loyal customers referring others</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>✅ Ready to optimize and expand successful systems</span>
-            </li>
-          </ul>
-          <p className="text-sm text-muted-foreground">
-            Workbook 4 covers: Advanced analytics, A/B testing, scaling successful campaigns, team building, and systematic growth.
-          </p>
-        </Card>
+        <Collapsible>
+          <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-primary/10">
+            <CollapsibleTrigger className="w-full text-left">
+              <h2 className="text-2xl font-bold mb-4">🔗 Bridge to Workbook 4</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <p className="mb-4">Your customer systems are automated and working! Now scale what's successful.</p>
+              <p className="font-semibold mb-2">You're ready for Workbook 4: Measurement, Scaling & Growth when:</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center gap-2">
+                  <span>✅ Customer journey mapped and automated</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅ Consistent follow-up system running</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅ Customer satisfaction scores tracked</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅ Some loyal customers referring others</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅ Ready to optimize and expand successful systems</span>
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground">
+                Workbook 4 covers: Advanced analytics, A/B testing, scaling successful campaigns, team building, and systematic growth.
+              </p>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
 
         {/* Congratulations */}
         <Collapsible>
