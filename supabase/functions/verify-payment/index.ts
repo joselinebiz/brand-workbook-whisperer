@@ -80,6 +80,7 @@ serve(async (req) => {
           .update({ expires_at: expiresAt.toISOString() })
           .eq('user_id', user.id)
           .lt('expires_at', expiresAt.toISOString());
+      }
 
       // Send welcome email
       try {
