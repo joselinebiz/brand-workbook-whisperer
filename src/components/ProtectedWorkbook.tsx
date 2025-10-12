@@ -1,9 +1,9 @@
-import { useEffect, ReactNode } from 'react';
+import { useEffect, ReactNode, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Lock, ShoppingCart } from 'lucide-react';
+import { Lock, ShoppingCart, AlertTriangle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -25,7 +25,39 @@ export const ProtectedWorkbook = ({
   const { user, checkAccess, loading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const hasAccess = checkAccess(productType);
+  const [verifying, setVerifying] = useState(true);
+  const [serverVerified, setServerVerified] = useState(false);
+  const clientHasAccess = checkAccess(productType);
+
+  // Verify access server-side for security
+  useEffect(() => {
+    const verifyServerSideAccess = async () => {
+      if (!user || loading) {
+        setVerifying(false);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase.functions.invoke('verify-workbook-access', {
+          body: { productType },
+        });
+
+        if (error) {
+          console.error('Server verification error:', error);
+          setServerVerified(false);
+        } else {
+          setServerVerified(data?.hasAccess || false);
+        }
+      } catch (error) {
+        console.error('Failed to verify access:', error);
+        setServerVerified(false);
+      } finally {
+        setVerifying(false);
+      }
+    };
+
+    verifyServerSideAccess();
+  }, [user, loading, productType]);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -53,12 +85,14 @@ export const ProtectedWorkbook = ({
     }
   };
 
-  if (loading) {
+  if (loading || verifying) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
+          <p className="text-muted-foreground">
+            {loading ? 'Loading...' : 'Verifying access...'}
+          </p>
         </div>
       </div>
     );
@@ -66,6 +100,27 @@ export const ProtectedWorkbook = ({
 
   if (!user) {
     return null; // Will redirect in useEffect
+  }
+
+  // Check both client and server verification for defense in depth
+  const hasAccess = clientHasAccess && serverVerified;
+
+  // Show warning if client and server checks don't match
+  if (clientHasAccess !== serverVerified) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <Card className="w-full max-w-2xl p-8 text-center">
+          <AlertTriangle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+          <h1 className="text-3xl font-chatone mb-2">Access Verification Issue</h1>
+          <p className="text-muted-foreground mb-6">
+            There was an issue verifying your access. Please try refreshing the page.
+          </p>
+          <Button onClick={() => window.location.reload()} size="lg">
+            Refresh Page
+          </Button>
+        </Card>
+      </div>
+    );
   }
 
   if (!hasAccess) {
