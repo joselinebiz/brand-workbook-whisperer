@@ -3,7 +3,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Lock, ShoppingCart, AlertTriangle } from 'lucide-react';
+import { Lock, ShoppingCart } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -25,19 +25,24 @@ export const ProtectedWorkbook = ({
   const { user, checkAccess, loading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [serverVerified, setServerVerified] = useState<boolean | null>(null);
   const [verifying, setVerifying] = useState(true);
-  const [serverVerified, setServerVerified] = useState(false);
   const clientHasAccess = checkAccess(productType);
 
-  // Verify access server-side for security
+  // Redirect to auth if not logged in
   useEffect(() => {
-    const verifyServerSideAccess = async () => {
-      if (!user || loading) {
-        setVerifying(false);
-        return;
-      }
+    if (!loading && !user) {
+      navigate('/auth');
+    }
+  }, [user, loading, navigate]);
+
+  // Server-side access verification
+  useEffect(() => {
+    const verifyAccess = async () => {
+      if (!user || loading) return;
 
       try {
+        setVerifying(true);
         const { data, error } = await supabase.functions.invoke('verify-workbook-access', {
           body: { productType },
         });
@@ -45,25 +50,25 @@ export const ProtectedWorkbook = ({
         if (error) {
           console.error('Server verification error:', error);
           setServerVerified(false);
-        } else {
-          setServerVerified(data?.hasAccess || false);
+          toast({
+            title: "Verification Failed",
+            description: "Unable to verify access. Please try again.",
+            variant: "destructive",
+          });
+          return;
         }
-      } catch (error) {
-        console.error('Failed to verify access:', error);
+
+        setServerVerified(data?.hasAccess || false);
+      } catch (error: any) {
+        console.error('Error verifying access:', error);
         setServerVerified(false);
       } finally {
         setVerifying(false);
       }
     };
 
-    verifyServerSideAccess();
-  }, [user, loading, productType]);
-
-  useEffect(() => {
-    if (!loading && !user) {
-      navigate('/auth');
-    }
-  }, [user, loading, navigate]);
+    verifyAccess();
+  }, [user, loading, productType, toast]);
 
   const handlePurchase = async () => {
     try {
@@ -102,26 +107,8 @@ export const ProtectedWorkbook = ({
     return null; // Will redirect in useEffect
   }
 
-  // Check both client and server verification for defense in depth
-  const hasAccess = clientHasAccess && serverVerified;
-
-  // Show warning if client and server checks don't match
-  if (clientHasAccess !== serverVerified) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="w-full max-w-2xl p-8 text-center">
-          <AlertTriangle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-chatone mb-2">Access Verification Issue</h1>
-          <p className="text-muted-foreground mb-6">
-            There was an issue verifying your access. Please try refreshing the page.
-          </p>
-          <Button onClick={() => window.location.reload()} size="lg">
-            Refresh Page
-          </Button>
-        </Card>
-      </div>
-    );
-  }
+  // Use server verification result, fall back to client check
+  const hasAccess = serverVerified !== null ? serverVerified : clientHasAccess;
 
   if (!hasAccess) {
     return (
