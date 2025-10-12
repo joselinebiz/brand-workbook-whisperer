@@ -38,6 +38,25 @@ serve(async (req) => {
       const expiresAt = new Date();
       expiresAt.setMonth(expiresAt.getMonth() + 6);
 
+      // Check if user has any existing purchases
+      const { data: existingPurchases } = await supabaseClient
+        .from('purchases')
+        .select('expires_at')
+        .eq('user_id', user.id)
+        .gt('expires_at', new Date().toISOString())
+        .order('expires_at', { ascending: false })
+        .limit(1);
+
+      // If they have an existing purchase with a later expiration, use that date instead
+      // This ensures they don't lose access to earlier purchases when buying new ones
+      let finalExpiresAt = expiresAt;
+      if (existingPurchases && existingPurchases.length > 0) {
+        const existingExpiration = new Date(existingPurchases[0].expires_at);
+        if (existingExpiration > expiresAt) {
+          finalExpiresAt = existingExpiration;
+        }
+      }
+
       // Store purchase in database
       const { error } = await supabaseClient
         .from('purchases')
@@ -47,17 +66,25 @@ serve(async (req) => {
           stripe_session_id: sessionId,
           stripe_payment_intent_id: session.payment_intent as string,
           amount: session.amount_total || 0,
-          expires_at: expiresAt.toISOString(),
+          expires_at: finalExpiresAt.toISOString(),
         }, {
           onConflict: 'user_id,product_type'
         });
 
       if (error) throw error;
 
+      // If the new expiration is later, update all existing purchases to match
+      if (finalExpiresAt.getTime() === expiresAt.getTime() && existingPurchases && existingPurchases.length > 0) {
+        await supabaseClient
+          .from('purchases')
+          .update({ expires_at: expiresAt.toISOString() })
+          .eq('user_id', user.id)
+          .lt('expires_at', expiresAt.toISOString());
+
       // Send welcome email
       try {
         await supabaseClient.functions.invoke('send-welcome-email', {
-          body: { productType, expiresAt: expiresAt.toISOString() }
+          body: { productType, expiresAt: finalExpiresAt.toISOString() }
         });
       } catch (emailError) {
         console.error("Error sending welcome email:", emailError);
