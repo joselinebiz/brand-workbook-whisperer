@@ -33,7 +33,7 @@ serve(async (req) => {
     const user = data.user;
     if (!user?.email) throw new Error("User not authenticated");
 
-    const { productType } = await req.json();
+    const { productType, couponCode } = await req.json();
     
     if (!PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES]) {
       throw new Error("Invalid product type");
@@ -49,7 +49,8 @@ serve(async (req) => {
       customerId = customers.data[0].id;
     }
 
-    const session = await stripe.checkout.sessions.create({
+    // Prepare session configuration
+    const sessionConfig: any = {
       customer: customerId,
       customer_email: customerId ? undefined : user.email,
       line_items: [
@@ -65,7 +66,26 @@ serve(async (req) => {
         user_id: user.id,
         product_type: productType,
       },
-    });
+    };
+
+    // Apply coupon if provided
+    if (couponCode) {
+      try {
+        // Verify the coupon exists and is valid
+        const coupon = await stripe.coupons.retrieve(couponCode);
+        if (coupon.valid) {
+          sessionConfig.discounts = [{
+            coupon: couponCode,
+          }];
+          console.log(`Applied coupon: ${couponCode}`);
+        }
+      } catch (couponError) {
+        console.error("Invalid coupon code:", couponError);
+        throw new Error("Invalid coupon code");
+      }
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },

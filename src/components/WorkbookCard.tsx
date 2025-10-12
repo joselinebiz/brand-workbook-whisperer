@@ -1,11 +1,21 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Lock } from "lucide-react";
+import { ArrowRight, CheckCircle2, Lock, Tag } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface WorkbookCardProps {
   number: string;
@@ -34,27 +44,40 @@ export const WorkbookCard = ({
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [showCouponDialog, setShowCouponDialog] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
   
   const hasAccess = checkAccess(productType || '');
 
-  const handlePurchase = async () => {
+  const handlePurchaseClick = () => {
     if (!user) {
       navigate('/auth');
       return;
     }
+    setShowCouponDialog(true);
+  };
 
+  const handlePurchase = async () => {
     if (!productType) return;
 
     setLoading(true);
+    setShowCouponDialog(false);
+    
     try {
+      const body: { productType: string; couponCode?: string } = { productType };
+      if (couponCode.trim()) {
+        body.couponCode = couponCode.trim();
+      }
+
       const { data, error } = await supabase.functions.invoke('create-payment', {
-        body: { productType },
+        body,
       });
 
       if (error) throw error;
 
       if (data?.url) {
         window.open(data.url, '_blank');
+        setCouponCode(""); // Reset coupon code after successful checkout
       }
     } catch (error: any) {
       toast({
@@ -108,7 +131,7 @@ export const WorkbookCard = ({
       <Button 
         variant="outline" 
         className="w-full group/btn"
-        onClick={handlePurchase}
+        onClick={handlePurchaseClick}
         disabled={loading}
       >
         {loading ? 'Processing...' : `Purchase - $${(price || 0) / 100}`}
@@ -118,7 +141,42 @@ export const WorkbookCard = ({
   };
 
   return (
-    <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-elegant)] bg-card">
+    <>
+      <Dialog open={showCouponDialog} onOpenChange={setShowCouponDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Complete Your Purchase</DialogTitle>
+            <DialogDescription>
+              Enter a coupon code if you have one, or proceed without one.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid gap-2">
+              <Label htmlFor="coupon">Coupon Code (Optional)</Label>
+              <div className="relative">
+                <Tag className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input
+                  id="coupon"
+                  placeholder="Enter coupon code"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowCouponDialog(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handlePurchase} disabled={loading}>
+              {loading ? 'Processing...' : 'Continue to Checkout'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-elegant)] bg-card">
       <div className="absolute top-0 left-0 w-2 h-full bg-primary transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300" />
       
       <div className="p-8">
@@ -142,5 +200,6 @@ export const WorkbookCard = ({
         {getButtonContent()}
       </div>
     </Card>
+    </>
   );
 };
