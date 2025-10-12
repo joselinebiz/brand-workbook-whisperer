@@ -5,6 +5,19 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
+
+const authSchema = z.object({
+  email: z.string()
+    .trim()
+    .email('Invalid email address')
+    .max(255, 'Email too long'),
+  password: z.string()
+    .min(8, 'Password must be at least 8 characters')
+    .regex(/[A-Z]/, 'Password must contain an uppercase letter')
+    .regex(/[a-z]/, 'Password must contain a lowercase letter')
+    .regex(/[0-9]/, 'Password must contain a number')
+});
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -17,11 +30,23 @@ export default function Auth() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate inputs
+    const result = authSchema.safeParse({ email: email.trim(), password });
+    if (!result.success) {
+      toast({
+        title: "Validation Error",
+        description: result.error.errors[0].message,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLoading(true);
 
     const { error } = isSignUp
-      ? await signUp(email, password)
-      : await signIn(email, password);
+      ? await signUp(result.data.email, result.data.password)
+      : await signIn(result.data.email, result.data.password);
 
     if (error) {
       toast({
@@ -65,7 +90,7 @@ export default function Auth() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              minLength={6}
+              minLength={8}
             />
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
