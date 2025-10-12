@@ -20,22 +20,25 @@ serve(async (req) => {
   );
 
   try {
-    // Calculate date 7 days from now
-    const reminderDate = new Date();
-    reminderDate.setDate(reminderDate.getDate() + 7);
+    // Calculate 2 days from now
+    const twoDaysFromNow = new Date();
+    twoDaysFromNow.setDate(twoDaysFromNow.getDate() + 2);
+    twoDaysFromNow.setHours(0, 0, 0, 0);
+    const threeDaysFromNow = new Date(twoDaysFromNow);
+    threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 1);
 
-    // Fetch purchases expiring in 7 days
-    const { data: expiringPurchases, error: fetchError } = await supabaseClient
+    // Fetch purchases expiring in 2 days
+    const { data: purchases, error: fetchError } = await supabaseClient
       .from('purchases')
       .select('*, profiles(email)')
-      .gte('expires_at', new Date().toISOString())
-      .lte('expires_at', reminderDate.toISOString());
+      .gte('expires_at', twoDaysFromNow.toISOString())
+      .lt('expires_at', threeDaysFromNow.toISOString());
 
     if (fetchError) throw fetchError;
 
-    console.log(`Found ${expiringPurchases?.length || 0} purchases expiring soon`);
+    console.log(`Found ${purchases?.length || 0} purchases with 2 days left`);
 
-    const emailPromises = (expiringPurchases || []).map(async (purchase) => {
+    const emailPromises = (purchases || []).map(async (purchase) => {
       const email = purchase.profiles?.email;
       if (!email) return null;
 
@@ -47,17 +50,17 @@ serve(async (req) => {
 
       const productName = purchase.product_type === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
 
-      await resend.emails.send({
+      return resend.emails.send({
         from: "Joseline, MBA <noreply@blkbld.co>",
-        to: [purchase.profiles.email],
-        subject: "7 days left—finish strong 🎯",
+        to: [email],
+        subject: "48 hours left—your move 🚨",
         html: `
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>7 Days Left</title>
+              <title>2 Days Left</title>
             </head>
             <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; background-color: #000000; color: #ffffff;">
               <table role="presentation" style="width: 100%; border-collapse: collapse;">
@@ -67,39 +70,46 @@ serve(async (req) => {
                       <tr>
                         <td style="padding: 40px 40px 20px;">
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">Hey there,</p>
+                          <p style="margin: 0 0 20px; font-size: 24px; font-weight: bold; color: #ffffff;">
+                            2 days left.
+                          </p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Your access to <strong style="color: #ffffff;">${productName}</strong> expires in <strong style="color: #ffffff;">7 days</strong> (${expirationDate}).
+                            Your access to <strong style="color: #ffffff;">${productName}</strong> expires on <strong style="color: #ffffff;">${expirationDate}</strong>.
                           </p>
                           
-                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you've been working through the materials:</p>
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you've been working through this:</p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            You're in the home stretch. Block a few hours this week to complete what you started. The clarity on the other side is worth it. Make sure to download what you've created.
+                            Finish your current section, download anything you want to reference later, and celebrate what you've built.
                           </p>
                           
-                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you paused midway:</p>
-                          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Pick it back up. Even finishing one more section this week moves your business forward.
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you're not done yet:</p>
+                          <p style="margin: 0 0 15px; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            That's okay. Here are your options:
                           </p>
                           
-                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you haven't started yet:</p>
-                          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            You've still got time to extract value. Open your materials today and tackle the section that solves your biggest pain point right now.
-                          </p>
+                          <div style="background-color: #1a1a1a; border-left: 4px solid #ffffff; padding: 20px; margin: 20px 0; border-radius: 4px;">
+                            <p style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Option 1: Finish what you can</p>
+                            <ul style="margin: 10px 0 0 20px; padding: 0; font-size: 14px; line-height: 1.8; color: #cccccc;">
+                              <li>Download key materials</li>
+                              <li>Complete at least one section</li>
+                              <li>Implement one framework this week</li>
+                            </ul>
+                          </div>
                           
-                          <table role="presentation" style="width: 100%; margin: 30px 0;">
+                          <table role="presentation" style="width: 100%; margin: 20px 0;">
                             <tr>
                               <td align="center">
                                 <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
-                                  Access Your Materials →
+                                  Access Now →
                                 </a>
                               </td>
                             </tr>
                           </table>
                           
                           <div style="background-color: #1a1a1a; border-left: 4px solid #ffffff; padding: 20px; margin: 20px 0; border-radius: 4px;">
-                            <p style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Need more time?</p>
+                            <p style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Option 2: Extend your access</p>
                             <p style="margin: 0 0 15px; font-size: 14px; line-height: 1.6; color: #cccccc;">
-                              Life happens. Business gets busy. If you need another 6 months, grab it at 50% off with code <strong style="color: #ffffff;">KEEPBUILDING</strong>.
+                              Need more time? Grab 6 extra months for 50% off with code <strong style="color: #ffffff;">KEEPBUILDING</strong>.
                             </p>
                             <p style="margin: 0; text-align: center;">
                               <a href="https://blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Extend Access (50% Off) →</a>
@@ -107,7 +117,11 @@ serve(async (req) => {
                           </div>
                           
                           <p style="margin: 20px 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Already seeing wins? Share them! Tag me <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a>. I celebrate every founder who goes from scattered to strategic.
+                            You invested in this for a reason. Ensure you receive what you paid for.
+                          </p>
+                          
+                          <p style="margin: 20px 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            Have you implemented something already? I'd love to see it. Tag <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a>.
                           </p>
                           
                           <p style="margin: 20px 0 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
@@ -116,11 +130,7 @@ serve(async (req) => {
                           </p>
                           
                           <p style="margin: 20px 0 0; font-size: 14px; line-height: 1.6; color: #999999;">
-                            <strong>P.S.</strong> Don't let a deadline steal your progress. Finish what you started or extend your access—either way, keep building.
-                          </p>
-                          
-                          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #999999;">
-                            <strong>P.S.S.</strong> Don't forget to download what you have already built and save it. When you work with designers, web developers, AI, etc., use your downloads as your foundation to build a solid business.
+                            <strong>P.S.</strong> If you haven't started, open your materials and set a 15-minute timer. Start is the hardest part. Momentum beats perfection.
                           </p>
                         </td>
                       </tr>
@@ -146,7 +156,7 @@ serve(async (req) => {
     const successful = results.filter(r => r.status === 'fulfilled').length;
     const failed = results.filter(r => r.status === 'rejected').length;
 
-    console.log(`Sent ${successful} reminder emails, ${failed} failed`);
+    console.log(`Sent ${successful} 2-days-left emails, ${failed} failed`);
 
     return new Response(JSON.stringify({ 
       success: true, 
@@ -157,7 +167,7 @@ serve(async (req) => {
       status: 200,
     });
   } catch (error) {
-    console.error("Error sending expiration reminders:", error);
+    console.error("Error sending 2-days-left emails:", error);
     return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,

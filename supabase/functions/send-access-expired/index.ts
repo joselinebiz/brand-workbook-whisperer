@@ -44,10 +44,12 @@ serve(async (req) => {
         day: 'numeric'
       });
 
+      const productName = purchase.product_type === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
+
       return resend.emails.send({
-        from: "BLK BLD <noreply@blkbld.co>",
+        from: "Joseline, MBA <noreply@blkbld.co>",
         to: [email],
-        subject: "Your Access Has Expired 📅",
+        subject: "Your access expired—what's next? 🔄",
         html: `
           <!DOCTYPE html>
           <html>
@@ -61,53 +63,57 @@ serve(async (req) => {
                 <tr>
                   <td align="center" style="padding: 40px 20px;">
                     <table role="presentation" style="max-width: 600px; width: 100%; background-color: #111111; border-radius: 8px; overflow: hidden;">
-                      <!-- Header -->
                       <tr>
-                        <td style="padding: 40px 40px 20px; text-align: center;">
-                          <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: #ffffff;">Access Has Expired 📅</h1>
-                        </td>
-                      </tr>
-                      
-                      <!-- Main Content -->
-                      <tr>
-                        <td style="padding: 20px 40px;">
+                        <td style="padding: 40px 40px 20px;">
+                          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">Hey there,</p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Your access to <strong style="color: #ffffff;">${purchase.product_type === 'full_bundle' ? 'the Full Brand Blueprint Bundle' : 'your Brand Blueprint Workbook'}</strong> has expired.
+                            Your access to <strong style="color: #ffffff;">${productName}</strong> expired on <strong style="color: #ffffff;">${expirationDate}</strong>.
                           </p>
                           
-                          <div style="background-color: #1a1a1a; border-left: 4px solid #888888; padding: 20px; margin: 20px 0; border-radius: 4px;">
-                            <p style="margin: 0 0 10px; font-size: 14px; color: #999999;">Access Details:</p>
-                            <p style="margin: 0; font-size: 16px; color: #ffffff;">
-                              <strong>Expired On:</strong> ${expirationDate}
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you finished:</p>
+                          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            Congratulations! You built your foundation! Now go implement and scale. If you saw results, I'd love to hear about them—reply or tag me <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a>.
+                          </p>
+                          
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you're not done yet:</p>
+                          <p style="margin: 0 0 15px; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            No guilt. Here's what you can do:
+                          </p>
+                          
+                          <div style="background-color: #1a1a1a; border-left: 4px solid #ffffff; padding: 20px; margin: 20px 0; border-radius: 4px;">
+                            <p style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Option 1: Renew your access</p>
+                            <p style="margin: 0 0 15px; font-size: 14px; line-height: 1.6; color: #cccccc;">
+                              Get another 6 months to finish what you started—50% off with code <strong style="color: #ffffff;">COMEBACK</strong>.
+                            </p>
+                            <p style="margin: 0 0 20px; text-align: center;">
+                              <a href="https://blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Renew Access (50% Off) →</a>
+                            </p>
+                            
+                            <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Option 2: Take what you learned and run with it</p>
+                            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #cccccc;">
+                              If now's not the right time to finish, that's okay. Use what you did complete and keep building.
                             </p>
                           </div>
                           
-                          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Thank you for using BLK BLD to build your brand. We hope the tools and frameworks we provided helped you create something amazing.
+                          <p style="margin: 20px 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            Honestly, I created these materials because I've seen too many brilliant founders stuck in scattered marketing and inconsistent branding. The system works—but only if you work it.
                           </p>
                           
-                          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Want to continue your brand journey? Renew your access or explore our other offerings.
+                          <p style="margin: 20px 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            Whether you finished, renewed, or moved on—I'm rooting for you.
                           </p>
                           
-                          <!-- CTA Button -->
-                          <table role="presentation" style="width: 100%; margin: 30px 0;">
-                            <tr>
-                              <td align="center">
-                                <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
-                                  Renew Your Access
-                                </a>
-                              </td>
-                            </tr>
-                          </table>
+                          <p style="margin: 20px 0 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                            Let's build,<br>
+                            <strong style="color: #ffffff;">Joseline, MBA</strong>
+                          </p>
                           
                           <p style="margin: 20px 0 0; font-size: 14px; line-height: 1.6; color: #999999;">
-                            Questions? Reply to this email and we'll be happy to assist you.
+                            <strong>P.S.</strong> If you completed the workbooks and saw results, share your story! Reply to this email or tag <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a> on Instagram. I love celebrating wins!
                           </p>
                         </td>
                       </tr>
                       
-                      <!-- Footer -->
                       <tr>
                         <td style="padding: 20px 40px 40px; text-align: center; border-top: 1px solid #222222;">
                           <p style="margin: 0; font-size: 12px; color: #666666;">

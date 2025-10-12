@@ -54,6 +54,15 @@ serve(async (req) => {
 
       if (error) throw error;
 
+      // Send welcome email
+      try {
+        await supabaseClient.functions.invoke('send-welcome-email', {
+          body: { productType, expiresAt: expiresAt.toISOString() }
+        });
+      } catch (emailError) {
+        console.error("Error sending welcome email:", emailError);
+      }
+
       return new Response(JSON.stringify({ success: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,

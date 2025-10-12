@@ -20,22 +20,25 @@ serve(async (req) => {
   );
 
   try {
-    // Calculate date 7 days from now
-    const reminderDate = new Date();
-    reminderDate.setDate(reminderDate.getDate() + 7);
+    // Calculate 30 days from now
+    const thirtyDaysFromNow = new Date();
+    thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
+    thirtyDaysFromNow.setHours(0, 0, 0, 0);
+    const thirtyOneDaysFromNow = new Date(thirtyDaysFromNow);
+    thirtyOneDaysFromNow.setDate(thirtyOneDaysFromNow.getDate() + 1);
 
-    // Fetch purchases expiring in 7 days
-    const { data: expiringPurchases, error: fetchError } = await supabaseClient
+    // Fetch purchases expiring in 30 days
+    const { data: purchases, error: fetchError } = await supabaseClient
       .from('purchases')
       .select('*, profiles(email)')
-      .gte('expires_at', new Date().toISOString())
-      .lte('expires_at', reminderDate.toISOString());
+      .gte('expires_at', thirtyDaysFromNow.toISOString())
+      .lt('expires_at', thirtyOneDaysFromNow.toISOString());
 
     if (fetchError) throw fetchError;
 
-    console.log(`Found ${expiringPurchases?.length || 0} purchases expiring soon`);
+    console.log(`Found ${purchases?.length || 0} purchases with 30 days left`);
 
-    const emailPromises = (expiringPurchases || []).map(async (purchase) => {
+    const emailPromises = (purchases || []).map(async (purchase) => {
       const email = purchase.profiles?.email;
       if (!email) return null;
 
@@ -47,17 +50,17 @@ serve(async (req) => {
 
       const productName = purchase.product_type === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
 
-      await resend.emails.send({
+      return resend.emails.send({
         from: "Joseline, MBA <noreply@blkbld.co>",
-        to: [purchase.profiles.email],
-        subject: "7 days left—finish strong 🎯",
+        to: [email],
+        subject: "30 days left—finish strong or extend 💼",
         html: `
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>7 Days Left</title>
+              <title>30 Days Left</title>
             </head>
             <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; background-color: #000000; color: #ffffff;">
               <table role="presentation" style="width: 100%; border-collapse: collapse;">
@@ -67,60 +70,52 @@ serve(async (req) => {
                       <tr>
                         <td style="padding: 40px 40px 20px;">
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">Hey there,</p>
+                          <p style="margin: 0 0 20px; font-size: 20px; font-weight: bold; color: #ffffff;">
+                            30 days left.
+                          </p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Your access to <strong style="color: #ffffff;">${productName}</strong> expires in <strong style="color: #ffffff;">7 days</strong> (${expirationDate}).
+                            Your access to <strong style="color: #ffffff;">${productName}</strong> expires on <strong style="color: #ffffff;">${expirationDate}</strong>.
                           </p>
                           
-                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you've been working through the materials:</p>
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you're almost done:</p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            You're in the home stretch. Block a few hours this week to complete what you started. The clarity on the other side is worth it. Make sure to download what you've created.
+                            Sprint to the finish. You've got this.
                           </p>
                           
-                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you paused midway:</p>
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you're midway through:</p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Pick it back up. Even finishing one more section this week moves your business forward.
+                            Block 2-3 focused hours this week to wrap up.
                           </p>
                           
-                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you haven't started yet:</p>
+                          <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">If you need more time:</p>
                           <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            You've still got time to extract value. Open your materials today and tackle the section that solves your biggest pain point right now.
+                            Grab 6 extra months at 50% off with code <strong style="color: #ffffff;">KEEPBUILDING</strong>.
                           </p>
                           
                           <table role="presentation" style="width: 100%; margin: 30px 0;">
                             <tr>
-                              <td align="center">
+                              <td align="center" style="padding-bottom: 15px;">
                                 <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
                                   Access Your Materials →
                                 </a>
                               </td>
                             </tr>
+                            <tr>
+                              <td align="center">
+                                <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: transparent; color: #ffffff; border: 2px solid #ffffff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
+                                  Extend Access (50% Off) →
+                                </a>
+                              </td>
+                            </tr>
                           </table>
                           
-                          <div style="background-color: #1a1a1a; border-left: 4px solid #ffffff; padding: 20px; margin: 20px 0; border-radius: 4px;">
-                            <p style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Need more time?</p>
-                            <p style="margin: 0 0 15px; font-size: 14px; line-height: 1.6; color: #cccccc;">
-                              Life happens. Business gets busy. If you need another 6 months, grab it at 50% off with code <strong style="color: #ffffff;">KEEPBUILDING</strong>.
-                            </p>
-                            <p style="margin: 0; text-align: center;">
-                              <a href="https://blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Extend Access (50% Off) →</a>
-                            </p>
-                          </div>
-                          
                           <p style="margin: 20px 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                            Already seeing wins? Share them! Tag me <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a>. I celebrate every founder who goes from scattered to strategic.
+                            Already implementing? I want to hear about it! Reply or tag me <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a> with your results.
                           </p>
                           
                           <p style="margin: 20px 0 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
                             Let's build,<br>
                             <strong style="color: #ffffff;">Joseline, MBA</strong>
-                          </p>
-                          
-                          <p style="margin: 20px 0 0; font-size: 14px; line-height: 1.6; color: #999999;">
-                            <strong>P.S.</strong> Don't let a deadline steal your progress. Finish what you started or extend your access—either way, keep building.
-                          </p>
-                          
-                          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #999999;">
-                            <strong>P.S.S.</strong> Don't forget to download what you have already built and save it. When you work with designers, web developers, AI, etc., use your downloads as your foundation to build a solid business.
                           </p>
                         </td>
                       </tr>
@@ -146,7 +141,7 @@ serve(async (req) => {
     const successful = results.filter(r => r.status === 'fulfilled').length;
     const failed = results.filter(r => r.status === 'rejected').length;
 
-    console.log(`Sent ${successful} reminder emails, ${failed} failed`);
+    console.log(`Sent ${successful} 30-days-left emails, ${failed} failed`);
 
     return new Response(JSON.stringify({ 
       success: true, 
@@ -157,7 +152,7 @@ serve(async (req) => {
       status: 200,
     });
   } catch (error) {
-    console.error("Error sending expiration reminders:", error);
+    console.error("Error sending 30-days-left emails:", error);
     return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,

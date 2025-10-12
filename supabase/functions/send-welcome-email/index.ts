@@ -35,10 +35,12 @@ serve(async (req) => {
       day: 'numeric'
     });
 
+    const productName = productType === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
+
     const emailResponse = await resend.emails.send({
-      from: "BLK BLD <noreply@blkbld.co>",
+      from: "Joseline, MBA <noreply@blkbld.co>",
       to: [user.email!],
-      subject: "Welcome to Your Brand Blueprint Journey! 🎉",
+      subject: `Your ${productName} is ready. Let's build. 🚀`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -54,47 +56,69 @@ serve(async (req) => {
                   <table role="presentation" style="max-width: 600px; width: 100%; background-color: #111111; border-radius: 8px; overflow: hidden;">
                     <!-- Header -->
                     <tr>
-                      <td style="padding: 40px 40px 20px; text-align: center;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: #ffffff;">Welcome to BLK BLD! 🎉</h1>
+                      <td style="padding: 40px 40px 20px;">
+                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                          Hey there,
+                        </p>
+                        <h1 style="margin: 0 0 20px; font-size: 28px; font-weight: bold; color: #ffffff;">Welcome to Your Brand Blueprint Journey!</h1>
+                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                          Your <strong style="color: #ffffff;">${productName}</strong> is ready.
+                        </p>
                       </td>
                     </tr>
                     
                     <!-- Main Content -->
                     <tr>
-                      <td style="padding: 20px 40px;">
-                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                          Thank you for purchasing <strong style="color: #ffffff;">${productType === 'full_bundle' ? 'the Full Brand Blueprint Bundle' : 'a Brand Blueprint Workbook'}</strong>!
+                      <td style="padding: 0 40px 20px;">
+                        <p style="margin: 0 0 15px; font-size: 16px; font-weight: bold; color: #ffffff;">
+                          Here's what happens next:
                         </p>
-                        
-                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                          You now have access to powerful tools and frameworks designed to help you build, refine, and elevate your brand.
-                        </p>
-                        
-                        <div style="background-color: #1a1a1a; border-left: 4px solid #ffffff; padding: 20px; margin: 20px 0; border-radius: 4px;">
-                          <p style="margin: 0 0 10px; font-size: 14px; color: #999999;">Your Access Details:</p>
-                          <p style="margin: 0; font-size: 16px; color: #ffffff;">
-                            <strong>Product:</strong> ${productType === 'full_bundle' ? 'Full Brand Blueprint Bundle' : 'Brand Blueprint Workbook'}<br>
-                            <strong>Access Expires:</strong> ${expirationDate}
-                          </p>
-                        </div>
-                        
-                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
-                          Ready to get started? Log in to your account and begin building your brand blueprint today.
-                        </p>
+                        <ul style="margin: 0 0 20px; padding-left: 20px; font-size: 16px; line-height: 1.8; color: #cccccc;">
+                          <li>You have 6 months of access (expires <strong style="color: #ffffff;">${expirationDate}</strong>)</li>
+                          <li>Start wherever you are—whether validating your idea or scaling what works</li>
+                          <li>Work at your pace—15 minutes or 2 hours, you decide</li>
+                        </ul>
                         
                         <!-- CTA Button -->
                         <table role="presentation" style="width: 100%; margin: 30px 0;">
                           <tr>
                             <td align="center">
                               <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
-                                Access Your Blueprint
+                                Access Your Materials →
                               </a>
                             </td>
                           </tr>
                         </table>
                         
+                        <div style="background-color: #1a1a1a; border-left: 4px solid #ffffff; padding: 20px; margin: 20px 0; border-radius: 4px;">
+                          <p style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Why 6 months?</p>
+                          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #cccccc;">
+                            Because transformation takes time, but deadlines create focus. This gives you runway to work through the materials at your own pace while keeping momentum.
+                          </p>
+                        </div>
+                        
+                        <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">
+                          Your first move:
+                        </p>
+                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                          Log in, open your materials, set a timer for 15 minutes and start. If you can spend more time, that's amazing.
+                        </p>
+                        <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; font-style: italic; color: #ffffff;">
+                          Progress beats perfection.
+                        </p>
+                        
+                        <p style="margin: 20px 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                          Already making moves? Tag me on Instagram <a href="https://instagram.com/JoselineBiz" style="color: #ffffff; text-decoration: underline;">@JoselineBiz</a> with your progress. I share wins, breakthroughs, and aha moments in my stories.
+                        </p>
+                        
+                        <p style="margin: 20px 0 0; font-size: 16px; line-height: 1.6; color: #cccccc;">
+                          Let's build,<br>
+                          <strong style="color: #ffffff;">Joseline, MBA</strong><br>
+                          Founder, BlkBld & Co.
+                        </p>
+                        
                         <p style="margin: 20px 0 0; font-size: 14px; line-height: 1.6; color: #999999;">
-                          Need help? Reply to this email and we'll be happy to assist you.
+                          <strong>P.S.</strong> Save workbooks.blkbld.co to your bookmarks. You'll be coming back here over the next 6 months.
                         </p>
                       </td>
                     </tr>
