@@ -67,13 +67,8 @@ export const WorkbookCard = ({
   };
 
   const handlePurchase = async () => {
-    console.log('[WorkbookCard] Processing purchase with coupon:', couponCode);
-    console.log('[WorkbookCard] Product type:', productType);
-    
-    if (!productType) {
-      console.error('[WorkbookCard] No product type provided');
-      return;
-    }
+    console.log('Processing purchase with coupon:', couponCode);
+    if (!productType) return;
 
     setLoading(true);
     setShowCouponDialog(false);
@@ -84,41 +79,26 @@ export const WorkbookCard = ({
         body.couponCode = couponCode.trim();
       }
 
-      console.log('[WorkbookCard] Calling create-payment with body:', body);
-      
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body,
       });
 
-      console.log('[WorkbookCard] create-payment response:', { data, error });
-
-      if (error) {
-        console.error('[WorkbookCard] Error from create-payment:', error);
-        throw error;
-      }
+      if (error) throw error;
 
       if (data?.url) {
-        console.log('[WorkbookCard] Redirecting to Stripe checkout:', data.url);
-        // Validate URL before redirect
-        if (data.url.startsWith('https://checkout.stripe.com/')) {
-          window.location.href = data.url;
-          setCouponCode(""); // Reset coupon code after successful checkout
-        } else {
-          throw new Error('Invalid checkout URL received from server');
-        }
-      } else {
-        console.error('[WorkbookCard] No URL in response:', data);
-        throw new Error('No checkout URL received from server');
+        // IMPORTANT: Use window.location.href, not window.open
+        window.location.href = data.url;
+        setCouponCode("");
       }
     } catch (error: any) {
-      console.error('[WorkbookCard] Purchase error:', error);
-      setLoading(false); // Re-enable button on error
       toast({
-        title: "Payment Error",
-        description: error.message || "Failed to create checkout session. Please try again.",
+        title: "Error",
+        description: error.message || "Failed to create checkout session",
         variant: "destructive",
       });
+      setLoading(false); // Re-enable button on error
     }
+    // Note: Don't set loading to false on success because we're navigating away
   };
 
   const getButtonContent = () => {
