@@ -56,13 +56,24 @@ serve(async (req) => {
     console.log(`Verifying access for user ${user.id} to product ${productType}`);
 
     // Check if user has valid purchase
-    const { data: purchases, error: purchaseError } = await supabaseClient
+    // Bundle grants access to all workbooks (1-4)
+    const bundleAccess = ['workbook_1', 'workbook_2', 'workbook_3', 'workbook_4'].includes(productType);
+    
+    let query = supabaseClient
       .from('purchases')
       .select('product_type, expires_at')
       .eq('user_id', user.id)
-      .eq('product_type', productType)
-      .gt('expires_at', new Date().toISOString())
-      .limit(1);
+      .gt('expires_at', new Date().toISOString());
+    
+    if (bundleAccess) {
+      // For workbooks 1-4, check if they have either the specific workbook OR the bundle
+      query = query.or(`product_type.eq.${productType},product_type.eq.bundle`);
+    } else {
+      // For other products, exact match
+      query = query.eq('product_type', productType);
+    }
+    
+    const { data: purchases, error: purchaseError } = await query.limit(1);
 
     if (purchaseError) {
       console.error('Error checking purchases:', purchaseError);
@@ -76,7 +87,7 @@ serve(async (req) => {
     }
 
     const hasAccess = purchases && purchases.length > 0;
-    console.log(`Access verification result: ${hasAccess}`);
+    console.log(`Access verification result: ${hasAccess}`, purchases);
 
     return new Response(
       JSON.stringify({ hasAccess }),
