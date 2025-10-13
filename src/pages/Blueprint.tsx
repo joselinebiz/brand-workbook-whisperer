@@ -51,7 +51,9 @@ const Blueprint = () => {
       setValidationResult(result.validation);
       toast.success("Validation complete!");
     } catch (error: any) {
-      console.error('Validation error:', error);
+      if (import.meta.env.DEV) {
+        console.error('Validation error:', error);
+      }
       toast.error(error.message || "Failed to validate blueprint");
     } finally {
       setIsValidating(false);

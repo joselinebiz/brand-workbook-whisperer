@@ -36,16 +36,8 @@ export const WorkbookCard = ({
   const [loading, setLoading] = useState(false);
   
   const hasAccess = checkAccess(productType || '');
-  
-  console.log('[WorkbookCard] Rendering:', { 
-    productType, 
-    hasAccess, 
-    user: user?.id, 
-    title 
-  });
 
   const handlePurchase = async () => {
-    console.log('Processing purchase for:', productType);
     if (!productType) return;
     if (!user) {
       navigate('/auth');
@@ -77,8 +69,6 @@ export const WorkbookCard = ({
   };
 
   const getButtonContent = () => {
-    console.log('[WorkbookCard] getButtonContent:', { user: !!user, hasAccess, productType });
-    
     if (!user) {
       return (
         <Button variant="outline" className="w-full group/btn" onClick={() => navigate('/auth')}>
@@ -89,7 +79,6 @@ export const WorkbookCard = ({
     }
 
     if (hasAccess) {
-      console.log('[WorkbookCard] Showing access button for:', productType);
       return (
         <Link to={path} className="w-full">
           <Button variant="outline" className="w-full group/btn">

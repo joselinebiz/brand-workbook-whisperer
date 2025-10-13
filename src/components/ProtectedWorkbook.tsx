@@ -49,7 +49,6 @@ export const ProtectedWorkbook = ({
         const { data: { session } } = await supabase.auth.getSession();
         
         if (!session) {
-          console.error('No active session');
           setServerVerified(false);
           return;
         }
@@ -62,7 +61,9 @@ export const ProtectedWorkbook = ({
         });
 
         if (error) {
-          console.error('Server verification error:', error);
+          if (import.meta.env.DEV) {
+            console.error('Server verification error:', error);
+          }
           setServerVerified(false);
           toast({
             title: "Verification Failed",
@@ -74,7 +75,9 @@ export const ProtectedWorkbook = ({
 
         setServerVerified(data?.hasAccess || false);
       } catch (error: any) {
-        console.error('Error verifying access:', error);
+        if (import.meta.env.DEV) {
+          console.error('Error verifying access:', error);
+        }
         setServerVerified(false);
       } finally {
         setVerifying(false);

@@ -35,9 +35,15 @@ export default function PaymentSuccess() {
         if (data.success) {
           setVerified(true);
           await refreshPurchases();
+          toast({
+            title: "Purchase Confirmed!",
+            description: "Your access has been activated.",
+          });
         }
       } catch (error) {
-        console.error('Error verifying payment:', error);
+        if (import.meta.env.DEV) {
+          console.error('Error verifying payment:', error);
+        }
         setVerified(false);
         toast({
           title: "Verification Error",

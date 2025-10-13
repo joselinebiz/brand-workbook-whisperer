@@ -32,16 +32,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
 
   const fetchPurchases = async (userId: string) => {
-    console.log('[AuthContext] Fetching purchases for user:', userId);
     const { data, error } = await supabase
       .from('purchases')
       .select('product_type, expires_at')
       .eq('user_id', userId);
     
     if (error) {
-      console.error('[AuthContext] Error fetching purchases:', error);
+      if (import.meta.env.DEV) {
+        console.error('[AuthContext] Error fetching purchases:', error);
+      }
     } else {
-      console.log('[AuthContext] Purchases loaded:', data);
       setPurchases(data || []);
     }
   };
@@ -63,7 +63,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     );
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log('[AuthContext] Initial session:', session?.user?.id);
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
@@ -116,26 +115,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const checkAccess = (productType: string): boolean => {
-    console.log('[AuthContext] checkAccess called for:', productType, 'Purchases:', purchases);
-    
     // Workbook 0 is always free
     if (productType === 'workbook_0') return true;
     
     // Check if user has bundle access
     const bundlePurchase = purchases.find(p => p.product_type === 'bundle');
     if (bundlePurchase && new Date(bundlePurchase.expires_at) > new Date()) {
-      console.log('[AuthContext] Access granted via bundle');
       return true;
     }
     
     // Check if user has specific product access
     const purchase = purchases.find(p => p.product_type === productType);
     if (purchase && new Date(purchase.expires_at) > new Date()) {
-      console.log('[AuthContext] Access granted via specific product');
       return true;
     }
     
-    console.log('[AuthContext] Access denied - no valid purchase found');
     return false;
   };
 
