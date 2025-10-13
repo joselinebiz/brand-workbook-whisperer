@@ -56,8 +56,21 @@ export const ProtectedWorkbook = ({
 
       try {
         setVerifying(true);
+        
+        // Get the current session to pass the auth token
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!session) {
+          console.error('No active session');
+          setServerVerified(false);
+          return;
+        }
+
         const { data, error } = await supabase.functions.invoke('verify-workbook-access', {
           body: { productType },
+          headers: {
+            Authorization: `Bearer ${session.access_token}`,
+          },
         });
 
         if (error) {
