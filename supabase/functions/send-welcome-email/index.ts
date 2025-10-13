@@ -50,7 +50,6 @@ serve(async (req) => {
               <tr>
                 <td align="center" style="padding: 40px 20px;">
                   <table role="presentation" style="max-width: 600px; width: 100%; background-color: #111111; border-radius: 8px; overflow: hidden;">
-                    <!-- Header -->
                     <tr>
                       <td style="padding: 40px 40px 20px;">
                         <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #cccccc;">
@@ -63,7 +62,6 @@ serve(async (req) => {
                       </td>
                     </tr>
                     
-                    <!-- Main Content -->
                     <tr>
                       <td style="padding: 0 40px 20px;">
                         <p style="margin: 0 0 15px; font-size: 16px; font-weight: bold; color: #ffffff;">
@@ -75,11 +73,10 @@ serve(async (req) => {
                           <li>Work at your pace—15 minutes or 2 hours, you decide</li>
                         </ul>
                         
-                        <!-- CTA Button -->
                         <table role="presentation" style="width: 100%; margin: 30px 0;">
                           <tr>
                             <td align="center">
-                              <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
+                              <a href="https://workbooks.blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
                                 Access Your Materials →
                               </a>
                             </td>
@@ -119,7 +116,6 @@ serve(async (req) => {
                       </td>
                     </tr>
                     
-                    <!-- Footer -->
                     <tr>
                       <td style="padding: 20px 40px 40px; text-align: center; border-top: 1px solid #222222;">
                         <p style="margin: 0; font-size: 12px; color: #666666;">

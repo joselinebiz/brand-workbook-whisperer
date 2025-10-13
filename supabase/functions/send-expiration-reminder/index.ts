@@ -60,7 +60,7 @@ serve(async (req) => {
       const productName = purchase.product_type === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
 
       await resend.emails.send({
-        from: "Joseline, MBA <noreply@blkbld.co>",
+        from: "Joseline, MBA <onboarding@resend.dev>",
         to: [purchase.profiles.email],
         subject: "7 days left—finish strong 🎯",
         html: `
@@ -101,7 +101,7 @@ serve(async (req) => {
                           <table role="presentation" style="width: 100%; margin: 30px 0;">
                             <tr>
                               <td align="center">
-                                <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
+                                <a href="https://workbooks.blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
                                   Access Your Materials →
                                 </a>
                               </td>
@@ -114,7 +114,7 @@ serve(async (req) => {
                               Life happens. Business gets busy. If you need another 6 months, grab it at 50% off with code <strong style="color: #ffffff;">KEEPBUILDING</strong>.
                             </p>
                             <p style="margin: 0; text-align: center;">
-                              <a href="https://blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Extend Access (50% Off) →</a>
+                              <a href="https://workbooks.blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Extend Access (50% Off) →</a>
                             </p>
                           </div>
                           

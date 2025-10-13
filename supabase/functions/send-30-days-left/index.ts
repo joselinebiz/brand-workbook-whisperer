@@ -63,7 +63,7 @@ serve(async (req) => {
       const productName = purchase.product_type === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
 
       return resend.emails.send({
-        from: "Joseline, MBA <noreply@blkbld.co>",
+        from: "Joseline, MBA <onboarding@resend.dev>",
         to: [email],
         subject: "30 days left—finish strong or extend 💼",
         html: `
@@ -107,14 +107,14 @@ serve(async (req) => {
                           <table role="presentation" style="width: 100%; margin: 30px 0;">
                             <tr>
                               <td align="center" style="padding-bottom: 15px;">
-                                <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
+                                <a href="https://workbooks.blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
                                   Access Your Materials →
                                 </a>
                               </td>
                             </tr>
                             <tr>
                               <td align="center">
-                                <a href="https://blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: transparent; color: #ffffff; border: 2px solid #ffffff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
+                                <a href="https://workbooks.blkbld.co" style="display: inline-block; padding: 16px 40px; background-color: transparent; color: #ffffff; border: 2px solid #ffffff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px;">
                                   Extend Access (50% Off) →
                                 </a>
                               </td>

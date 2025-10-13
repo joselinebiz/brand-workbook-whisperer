@@ -59,7 +59,7 @@ serve(async (req) => {
       const productName = purchase.product_type === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
 
       return resend.emails.send({
-        from: "Joseline, MBA <noreply@blkbld.co>",
+        from: "Joseline, MBA <onboarding@resend.dev>",
         to: [email],
         subject: "Your access expired—what's next? 🔄",
         html: `
@@ -98,7 +98,7 @@ serve(async (req) => {
                               Get another 6 months to finish what you started—50% off with code <strong style="color: #ffffff;">COMEBACK</strong>.
                             </p>
                             <p style="margin: 0 0 20px; text-align: center;">
-                              <a href="https://blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Renew Access (50% Off) →</a>
+                              <a href="https://workbooks.blkbld.co" style="color: #ffffff; text-decoration: underline; font-size: 14px;">Renew Access (50% Off) →</a>
                             </p>
                             
                             <p style="margin: 20px 0 10px; font-size: 16px; font-weight: bold; color: #ffffff;">Option 2: Take what you learned and run with it</p>
