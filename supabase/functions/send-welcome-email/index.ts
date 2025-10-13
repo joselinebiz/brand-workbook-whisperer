@@ -21,13 +21,9 @@ serve(async (req) => {
   );
 
   try {
-    const authHeader = req.headers.get("Authorization")!;
-    const token = authHeader.replace("Bearer ", "");
-    const { data: userData } = await supabaseClient.auth.getUser(token);
-    const user = userData.user;
-    if (!user) throw new Error("User not authenticated");
-
-    const { productType, expiresAt } = await req.json();
+    const { productType, expiresAt, email } = await req.json();
+    
+    if (!email) throw new Error("Email is required");
 
     const expirationDate = new Date(expiresAt).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -39,7 +35,7 @@ serve(async (req) => {
 
     const emailResponse = await resend.emails.send({
       from: "Joseline, MBA <noreply@blkbld.co>",
-      to: [user.email!],
+      to: [email],
       subject: `Your ${productName} is ready. Let's build. 🚀`,
       html: `
         <!DOCTYPE html>

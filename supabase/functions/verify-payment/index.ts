@@ -85,7 +85,11 @@ serve(async (req) => {
       // Send welcome email
       try {
         await supabaseClient.functions.invoke('send-welcome-email', {
-          body: { productType, expiresAt: finalExpiresAt.toISOString() }
+          body: { 
+            productType, 
+            expiresAt: finalExpiresAt.toISOString(),
+            email: user.email 
+          }
         });
       } catch (emailError) {
         console.error("Error sending welcome email:", emailError);
