@@ -1,21 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Lock, Tag } from "lucide-react";
+import { ArrowRight, CheckCircle2, Lock } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 interface WorkbookCardProps {
   number: string;
@@ -44,8 +34,6 @@ export const WorkbookCard = ({
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const [showCouponDialog, setShowCouponDialog] = useState(false);
-  const [couponCode, setCouponCode] = useState("");
   
   const hasAccess = checkAccess(productType || '');
   
@@ -56,31 +44,19 @@ export const WorkbookCard = ({
     title 
   });
 
-  const handlePurchaseClick = () => {
-    console.log('Purchase clicked, showing coupon dialog');
+  const handlePurchase = async () => {
+    console.log('Processing purchase for:', productType);
+    if (!productType) return;
     if (!user) {
       navigate('/auth');
       return;
     }
-    setShowCouponDialog(true);
-    console.log('Coupon dialog state set to true');
-  };
-
-  const handlePurchase = async () => {
-    console.log('Processing purchase with coupon:', couponCode);
-    if (!productType) return;
 
     setLoading(true);
-    setShowCouponDialog(false);
     
     try {
-      const body: { productType: string; couponCode?: string } = { productType };
-      if (couponCode.trim()) {
-        body.couponCode = couponCode.trim();
-      }
-
       const { data, error } = await supabase.functions.invoke('create-payment', {
-        body,
+        body: { productType },
       });
 
       if (error) throw error;
@@ -88,7 +64,6 @@ export const WorkbookCard = ({
       if (data?.url) {
         // IMPORTANT: Use window.location.href, not window.open
         window.location.href = data.url;
-        setCouponCode("");
       }
     } catch (error: any) {
       toast({
@@ -145,7 +120,7 @@ export const WorkbookCard = ({
       <Button 
         variant="outline" 
         className="w-full group/btn"
-        onClick={handlePurchaseClick}
+        onClick={handlePurchase}
         disabled={loading}
       >
         {loading ? 'Processing...' : `Purchase - $${(price || 0) / 100}`}
@@ -155,42 +130,7 @@ export const WorkbookCard = ({
   };
 
   return (
-    <>
-      <Dialog open={showCouponDialog} onOpenChange={setShowCouponDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Complete Your Purchase</DialogTitle>
-            <DialogDescription>
-              Enter a coupon code if you have one, or proceed without one.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid gap-2">
-              <Label htmlFor="coupon">Coupon Code (Optional)</Label>
-              <div className="relative">
-                <Tag className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <Input
-                  id="coupon"
-                  placeholder="Enter coupon code"
-                  value={couponCode}
-                  onChange={(e) => setCouponCode(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowCouponDialog(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handlePurchase} disabled={loading}>
-              {loading ? 'Processing...' : 'Continue to Checkout'}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-elegant)] bg-card">
+    <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-elegant)] bg-card">
       <div className="absolute top-0 left-0 w-2 h-full bg-primary transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300" />
       
       <div className="p-8">
@@ -211,9 +151,8 @@ export const WorkbookCard = ({
         <p className="text-muted-foreground font-medium mb-4">{subtitle}</p>
         <p className="text-sm text-foreground/80 mb-6 leading-relaxed">{description}</p>
 
-        {getButtonContent()}
-      </div>
-    </Card>
-    </>
+      {getButtonContent()}
+    </div>
+  </Card>
   );
 };
