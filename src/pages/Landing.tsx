@@ -87,7 +87,7 @@ const Landing = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+          <h1 className="text-4xl md:text-6xl font-chatone mb-6 text-foreground">
             Build Your Million-Dollar Brand Foundation in Under 2 Hours
           </h1>
           
@@ -122,7 +122,7 @@ const Landing = () => {
       {/* Benefits Section */}
       <section className="py-20 px-4 bg-muted/10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground">
+          <h2 className="text-3xl md:text-4xl font-chatone text-center mb-16 text-foreground">
             What You'll Discover in Workbook 0
           </h2>
 
@@ -169,7 +169,7 @@ const Landing = () => {
       {/* Social Proof Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground">
+          <h2 className="text-3xl md:text-4xl font-chatone text-center mb-16 text-foreground">
             Join Founders Who've Built Their Brand Foundation
           </h2>
 
@@ -210,7 +210,7 @@ const Landing = () => {
       {/* Final CTA Section */}
       <section className="py-20 px-4 bg-muted/10">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+          <h2 className="text-3xl md:text-4xl font-chatone mb-6 text-foreground">
             Ready to start?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
