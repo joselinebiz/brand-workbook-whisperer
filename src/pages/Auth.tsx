@@ -26,7 +26,7 @@ export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signUp, signIn } = useAuth();
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -61,7 +61,15 @@ export default function Auth() {
     setLoading(true);
 
     if (isSignUp) {
-      const { data, error } = await signUp(result.data.email, result.data.password);
+      // Sign up and get full response to access user data
+      const redirectUrl = `${window.location.origin}/`;
+      const { data, error } = await supabase.auth.signUp({
+        email: result.data.email,
+        password: result.data.password,
+        options: {
+          emailRedirectTo: redirectUrl
+        }
+      });
 
       if (error) {
         toast({
@@ -76,14 +84,10 @@ export default function Auth() {
       // Link lead to new user account
       if (data?.user) {
         try {
-          const { error: updateError } = await supabase
+          await supabase
             .from('leads')
             .update({ user_id: data.user.id })
             .eq('email', result.data.email);
-
-          if (updateError) {
-            console.error('Failed to link lead to user:', updateError);
-          }
         } catch (err) {
           console.error('Error linking lead:', err);
         }
@@ -164,7 +168,6 @@ export default function Auth() {
       setLoading(false);
     }
   };
-
 
   if (isForgotPassword) {
     return (

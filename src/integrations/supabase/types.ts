@@ -22,6 +22,7 @@ export type Database = {
           id: string
           metadata: Json | null
           source: string | null
+          user_id: string | null
           webinar_purchased: boolean
         }
         Insert: {
@@ -31,6 +32,7 @@ export type Database = {
           id?: string
           metadata?: Json | null
           source?: string | null
+          user_id?: string | null
           webinar_purchased?: boolean
         }
         Update: {
@@ -40,6 +42,7 @@ export type Database = {
           id?: string
           metadata?: Json | null
           source?: string | null
+          user_id?: string | null
           webinar_purchased?: boolean
         }
         Relationships: []
