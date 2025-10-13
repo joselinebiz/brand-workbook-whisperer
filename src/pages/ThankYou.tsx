@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Play, Sparkles } from "lucide-react";
+import { CheckCircle2, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
@@ -15,138 +15,165 @@ const ThankYou = () => {
     
     try {
       const { data, error } = await supabase.functions.invoke('create-payment', {
-        body: { 
-          priceId: 'price_1QWhbzCiT5IFDGi5x9YbIiSk',
-          productType: 'webinar'
-        }
+        body: { productType: 'webinar' }
       });
 
       if (error) throw error;
-      
+
       if (data?.url) {
-        window.open(data.url, '_blank');
+        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL received');
       }
     } catch (error) {
-      console.error('Error creating checkout:', error);
+      console.error('Error creating payment:', error);
       toast({
-        title: "Error",
-        description: "Failed to start checkout. Please try again.",
+        title: "Payment Error",
+        description: "Unable to process payment. Please try again.",
         variant: "destructive",
       });
-    } finally {
       setPurchasing(false);
     }
   };
 
+  const handleWorkbookAccess = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (session) {
+      navigate('/workbook/0');
+    } else {
+      const savedEmail = localStorage.getItem('leadEmail') || '';
+      navigate(`/auth?email=${encodeURIComponent(savedEmail)}&redirectTo=/workbook/0`);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-black to-black/90 text-white">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.1) 50px, rgba(255,255,255,0.1) 51px)`,
-        }} />
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Confirmation Section */}
+      <section className="py-12 px-4 text-center border-b border-border">
+        <div className="max-w-2xl mx-auto">
+          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 className="w-12 h-12 text-primary" />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Check Your Email! 📧
+          </h1>
+          <p className="text-xl text-muted-foreground mb-3">
+            We just sent you instant access to Workbook 0
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Can't find it? Check your spam folder and mark us as safe.
+          </p>
+        </div>
+      </section>
 
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      {/* Video Section */}
+      <section className="py-16 px-4 bg-muted/10">
         <div className="max-w-4xl mx-auto">
-          {/* Success Message */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 rounded-full mb-6">
-              <CheckCircle2 className="w-12 h-12 text-green-500" />
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
+            Before You Go... Want to Complete Workbook 0 Faster with AI?
+          </h2>
+          
+          <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Workbook 0 AI Tutorial"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
-            <h1 className="text-4xl md:text-5xl font-chatone mb-4">
-              CHECK YOUR EMAIL!
-            </h1>
-            <p className="text-xl text-white/80 mb-2">
-              Your FREE workbook is on its way
-            </p>
-            <p className="text-white/60">
-              Look for an email from BLKBLD with instant access to "Find Your White Space"
-            </p>
           </div>
+        </div>
+      </section>
 
-          {/* Webinar Offer */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-lg border border-gold/30 p-8 mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-gold" />
-              <span className="text-sm font-light text-gold uppercase tracking-wide">Special Offer</span>
-            </div>
-            
-            <h2 className="text-3xl font-chatone mb-4">
-              Want Help Implementing This?
+      {/* Webinar Offer Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-card rounded-lg border border-border p-8 md:p-12 shadow-lg">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+              Join: "How to Actually Complete Workbook 0 Using AI"
             </h2>
-            
-            <p className="text-lg text-white/80 mb-6">
-              Join the <strong className="text-white">"How to Actually Complete Workbook 0 Using AI"</strong> webinar and get:
+            <p className="text-lg text-muted-foreground mb-8">
+              Implementation support, not theory. Watch over my shoulder as I complete the entire workbook using AI.
             </p>
 
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-gold" />
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
                 </div>
-                <span className="text-white/90">Live walkthrough of the entire workbook with AI-powered shortcuts</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-gold" />
-                </div>
-                <span className="text-white/90">Custom AI prompts to speed up your market research by 10x</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-gold" />
-                </div>
-                <span className="text-white/90">Q&A session to refine your specific market position</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-gold" />
-                </div>
-                <span className="text-white/90">Lifetime access to the recording + bonus templates</span>
-              </li>
-            </ul>
-
-            {/* Video Placeholder */}
-            <div className="bg-black/40 rounded-lg aspect-video flex items-center justify-center mb-6 border border-white/10">
-              <div className="text-center">
-                <Play className="w-16 h-16 text-white/50 mx-auto mb-3" />
-                <p className="text-white/60">Webinar Preview Video</p>
-                <p className="text-sm text-white/40">(Add your video embed here)</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-white/5 rounded-lg border border-white/10">
-              <div>
-                <p className="text-2xl font-bold mb-1">
-                  <span className="line-through text-white/40 text-lg mr-2">$97</span>
-                  <span className="text-gold">$27</span>
+                <p className="text-foreground">
+                  Watch over-the-shoulder as I complete the entire workbook using AI prompts
                 </p>
-                <p className="text-sm text-white/60">Limited time offer</p>
               </div>
-              <Button 
-                variant="hero" 
-                size="lg"
-                onClick={handleWebinarPurchase}
-                disabled={purchasing}
-              >
-                {purchasing ? "Loading..." : "Join Webinar - $27"}
-              </Button>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Get my exact ChatGPT prompts for each section
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Avoid the 3 biggest mistakes beginners make
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Lifetime access + downloadable AI prompt templates
+                </p>
+              </div>
             </div>
-          </div>
 
-          {/* CTA to Dashboard */}
-          <div className="text-center">
-            <p className="text-white/60 mb-4">Or skip the webinar and</p>
+            <div className="mb-8">
+              <div className="text-5xl font-bold text-foreground mb-2">$27</div>
+              <p className="text-muted-foreground">One-time payment • Lifetime access</p>
+            </div>
+
             <Button 
-              variant="outline" 
-              onClick={() => navigate('/auth')}
-              className="bg-transparent border-white/20 text-white hover:bg-white/10"
+              onClick={handleWebinarPurchase}
+              size="lg"
+              className="w-full h-14 text-lg"
+              disabled={purchasing}
             >
-              Create Free Account to Access Workbook
+              {purchasing ? "Processing..." : "Get Instant Access to Webinar"}
             </Button>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Workbook Access Section */}
+      <section className="py-16 px-4 border-t border-border bg-muted/10">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+            Ready to Start Workbook 0?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Access your free workbook and begin building your brand foundation
+          </p>
+          
+          <Button 
+            onClick={handleWorkbookAccess}
+            variant="outline"
+            size="lg"
+            className="h-14 text-lg"
+          >
+            Access Workbook 0 Now →
+          </Button>
+        </div>
+      </section>
     </div>
   );
 };
