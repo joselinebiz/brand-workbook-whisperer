@@ -10,6 +10,9 @@ import NotFound from "./pages/NotFound";
 import Blueprint from "./pages/Blueprint";
 import Auth from "./pages/Auth";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import Landing from "./pages/Landing";
+import ThankYou from "./pages/ThankYou";
+import Webinar from "./pages/Webinar";
 import Workbook0 from "./pages/workbooks/Workbook0";
 import Workbook1 from "./pages/workbooks/Workbook1";
 import Workbook2 from "./pages/workbooks/Workbook2";
@@ -28,6 +31,9 @@ const App = () => (
             <Sonner />
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/landing" element={<Landing />} />
+              <Route path="/thank-you" element={<ThankYou />} />
+              <Route path="/webinar" element={<Webinar />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/blueprint" element={<Blueprint />} />

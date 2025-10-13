@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      leads: {
+        Row: {
+          converted: boolean
+          created_at: string
+          email: string
+          id: string
+          source: string | null
+          webinar_purchased: boolean
+        }
+        Insert: {
+          converted?: boolean
+          created_at?: string
+          email: string
+          id?: string
+          source?: string | null
+          webinar_purchased?: boolean
+        }
+        Update: {
+          converted?: boolean
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string | null
+          webinar_purchased?: boolean
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
