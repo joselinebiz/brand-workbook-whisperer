@@ -61,7 +61,7 @@ const Webinar = () => {
     setPurchasing(true);
     
     try {
-      const { data, error } = await supabase.functions.invoke('create-payment', {
+      const { data, error } = await supabase.functions.invoke('create-webinar-payment', {
         body: { productType: 'webinar' }
       });
 
