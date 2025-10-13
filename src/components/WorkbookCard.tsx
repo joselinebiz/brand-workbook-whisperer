@@ -48,6 +48,13 @@ export const WorkbookCard = ({
   const [couponCode, setCouponCode] = useState("");
   
   const hasAccess = checkAccess(productType || '');
+  
+  console.log('[WorkbookCard] Rendering:', { 
+    productType, 
+    hasAccess, 
+    user: user?.id, 
+    title 
+  });
 
   const handlePurchaseClick = () => {
     console.log('Purchase clicked, showing coupon dialog');
@@ -94,6 +101,8 @@ export const WorkbookCard = ({
   };
 
   const getButtonContent = () => {
+    console.log('[WorkbookCard] getButtonContent:', { user: !!user, hasAccess, productType });
+    
     if (!user) {
       return (
         <Button variant="outline" className="w-full group/btn" onClick={() => navigate('/auth')}>
@@ -104,6 +113,7 @@ export const WorkbookCard = ({
     }
 
     if (hasAccess) {
+      console.log('[WorkbookCard] Showing access button for:', productType);
       return (
         <Link to={path} className="w-full">
           <Button variant="outline" className="w-full group/btn">
