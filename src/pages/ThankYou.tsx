@@ -70,7 +70,7 @@ const ThankYou = () => {
       {/* Video Section */}
       <section className="py-16 px-4 bg-muted/10">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
+          <h2 className="text-2xl md:text-3xl font-chatone text-center mb-8 text-foreground">
             Before You Go... Want to Complete Workbook 0 Faster with AI?
           </h2>
           
@@ -157,7 +157,7 @@ const ThankYou = () => {
       {/* Workbook Access Section */}
       <section className="py-16 px-4 border-t border-border bg-muted/10">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+          <h2 className="text-2xl md:text-3xl font-chatone mb-4 text-foreground">
             Ready to Start Workbook 0?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
