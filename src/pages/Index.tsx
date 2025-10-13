@@ -11,44 +11,6 @@ const Index = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const createPromoCode = async () => {
-    try {
-      const { data, error } = await supabase.functions.invoke('create-promo-code');
-      if (error) throw error;
-      toast({
-        title: "Success!",
-        description: `Promotion code created: ${data.code}`,
-      });
-    } catch (error: any) {
-      toast({
-        title: "Note",
-        description: error.message || "Code may already exist",
-        variant: "destructive",
-      });
-    }
-  };
-
-  const sendBulkEmails = async () => {
-    toast({
-      title: "Sending emails...",
-      description: "This may take a moment",
-    });
-    
-    try {
-      const { data, error } = await supabase.functions.invoke('send-bulk-welcome-emails');
-      if (error) throw error;
-      toast({
-        title: "Emails sent!",
-        description: `Sent: ${data.totalSent}, Failed: ${data.totalFailed}`,
-      });
-    } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to send emails",
-        variant: "destructive",
-      });
-    }
-  };
 
   const workbooks = [
     {
@@ -158,18 +120,12 @@ const Index = () => {
               Your Complete Strategic Foundation - From Market Validation to Systematic Scaling
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex justify-center">
               <Button variant="hero" size="lg" asChild>
                 <a href="#workbooks">
                   <BookOpen className="w-5 h-5" />
                   Start Your Journey
                 </a>
-              </Button>
-              <Button variant="outline" size="sm" onClick={createPromoCode} className="bg-transparent border-white/20 text-white hover:bg-white/10">
-                Create Test Promo Code
-              </Button>
-              <Button variant="outline" size="sm" onClick={sendBulkEmails} className="bg-transparent border-white/20 text-white hover:bg-white/10">
-                Send Welcome Emails to All Users
               </Button>
             </div>
           </div>
