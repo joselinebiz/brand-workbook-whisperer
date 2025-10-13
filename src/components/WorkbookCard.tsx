@@ -50,14 +50,17 @@ export const WorkbookCard = ({
   const hasAccess = checkAccess(productType || '');
 
   const handlePurchaseClick = () => {
+    console.log('Purchase clicked, showing coupon dialog');
     if (!user) {
       navigate('/auth');
       return;
     }
     setShowCouponDialog(true);
+    console.log('Coupon dialog state set to true');
   };
 
   const handlePurchase = async () => {
+    console.log('Processing purchase with coupon:', couponCode);
     if (!productType) return;
 
     setLoading(true);
