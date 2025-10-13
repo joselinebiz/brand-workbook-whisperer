@@ -34,7 +34,7 @@ serve(async (req) => {
     const productName = productType === 'full_bundle' ? 'Brand Blueprint Bundle' : 'Brand Blueprint Workbook';
 
     const emailResponse = await resend.emails.send({
-      from: "Joseline, MBA <noreply@blkbld.co>",
+      from: "Joseline, MBA <onboarding@resend.dev>",
       to: [email],
       subject: `Your ${productName} is ready. Let's build. 🚀`,
       html: `
