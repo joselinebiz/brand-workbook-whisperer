@@ -34,6 +34,27 @@ serve(async (req) => {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status === "paid" && session.metadata?.user_id === user.id) {
+      // Handle webinar purchases separately
+      if (productType === 'webinar') {
+        const { error: webinarError } = await supabaseClient
+          .from('webinar_access')
+          .upsert({
+            user_id: user.id,
+            stripe_session_id: sessionId,
+            purchased_at: new Date().toISOString(),
+          }, {
+            onConflict: 'user_id'
+          });
+
+        if (webinarError) throw webinarError;
+
+        return new Response(JSON.stringify({ success: true }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 200,
+        });
+      }
+
+      // Handle regular workbook purchases
       // Calculate expiration date (6 months from now)
       const expiresAt = new Date();
       expiresAt.setMonth(expiresAt.getMonth() + 6);

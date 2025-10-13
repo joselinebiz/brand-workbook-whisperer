@@ -95,6 +95,30 @@ export type Database = {
         }
         Relationships: []
       }
+      webinar_access: {
+        Row: {
+          id: string
+          last_accessed_at: string | null
+          purchased_at: string
+          stripe_session_id: string | null
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          last_accessed_at?: string | null
+          purchased_at?: string
+          stripe_session_id?: string | null
+          user_id: string
+        }
+        Update: {
+          id?: string
+          last_accessed_at?: string | null
+          purchased_at?: string
+          stripe_session_id?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
