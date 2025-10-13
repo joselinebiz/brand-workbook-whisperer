@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,6 +30,20 @@ export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  // Get query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const emailParam = urlParams.get('email');
+  const redirectTo = urlParams.get('redirectTo');
+  const isPasswordReset = urlParams.get('reset') === 'true';
+
+  // Pre-fill email if provided in URL
+  useEffect(() => {
+    if (emailParam) {
+      setEmail(emailParam);
+      setIsSignUp(true); // Default to signup for new users from funnel
+    }
+  }, [emailParam]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -46,18 +60,56 @@ export default function Auth() {
 
     setLoading(true);
 
-    const { error } = isSignUp
-      ? await signUp(result.data.email, result.data.password)
-      : await signIn(result.data.email, result.data.password);
+    if (isSignUp) {
+      const { data, error } = await signUp(result.data.email, result.data.password);
 
-    if (error) {
+      if (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Link lead to new user account
+      if (data?.user) {
+        try {
+          const { error: updateError } = await supabase
+            .from('leads')
+            .update({ user_id: data.user.id })
+            .eq('email', result.data.email);
+
+          if (updateError) {
+            console.error('Failed to link lead to user:', updateError);
+          }
+        } catch (err) {
+          console.error('Error linking lead:', err);
+        }
+      }
+
+      // Redirect after successful signup
       toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
+        title: "Account Created!",
+        description: "Welcome to BLKBLD Workbooks",
       });
-    } else if (!isSignUp) {
-      navigate('/');
+      
+      setTimeout(() => {
+        navigate(redirectTo || '/');
+      }, 500);
+    } else {
+      const { error } = await signIn(result.data.email, result.data.password);
+
+      if (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        navigate(redirectTo || '/');
+      }
     }
 
     setLoading(false);
@@ -113,9 +165,6 @@ export default function Auth() {
     }
   };
 
-  // Check if user is returning from password reset email
-  const urlParams = new URLSearchParams(window.location.search);
-  const isPasswordReset = urlParams.get('reset') === 'true';
 
   if (isForgotPassword) {
     return (
@@ -169,6 +218,8 @@ export default function Auth() {
           <p className="text-muted-foreground">
             {isPasswordReset 
               ? 'Enter your new password below' 
+              : redirectTo 
+              ? 'Create your free account to access Workbook 0'
               : isSignUp 
               ? 'Sign up to access your workbooks' 
               : 'Sign in to continue'}
@@ -182,7 +233,9 @@ export default function Auth() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              readOnly={!!emailParam}
               required
+              className={emailParam ? 'bg-muted cursor-not-allowed' : ''}
             />
           </div>
           <div>
