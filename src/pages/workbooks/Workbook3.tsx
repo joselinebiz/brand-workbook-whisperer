@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -13,9 +15,23 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Users, Mail, Zap, FileText, ChevronDown, PartyPopper, Save, Target, TrendingUp, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { generateWorkbook3Content, downloadWorkbook } from "@/utils/workbookDownload";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Workbook3() {
   const { data, updateData } = useWorkbook();
+  const { checkAccess, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!checkAccess('workbook_3')) {
+    return <Navigate to="/" replace />;
+  }
   const [isSaving, setIsSaving] = useState(false);
   const [preWorkScores, setPreWorkScores] = useState({
     followUp: 0,

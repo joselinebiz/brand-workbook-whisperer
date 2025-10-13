@@ -5,11 +5,13 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { CheckCircle2, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export default function PaymentSuccess() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { refreshPurchases } = useAuth();
+  const { toast } = useToast();
   const [verifying, setVerifying] = useState(true);
   const [verified, setVerified] = useState(false);
 
@@ -36,6 +38,12 @@ export default function PaymentSuccess() {
         }
       } catch (error) {
         console.error('Error verifying payment:', error);
+        setVerified(false);
+        toast({
+          title: "Verification Error",
+          description: "Please contact support with your order confirmation.",
+          variant: "destructive",
+        });
       } finally {
         setVerifying(false);
       }

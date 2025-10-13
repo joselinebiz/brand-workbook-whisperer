@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { useWorkbook } from "@/contexts/WorkbookContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,6 +13,23 @@ import { toast } from "sonner";
 
 const Blueprint = () => {
   const { data } = useWorkbook();
+  const { checkAccess, loading, user } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
+
+  const hasAnyAccess = checkAccess('workbook_1') || checkAccess('workbook_2') || 
+                       checkAccess('workbook_3') || checkAccess('workbook_4') || 
+                       checkAccess('bundle');
+
+  if (!hasAnyAccess) {
+    return <Navigate to="/" replace />;
+  }
   const [validationType, setValidationType] = useState<string | null>(null);
   const [validationResult, setValidationResult] = useState<string>("");
   const [isValidating, setIsValidating] = useState(false);

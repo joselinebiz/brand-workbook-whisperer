@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
@@ -13,9 +15,23 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { generateWorkbook4Content, downloadWorkbook } from "@/utils/workbookDownload";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Workbook4() {
   const { data, updateData, getBlueprintData } = useWorkbook();
+  const { checkAccess, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!checkAccess('workbook_4')) {
+    return <Navigate to="/" replace />;
+  }
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
