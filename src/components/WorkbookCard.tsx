@@ -93,7 +93,7 @@ export const WorkbookCard = ({
       return (
         <Link to={path} className="w-full">
           <Button variant="outline" className="w-full group/btn">
-            {productType === 'workbook_0' ? 'Start Workbook' : 'Access Workbook'}
+            {productType === 'workbook_0' ? 'Start Workbook' : `Continue to Workbook ${number}`}
             {productType === 'workbook_0' ? (
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
             ) : (
@@ -123,7 +123,7 @@ export const WorkbookCard = ({
         onClick={handlePurchase}
         disabled={loading}
       >
-        {loading ? 'Processing...' : `Purchase - $${(price || 0) / 100}`}
+        {loading ? 'Processing...' : `Continue to Workbook ${number} - $${(price || 0) / 100}`}
         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
       </Button>
     );
