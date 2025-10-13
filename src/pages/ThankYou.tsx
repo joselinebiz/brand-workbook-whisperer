@@ -55,7 +55,7 @@ const ThankYou = () => {
           <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="w-12 h-12 text-primary" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+          <h1 className="text-3xl md:text-4xl font-chatone mb-4 text-foreground">
             Check Your Email! 📧
           </h1>
           <p className="text-xl text-muted-foreground mb-3">
