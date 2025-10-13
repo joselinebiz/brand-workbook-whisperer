@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Target, Users, Lightbulb } from "lucide-react";
+import { Target, Users, Lightbulb, FlaskConical } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import { TestModeModal } from "@/components/TestModeModal";
+import { Badge } from "@/components/ui/badge";
 
 const Landing = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [testModalOpen, setTestModalOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -65,6 +68,22 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Test Mode Badge (Development Only) */}
+      {import.meta.env.DEV && (
+        <div className="fixed top-4 right-4 z-50">
+          <Badge 
+            variant="destructive" 
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={() => setTestModalOpen(true)}
+          >
+            <FlaskConical className="w-3 h-3 mr-1" />
+            TEST MODE
+          </Badge>
+        </div>
+      )}
+
+      <TestModeModal open={testModalOpen} onOpenChange={setTestModalOpen} />
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-3xl mx-auto text-center">
