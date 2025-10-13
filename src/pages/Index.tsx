@@ -3,10 +3,30 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, Target, Zap, LogOut, User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const createPromoCode = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('create-promo-code');
+      if (error) throw error;
+      toast({
+        title: "Success!",
+        description: `Promotion code created: ${data.code}`,
+      });
+    } catch (error: any) {
+      toast({
+        title: "Note",
+        description: error.message || "Code may already exist",
+        variant: "destructive",
+      });
+    }
+  };
 
   const workbooks = [
     {
@@ -122,6 +142,9 @@ const Index = () => {
                   <BookOpen className="w-5 h-5" />
                   Start Your Journey
                 </a>
+              </Button>
+              <Button variant="outline" size="sm" onClick={createPromoCode} className="bg-transparent border-white/20 text-white hover:bg-white/10">
+                Create Test Promo Code
               </Button>
             </div>
           </div>
