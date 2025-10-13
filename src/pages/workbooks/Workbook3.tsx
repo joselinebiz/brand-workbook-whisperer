@@ -19,7 +19,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Workbook3() {
   const { data, updateData } = useWorkbook();
-  const { checkAccess, loading } = useAuth();
+  const { loading } = useAuth();
 
   if (loading) {
     return (
@@ -29,9 +29,6 @@ export default function Workbook3() {
     );
   }
 
-  if (!checkAccess('workbook_3')) {
-    return <Navigate to="/" replace />;
-  }
   const [isSaving, setIsSaving] = useState(false);
   const [preWorkScores, setPreWorkScores] = useState({
     followUp: 0,

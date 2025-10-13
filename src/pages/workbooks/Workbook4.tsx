@@ -19,7 +19,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Workbook4() {
   const { data, updateData, getBlueprintData } = useWorkbook();
-  const { checkAccess, loading } = useAuth();
+  const { loading } = useAuth();
 
   if (loading) {
     return (
@@ -29,9 +29,6 @@ export default function Workbook4() {
     );
   }
 
-  if (!checkAccess('workbook_4')) {
-    return <Navigate to="/" replace />;
-  }
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
