@@ -28,6 +28,28 @@ const Index = () => {
     }
   };
 
+  const sendBulkEmails = async () => {
+    toast({
+      title: "Sending emails...",
+      description: "This may take a moment",
+    });
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-bulk-welcome-emails');
+      if (error) throw error;
+      toast({
+        title: "Emails sent!",
+        description: `Sent: ${data.totalSent}, Failed: ${data.totalFailed}`,
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send emails",
+        variant: "destructive",
+      });
+    }
+  };
+
   const workbooks = [
     {
       number: "00",
@@ -145,6 +167,9 @@ const Index = () => {
               </Button>
               <Button variant="outline" size="sm" onClick={createPromoCode} className="bg-transparent border-white/20 text-white hover:bg-white/10">
                 Create Test Promo Code
+              </Button>
+              <Button variant="outline" size="sm" onClick={sendBulkEmails} className="bg-transparent border-white/20 text-white hover:bg-white/10">
+                Send Welcome Emails to All Users
               </Button>
             </div>
           </div>
