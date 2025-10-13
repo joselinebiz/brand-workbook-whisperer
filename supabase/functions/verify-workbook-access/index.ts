@@ -13,6 +13,13 @@ serve(async (req) => {
   }
 
   try {
+    // Create client with service role for database queries
+    const supabaseAdmin = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    );
+
+    // Create separate client with user auth for getUser
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -55,11 +62,11 @@ serve(async (req) => {
 
     console.log(`Verifying access for user ${user.id} to product ${productType}`);
 
-    // Check if user has valid purchase
+    // Check if user has valid purchase using admin client
     // Bundle grants access to all workbooks (1-4)
     const bundleAccess = ['workbook_1', 'workbook_2', 'workbook_3', 'workbook_4'].includes(productType);
     
-    let query = supabaseClient
+    let query = supabaseAdmin
       .from('purchases')
       .select('product_type, expires_at')
       .eq('user_id', user.id)
