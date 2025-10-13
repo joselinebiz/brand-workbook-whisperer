@@ -67,8 +67,13 @@ export const WorkbookCard = ({
   };
 
   const handlePurchase = async () => {
-    console.log('Processing purchase with coupon:', couponCode);
-    if (!productType) return;
+    console.log('[WorkbookCard] Processing purchase with coupon:', couponCode);
+    console.log('[WorkbookCard] Product type:', productType);
+    
+    if (!productType) {
+      console.error('[WorkbookCard] No product type provided');
+      return;
+    }
 
     setLoading(true);
     setShowCouponDialog(false);
@@ -79,24 +84,40 @@ export const WorkbookCard = ({
         body.couponCode = couponCode.trim();
       }
 
+      console.log('[WorkbookCard] Calling create-payment with body:', body);
+      
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body,
       });
 
-      if (error) throw error;
+      console.log('[WorkbookCard] create-payment response:', { data, error });
+
+      if (error) {
+        console.error('[WorkbookCard] Error from create-payment:', error);
+        throw error;
+      }
 
       if (data?.url) {
-        window.location.href = data.url;
-        setCouponCode(""); // Reset coupon code after successful checkout
+        console.log('[WorkbookCard] Redirecting to Stripe checkout:', data.url);
+        // Validate URL before redirect
+        if (data.url.startsWith('https://checkout.stripe.com/')) {
+          window.location.href = data.url;
+          setCouponCode(""); // Reset coupon code after successful checkout
+        } else {
+          throw new Error('Invalid checkout URL received from server');
+        }
+      } else {
+        console.error('[WorkbookCard] No URL in response:', data);
+        throw new Error('No checkout URL received from server');
       }
     } catch (error: any) {
+      console.error('[WorkbookCard] Purchase error:', error);
+      setLoading(false); // Re-enable button on error
       toast({
-        title: "Error",
-        description: error.message || "Failed to create checkout session",
+        title: "Payment Error",
+        description: error.message || "Failed to create checkout session. Please try again.",
         variant: "destructive",
       });
-    } finally {
-      setLoading(false);
     }
   };
 
