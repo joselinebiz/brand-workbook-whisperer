@@ -8,7 +8,7 @@ const corsHeaders = {
 };
 
 const PRODUCT_PRICES = {
-  webinar: "price_1SHBiHAnYzcngRwoayVbrh15",
+  webinar: "price_1QWhbzCiT5IFDGi5x9YbIiSk",
   workbook_1: "price_1SHBiWAnYzcngRwoJCYzqIEr",
   workbook_2: "price_1SHBiiAnYzcngRwozXR4UtDC",
   workbook_3: "price_1SHBitAnYzcngRwoM3KUCNLK",
@@ -61,8 +61,12 @@ serve(async (req) => {
       ],
       mode: "payment",
       allow_promotion_codes: true,
-      success_url: `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}&product=${productType}`,
-      cancel_url: `${req.headers.get("origin")}/`,
+      success_url: productType === 'webinar' 
+        ? `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}&product=${productType}&type=webinar`
+        : `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}&product=${productType}`,
+      cancel_url: productType === 'webinar'
+        ? `${req.headers.get("origin")}/thank-you`
+        : `${req.headers.get("origin")}/`,
       metadata: {
         user_id: user.id,
         product_type: productType,
