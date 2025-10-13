@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BookOpen, Zap, Target, ArrowRight } from "lucide-react";
+import { Target, Users, Lightbulb } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
@@ -27,14 +27,18 @@ const Landing = () => {
     setLoading(true);
 
     try {
+      // Store email in localStorage for pre-filling later
+      localStorage.setItem('leadEmail', email);
+
       // Insert lead into database
       const { error: insertError } = await supabase
         .from('leads')
-        .insert([{ email }]);
+        .insert([{ email, source: 'landing_page' }]);
 
       if (insertError) {
         if (insertError.code === '23505') {
-          // Email already exists
+          // Email already exists - still redirect to thank you
+          localStorage.setItem('leadEmail', email);
           navigate('/thank-you');
           return;
         }
@@ -60,122 +64,163 @@ const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-black to-black/90 text-white">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.1) 50px, rgba(255,255,255,0.1) 51px)`,
-        }} />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-16">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block mb-6">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full">
-              <Zap className="w-4 h-4 text-gold" />
-              <span className="text-sm font-sans font-light text-gold">Free 45-Minute Sprint</span>
-            </div>
-          </div>
-
-          <h1 className="text-5xl md:text-6xl font-chatone mb-6 leading-tight">
-            FIND YOUR WHITE SPACE
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-b from-background to-muted/20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+            Build Your Million-Dollar Brand Foundation in Under 2 Hours
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 mb-4">
-            The 45 Minute Market Opportunity Sprint
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12">
+            Get instant access to Workbook 0 - The Market Opportunity Framework (FREE)
           </p>
 
-          <p className="text-lg text-white/70 mb-12 max-w-2xl mx-auto">
-            Validate your market opportunity with one clear sentence that defines your unique position. The same framework used by Fortune 500 companies—now yours free.
-          </p>
-
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-16">
-            <div className="flex flex-col sm:flex-row gap-3">
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <div className="flex flex-col gap-3">
               <Input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                className="h-14 text-lg"
                 required
+                aria-label="Email address"
               />
               <Button 
                 type="submit" 
-                variant="hero" 
                 size="lg"
+                className="h-14 text-lg"
                 disabled={loading}
               >
-                {loading ? "Please wait..." : "Get Free Access"}
-                <ArrowRight className="w-5 h-5 ml-2" />
+                {loading ? "Submitting..." : "Get Free Access"}
               </Button>
             </div>
-            <p className="text-xs text-white/50 mt-3">
-              No credit card required. Instant access.
-            </p>
           </form>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-          <div className="text-center p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-            <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8 text-gold" />
-            </div>
-            <h3 className="text-xl font-bold mb-2">Find Your Edge</h3>
-            <p className="text-white/70 text-sm">
-              Discover the one thing that makes you irreplaceable in your market
-            </p>
-          </div>
+      {/* Benefits Section */}
+      <section className="py-20 px-4 bg-muted/10">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground">
+            What You'll Discover in Workbook 0
+          </h2>
 
-          <div className="text-center p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-            <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <BookOpen className="w-8 h-8 text-gold" />
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <Target className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">
+                Identify Your White Space in 30 Minutes
+              </h3>
+              <p className="text-muted-foreground">
+                Discover the untapped market opportunities where your business can thrive without competition.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-2">Battle-Tested Framework</h3>
-            <p className="text-white/70 text-sm">
-              The same strategy framework taught in top MBA programs
-            </p>
-          </div>
 
-          <div className="text-center p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-            <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Zap className="w-8 h-8 text-gold" />
+            <div className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <Users className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">
+                Define Your Ideal Customer's #1 Problem
+              </h3>
+              <p className="text-muted-foreground">
+                Learn exactly who needs your solution most and what keeps them up at night.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-2">45 Minutes</h3>
-            <p className="text-white/70 text-sm">
-              Complete clarity on your market position in under an hour
-            </p>
+
+            <div className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <Lightbulb className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">
+                Craft a Solution That Sells Itself
+              </h3>
+              <p className="text-muted-foreground">
+                Position your offering in a way that makes the buying decision obvious for your customers.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
+      {/* Social Proof Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground">
+            Join Founders Who've Built Their Brand Foundation
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-card p-8 rounded-lg border border-border">
+              <p className="text-muted-foreground mb-6 italic">
+                "This framework helped me finally understand where my product fits in the market. I went from confused to confident in under an hour."
+              </p>
+              <div>
+                <p className="font-semibold text-foreground">Sarah Chen</p>
+                <p className="text-sm text-muted-foreground">Founder, TechStart Co</p>
+              </div>
+            </div>
+
+            <div className="bg-card p-8 rounded-lg border border-border">
+              <p className="text-muted-foreground mb-6 italic">
+                "The exercises in Workbook 0 are pure gold. I've used expensive consultants before, but this gave me more clarity for free."
+              </p>
+              <div>
+                <p className="font-semibold text-foreground">Michael Rodriguez</p>
+                <p className="text-sm text-muted-foreground">CEO, Growth Labs</p>
+              </div>
+            </div>
+
+            <div className="bg-card p-8 rounded-lg border border-border">
+              <p className="text-muted-foreground mb-6 italic">
+                "I was ready to give up on my idea until I worked through this framework. Now I have a clear path forward and paying customers."
+              </p>
+              <div>
+                <p className="font-semibold text-foreground">Emma Williams</p>
+                <p className="text-sm text-muted-foreground">Founder, Creative Studio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 px-4 bg-muted/10">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-chatone mb-6">What You'll Get</h2>
-          <ul className="text-left space-y-4 text-white/80">
-            <li className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="w-2 h-2 rounded-full bg-gold" />
-              </div>
-              <span>A validated market opportunity statement that clarifies exactly where you win</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="w-2 h-2 rounded-full bg-gold" />
-              </div>
-              <span>Step-by-step exercises to identify your competitive advantages</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="w-2 h-2 rounded-full bg-gold" />
-              </div>
-              <span>Visual frameworks used by Fortune 500 strategists</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                <div className="w-2 h-2 rounded-full bg-gold" />
-              </div>
-              <span>Instant digital access—start in the next 2 minutes</span>
-            </li>
-          </ul>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Ready to start?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Enter your email below to get instant access to Workbook 0
+          </p>
+
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <div className="flex flex-col gap-3">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-14 text-lg"
+                required
+                aria-label="Email address"
+              />
+              <Button 
+                type="submit" 
+                size="lg"
+                className="h-14 text-lg"
+                disabled={loading}
+              >
+                {loading ? "Submitting..." : "Get Free Access"}
+              </Button>
+            </div>
+          </form>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
