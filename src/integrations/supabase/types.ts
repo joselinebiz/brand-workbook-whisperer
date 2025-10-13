@@ -20,6 +20,7 @@ export type Database = {
           created_at: string
           email: string
           id: string
+          metadata: Json | null
           source: string | null
           webinar_purchased: boolean
         }
@@ -28,6 +29,7 @@ export type Database = {
           created_at?: string
           email: string
           id?: string
+          metadata?: Json | null
           source?: string | null
           webinar_purchased?: boolean
         }
@@ -36,6 +38,7 @@ export type Database = {
           created_at?: string
           email?: string
           id?: string
+          metadata?: Json | null
           source?: string | null
           webinar_purchased?: boolean
         }
