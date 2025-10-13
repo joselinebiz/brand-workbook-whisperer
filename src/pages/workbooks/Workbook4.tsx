@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -768,7 +768,7 @@ Write in my brand voice: [ARE/NOT from Workbook 1]`}
 
         <div className="flex justify-between gap-4 mt-8">
           <Button variant="outline" size="lg" asChild>
-            <a href="/workbook/3">← Back to Workbook 3</a>
+            <Link to="/workbook/3">← Back to Workbook 3</Link>
           </Button>
           <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
             <Download className="w-5 h-5" />

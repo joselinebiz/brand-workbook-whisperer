@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ExampleBox } from "@/components/ExampleBox";
@@ -1068,7 +1069,7 @@ Give me a score out of 10 and suggest one improvement.`}
             Download My Workbook
           </Button>
           <Button variant="hero" size="lg" asChild>
-            <a href="/workbook/1">Continue to Workbook 1: Brand Strategy →</a>
+            <Link to="/workbook/1">Continue to Workbook 1: Brand Strategy →</Link>
           </Button>
         </div>
       </div>

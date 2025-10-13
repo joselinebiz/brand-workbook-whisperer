@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -1446,14 +1446,14 @@ OUTPUT:
 
         <div className="flex justify-between gap-4">
           <Button variant="outline" size="lg" asChild>
-            <a href="/workbook/1">← Back to Workbook 1</a>
+            <Link to="/workbook/1">← Back to Workbook 1</Link>
           </Button>
           <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
             <Download className="w-5 h-5" />
             Download My Workbook
           </Button>
           <Button variant="hero" size="lg" asChild>
-            <a href="/workbook/3">Continue to Workbook 3: Customer Journey →</a>
+            <Link to="/workbook/3">Continue to Workbook 3: Customer Journey →</Link>
           </Button>
         </div>
       </div>
