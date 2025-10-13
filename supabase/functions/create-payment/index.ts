@@ -8,7 +8,7 @@ const corsHeaders = {
 };
 
 const PRODUCT_PRICES = {
-  webinar: "price_1SHpTMAnYzcngRwop5IcDNUy",
+  webinar: "price_1SHBiHAnYzcngRwoayVbrh15",
   workbook_1: "price_1SHBiWAnYzcngRwoJCYzqIEr",
   workbook_2: "price_1SHBiiAnYzcngRwozXR4UtDC",
   workbook_3: "price_1SHBitAnYzcngRwoM3KUCNLK",
