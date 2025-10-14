@@ -27,13 +27,20 @@ serve(async (req) => {
   );
 
   try {
-    const authHeader = req.headers.get("Authorization")!;
-    const token = authHeader.replace("Bearer ", "");
-    const { data } = await supabaseClient.auth.getUser(token);
-    const user = data.user;
-    if (!user?.email) throw new Error("User not authenticated");
-
     const { productType, couponCode } = await req.json();
+    
+    // Try to get authenticated user, but allow guest checkout for webinar
+    let user = null;
+    const authHeader = req.headers.get("Authorization");
+    if (authHeader) {
+      try {
+        const token = authHeader.replace("Bearer ", "");
+        const { data } = await supabaseClient.auth.getUser(token);
+        user = data.user;
+      } catch (authError) {
+        console.log("No valid auth token, proceeding with guest checkout");
+      }
+    }
     
     if (!PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES]) {
       throw new Error("Invalid product type");
@@ -43,16 +50,22 @@ serve(async (req) => {
       apiVersion: "2025-08-27.basil",
     });
 
-    const customers = await stripe.customers.list({ email: user.email, limit: 1 });
+    // For authenticated users, check for existing Stripe customer
     let customerId;
-    if (customers.data.length > 0) {
-      customerId = customers.data[0].id;
+    let customerEmail = null;
+    
+    if (user?.email) {
+      const customers = await stripe.customers.list({ email: user.email, limit: 1 });
+      if (customers.data.length > 0) {
+        customerId = customers.data[0].id;
+      }
+      customerEmail = user.email;
     }
 
     // Prepare session configuration
     const sessionConfig: any = {
       customer: customerId,
-      customer_email: customerId ? undefined : user.email,
+      customer_email: customerId ? undefined : customerEmail,
       line_items: [
         {
           price: PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES],
@@ -68,7 +81,7 @@ serve(async (req) => {
         ? `${req.headers.get("origin")}/thank-you`
         : `${req.headers.get("origin")}/`,
       metadata: {
-        user_id: user.id,
+        user_id: user?.id || 'guest',
         product_type: productType,
       },
     };

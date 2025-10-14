@@ -14,18 +14,7 @@ const ThankYou = () => {
     try {
       setPurchasing(true);
 
-      const { data: { session } } = await supabase.auth.getSession();
-
-      if (!session?.user) {
-        toast({
-          title: "Please log in first",
-          description: "You need to be logged in to purchase",
-          variant: "destructive"
-        });
-        navigate('/auth');
-        return;
-      }
-
+      // Guest checkout is supported - no login required
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body: { productType: 'webinar' }
       });
