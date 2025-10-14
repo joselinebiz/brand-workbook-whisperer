@@ -26,7 +26,7 @@ const ThankYou = () => {
       return;
     }
 
-    const { data, error } = await supabase.functions.invoke('create-webinar-payment', {
+    const { data, error } = await supabase.functions.invoke('create-payment', {
       body: { productType: 'webinar' }
     });
 
