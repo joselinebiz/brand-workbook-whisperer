@@ -13,24 +13,40 @@ const ThankYou = () => {
   const handleWebinarPurchase = async () => {
     setPurchasing(true);
     
-    try {
-      const { data, error } = await supabase.functions.invoke('create-webinar-payment', {
-        body: { productType: 'webinar' }
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in first",
+        variant: "destructive",
       });
+      navigate('/auth');
+      setPurchasing(false);
+      return;
+    }
 
-      if (error) throw error;
+    const { data, error } = await supabase.functions.invoke('create-webinar-payment', {
+      body: { productType: 'webinar' }
+    });
 
-      if (data?.url) {
-        window.open(data.url, '_blank');
-        setPurchasing(false);
-      } else {
-        throw new Error('No checkout URL received');
-      }
-    } catch (error) {
-      console.error('Error creating payment:', error);
+    if (error) {
+      console.error('Error:', error);
       toast({
         title: "Payment Error",
-        description: "Unable to process payment. Please try again.",
+        description: 'Unable to process payment: ' + error.message,
+        variant: "destructive",
+      });
+      setPurchasing(false);
+      return;
+    }
+
+    if (data?.url) {
+      window.location.href = data.url;
+    } else {
+      toast({
+        title: "Payment Error",
+        description: "No checkout URL received",
         variant: "destructive",
       });
       setPurchasing(false);
