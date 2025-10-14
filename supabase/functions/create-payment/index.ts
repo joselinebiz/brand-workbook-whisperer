@@ -64,8 +64,6 @@ serve(async (req) => {
 
     // Prepare session configuration
     const sessionConfig: any = {
-      customer: customerId,
-      customer_email: customerId ? undefined : customerEmail,
       line_items: [
         {
           price: PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES],
@@ -85,6 +83,14 @@ serve(async (req) => {
         product_type: productType,
       },
     };
+
+    // Only add customer/email if we have valid data
+    if (customerId) {
+      sessionConfig.customer = customerId;
+    } else if (customerEmail) {
+      sessionConfig.customer_email = customerEmail;
+    }
+    // If neither, Stripe will prompt for email during checkout
 
     // Apply coupon if provided
     if (couponCode) {
