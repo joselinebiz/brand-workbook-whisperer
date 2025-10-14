@@ -11,43 +11,52 @@ const ThankYou = () => {
   const navigate = useNavigate();
 
   const handleWebinarPurchase = async () => {
-    setPurchasing(true);
-    
-    const { data: { session } } = await supabase.auth.getSession();
+    try {
+      setPurchasing(true);
 
-    if (!session) {
-      toast({
-        title: "Authentication Required",
-        description: "Please log in first",
-        variant: "destructive",
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session?.user) {
+        toast({
+          title: "Please log in first",
+          description: "You need to be logged in to purchase",
+          variant: "destructive"
+        });
+        navigate('/auth');
+        return;
+      }
+
+      const { data, error } = await supabase.functions.invoke('create-webinar-payment', {
+        body: { productType: 'webinar' }
       });
-      navigate('/auth');
-      setPurchasing(false);
-      return;
-    }
 
-    const { data, error } = await supabase.functions.invoke('create-payment', {
-      body: { productType: 'webinar' }
-    });
+      if (error) {
+        console.error('Payment error:', error);
+        toast({
+          title: "Payment Error",
+          description: error.message || "Unable to process payment. Please try again.",
+          variant: "destructive"
+        });
+        setPurchasing(false);
+        return;
+      }
 
-    if (error) {
-      console.error('Error:', error);
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        toast({
+          title: "Error",
+          description: "No checkout URL received",
+          variant: "destructive"
+        });
+        setPurchasing(false);
+      }
+    } catch (err) {
+      console.error('Error:', err);
       toast({
-        title: "Payment Error",
-        description: 'Unable to process payment: ' + error.message,
-        variant: "destructive",
-      });
-      setPurchasing(false);
-      return;
-    }
-
-    if (data?.url) {
-      window.location.href = data.url;
-    } else {
-      toast({
-        title: "Payment Error",
-        description: "No checkout URL received",
-        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
       });
       setPurchasing(false);
     }
