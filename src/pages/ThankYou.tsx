@@ -8,17 +8,17 @@ import { useCountdown } from "@/hooks/useCountdown";
 
 const ThankYou = () => {
   const [purchasing, setPurchasing] = useState(false);
-  const [purchasedAt, setPurchasedAt] = useState<Date | null>(null);
+  const [expiryDate, setExpiryDate] = useState<Date | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  // Set purchase time to current time (assuming they just purchased)
+  // Set expiry date once on mount
   useEffect(() => {
-    setPurchasedAt(new Date());
+    const purchaseTime = new Date();
+    const expiry = new Date(purchaseTime.getTime() + 72 * 60 * 60 * 1000);
+    setExpiryDate(expiry);
   }, []);
   
-  // Calculate 72 hours from now
-  const expiryDate = purchasedAt ? new Date(purchasedAt.getTime() + 72 * 60 * 60 * 1000) : null;
   const countdown = useCountdown(expiryDate);
   const showDiscount = !countdown.expired;
 
