@@ -396,7 +396,7 @@ const Webinar = () => {
           <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
             {showDiscount && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                Best Value - Save $113+
+                Best Value - Save $100+
               </div>
             )}
             <div className="text-center">
@@ -421,7 +421,7 @@ const Webinar = () => {
               </div>
               {showDiscount && (
                 <p className="text-muted-foreground mb-6">
-                  Save $113 + Get immediate access to all workbooks
+                  Save $100 + Get immediate access to all workbooks
                 </p>
               )}
               <Button 
