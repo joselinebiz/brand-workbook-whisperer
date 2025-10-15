@@ -52,7 +52,7 @@ export default function Workbook2() {
     <ProtectedWorkbook
       productType="workbook_2"
       priceId="price_1SHBiiAnYzcngRwozXR4UtDC"
-      price={19700}
+      price={9700}
       workbookTitle="Workbook 2 - Marketing Strategy Execution"
     >
       <div className="min-h-screen bg-background">

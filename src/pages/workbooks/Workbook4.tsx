@@ -133,7 +133,7 @@ Generated: ${new Date().toLocaleDateString()}
     <ProtectedWorkbook
       productType="workbook_4"
       priceId="price_1SHBj5AnYzcngRwoUKYMf5Mc"
-      price={19700}
+      price={9700}
       workbookTitle="Workbook 4 - Measurement, Scaling & Growth"
     >
       <div className="min-h-screen bg-background">
