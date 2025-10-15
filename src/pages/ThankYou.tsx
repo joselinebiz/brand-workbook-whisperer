@@ -119,14 +119,14 @@ const ThankYou = () => {
       </section>
 
 
-      {/* Video Section */}
+      {/* Video + Webinar Offer Section */}
       <section className="py-16 px-4 bg-muted/10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-chatone text-center mb-8 text-foreground">
             Before You Go... Want to Complete Workbook 0 Faster with AI?
           </h2>
           
-          <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border">
+          <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border mb-12">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
@@ -137,38 +137,11 @@ const ThankYou = () => {
               />
             </div>
           </div>
-        </div>
-      </section>
 
-
-      {/* Workbook Access Section */}
-      <section className="py-16 px-4 border-t border-border bg-muted/10">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-chatone mb-4 text-foreground">
-            Ready to Start Workbook 0?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Access your free workbook and begin building your brand foundation
-          </p>
-          
-          <Button 
-            onClick={handleWorkbookAccess}
-            variant="outline"
-            size="lg"
-            className="h-14 text-lg"
-          >
-            Access Workbook 0 Now →
-          </Button>
-        </div>
-      </section>
-
-      {/* Webinar Offer Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto">
           <div className="bg-card border border-border rounded-lg p-8 shadow-lg">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Join: "How to Actually Complete Workbook 0 Using AI"
-            </h2>
+            </h3>
             
             <p className="text-xl text-muted-foreground mb-8">
               Implementation support, not theory. Watch over my shoulder as I complete the entire workbook using AI.
@@ -228,6 +201,28 @@ const ThankYou = () => {
           </div>
         </div>
       </section>
+
+      {/* Workbook Access Section */}
+      <section className="py-16 px-4 border-t border-border">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-chatone mb-4 text-foreground">
+            Ready to Start Workbook 0?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Access your free workbook and begin building your brand foundation
+          </p>
+          
+          <Button 
+            onClick={handleWorkbookAccess}
+            variant="outline"
+            size="lg"
+            className="h-14 text-lg"
+          >
+            Access Workbook 0 Now →
+          </Button>
+        </div>
+      </section>
+
     </div>
   );
 };
