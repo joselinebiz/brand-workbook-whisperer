@@ -407,7 +407,7 @@ const Webinar = () => {
                 {showDiscount ? (
                   <>
                     <span className="text-xl text-muted-foreground line-through mr-3">
-                      $310
+                      $297
                     </span>
                     <span className="text-4xl font-bold text-primary">
                       $197
@@ -415,7 +415,7 @@ const Webinar = () => {
                   </>
                 ) : (
                   <span className="text-4xl font-bold text-foreground">
-                    $310
+                    $297
                   </span>
                 )}
               </div>
