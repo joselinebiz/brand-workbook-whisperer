@@ -8,12 +8,15 @@ const corsHeaders = {
 };
 
 const PRODUCT_PRICES = {
-  webinar: "price_1SHBiHAnYzcngRwoayVbrh15",
-  workbook_1: "price_1SHBiWAnYzcngRwoJCYzqIEr",
-  workbook_2: "price_1SHBiiAnYzcngRwozXR4UtDC",
-  workbook_3: "price_1SHBitAnYzcngRwoM3KUCNLK",
-  workbook_4: "price_1SHBj5AnYzcngRwoUKYMf5Mc",
-  bundle: "price_1SHBjKAnYzcngRwo46M5bgXd",
+  webinar: "price_1QlhXdDDqZaEKHOxJFtKY3x5",
+};
+
+const PRODUCT_DETAILS: Record<string, { name: string; price: number }> = {
+  workbook_1: { name: "Brand Identity Workbook", price: 7900 },
+  workbook_2: { name: "Marketing Strategy Workbook", price: 7900 },
+  workbook_3: { name: "Customer Journey Workbook", price: 7900 },
+  workbook_4: { name: "Growth Systems Workbook", price: 7900 },
+  bundle: { name: "Complete Brand & Marketing System (All 4 Workbooks)", price: 19700 },
 };
 
 serve(async (req) => {
@@ -41,10 +44,6 @@ serve(async (req) => {
         console.log("No valid auth token, proceeding with guest checkout");
       }
     }
-    
-    if (!PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES]) {
-      throw new Error("Invalid product type");
-    }
 
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2025-08-27.basil",
@@ -64,12 +63,6 @@ serve(async (req) => {
 
     // Prepare session configuration
     const sessionConfig: any = {
-      line_items: [
-        {
-          price: PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES],
-          quantity: 1,
-        },
-      ],
       mode: "payment",
       allow_promotion_codes: true,
       success_url: productType === 'webinar' 
@@ -83,6 +76,37 @@ serve(async (req) => {
         product_type: productType,
       },
     };
+
+    // Handle webinar with price ID, workbooks with price_data
+    if (productType === 'webinar') {
+      if (!PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES]) {
+        throw new Error("Invalid product type");
+      }
+      sessionConfig.line_items = [
+        {
+          price: PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES],
+          quantity: 1,
+        },
+      ];
+    } else {
+      const product = PRODUCT_DETAILS[productType as keyof typeof PRODUCT_DETAILS];
+      if (!product) {
+        throw new Error("Invalid product type");
+      }
+      sessionConfig.line_items = [
+        {
+          price_data: {
+            currency: "usd",
+            unit_amount: product.price,
+            product_data: {
+              name: product.name,
+              description: "Digital workbook with AI implementation guide",
+            },
+          },
+          quantity: 1,
+        },
+      ];
+    }
 
     // Only add customer/email if we have valid data
     if (customerId) {

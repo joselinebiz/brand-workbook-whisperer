@@ -28,7 +28,7 @@ const Index = () => {
       description: "Create a clear brand foundation that guides every decision with visual and verbal identity systems.",
       path: "/workbook/1",
       productType: "workbook_1",
-      price: 19700,
+      price: 7900,
     },
     {
       number: "02",
@@ -38,7 +38,7 @@ const Index = () => {
       description: "Complete market analysis, positioning strategy, and 90-day content calendar ready to execute.",
       path: "/workbook/2",
       productType: "workbook_2",
-      price: 19700,
+      price: 7900,
     },
     {
       number: "03",
@@ -48,7 +48,7 @@ const Index = () => {
       description: "Map your customer journey and automate 80% of touchpoints with the proprietary 2-2-2 follow-up system.",
       path: "/workbook/3",
       productType: "workbook_3",
-      price: 19700,
+      price: 7900,
     },
     {
       number: "04",
@@ -58,17 +58,17 @@ const Index = () => {
       description: "Build your custom performance dashboard and 90-day growth sprint plan with testing frameworks.",
       path: "/workbook/4",
       productType: "workbook_4",
-      price: 19700,
+      price: 7900,
     },
     {
       number: "01-04 📦",
       title: "COMPLETE BUNDLE",
-      subtitle: "All Workbooks 1-4 - Save $391",
+      subtitle: "All Workbooks 1-4 - Save $119",
       timeRequired: "15-25 hours",
       description: "Get complete access to all four workbooks: Brand Strategy, Marketing Execution, Customer Journey, and Growth Scaling. The complete system to build and scale your business.",
       path: "/workbook/1",
       productType: "bundle",
-      price: 39700,
+      price: 19700,
     },
   ];
 

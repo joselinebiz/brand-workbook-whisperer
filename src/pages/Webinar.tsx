@@ -198,6 +198,20 @@ const Webinar = () => {
   // CONTENT STATE (user has access)
   return (
     <div className="min-h-screen bg-background">
+      {/* Webinar Access Info Banner */}
+      <div className="bg-muted/30 border-b border-border">
+        <div className="container mx-auto px-4 py-6">
+          <div className="bg-muted/50 border border-border rounded-lg p-6 text-center max-w-3xl mx-auto">
+            <h3 className="text-lg font-semibold mb-2 text-foreground">
+              📺 Your Webinar Access
+            </h3>
+            <p className="text-muted-foreground">
+              This training is yours to keep. Watch as many times as you need. Bookmark this page to return anytime.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
@@ -210,9 +224,9 @@ const Webinar = () => {
             Back to Workbooks
           </Button>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-            How to Actually Complete Workbook 0 Using AI
+            How to Complete Workbook 0 Using AI
           </h1>
-          <p className="text-muted-foreground mt-1">Implementation Workshop</p>
+          <p className="text-muted-foreground mt-1">Watch this training as many times as you need</p>
         </div>
       </header>
 
@@ -260,14 +274,27 @@ const Webinar = () => {
                   <Download className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Completion Checklist</h3>
-                  <p className="text-sm text-muted-foreground">PDF Download</p>
+                  <h3 className="font-semibold text-foreground">View Workbook 0</h3>
+                  <p className="text-sm text-muted-foreground">Start your brand journey</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm">
-                Download
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => navigate('/workbook/0')}
+              >
+                View
               </Button>
             </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <Button 
+              size="lg"
+              onClick={() => navigate('/')}
+            >
+              Continue to Workbooks
+            </Button>
           </div>
         </div>
       </section>
@@ -275,6 +302,13 @@ const Webinar = () => {
       {/* Upsell Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
+          {/* Urgency Banner */}
+          <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
+            <p className="text-foreground font-bold">
+              ⏰ WEBINAR ATTENDEE SPECIAL: This exclusive 35% discount expires 72 hours after your purchase
+            </p>
+          </div>
+
           <div className="text-center mb-12">
             <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
               Special Webinar Attendee Discount
@@ -283,17 +317,17 @@ const Webinar = () => {
               Ready for the Complete Brand & Marketing System?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Get 20% off all workbooks as a webinar attendee
+              Get 35% off all workbooks as a webinar attendee
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {/* Workbook Cards */}
             {[
-              { num: 1, title: "Brand Identity", price: 79, discounted: 63 },
-              { num: 2, title: "Marketing Strategy", price: 79, discounted: 63 },
-              { num: 3, title: "Customer Journey", price: 79, discounted: 63 },
-              { num: 4, title: "Growth Systems", price: 79, discounted: 63 },
+              { num: 1, title: "Brand Identity", original: 97, discounted: 63 },
+              { num: 2, title: "Marketing Strategy", original: 97, discounted: 63 },
+              { num: 3, title: "Customer Journey", original: 97, discounted: 63 },
+              { num: 4, title: "Growth Systems", original: 97, discounted: 63 },
             ].map((workbook) => (
               <div key={workbook.num} className="bg-card border border-border rounded-lg p-6">
                 <h3 className="font-bold text-lg mb-2 text-foreground">
@@ -301,8 +335,8 @@ const Webinar = () => {
                 </h3>
                 <p className="text-muted-foreground mb-4">{workbook.title}</p>
                 <div className="mb-4">
-                  <span className="text-sm text-muted-foreground line-through mr-2">
-                    ${workbook.price}
+                  <span className="text-lg text-muted-foreground line-through mr-2">
+                    ${workbook.original}
                   </span>
                   <span className="text-2xl font-bold text-primary">
                     ${workbook.discounted}
@@ -322,20 +356,23 @@ const Webinar = () => {
           {/* Bundle Card */}
           <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-              Best Value - Save $100+
+              Best Value - Save $113+
             </div>
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-2 text-foreground">
                 Complete Bundle (All 4)
               </h3>
-              <div className="mb-6">
+              <div className="mb-4">
                 <span className="text-xl text-muted-foreground line-through mr-3">
-                  $199
+                  $310
                 </span>
                 <span className="text-4xl font-bold text-primary">
-                  $159
+                  $197
                 </span>
               </div>
+              <p className="text-muted-foreground mb-6">
+                Save $113 + Get immediate access to all workbooks
+              </p>
               <Button 
                 onClick={() => handleWorkbookPurchase('bundle')}
                 size="lg"

@@ -82,6 +82,20 @@ const ThankYou = () => {
         </div>
       </section>
 
+      {/* Webinar Replay Info */}
+      <section className="py-6 px-4 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-muted/50 border border-border rounded-lg p-6 text-center">
+            <h3 className="text-lg font-semibold mb-2 text-foreground">
+              📺 Your Webinar Access
+            </h3>
+            <p className="text-muted-foreground">
+              This training is yours to keep. Watch as many times as you need. Bookmark this page to return anytime.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Video Section */}
       <section className="py-16 px-4 bg-muted/10">
         <div className="max-w-4xl mx-auto">
@@ -105,66 +119,75 @@ const ThankYou = () => {
 
       {/* Webinar Offer Section */}
       <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-card rounded-lg border border-border p-8 md:p-12 shadow-lg">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-              Join: "How to Actually Complete Workbook 0 Using AI"
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Implementation support, not theory. Watch over my shoulder as I complete the entire workbook using AI.
+        <div className="max-w-6xl mx-auto">
+          {/* Urgency Banner */}
+          <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
+            <p className="text-foreground font-bold">
+              ⏰ WEBINAR ATTENDEE SPECIAL: This exclusive 65% discount expires 72 hours after your purchase
             </p>
+          </div>
 
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3 text-foreground">
+              Ready for the Complete Brand & Marketing System?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Get 20% off all workbooks as a webinar attendee
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {/* Individual Workbook Cards */}
+            {[
+              { num: 1, title: "Brand Identity", original: 97, discounted: 63 },
+              { num: 2, title: "Marketing Strategy", original: 97, discounted: 63 },
+              { num: 3, title: "Customer Journey", original: 97, discounted: 63 },
+              { num: 4, title: "Growth Systems", original: 97, discounted: 63 },
+            ].map((workbook) => (
+              <div key={workbook.num} className="bg-card border border-border rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-2 text-foreground">
+                  Workbook {workbook.num}
+                </h3>
+                <p className="text-muted-foreground mb-4">{workbook.title}</p>
+                <div className="mb-4">
+                  <span className="text-lg text-muted-foreground line-through mr-2">
+                    ${workbook.original}
+                  </span>
+                  <span className="text-2xl font-bold text-primary">
+                    ${workbook.discounted}
+                  </span>
                 </div>
-                <p className="text-foreground">
-                  Watch over-the-shoulder as I complete the entire workbook using AI prompts
-                </p>
+                <Button variant="outline" className="w-full">
+                  Purchase
+                </Button>
               </div>
-              
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
-                </div>
-                <p className="text-foreground">
-                  Get my exact ChatGPT prompts for each section
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
-                </div>
-                <p className="text-foreground">
-                  Avoid the 3 biggest mistakes beginners make
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
-                </div>
-                <p className="text-foreground">
-                  Lifetime access + downloadable AI prompt templates
-                </p>
-              </div>
+            ))}
+          </div>
+
+          {/* Bundle Card */}
+          <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+              Best Value - Save $113+
             </div>
-
-            <div className="mb-8">
-              <div className="text-5xl font-bold text-foreground mb-2">$27</div>
-              <p className="text-muted-foreground">One-time payment • Lifetime access</p>
+            <div className="text-center">
+              <h3 className="text-2xl font-bold mb-2 text-foreground">
+                Complete Bundle (All 4)
+              </h3>
+              <div className="mb-4">
+                <span className="text-xl text-muted-foreground line-through mr-3">
+                  $310
+                </span>
+                <span className="text-4xl font-bold text-primary">
+                  $197
+                </span>
+              </div>
+              <p className="text-muted-foreground mb-6">
+                Save $113 + Get immediate access to all workbooks
+              </p>
+              <Button size="lg" className="px-12">
+                Get Complete Bundle
+              </Button>
             </div>
-
-            <Button 
-              onClick={handleWebinarPurchase}
-              size="lg"
-              className="w-full h-14 text-lg"
-              disabled={purchasing}
-            >
-              {purchasing ? "Processing..." : "Get Instant Access to Webinar"}
-            </Button>
           </div>
         </div>
       </section>
