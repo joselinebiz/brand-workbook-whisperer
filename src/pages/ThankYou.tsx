@@ -74,6 +74,30 @@ const ThankYou = () => {
     }
   };
 
+  const handleWorkbookPurchase = async (productType: string) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: { 
+          productType,
+          discounted: showDiscount // Pass discount flag based on timer
+        }
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        window.open(data.url, '_blank');
+      }
+    } catch (error) {
+      console.error('Error creating payment:', error);
+      toast({
+        title: "Payment Error",
+        description: "Unable to process payment. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Confirmation Section */}
@@ -195,7 +219,11 @@ const ThankYou = () => {
                     </span>
                   )}
                 </div>
-                <Button variant="outline" className="w-full">
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => handleWorkbookPurchase(`workbook_${workbook.num}`)}
+                >
                   Purchase
                 </Button>
               </div>
@@ -234,7 +262,11 @@ const ThankYou = () => {
                   Save $113 + Get immediate access to all workbooks
                 </p>
               )}
-              <Button size="lg" className="px-12">
+              <Button 
+                size="lg" 
+                className="px-12"
+                onClick={() => handleWorkbookPurchase('bundle')}
+              >
                 Get Complete Bundle
               </Button>
             </div>

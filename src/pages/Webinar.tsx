@@ -99,7 +99,10 @@ const Webinar = () => {
   const handleWorkbookPurchase = async (productType: string) => {
     try {
       const { data, error } = await supabase.functions.invoke('create-payment', {
-        body: { productType }
+        body: { 
+          productType,
+          discounted: showDiscount // Pass discount flag based on timer
+        }
       });
 
       if (error) throw error;
@@ -224,14 +227,21 @@ const Webinar = () => {
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Workbooks
-          </Button>
+          <div className="flex items-center justify-between mb-4">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/webinar')}
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              blkbld
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+            >
+              Back to Workbooks
+            </Button>
+          </div>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">
             How to Complete Workbook 0 Using AI
           </h1>

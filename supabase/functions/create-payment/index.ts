@@ -11,12 +11,12 @@ const PRODUCT_PRICES = {
   webinar: "price_1QlhXdDDqZaEKHOxJFtKY3x5",
 };
 
-const PRODUCT_DETAILS: Record<string, { name: string; price: number }> = {
-  workbook_1: { name: "Brand Identity Workbook", price: 7900 },
-  workbook_2: { name: "Marketing Strategy Workbook", price: 7900 },
-  workbook_3: { name: "Customer Journey Workbook", price: 7900 },
-  workbook_4: { name: "Growth Systems Workbook", price: 7900 },
-  bundle: { name: "Complete Brand & Marketing System (All 4 Workbooks)", price: 19700 },
+const PRODUCT_DETAILS: Record<string, { name: string; price: number; discountedPrice: number }> = {
+  workbook_1: { name: "Brand Identity Workbook", price: 9700, discountedPrice: 6300 },
+  workbook_2: { name: "Marketing Strategy Workbook", price: 9700, discountedPrice: 6300 },
+  workbook_3: { name: "Customer Journey Workbook", price: 9700, discountedPrice: 6300 },
+  workbook_4: { name: "Growth Systems Workbook", price: 9700, discountedPrice: 6300 },
+  bundle: { name: "Complete Brand & Marketing System (All 4 Workbooks)", price: 31000, discountedPrice: 19700 },
 };
 
 serve(async (req) => {
@@ -30,7 +30,7 @@ serve(async (req) => {
   );
 
   try {
-    const { productType, couponCode } = await req.json();
+    const { productType, couponCode, discounted } = await req.json();
     
     // Try to get authenticated user, but allow guest checkout for webinar
     let user = null;
@@ -93,11 +93,14 @@ serve(async (req) => {
       if (!product) {
         throw new Error("Invalid product type");
       }
+      // Use discounted price if specified, otherwise use regular price
+      const finalPrice = discounted ? product.discountedPrice : product.price;
+      
       sessionConfig.line_items = [
         {
           price_data: {
             currency: "usd",
-            unit_amount: product.price,
+            unit_amount: finalPrice,
             product_data: {
               name: product.name,
               description: "Digital workbook with AI implementation guide",
