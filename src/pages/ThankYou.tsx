@@ -161,6 +161,73 @@ const ThankYou = () => {
           </Button>
         </div>
       </section>
+
+      {/* Webinar Offer Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-card border border-border rounded-lg p-8 shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+              Join: "How to Actually Complete Workbook 0 Using AI"
+            </h2>
+            
+            <p className="text-xl text-muted-foreground mb-8">
+              Implementation support, not theory. Watch over my shoulder as I complete the entire workbook using AI.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Watch over-the-shoulder as I complete the entire workbook using AI prompts
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Get my exact ChatGPT prompts for each section
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Avoid the 3 biggest mistakes beginners make
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-foreground">
+                  Lifetime access + downloadable AI prompt templates
+                </p>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <div className="text-5xl font-bold text-foreground mb-2">$27</div>
+              <p className="text-muted-foreground">One-time payment • Lifetime access</p>
+            </div>
+
+            <Button 
+              onClick={handleWebinarPurchase}
+              size="lg"
+              className="w-full h-14 text-lg"
+              disabled={purchasing}
+            >
+              {purchasing ? "Processing..." : "Get Instant Access to Webinar"}
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
