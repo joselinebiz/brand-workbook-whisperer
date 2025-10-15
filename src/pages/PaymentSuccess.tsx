@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { authSchema } from '@/lib/validation';
 
 export default function PaymentSuccess() {
   const [searchParams] = useSearchParams();
@@ -100,10 +101,17 @@ export default function PaymentSuccess() {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!password || password.length < 6) {
+    // Validate password using shared validation schema
+    const validation = authSchema.safeParse({ 
+      email: customerEmail, 
+      password 
+    });
+    
+    if (!validation.success) {
+      const passwordError = validation.error.errors.find(e => e.path.includes('password'));
       toast({
         title: "Invalid Password",
-        description: "Password must be at least 6 characters long.",
+        description: passwordError?.message || "Password does not meet requirements.",
         variant: "destructive"
       });
       return;

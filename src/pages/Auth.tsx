@@ -5,20 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
-import { z } from 'zod';
 import { supabase } from '@/integrations/supabase/client';
-
-const authSchema = z.object({
-  email: z.string()
-    .trim()
-    .email('Invalid email address')
-    .max(255, 'Email too long'),
-  password: z.string()
-    .min(8, 'Password must be at least 8 characters')
-    .regex(/[A-Z]/, 'Password must contain an uppercase letter')
-    .regex(/[a-z]/, 'Password must contain a lowercase letter')
-    .regex(/[0-9]/, 'Password must contain a number')
-});
+import { authSchema, emailSchema } from '@/lib/validation';
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -132,7 +120,7 @@ export default function Auth() {
     }
 
     // Validate email format
-    const emailResult = z.string().email().safeParse(email.trim());
+    const emailResult = emailSchema.safeParse(email.trim());
     if (!emailResult.success) {
       toast({
         title: "Invalid Email",
