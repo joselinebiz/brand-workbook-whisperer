@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import { useCountdown } from "@/hooks/useCountdown";
 
 const ThankYou = () => {
   const [purchasing, setPurchasing] = useState(false);
+  const [purchasedAt, setPurchasedAt] = useState<Date | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
+  
+  // Set purchase time to current time (assuming they just purchased)
+  useEffect(() => {
+    setPurchasedAt(new Date());
+  }, []);
+  
+  // Calculate 72 hours from now
+  const expiryDate = purchasedAt ? new Date(purchasedAt.getTime() + 72 * 60 * 60 * 1000) : null;
+  const countdown = useCountdown(expiryDate);
+  const showDiscount = !countdown.expired;
 
   const handleWebinarPurchase = async () => {
     try {
@@ -120,12 +132,30 @@ const ThankYou = () => {
       {/* Webinar Offer Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Urgency Banner */}
-          <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
-            <p className="text-foreground font-bold">
-              ⏰ WEBINAR ATTENDEE SPECIAL: This exclusive 65% discount expires 72 hours after your purchase
-            </p>
-          </div>
+          {/* Urgency Banner with Countdown */}
+          {showDiscount && (
+            <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
+              <p className="text-foreground font-bold mb-2">
+                ⏰ WEBINAR ATTENDEE SPECIAL: This exclusive 35% discount expires in:
+              </p>
+              <div className="flex justify-center gap-4 text-foreground">
+                <div className="flex flex-col items-center">
+                  <span className="text-2xl font-bold">{countdown.hours}</span>
+                  <span className="text-xs">hours</span>
+                </div>
+                <span className="text-2xl font-bold">:</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-2xl font-bold">{countdown.minutes}</span>
+                  <span className="text-xs">minutes</span>
+                </div>
+                <span className="text-2xl font-bold">:</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-2xl font-bold">{countdown.seconds}</span>
+                  <span className="text-xs">seconds</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-3 text-foreground">
@@ -150,12 +180,20 @@ const ThankYou = () => {
                 </h3>
                 <p className="text-muted-foreground mb-4">{workbook.title}</p>
                 <div className="mb-4">
-                  <span className="text-lg text-muted-foreground line-through mr-2">
-                    ${workbook.original}
-                  </span>
-                  <span className="text-2xl font-bold text-primary">
-                    ${workbook.discounted}
-                  </span>
+                  {showDiscount ? (
+                    <>
+                      <span className="text-lg text-muted-foreground line-through mr-2">
+                        ${workbook.original}
+                      </span>
+                      <span className="text-2xl font-bold text-primary">
+                        ${workbook.discounted}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-2xl font-bold text-foreground">
+                      ${workbook.original}
+                    </span>
+                  )}
                 </div>
                 <Button variant="outline" className="w-full">
                   Purchase
@@ -166,24 +204,36 @@ const ThankYou = () => {
 
           {/* Bundle Card */}
           <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-              Best Value - Save $113+
-            </div>
+            {showDiscount && (
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                Best Value - Save $113+
+              </div>
+            )}
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-2 text-foreground">
                 Complete Bundle (All 4)
               </h3>
               <div className="mb-4">
-                <span className="text-xl text-muted-foreground line-through mr-3">
-                  $310
-                </span>
-                <span className="text-4xl font-bold text-primary">
-                  $197
-                </span>
+                {showDiscount ? (
+                  <>
+                    <span className="text-xl text-muted-foreground line-through mr-3">
+                      $310
+                    </span>
+                    <span className="text-4xl font-bold text-primary">
+                      $197
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-4xl font-bold text-foreground">
+                    $310
+                  </span>
+                )}
               </div>
-              <p className="text-muted-foreground mb-6">
-                Save $113 + Get immediate access to all workbooks
-              </p>
+              {showDiscount && (
+                <p className="text-muted-foreground mb-6">
+                  Save $113 + Get immediate access to all workbooks
+                </p>
+              )}
               <Button size="lg" className="px-12">
                 Get Complete Bundle
               </Button>
