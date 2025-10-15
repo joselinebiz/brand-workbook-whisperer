@@ -214,11 +214,11 @@ const Webinar = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Webinar Access Info Banner */}
-      <div className="bg-muted/30 border-b border-border">
+      <div style={{ backgroundColor: '#9f774b' }} className="border-b border-border">
         <div className="container mx-auto px-4 py-3">
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-sm text-muted-foreground">
-              📺 <span className="font-medium text-foreground">Your Webinar Access:</span> This training is yours to keep. Watch as many times as you need.
+            <p className="text-sm text-white">
+              📺 <span className="font-medium">Your Webinar Access:</span> This training is yours to keep. Watch as many times as you need.
             </p>
           </div>
         </div>
@@ -230,16 +230,10 @@ const Webinar = () => {
           <div className="flex items-center justify-between mb-4">
             <Button 
               variant="ghost" 
-              onClick={() => navigate('/webinar')}
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              blkbld
-            </Button>
-            <Button 
-              variant="ghost" 
               onClick={() => navigate('/')}
             >
-              Back to Workbooks
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Continue to Workbooks
             </Button>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">
