@@ -13,6 +13,7 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import Landing from "./pages/Landing";
 import ThankYou from "./pages/ThankYou";
 import Webinar from "./pages/Webinar";
+import WebinarRegistrationSuccess from "./pages/WebinarRegistrationSuccess";
 import Workbook0 from "./pages/workbooks/Workbook0";
 import Workbook1 from "./pages/workbooks/Workbook1";
 import Workbook2 from "./pages/workbooks/Workbook2";
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/landing" element={<Landing />} />
               <Route path="/thank-you" element={<ThankYou />} />
               <Route path="/webinar" element={<Webinar />} />
+              <Route path="/webinar-registration-success" element={<WebinarRegistrationSuccess />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/blueprint" element={<Blueprint />} />

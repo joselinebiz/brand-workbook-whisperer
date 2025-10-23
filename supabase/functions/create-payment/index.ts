@@ -68,6 +68,8 @@ serve(async (req) => {
       allow_promotion_codes: true,
       success_url: productType === 'webinar' 
         ? `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}&product=${productType}&type=webinar`
+        : productType === 'workbook_0'
+        ? `${req.headers.get("origin")}/webinar-registration-success?session_id={CHECKOUT_SESSION_ID}&product=${productType}`
         : `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}&product=${productType}`,
       cancel_url: productType === 'webinar'
         ? `${req.headers.get("origin")}/thank-you`
