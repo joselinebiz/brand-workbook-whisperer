@@ -72,7 +72,7 @@ export const WorkbookCard = ({
     if (!user) {
       return (
         <Button variant="outline" className="w-full group/btn" onClick={() => navigate('/auth')}>
-          {productType === 'workbook_0' ? 'Sign In to Start for Free' : 'Sign In to Purchase'}
+          Sign In to Purchase
           <Lock className="w-4 h-4" />
         </Button>
       );
@@ -88,18 +88,6 @@ export const WorkbookCard = ({
             ) : (
               <CheckCircle2 className="w-4 h-4 text-accent" />
             )}
-          </Button>
-        </Link>
-      );
-    }
-
-    if (productType === 'workbook_0') {
-      // User is signed in but hasn't "registered" for workbook 0 yet
-      return (
-        <Link to={path} className="w-full">
-          <Button variant="outline" className="w-full group/btn">
-            Start for Free
-            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </Button>
         </Link>
       );
