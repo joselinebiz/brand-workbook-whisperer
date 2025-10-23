@@ -18,7 +18,7 @@ const Index = () => {
       description: "Validate your market opportunity with one clear sentence that defines your unique position.",
       path: "/workbook/0",
       productType: "workbook_0",
-      price: 0,
+      price: 2700,
     },
     {
       number: "01",
