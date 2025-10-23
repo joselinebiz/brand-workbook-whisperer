@@ -1,65 +1,53 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Target, Users, Lightbulb } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [purchasing, setPurchasing] = useState(false);
   const { toast } = useToast();
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email || !email.includes('@')) {
-      toast({
-        title: "Invalid email",
-        description: "Please enter a valid email address",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setLoading(true);
-
+  const handlePurchase = async () => {
     try {
-      // Store email in localStorage for pre-filling later
-      localStorage.setItem('leadEmail', email);
+      setPurchasing(true);
 
-      // Insert lead into database
-      const { error: insertError } = await supabase
-        .from('leads')
-        .insert([{ email, source: 'landing_page' }]);
-
-      if (insertError) {
-        if (insertError.code === '23505') {
-          // Email already exists - still redirect to thank you
-          localStorage.setItem('leadEmail', email);
-          navigate('/thank-you');
-          return;
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: { 
+          productType: 'workbook_0',
+          discounted: false
         }
-        throw insertError;
+      });
+
+      if (error) {
+        console.error('Payment error:', error);
+        toast({
+          title: "Payment Error",
+          description: error.message || "Unable to process payment. Please try again.",
+          variant: "destructive"
+        });
+        setPurchasing(false);
+        return;
       }
 
-      // Send to Resend via edge function
-      await supabase.functions.invoke('add-lead', {
-        body: { email }
-      });
-
-      navigate('/thank-you');
-    } catch (error) {
-      console.error('Error capturing lead:', error);
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        toast({
+          title: "Error",
+          description: "No checkout URL received",
+          variant: "destructive"
+        });
+        setPurchasing(false);
+      }
+    } catch (err) {
+      console.error('Error:', err);
       toast({
-        title: "Something went wrong",
-        description: "Please try again later",
-        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
       });
-    } finally {
-      setLoading(false);
+      setPurchasing(false);
     }
   };
 
@@ -72,31 +60,27 @@ const Landing = () => {
             Build Your Million-Dollar Brand Foundation in Under 2 Hours
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12">
-            Get instant access to Workbook 0 - The Market Opportunity Framework (FREE)
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            Get instant access to Workbook 0 - The Market Opportunity Framework
           </p>
 
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col gap-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-14 text-lg"
-                required
-                aria-label="Email address"
-              />
-              <Button 
-                type="submit" 
-                size="lg"
-                className="h-14 text-lg"
-                disabled={loading}
-              >
-                {loading ? "Submitting..." : "Get Free Access"}
-              </Button>
+          <div className="max-w-md mx-auto mb-8">
+            <div className="bg-card border border-border rounded-lg p-6 mb-6">
+              <div className="text-center">
+                <div className="text-5xl font-bold text-foreground mb-2">$27</div>
+                <p className="text-muted-foreground">One-time payment • Instant access</p>
+              </div>
             </div>
-          </form>
+            
+            <Button 
+              onClick={handlePurchase}
+              size="lg"
+              className="w-full h-14 text-lg"
+              disabled={purchasing}
+            >
+              {purchasing ? "Processing..." : "Get Instant Access"}
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -167,7 +151,7 @@ const Landing = () => {
 
             <div className="bg-card p-8 rounded-lg border border-border">
               <p className="text-muted-foreground mb-6 italic">
-                "The exercises in Workbook 0 are pure gold. I've used expensive consultants before, but this gave me more clarity for free."
+                "The exercises in Workbook 0 are pure gold. I've used expensive consultants before, but this gave me more clarity at a fraction of the cost."
               </p>
               <div>
                 <p className="font-semibold text-foreground">Michael Rodriguez</p>
@@ -192,33 +176,22 @@ const Landing = () => {
       <section className="py-20 px-4 bg-muted/10">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-chatone mb-6 text-foreground">
-            Ready to start?
+            Ready to Build Your Foundation?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Enter your email below to get instant access to Workbook 0
+            Get instant access to Workbook 0 for just $27
           </p>
 
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col gap-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-14 text-lg"
-                required
-                aria-label="Email address"
-              />
-              <Button 
-                type="submit" 
-                size="lg"
-                className="h-14 text-lg"
-                disabled={loading}
-              >
-                {loading ? "Submitting..." : "Get Free Access"}
-              </Button>
-            </div>
-          </form>
+          <div className="max-w-md mx-auto">
+            <Button 
+              onClick={handlePurchase}
+              size="lg"
+              className="w-full h-14 text-lg"
+              disabled={purchasing}
+            >
+              {purchasing ? "Processing..." : "Get Instant Access - $27"}
+            </Button>
+          </div>
         </div>
       </section>
     </div>
