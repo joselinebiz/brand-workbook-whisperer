@@ -129,9 +129,12 @@ export const WorkbookCard = ({
             {hasAccess && productType !== 'workbook_0' && <CheckCircle2 className="w-6 h-6 text-accent" />}
             {!hasAccess && productType !== 'workbook_0' && <Lock className="w-6 h-6 text-muted-foreground" />}
           </div>
-          <span className="text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">
-            {timeRequired}
-          </span>
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-2xl font-bold text-foreground">${(price || 0) / 100}</span>
+            <span className="text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">
+              {timeRequired}
+            </span>
+          </div>
         </div>
 
         <h1 className="text-2xl font-chatone mb-2 group-hover:text-primary transition-colors">
