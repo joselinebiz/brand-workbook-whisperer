@@ -385,8 +385,7 @@ const Webinar = () => {
       </section>
 
       {/* Upsell Section */}
-      {showDiscount && (
-        <section className="py-16 px-4">
+      <section className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-8">
               <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
@@ -488,7 +487,6 @@ const Webinar = () => {
             </div>
           </div>
         </section>
-      )}
     </div>
   );
 };
