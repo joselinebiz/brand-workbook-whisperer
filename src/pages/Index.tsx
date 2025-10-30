@@ -110,21 +110,31 @@ const Index = () => {
               </div>
             </div>
             
-            <h1 className="text-4xl font-chatone mb-4">
-              BRAND & MARKETING MASTER BLUEPRINT
+            <h1 className="text-4xl md:text-5xl font-chatone mb-6 leading-tight">
+              Stop Building on Hope. Start Building on Strategy.
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Your Complete Strategic Foundation - From Market Validation to Systematic Scaling
+            <p className="text-lg md:text-xl text-white/90 mb-4 max-w-3xl mx-auto leading-relaxed">
+              Validate your business idea in 45 minutes using MBA-level frameworks powered by AI. Answer 3 questions. Find your white space. Build on strategy, not guesswork.
+            </p>
+            <p className="text-sm text-white/70 mb-8 max-w-2xl mx-auto">
+              For entrepreneurs, service providers, and professionals ready to validate with strategy, not guesswork.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="hero" size="lg" asChild>
-                <a href="#workbooks">
-                  <BookOpen className="w-5 h-5" />
-                  Start Your Journey
-                </a>
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+              <div className="relative">
+                <div className="absolute -top-3 -right-3 bg-gold text-black text-xs font-bold px-3 py-1 rounded-full">
+                  $27
+                </div>
+                <Button variant="hero" size="lg" asChild>
+                  <a href="#workbooks">
+                    START SYSTEMIZING SUCCESS ($27) →
+                  </a>
+                </Button>
+              </div>
             </div>
+            <p className="text-xs text-white/60">
+              Interactive web app • DIY with AI • Works on any device
+            </p>
           </div>
         </div>
 
