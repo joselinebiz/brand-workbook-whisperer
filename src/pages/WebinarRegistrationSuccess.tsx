@@ -36,44 +36,38 @@ const WebinarRegistrationSuccess = () => {
     const sessionId = searchParams.get('session_id');
     const productType = searchParams.get('product');
 
+    // Don't redirect if params are missing, just show the page
     if (!sessionId || productType !== 'workbook_0') {
-      navigate('/');
+      console.log('Missing or invalid params, showing page anyway', { sessionId, productType });
+      setNeedsAccount(true);
+      setLoading(false);
       return;
     }
 
     try {
       const { data: { session } } = await supabase.auth.getSession();
       
-      // Allow viewing the page without authentication, but verify payment if logged in
-      if (session) {
-        const { data, error } = await supabase.functions.invoke('verify-payment', {
-          body: { sessionId, productType }
-        });
+      // Always try to verify payment first
+      const { data, error } = await supabase.functions.invoke('verify-payment', {
+        body: { sessionId, productType }
+      });
 
-        if (error) throw error;
+      if (error) {
+        console.error('Verification error:', error);
+        // Still show the page
+        setNeedsAccount(true);
+        setLoading(false);
+        return;
+      }
 
-        if (data.success) {
-          setVerified(true);
-        }
+      if (data?.needsAccount) {
+        setNeedsAccount(true);
+        setCustomerEmail(data.email || '');
+      } else if (data?.success) {
+        setVerified(true);
       } else {
-        // Guest user - verify the payment succeeded via Stripe
-        const { data, error } = await supabase.functions.invoke('verify-payment', {
-          body: { sessionId, productType }
-        });
-
-        if (error) {
-          console.error('Verification error:', error);
-        }
-
-        if (data?.needsAccount) {
-          setNeedsAccount(true);
-          setCustomerEmail(data.email || '');
-        } else if (data?.success) {
-          setVerified(true);
-        } else {
-          // Show page anyway for guest users to see the offer
-          setNeedsAccount(true);
-        }
+        // Show page anyway
+        setNeedsAccount(true);
       }
     } catch (error: any) {
       console.error('Payment verification error:', error);
