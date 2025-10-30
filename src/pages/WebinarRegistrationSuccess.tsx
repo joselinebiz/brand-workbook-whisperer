@@ -199,7 +199,7 @@ const WebinarRegistrationSuccess = () => {
           {isBeforeWebinar ? (
             <div className="bg-card border border-border rounded-lg p-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold mb-4">Live Webinar Coming Soon</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Live Webinar Coming Soon</h2>
                 <p className="text-muted-foreground mb-6">
                   November 18, 2024 at 6:00 PM CST
                 </p>
@@ -263,12 +263,12 @@ const WebinarRegistrationSuccess = () => {
 
       {/* Special Offer Section */}
       {isDiscountActive && (
-        <section className="py-16 px-4 bg-muted/10">
+        <section className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
             {/* Urgency Banner with Countdown */}
             <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
               <p className="text-foreground font-bold mb-2">
-                ⏰ SPECIAL OFFER: This exclusive 35% discount expires in:
+                ⏰ WEBINAR ATTENDEE SPECIAL: This exclusive 35% discount expires in:
               </p>
               <div className="flex justify-center gap-4 text-foreground">
                 <div className="flex flex-col items-center">
@@ -293,11 +293,10 @@ const WebinarRegistrationSuccess = () => {
                 Special Webinar Attendee Discount
               </div>
               <h2 className="text-3xl font-bold mb-3 text-foreground">
-                Get All 4 Workbooks at 35% Discount
+                Ready for the Complete Brand & Marketing System?
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                This discount is available from now until 72 hours after the webinar ends. 
-                Use it now or wait until after the session—your choice.
+              <p className="text-xl text-muted-foreground">
+                Get 35% off all workbooks as a webinar attendee
               </p>
             </div>
 
@@ -345,14 +344,14 @@ const WebinarRegistrationSuccess = () => {
                 </h3>
                 <div className="mb-4">
                   <span className="text-xl text-muted-foreground line-through mr-3">
-                    $310
+                    $297
                   </span>
                   <span className="text-4xl font-bold text-primary">
                     $197
                   </span>
                 </div>
                 <p className="text-muted-foreground mb-6">
-                  Save $113 + Get immediate access to all workbooks
+                  Save $100 + Get immediate access to all workbooks
                 </p>
                 <Button 
                   onClick={handleBundlePurchase}
@@ -369,7 +368,7 @@ const WebinarRegistrationSuccess = () => {
       )}
 
       {/* Navigation Section */}
-      <section className="py-12 px-4 bg-card">
+      <section className="py-12 px-4 bg-muted/10">
         <div className="container mx-auto max-w-5xl text-center">
           {verified ? (
             <Button 
