@@ -13,6 +13,7 @@ const Webinar = () => {
   const [hasAccess, setHasAccess] = useState(false);
   const [purchasing, setPurchasing] = useState(false);
   const [purchasedAt, setPurchasedAt] = useState<Date | null>(null);
+  const [isGuest, setIsGuest] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   
@@ -35,6 +36,10 @@ const Webinar = () => {
   const verifyPaymentAndCheckAccess = async () => {
     const sessionId = searchParams.get('session_id');
     
+    // Check authentication first
+    const { data: { session } } = await supabase.auth.getSession();
+    setIsGuest(!session);
+    
     // If there's a session_id, verify payment first
     if (sessionId) {
       setVerifying(true);
@@ -55,8 +60,19 @@ const Webinar = () => {
             title: "Payment confirmed! Welcome to the webinar 🎉",
             description: "Your access has been activated",
           });
+          setHasAccess(true);
+          setIsGuest(false);
           
           // Clean URL
+          window.history.replaceState({}, '', '/webinar');
+        } else if (data?.needsAccount) {
+          // Guest purchase - show them the content but prompt to create account
+          toast({
+            title: "Purchase Complete!",
+            description: "Create an account below to save your access",
+          });
+          setIsGuest(true);
+          // Clean URL but keep them on the page
           window.history.replaceState({}, '', '/webinar');
         }
       } catch (error) {
@@ -66,50 +82,45 @@ const Webinar = () => {
       }
     }
     
-    // Check access (for both new and returning users)
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
-        navigate('/auth');
-        return;
-      }
-
-      // Check webinar_access table
-      const { data, error } = await supabase
-        .from('webinar_access')
-        .select('*')
-        .eq('user_id', session.user.id)
-        .maybeSingle();
-
-      if (error && error.code !== 'PGRST116') {
-        throw error;
-      }
-
-      setHasAccess(!!data);
-      
-      // Set purchase time for countdown
-      if (data?.purchased_at) {
-        setPurchasedAt(new Date(data.purchased_at));
-      }
-      
-      // Update last_accessed_at if user has access
-      if (data) {
-        await supabase
+    // Check access for authenticated users
+    if (session) {
+      try {
+        // Check webinar_access table
+        const { data, error } = await supabase
           .from('webinar_access')
-          .update({ last_accessed_at: new Date().toISOString() })
-          .eq('user_id', session.user.id);
+          .select('*')
+          .eq('user_id', session.user.id)
+          .maybeSingle();
+
+        if (error && error.code !== 'PGRST116') {
+          throw error;
+        }
+
+        setHasAccess(!!data);
+        
+        // Set purchase time for countdown
+        if (data?.purchased_at) {
+          setPurchasedAt(new Date(data.purchased_at));
+        }
+        
+        // Update last_accessed_at if user has access
+        if (data) {
+          await supabase
+            .from('webinar_access')
+            .update({ last_accessed_at: new Date().toISOString() })
+            .eq('user_id', session.user.id);
+        }
+      } catch (error) {
+        console.error('Error checking access:', error);
+        toast({
+          title: "Error",
+          description: "Failed to check webinar access",
+          variant: "destructive",
+        });
       }
-    } catch (error) {
-      console.error('Error checking access:', error);
-      toast({
-        title: "Error",
-        description: "Failed to check webinar access",
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
     }
+    
+    setLoading(false);
   };
 
   const handlePurchase = async () => {
@@ -176,8 +187,9 @@ const Webinar = () => {
     );
   }
 
-  // PAYWALL STATE
-  if (!hasAccess) {
+  // PAYWALL STATE - only show if not authenticated AND no session_id in URL
+  const sessionId = searchParams.get('session_id');
+  if (!hasAccess && !sessionId) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="max-w-2xl mx-auto text-center">
@@ -258,19 +270,31 @@ const Webinar = () => {
     );
   }
 
-  // CONTENT STATE (user has access)
+  // CONTENT STATE (user has access OR just purchased)
   return (
     <div className="min-h-screen bg-background">
       {/* Webinar Access Info Banner */}
-      <div style={{ backgroundColor: '#9f774b' }} className="border-b border-border">
-        <div className="container mx-auto px-4 py-3">
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-sm text-white">
-              📺 <span className="font-medium">Your Webinar Access:</span> This training is yours to keep. Watch as many times as you need.
-            </p>
+      {!isGuest ? (
+        <div style={{ backgroundColor: '#9f774b' }} className="border-b border-border">
+          <div className="container mx-auto px-4 py-3">
+            <div className="text-center max-w-3xl mx-auto">
+              <p className="text-sm text-white">
+                📺 <span className="font-medium">Your Webinar Access:</span> This training is yours to keep. Watch as many times as you need.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border-b border-yellow-500/30">
+          <div className="container mx-auto px-4 py-3">
+            <div className="text-center max-w-3xl mx-auto">
+              <p className="text-sm text-foreground">
+                🎉 <span className="font-medium">Purchase Complete!</span> Create an account below to save your access permanently.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Header */}
       <header className="border-b border-border bg-card">
@@ -400,14 +424,32 @@ const Webinar = () => {
             </div>
           </div>
 
-          <div className="text-center mt-8">
-            <Button 
-              size="lg"
-              onClick={() => navigate('/')}
-            >
-              Continue to Workbooks
-            </Button>
-          </div>
+          {isGuest ? (
+            <div className="bg-card border-2 border-primary rounded-lg p-8 mt-8">
+              <h3 className="text-xl font-bold mb-4 text-center text-foreground">
+                Create Your Free Account to Save Access
+              </h3>
+              <p className="text-center text-muted-foreground mb-6">
+                Your purchase is complete! Create an account to permanently save your webinar access and unlock Workbook 0.
+              </p>
+              <Button 
+                size="lg"
+                onClick={() => navigate('/auth')}
+                className="w-full"
+              >
+                Create Free Account
+              </Button>
+            </div>
+          ) : (
+            <div className="text-center mt-8">
+              <Button 
+                size="lg"
+                onClick={() => navigate('/')}
+              >
+                Continue to Workbooks
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

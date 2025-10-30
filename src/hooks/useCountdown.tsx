@@ -20,7 +20,12 @@ export const useCountdown = (targetDate: Date | null) => {
       const difference = target - now;
 
       if (difference <= 0) {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0, expired: true });
+        setTimeLeft((prev) => {
+          if (!prev.expired) {
+            return { hours: 0, minutes: 0, seconds: 0, expired: true };
+          }
+          return prev;
+        });
         return;
       }
 
@@ -28,7 +33,12 @@ export const useCountdown = (targetDate: Date | null) => {
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      setTimeLeft({ hours, minutes, seconds, expired: false });
+      setTimeLeft((prev) => {
+        if (prev.hours !== hours || prev.minutes !== minutes || prev.seconds !== seconds) {
+          return { hours, minutes, seconds, expired: false };
+        }
+        return prev;
+      });
     };
 
     calculateTimeLeft();
