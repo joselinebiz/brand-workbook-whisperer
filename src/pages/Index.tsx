@@ -13,9 +13,9 @@ const Index = () => {
     {
       number: "00",
       title: "FIND YOUR WHITE SPACE",
-      subtitle: "The 45 Minute Market Opportunity Sprint",
+      subtitle: "← Start here for $27",
       timeRequired: "45 min",
-      description: "Validate your market opportunity with one clear sentence that defines your unique position.",
+      description: "Validate your market opportunity in 45 minutes with one clear positioning statement. Interactive: Dynamic Market Analysis, AI Competitor Insights, Positioning Generator",
       path: "/workbook/0",
       productType: "workbook_0",
       price: 2700,
@@ -23,9 +23,9 @@ const Index = () => {
     {
       number: "01",
       title: "BRAND STRATEGY FOUNDATION",
-      subtitle: "Build the Foundation That Makes Marketing Easier",
+      subtitle: "($97)",
       timeRequired: "2-4 hours",
-      description: "Create a clear brand foundation that guides every decision with visual and verbal identity systems.",
+      description: "Build the bulletproof brand foundation that makes marketing effortless. Interactive: Brand Personality Assessments, Voice Generator, Visual Style Builder",
       path: "/workbook/1",
       productType: "workbook_1",
       price: 9700,
@@ -33,42 +33,22 @@ const Index = () => {
     {
       number: "02",
       title: "MARKETING STRATEGY EXECUTION",
-      subtitle: "Turn Your Brand into a Revenue-Generating Machine",
+      subtitle: "($97)",
       timeRequired: "5-10 hours",
-      description: "Complete market analysis, positioning strategy, and 90-day content calendar ready to execute.",
+      description: "Turn your brand into a revenue-generating machine with systematic campaigns. Interactive: Strategy Builder, Content Calendar Generator, Campaign Templates",
       path: "/workbook/2",
       productType: "workbook_2",
       price: 9700,
     },
     {
       number: "03",
-      title: "CUSTOMER JOURNEY & SYSTEMS",
-      subtitle: "Turn Leads into Loyal Customers with Automation",
+      title: "GROWTH & MEASUREMENT SYSTEMS",
+      subtitle: "($97)",
       timeRequired: "2-4 hours",
-      description: "Map your customer journey and automate 80% of touchpoints with the proprietary 2-2-2 follow-up system.",
+      description: "Transform data into decisions and scale what works with testing frameworks. Interactive: Dashboard Builder, Growth Calculator, Optimization Tracker",
       path: "/workbook/3",
       productType: "workbook_3",
       price: 9700,
-    },
-    {
-      number: "04",
-      title: "MEASUREMENT, SCALING & GROWTH",
-      subtitle: "Transform Data into Decisions and Scale What Works",
-      timeRequired: "3-5 hours",
-      description: "Build your custom performance dashboard and 90-day growth sprint plan with testing frameworks.",
-      path: "/workbook/4",
-      productType: "workbook_4",
-      price: 9700,
-    },
-    {
-      number: "01-04 📦",
-      title: "COMPLETE BUNDLE",
-      subtitle: "All Workbooks 1-4 - Save $91",
-      timeRequired: "15-25 hours",
-      description: "Get complete access to all four workbooks: Brand Strategy, Marketing Execution, Customer Journey, and Growth Scaling. The complete system to build and scale your business.",
-      path: "/workbook/1",
-      productType: "bundle",
-      price: 29700,
     },
   ];
 
@@ -335,26 +315,162 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-chatone mb-4">The Complete Journey</h1>
+              <h1 className="text-4xl font-chatone mb-4">The Complete System: 4 Workbooks That Build on Each Other</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Five workbooks that take you from market validation to systematic scaling
+                Each workbook builds systematically. Validation → Brand → Marketing → Growth. No scattered tactics. No random execution.
               </p>
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid gap-6 mb-8">
               {workbooks.map((workbook) => (
                 <WorkbookCard key={workbook.number} {...workbook} />
               ))}
+            </div>
+
+            <div className="text-center bg-muted/30 border rounded-lg p-8">
+              <p className="text-lg mb-4">
+                Get all 4 workbooks: <span className="font-bold line-through">$297 regular</span> | <span className="font-bold text-primary">$129 webinar attendee pricing</span> <span className="text-muted-foreground">(save $168)</span>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="py-16 px-4 bg-muted/10">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            How It Works
+          </h2>
+          
+          <div className="grid md:grid-cols-5 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                1
+              </div>
+              <h3 className="font-bold mb-2">Purchase Workbook 0</h3>
+              <p className="text-sm text-muted-foreground">($27)</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                2
+              </div>
+              <h3 className="font-bold mb-2">Access interactive app</h3>
+              <p className="text-sm text-muted-foreground">instantly</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                3
+              </div>
+              <h3 className="font-bold mb-2">Complete validation</h3>
+              <p className="text-sm text-muted-foreground">in 45 minutes</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                4
+              </div>
+              <h3 className="font-bold mb-2">Join FREE webinar</h3>
+              <p className="text-sm text-muted-foreground">November 18th</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                5
+              </div>
+              <h3 className="font-bold mb-2">Decide on complete system</h3>
+              <p className="text-sm text-muted-foreground">($129)</p>
+            </div>
+          </div>
+
+          <p className="text-center text-lg text-muted-foreground mt-10">
+            No downloads. No PDFs sitting unfinished. Just interactive frameworks, AI acceleration, and strategic clarity.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: Is this really just $27?</h3>
+              <p className="text-muted-foreground">
+                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + option to get the complete system for $129 (save $168).
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: What if the AI gives me wrong information?</h3>
+              <p className="text-muted-foreground">
+                A: The prompts are designed to avoid hallucination using market-research principles. The webinar shows you how to fact-check AI responses. Always verify, never blindly trust.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: What if I can't attend the webinar live?</h3>
+              <p className="text-muted-foreground">
+                A: You get the full recording + all materials within 24 hours. Your $129 bundle discount stays active for 72 hours after the webinar ends.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: Do I need all 4 workbooks?</h3>
+              <p className="text-muted-foreground">
+                A: Workbook 0 validates your idea (stands alone). Workbooks 1-3 turn your validated idea into a complete strategic system. Buy individually ($97 each) or as bundle ($297, or $129 for webinar attendees).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 px-4 bg-gradient-to-br from-black via-black to-black/90 text-white">
+        <div className="container mx-auto max-w-3xl text-center">
+          <p className="text-lg md:text-xl mb-4 text-white/80 italic">
+            The people who thrive bet on themselves strategically.
+          </p>
+          
+          <p className="text-base md:text-lg mb-4 text-white/90 leading-relaxed">
+            You have the vision and drive. Now add MBA-level strategy, AI-powered implementation, and battle-tested frameworks.
+          </p>
+
+          <p className="text-base md:text-lg mb-4 text-white/90 leading-relaxed">
+            In this economy, there's never been a better opportunity to pour into yourself strategically.
+          </p>
+
+          <p className="text-lg md:text-xl mb-8 text-white font-semibold">
+            Don't build your business on hope. Build it on strategy.
+          </p>
+
+          <Button variant="hero" size="lg" asChild className="mb-4">
+            <a href="#workbooks">
+              GET WORKBOOK 0 + FREE WEBINAR ($27) →
+            </a>
+          </Button>
+
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-white/80">
+            <span>✅ Instant access</span>
+            <span>✅ Works on any device</span>
+            <span>✅ 30-day money-back guarantee</span>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="border-t py-12 mt-16">
+      <footer className="border-t py-12">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground mb-4">
-            You're not just learning concepts—you're implementing the same systems that generate six-figure consulting engagements.
+            Questions? <a href="mailto:web@blkbld.co" className="text-primary hover:underline">web@blkbld.co</a> | Response within 24 hours
+          </p>
+          <p className="text-sm text-muted-foreground mb-2">
+            Joseline Nyinawabera, MBA | Founder, BlkBld & Co. | @JoselineBiz
           </p>
           <p className="text-xs text-muted-foreground">
             © 2025 BLKBLD. All rights reserved.
