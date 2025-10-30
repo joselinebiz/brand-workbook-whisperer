@@ -1,29 +1,72 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Lock, Download, Check } from "lucide-react";
+import { ArrowLeft, Lock, Download, Check, Calendar } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCountdown } from "@/hooks/useCountdown";
 
 const Webinar = () => {
+  const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
+  const [verifying, setVerifying] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
   const [purchasing, setPurchasing] = useState(false);
   const [purchasedAt, setPurchasedAt] = useState<Date | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  // Calculate 72 hours from purchase time
-  const expiryDate = purchasedAt ? new Date(purchasedAt.getTime() + 72 * 60 * 60 * 1000) : null;
-  const countdown = useCountdown(expiryDate);
-  const showDiscount = !countdown.expired;
+  // Webinar date: November 18, 2024 at 6:00 PM CST
+  const webinarDate = new Date('2024-11-18T18:00:00-06:00');
+  
+  // Discount expires November 21, 2024 at 7:00 PM CST
+  const discountExpiryDate = new Date('2024-11-21T19:00:00-06:00');
+  
+  const webinarCountdown = useCountdown(webinarDate);
+  const discountCountdown = useCountdown(discountExpiryDate);
+  
+  const isBeforeWebinar = !webinarCountdown.expired;
+  const showDiscount = !discountCountdown.expired;
 
   useEffect(() => {
-    checkAccess();
+    verifyPaymentAndCheckAccess();
   }, []);
 
-  const checkAccess = async () => {
+  const verifyPaymentAndCheckAccess = async () => {
+    const sessionId = searchParams.get('session_id');
+    
+    // If there's a session_id, verify payment first
+    if (sessionId) {
+      setVerifying(true);
+      try {
+        const { data, error } = await supabase.functions.invoke('verify-webinar-payment', {
+          body: { sessionId }
+        });
+
+        if (error) {
+          console.error('Payment verification error:', error);
+          toast({
+            title: "Verification Error",
+            description: "Could not verify payment. Please contact support.",
+            variant: "destructive",
+          });
+        } else if (data?.success) {
+          toast({
+            title: "Payment confirmed! Welcome to the webinar 🎉",
+            description: "Your access has been activated",
+          });
+          
+          // Clean URL
+          window.history.replaceState({}, '', '/webinar');
+        }
+      } catch (error) {
+        console.error('Payment verification error:', error);
+      } finally {
+        setVerifying(false);
+      }
+    }
+    
+    // Check access (for both new and returning users)
     try {
       const { data: { session } } = await supabase.auth.getSession();
       
@@ -120,10 +163,15 @@ const Webinar = () => {
     }
   };
 
-  if (loading) {
+  if (loading || verifying) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
+      <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">
+            {verifying ? "Verifying your payment..." : "Loading..."}
+          </p>
+        </div>
       </div>
     );
   }
@@ -246,17 +294,68 @@ const Webinar = () => {
       {/* Video Section */}
       <section className="py-12 px-4">
         <div className="container mx-auto max-w-5xl">
-          <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border">
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Workbook 0 AI Implementation Workshop"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+          {isBeforeWebinar ? (
+            <div className="bg-card border border-border rounded-lg p-8">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Live Webinar Coming Soon</h2>
+                <p className="text-muted-foreground mb-6">
+                  November 18, 2024 at 6:00 PM CST
+                </p>
+                
+                {/* Countdown Timer */}
+                <div className="flex justify-center gap-6 mb-8">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-1">
+                      {String(webinarCountdown.hours).padStart(2, '0')}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Hours</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-1">
+                      {String(webinarCountdown.minutes).padStart(2, '0')}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Minutes</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-1">
+                      {String(webinarCountdown.seconds).padStart(2, '0')}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Seconds</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-muted/50 rounded-lg p-6">
+                <h3 className="font-semibold mb-4 text-foreground">What You'll Learn</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <p className="text-foreground">How to complete Workbook 0 efficiently using AI</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <p className="text-foreground">Advanced strategies for market opportunity analysis</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <p className="text-foreground">Live Q&A with brand strategy experts</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  title="Workbook 0 Webinar Replay"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -313,128 +412,113 @@ const Webinar = () => {
       </section>
 
       {/* Upsell Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          {/* Urgency Banner with Countdown */}
-          {showDiscount && (
+      {showDiscount && (
+        <section className="py-16 px-4">
+          <div className="container mx-auto max-w-6xl">
+            {/* Urgency Banner with Countdown */}
             <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
               <p className="text-foreground font-bold mb-2">
-                ⏰ WEBINAR ATTENDEE SPECIAL: This exclusive 35% discount expires in:
+                ⚡ 50% WEBINAR ATTENDEE DISCOUNT - Offer expires in:
               </p>
               <div className="flex justify-center gap-4 text-foreground">
                 <div className="flex flex-col items-center">
-                  <span className="text-2xl font-bold">{countdown.hours}</span>
+                  <span className="text-2xl font-bold">{String(discountCountdown.hours).padStart(2, '0')}</span>
                   <span className="text-xs">hours</span>
                 </div>
                 <span className="text-2xl font-bold">:</span>
                 <div className="flex flex-col items-center">
-                  <span className="text-2xl font-bold">{countdown.minutes}</span>
+                  <span className="text-2xl font-bold">{String(discountCountdown.minutes).padStart(2, '0')}</span>
                   <span className="text-xs">minutes</span>
                 </div>
                 <span className="text-2xl font-bold">:</span>
                 <div className="flex flex-col items-center">
-                  <span className="text-2xl font-bold">{countdown.seconds}</span>
+                  <span className="text-2xl font-bold">{String(discountCountdown.seconds).padStart(2, '0')}</span>
                   <span className="text-xs">seconds</span>
                 </div>
               </div>
             </div>
-          )}
 
-          <div className="text-center mb-12">
-            <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-              Special Webinar Attendee Discount
+            <div className="text-center mb-12">
+              <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                ⚡ 50% Webinar Attendee Discount
+              </div>
+              <h2 className="text-3xl font-bold mb-3 text-foreground">
+                Ready for the Complete System?
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Get 50% off all workbooks - ends November 21, 7pm CST
+              </p>
             </div>
-            <h2 className="text-3xl font-bold mb-3 text-foreground">
-              Ready for the Complete Brand & Marketing System?
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Get 35% off all workbooks as a webinar attendee
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {/* Workbook Cards */}
-            {[
-              { num: 1, title: "Brand Identity", original: 97, discounted: 63 },
-              { num: 2, title: "Marketing Strategy", original: 97, discounted: 63 },
-              { num: 3, title: "Customer Journey", original: 97, discounted: 63 },
-              { num: 4, title: "Growth Systems", original: 97, discounted: 63 },
-            ].map((workbook) => (
-              <div key={workbook.num} className="bg-card border border-border rounded-lg p-6">
-                <h3 className="font-bold text-lg mb-2 text-foreground">
-                  Workbook {workbook.num}
-                </h3>
-                <p className="text-muted-foreground mb-4">{workbook.title}</p>
-                <div className="mb-4">
-                  {showDiscount ? (
-                    <>
-                      <span className="text-lg text-muted-foreground line-through mr-2">
-                        ${workbook.original}
-                      </span>
-                      <span className="text-2xl font-bold text-primary">
-                        ${workbook.discounted}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="text-2xl font-bold text-foreground">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {/* Workbook Cards */}
+              {[
+                { num: 1, title: "Brand Identity", original: 97, discounted: 49 },
+                { num: 2, title: "Marketing Strategy", original: 97, discounted: 49 },
+                { num: 3, title: "Customer Journey", original: 97, discounted: 49 },
+                { num: 4, title: "Growth Systems", original: 97, discounted: 49 },
+              ].map((workbook) => (
+                <div key={workbook.num} className="bg-card border border-border rounded-lg p-6 relative">
+                  <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold">
+                    50% OFF
+                  </div>
+                  <h3 className="font-bold text-lg mb-2 text-foreground">
+                    Workbook {workbook.num}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">{workbook.title}</p>
+                  <div className="mb-4">
+                    <span className="text-lg text-muted-foreground line-through mr-2">
                       ${workbook.original}
                     </span>
-                  )}
+                    <span className="text-2xl font-bold text-primary">
+                      ${workbook.discounted}
+                    </span>
+                  </div>
+                  <Button 
+                    onClick={() => handleWorkbookPurchase(`workbook_${workbook.num}`)}
+                    variant="outline"
+                    className="w-full"
+                    disabled={purchasing}
+                  >
+                    Buy Now
+                  </Button>
                 </div>
-                <Button 
-                  onClick={() => handleWorkbookPurchase(`workbook_${workbook.num}`)}
-                  variant="outline"
-                  className="w-full"
-                >
-                  Purchase
-                </Button>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Bundle Card */}
-          <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
-            {showDiscount && (
+            {/* Bundle Card */}
+            <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                Best Value - Save $100+
+                BEST VALUE - Save $168
               </div>
-            )}
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-2 text-foreground">
-                Complete Bundle (All 4)
-              </h3>
-              <div className="mb-4">
-                {showDiscount ? (
-                  <>
-                    <span className="text-xl text-muted-foreground line-through mr-3">
-                      $297
-                    </span>
-                    <span className="text-4xl font-bold text-primary">
-                      $197
-                    </span>
-                  </>
-                ) : (
-                  <span className="text-4xl font-bold text-foreground">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold mb-2 text-foreground">
+                  Complete Bundle (All 4 Workbooks)
+                </h3>
+                <div className="mb-4">
+                  <span className="text-xl text-muted-foreground line-through mr-3">
                     $297
                   </span>
-                )}
-              </div>
-              {showDiscount && (
+                  <span className="text-4xl font-bold text-primary">
+                    $129
+                  </span>
+                </div>
                 <p className="text-muted-foreground mb-6">
-                  Save $100 + Get immediate access to all workbooks
+                  Save $168 + Get immediate access to all workbooks
                 </p>
-              )}
-              <Button 
-                onClick={() => handleWorkbookPurchase('bundle')}
-                size="lg"
-                className="px-12"
-              >
-                Get Complete Bundle
-              </Button>
+                <Button 
+                  onClick={() => handleWorkbookPurchase('bundle')}
+                  size="lg"
+                  className="px-12"
+                  disabled={purchasing}
+                >
+                  {purchasing ? "Processing..." : "Get Complete Bundle"}
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 };
