@@ -393,7 +393,7 @@ const Webinar = () => {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-8">
               <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                ⚡ Limited Time Offer
+                ⚡ 50%+ Webinar Attendee Discount
               </div>
               <h2 className="text-3xl font-bold mb-3 text-foreground">
                 Ready for the Complete System?
