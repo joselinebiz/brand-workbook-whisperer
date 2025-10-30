@@ -141,6 +141,72 @@ const Index = () => {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
 
+      {/* Bonus Announcement */}
+      <section className="py-12 px-4 bg-accent">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-accent-foreground">
+              🎉 BONUS: FREE Live AI Masterclass
+            </h2>
+            <p className="text-lg font-bold mb-4 text-accent-foreground">
+              Tuesday, November 18th, 7:00 PM CST
+            </p>
+            <p className="text-base md:text-lg mb-6 text-accent-foreground/90 leading-relaxed">
+              Join me live to master ChatGPT, Claude & Perplexity. We'll build a real business together using Workbook 0 frameworks, see how all 4 workbooks connect, and answer your questions. Recording included.
+            </p>
+            <div className="inline-block bg-accent-foreground/10 backdrop-blur-sm px-6 py-3 rounded-lg border border-accent-foreground/20">
+              <p className="text-base font-semibold text-accent-foreground">
+                🎁 Attendee-only pricing: Complete 4-workbook system for $129 (save $168)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Challenge */}
+      <section className="py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              You're Stuck in Chaos Instead of Strategy
+            </h2>
+            <div className="space-y-4 text-left max-w-2xl mx-auto mb-8">
+              <div className="flex gap-3 items-start">
+                <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-destructive text-sm">✗</span>
+                </div>
+                <p className="text-muted-foreground">
+                  Business ideas without validation, scattered tactics without systems
+                </p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-destructive text-sm">✗</span>
+                </div>
+                <p className="text-muted-foreground">
+                  AI tools that give generic responses, resources that sit unfinished
+                </p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-destructive text-sm">✗</span>
+                </div>
+                <p className="text-muted-foreground">
+                  Structure feels overwhelming, execution feels impossible
+                </p>
+              </div>
+            </div>
+            
+            <h3 className="text-2xl font-bold mb-4">
+              Here's what changes everything:
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              You don't need more information. You need an interactive system that guides you from validation to execution in 45 minutes—not months. We replace blank pages with dynamic frameworks and generic AI with market-trained prompts.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Value Props */}
       <section className="py-16 border-b">
         <div className="container mx-auto px-4">
