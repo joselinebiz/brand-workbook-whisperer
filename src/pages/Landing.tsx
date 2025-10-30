@@ -269,9 +269,18 @@ const Landing = () => {
           </div>
 
           <div className="text-center">
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
               You'll never stare at a blank page again. This interactive web app guides you through proven frameworks with AI that accelerates your thinking, not replaces it.
             </p>
+            
+            <Button 
+              onClick={handlePurchase}
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              disabled={purchasing}
+            >
+              {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+            </Button>
           </div>
         </div>
       </section>
@@ -301,7 +310,7 @@ const Landing = () => {
               <div className="flex items-start gap-4">
                 <div className="text-3xl font-bold">01</div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">BRAND STRATEGY FOUNDATION <span className="line-through">$97</span> $48</h3>
+                  <h3 className="text-xl font-bold mb-2">BRAND STRATEGY FOUNDATION <span className="line-through">$97</span> $49</h3>
                   <p className="text-muted-foreground mb-2">Build the bulletproof brand foundation that makes marketing effortless</p>
                   <p className="text-sm text-muted-foreground italic">Interactive: Brand Personality Assessments, Voice Generator, Visual Style Builder</p>
                 </div>
@@ -312,7 +321,7 @@ const Landing = () => {
               <div className="flex items-start gap-4">
                 <div className="text-3xl font-bold">02</div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">MARKETING STRATEGY EXECUTION <span className="line-through">$97</span> $48</h3>
+                  <h3 className="text-xl font-bold mb-2">MARKETING STRATEGY EXECUTION <span className="line-through">$97</span> $49</h3>
                   <p className="text-muted-foreground mb-2">Turn your brand into a revenue-generating machine with systematic campaigns</p>
                   <p className="text-sm text-muted-foreground italic">Interactive: Strategy Builder, Content Calendar Generator, Campaign Templates</p>
                 </div>
@@ -323,7 +332,7 @@ const Landing = () => {
               <div className="flex items-start gap-4">
                 <div className="text-3xl font-bold">03</div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">GROWTH & MEASUREMENT SYSTEMS <span className="line-through">$97</span> $48</h3>
+                  <h3 className="text-xl font-bold mb-2">GROWTH & MEASUREMENT SYSTEMS <span className="line-through">$97</span> $49</h3>
                   <p className="text-muted-foreground mb-2">Transform data into decisions and scale what works with testing frameworks</p>
                   <p className="text-sm text-muted-foreground italic">Interactive: Dashboard Builder, Growth Calculator, Optimization Tracker</p>
                 </div>
@@ -342,7 +351,7 @@ const Landing = () => {
               💰 Complete bundle: <span className="line-through">$297</span> <span className="font-bold text-primary">$129</span> <span className="text-muted-foreground">(best value - save $168)</span>
             </p>
             <p className="text-lg mb-4">
-              📚 Individual workbooks: <span className="line-through">$97</span> <span className="font-bold text-primary">$48</span> each <span className="text-muted-foreground">(save 50%)</span>
+              📚 Individual workbooks: <span className="line-through">$97</span> <span className="font-bold text-primary">$49</span> each <span className="text-muted-foreground">(save 50%)</span>
             </p>
             <p className="text-sm text-muted-foreground italic">
               Exclusive pricing for Workbook 0 buyers - available until 72 hours after the webinar
@@ -402,7 +411,7 @@ const Landing = () => {
               <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 5
               </div>
-              <h3 className="font-bold mb-2">Get bundle for $129 or individual workbooks for $48 each (your choice)</h3>
+              <h3 className="font-bold mb-2">Get bundle for $129 or individual workbooks for $49 each (your choice)</h3>
             </div>
           </div>
 
@@ -426,21 +435,21 @@ const Landing = () => {
             <div>
               <h3 className="text-xl font-bold mb-2">Q: Is this really just $27?</h3>
               <p className="text-muted-foreground">
-                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + exclusive buyer pricing: complete bundle for $129 (save $168) or individual workbooks for $48 each (save 50%). Your discount is active from purchase through 72 hours after the webinar.
+                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + exclusive buyer pricing: complete bundle for $129 (save $168) or individual workbooks for $49 each (save 50%). Your discount is active from purchase through 72 hours after the webinar.
               </p>
             </div>
 
             <div>
               <h3 className="text-xl font-bold mb-2">Q: What if I can't attend the webinar live?</h3>
               <p className="text-muted-foreground">
-                A: You get the full recording + all materials within 24 hours. Your exclusive buyer pricing ($129 bundle or $48 individual workbooks) stays active for 72 hours after the webinar ends—whether you attend live or not.
+                A: You get the full recording + all materials within 24 hours. Your exclusive buyer pricing ($129 bundle or $49 individual workbooks) stays active for 72 hours after the webinar ends—whether you attend live or not.
               </p>
             </div>
 
             <div>
               <h3 className="text-xl font-bold mb-2">Q: Do I need all 4 workbooks?</h3>
               <p className="text-muted-foreground">
-                A: Workbook 0 validates your idea (stands alone). Workbooks 1-3 turn your validated idea into a complete strategic system. Buy the bundle for $129 (best value) or start with one workbook for $48 and add more later. All pricing available until 72 hours after the webinar.
+                A: Workbook 0 validates your idea (stands alone). Workbooks 1-3 turn your validated idea into a complete strategic system. Buy the bundle for $129 (best value) or start with one workbook for $49 and add more later. All pricing available until 72 hours after the webinar.
               </p>
             </div>
 
