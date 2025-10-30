@@ -426,10 +426,10 @@ const Webinar = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {/* Workbook Cards */}
               {[
-                { num: 1, title: "Brand Identity", original: 197 },
-                { num: 2, title: "Marketing Strategy", original: 197 },
-                { num: 3, title: "Customer Journey", original: 197 },
-                { num: 4, title: "Growth Systems", original: 197 },
+                { num: 1, title: "Brand Identity" },
+                { num: 2, title: "Marketing Strategy" },
+                { num: 3, title: "Customer Journey" },
+                { num: 4, title: "Growth Systems" },
               ].map((workbook) => (
                 <div key={workbook.num} className="bg-card border border-border rounded-lg p-6 relative">
                   <h3 className="font-bold text-lg mb-2 text-foreground">
@@ -438,7 +438,7 @@ const Webinar = () => {
                   <p className="text-muted-foreground mb-4">{workbook.title}</p>
                   <div className="mb-4">
                     <span className="text-2xl font-bold text-primary">
-                      ${workbook.original}
+                      $97
                     </span>
                   </div>
                   <Button 
@@ -456,7 +456,7 @@ const Webinar = () => {
             {/* Bundle Card */}
             <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                BEST VALUE - Save $391
+                BEST VALUE - Save $91
               </div>
               <div className="text-center">
                 <h3 className="text-2xl font-bold mb-2 text-foreground">
@@ -464,11 +464,11 @@ const Webinar = () => {
                 </h3>
                 <div className="mb-4">
                   <span className="text-4xl font-bold text-primary">
-                    $397
+                    $297
                   </span>
                 </div>
                 <p className="text-muted-foreground mb-6">
-                  Save $391 + Get immediate access to all workbooks
+                  Save $91 + Get immediate access to all workbooks
                 </p>
                 <Button 
                   onClick={() => handleWorkbookPurchase('bundle')}
