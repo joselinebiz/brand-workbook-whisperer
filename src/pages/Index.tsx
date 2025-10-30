@@ -207,6 +207,92 @@ const Index = () => {
         </div>
       </section>
 
+      {/* What You'll Discover */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              What You'll Discover in Workbook 0
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Whether you're building a personal brand to claim your thought leadership or ready to launch your product or service—let's do it strategically with an MBA-level strategist and AI as your partners.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Target className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    1. Identify Your White Space in 45 Minutes
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Discover the untapped opportunities where you can stand out without competition—whether that's your unique expertise or your business offering.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <User className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    2. Define Who Desperately Needs You
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Learn exactly who needs your insights, solutions, or services most and what keeps them searching for answers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    3. Position Yourself (or Your Offer) to Stand Out
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Craft positioning so clear that your audience instantly understands why you're the only choice.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    4. 15 Market-Trained AI Prompts
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Strategic insights designed to avoid hallucination, not generic fluff
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              You'll never stare at a blank page again. This interactive web app guides you through proven frameworks with AI that accelerates your thinking, not replaces it.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Value Props */}
       <section className="py-16 border-b">
         <div className="container mx-auto px-4">
