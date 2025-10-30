@@ -298,95 +298,57 @@ const Webinar = () => {
 
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between mb-4">
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate('/')}
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Continue to Workbooks
-            </Button>
-          </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-            How to Complete Workbook 0 Using AI
+        <div className="container mx-auto px-4 py-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/')}
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Workbooks
+          </Button>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+            How to Actually Complete Workbook 0 Using AI
           </h1>
-          <p className="text-muted-foreground mt-1">Watch this training as many times as you need</p>
+          <p className="text-lg text-muted-foreground">Implementation Workshop</p>
         </div>
       </header>
 
       {/* Video Section */}
       <section className="py-12 px-4">
         <div className="container mx-auto max-w-5xl">
-          {isBeforeWebinar ? (
-            <div className="bg-card border border-border rounded-lg p-8">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">Live Webinar Coming Soon</h2>
-                <p className="text-muted-foreground mb-6">
-                  November 18, 2024 at 6:00 PM CST
-                </p>
-                
-                {/* Countdown Timer */}
-                <div className="flex justify-center gap-6 mb-8">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-primary mb-1">
-                      {String(webinarCountdown.hours).padStart(2, '0')}
-                    </div>
-                    <div className="text-sm text-muted-foreground">Hours</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-primary mb-1">
-                      {String(webinarCountdown.minutes).padStart(2, '0')}
-                    </div>
-                    <div className="text-sm text-muted-foreground">Minutes</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-primary mb-1">
-                      {String(webinarCountdown.seconds).padStart(2, '0')}
-                    </div>
-                    <div className="text-sm text-muted-foreground">Seconds</div>
-                  </div>
-                </div>
-              </div>
+          <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Workbook 0 Implementation Workshop"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="bg-muted/50 rounded-lg p-6">
-                <h3 className="font-semibold mb-4 text-foreground">What You'll Learn</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <p className="text-foreground">How to complete Workbook 0 efficiently using AI</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <p className="text-foreground">Advanced strategies for market opportunity analysis</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <p className="text-foreground">Live Q&A with brand strategy experts</p>
-                  </div>
-                </div>
-              </div>
+      {/* Live Event Notice */}
+      <section className="px-4 pb-12">
+        <div className="container mx-auto max-w-5xl">
+          <div className="bg-card border border-border rounded-lg p-6 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Calendar className="w-6 h-6 text-primary" />
             </div>
-          ) : (
-            <div className="bg-card rounded-lg overflow-hidden shadow-lg border border-border">
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="Workbook 0 Webinar Replay"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          )}
+            <p className="text-foreground">
+              Join us LIVE on November 18, 2024 at 7:00 PM CST for the complete workshop
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Resources Section */}
       <section className="py-12 px-4 bg-muted/10">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Downloadable Resources</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Your Resources</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-card border border-border rounded-lg p-6 flex items-center justify-between">
@@ -396,7 +358,7 @@ const Webinar = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">AI Prompt Templates</h3>
-                  <p className="text-sm text-muted-foreground">PDF Download</p>
+                  <p className="text-sm text-muted-foreground">PDF</p>
                 </div>
               </div>
               <Button variant="outline" size="sm">
@@ -410,46 +372,15 @@ const Webinar = () => {
                   <Download className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">View Workbook 0</h3>
-                  <p className="text-sm text-muted-foreground">Start your brand journey</p>
+                  <h3 className="font-semibold text-foreground">Workbook 0 Completion Checklist</h3>
+                  <p className="text-sm text-muted-foreground">PDF</p>
                 </div>
               </div>
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => navigate('/workbook/0')}
-              >
-                View
+              <Button variant="outline" size="sm">
+                Download
               </Button>
             </div>
           </div>
-
-          {isGuest ? (
-            <div className="bg-card border-2 border-primary rounded-lg p-8 mt-8">
-              <h3 className="text-xl font-bold mb-4 text-center text-foreground">
-                Create Your Free Account to Save Access
-              </h3>
-              <p className="text-center text-muted-foreground mb-6">
-                Your purchase is complete! Create an account to permanently save your webinar access and unlock Workbook 0.
-              </p>
-              <Button 
-                size="lg"
-                onClick={() => navigate('/auth')}
-                className="w-full"
-              >
-                Create Free Account
-              </Button>
-            </div>
-          ) : (
-            <div className="text-center mt-8">
-              <Button 
-                size="lg"
-                onClick={() => navigate('/')}
-              >
-                Continue to Workbooks
-              </Button>
-            </div>
-          )}
         </div>
       </section>
 
@@ -457,39 +388,36 @@ const Webinar = () => {
       {showDiscount && (
         <section className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
-            {/* Urgency Banner with Countdown */}
-            <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 mb-8 text-center">
-              <p className="text-foreground font-bold mb-2">
-                ⚡ 50% WEBINAR ATTENDEE DISCOUNT - Offer expires in:
-              </p>
-              <div className="flex justify-center gap-4 text-foreground">
-                <div className="flex flex-col items-center">
-                  <span className="text-2xl font-bold">{String(discountCountdown.hours).padStart(2, '0')}</span>
-                  <span className="text-xs">hours</span>
-                </div>
-                <span className="text-2xl font-bold">:</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-2xl font-bold">{String(discountCountdown.minutes).padStart(2, '0')}</span>
-                  <span className="text-xs">minutes</span>
-                </div>
-                <span className="text-2xl font-bold">:</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-2xl font-bold">{String(discountCountdown.seconds).padStart(2, '0')}</span>
-                  <span className="text-xs">seconds</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
                 ⚡ 50% Webinar Attendee Discount
               </div>
               <h2 className="text-3xl font-bold mb-3 text-foreground">
                 Ready for the Complete System?
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Get 50% off all workbooks - ends November 21, 7pm CST
+            </div>
+
+            {/* Countdown Timer */}
+            <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-400/20 to-yellow-500/20 border border-yellow-500/30 rounded-lg p-6 mb-12 text-center">
+              <p className="text-foreground font-bold mb-4">
+                Offer expires in:
               </p>
+              <div className="flex justify-center gap-6 text-foreground">
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl font-bold">{Math.floor(discountCountdown.hours / 24)}</span>
+                  <span className="text-sm">days</span>
+                </div>
+                <span className="text-3xl font-bold">:</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl font-bold">{String(discountCountdown.hours % 24).padStart(2, '0')}</span>
+                  <span className="text-sm">hours</span>
+                </div>
+                <span className="text-3xl font-bold">:</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl font-bold">{String(discountCountdown.minutes).padStart(2, '0')}</span>
+                  <span className="text-sm">minutes</span>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
