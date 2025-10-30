@@ -422,7 +422,7 @@ const Landing = () => {
               <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 5
               </div>
-              <h3 className="font-bold mb-2">Get complete bundle (5 workbooks) for $129 or individual workbooks for $49 each (your choice)</h3>
+              <h3 className="font-bold mb-2">Get bundle for $129 or individual workbooks for $49 each (your choice)</h3>
             </div>
           </div>
 
