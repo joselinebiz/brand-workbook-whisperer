@@ -115,17 +115,17 @@ const Landing = () => {
               Tuesday, November 18th, 7:00 PM CST
             </p>
             <p className="text-base md:text-lg mb-6 text-accent-foreground/90 leading-relaxed">
-              Join me live to master ChatGPT, Claude & Perplexity. We'll build a real business together using Workbook 0 frameworks, see how all 4 workbooks connect, and answer your questions. Recording included.
+              Join me live to master ChatGPT, Claude & Perplexity. We'll build a real business together using Workbook 0 frameworks, see how all 5 workbooks connect, and answer your questions. Recording included.
             </p>
             <div className="inline-block bg-accent-foreground/10 backdrop-blur-sm px-6 py-3 rounded-lg border border-accent-foreground/20">
               <p className="text-base font-semibold text-accent-foreground mb-2">
                 🎁 Your exclusive buyer pricing:
               </p>
               <p className="text-sm text-accent-foreground/90">
-                Complete 4-workbook bundle for $129 (save $168)
+                Complete 5-workbook bundle for $129 (save $259)
               </p>
               <p className="text-sm text-accent-foreground/90">
-                Individual workbooks for $48 each (save 50%)
+                Individual workbooks for $49 each (save 50%)
               </p>
               <p className="text-xs text-accent-foreground/80 mt-2">
                 Available now through 72 hours after the webinar
@@ -290,7 +290,7 @@ const Landing = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              The Complete System: 4 Workbooks That Build on Each Other
+              The Complete System: 5 Workbooks That Build on Each Other
             </h2>
           </div>
 
@@ -338,20 +338,31 @@ const Landing = () => {
                 </div>
               </div>
             </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl font-bold">04</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2">SCALING SYSTEMS <span className="line-through">$97</span> $49</h3>
+                  <p className="text-muted-foreground mb-2">Implement systems and processes to scale your business sustainably</p>
+                  <p className="text-sm text-muted-foreground italic">Interactive: Process Builder, Automation Mapper, Scale Calculator</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="text-center bg-card border rounded-lg p-8">
             <p className="text-lg mb-4">
-              Each workbook builds systematically. Validation → Brand → Marketing → Growth. No scattered tactics. No random execution.
+              Each workbook builds systematically. Validation → Brand → Marketing → Growth → Scale. No scattered tactics. No random execution.
             </p>
             <p className="text-lg mb-2">
               <strong>Your pricing options:</strong>
             </p>
             <p className="text-lg mb-2">
-              💰 Complete bundle: <span className="line-through">$297</span> <span className="font-bold text-primary">$129</span> <span className="text-muted-foreground">(best value - save $168)</span>
+              💰 Complete bundle (0-4): <span className="font-bold text-primary">$129</span> <span className="text-muted-foreground">(best value - save $259)</span>
             </p>
             <p className="text-lg mb-4">
-              📚 Individual workbooks: <span className="line-through">$97</span> <span className="font-bold text-primary">$49</span> each <span className="text-muted-foreground">(save 50%)</span>
+              📚 Individual workbooks (1-4): <span className="font-bold text-primary">$49</span> each <span className="text-muted-foreground">(save 50%)</span>
             </p>
             <p className="text-sm text-muted-foreground italic">
               Exclusive pricing for Workbook 0 buyers - available until 72 hours after the webinar
@@ -411,7 +422,7 @@ const Landing = () => {
               <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 5
               </div>
-              <h3 className="font-bold mb-2">Get bundle for $129 or individual workbooks for $49 each (your choice)</h3>
+              <h3 className="font-bold mb-2">Get complete bundle (5 workbooks) for $129 or individual workbooks for $49 each (your choice)</h3>
             </div>
           </div>
 
@@ -435,7 +446,7 @@ const Landing = () => {
             <div>
               <h3 className="text-xl font-bold mb-2">Q: Is this really just $27?</h3>
               <p className="text-muted-foreground">
-                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + exclusive buyer pricing: complete bundle for $129 (save $168) or individual workbooks for $49 each (save 50%). Your discount is active from purchase through 72 hours after the webinar.
+                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + exclusive buyer pricing: complete 5-workbook bundle for $129 (save $259) or individual workbooks for $49 each (save 50%). Your discount is active from purchase through 72 hours after the webinar.
               </p>
             </div>
 
@@ -447,9 +458,9 @@ const Landing = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-bold mb-2">Q: Do I need all 4 workbooks?</h3>
+              <h3 className="text-xl font-bold mb-2">Q: Do I need all 5 workbooks?</h3>
               <p className="text-muted-foreground">
-                A: Workbook 0 validates your idea (stands alone). Workbooks 1-3 turn your validated idea into a complete strategic system. Buy the bundle for $129 (best value) or start with one workbook for $49 and add more later. All pricing available until 72 hours after the webinar.
+                A: Workbook 0 validates your idea (stands alone). Workbooks 1-4 turn your validated idea into a complete strategic system from brand to scale. Buy the bundle for $129 (best value) or start with one workbook for $49 and add more later. All pricing available until 72 hours after the webinar.
               </p>
             </div>
 
