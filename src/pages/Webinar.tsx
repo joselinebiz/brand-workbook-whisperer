@@ -347,47 +347,6 @@ const Webinar = () => {
         </section>
       )}
 
-      {/* Resources Section */}
-      {showDiscount && (
-        <section className="py-12 px-4 bg-muted/10">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Your Resources</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-card border border-border rounded-lg p-6 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Download className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">AI Prompt Templates</h3>
-                  <p className="text-sm text-muted-foreground">PDF</p>
-                </div>
-              </div>
-              <Button variant="outline" size="sm">
-                Download
-              </Button>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-6 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Download className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">Workbook 0 Completion Checklist</h3>
-                  <p className="text-sm text-muted-foreground">PDF</p>
-                </div>
-              </div>
-              <Button variant="outline" size="sm">
-                Download
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-      )}
-
       {/* Upsell Section */}
       <section className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
