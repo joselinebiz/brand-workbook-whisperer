@@ -91,7 +91,7 @@ const Landing = () => {
                   className="bg-white text-black hover:bg-white/90"
                   disabled={purchasing}
                 >
-                  {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+                  {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS →"}
                 </Button>
               </div>
             </div>
