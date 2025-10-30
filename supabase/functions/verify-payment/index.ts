@@ -19,13 +19,20 @@ serve(async (req) => {
   );
 
   try {
-    const authHeader = req.headers.get("Authorization")!;
-    const token = authHeader.replace("Bearer ", "");
-    const { data: userData } = await supabaseClient.auth.getUser(token);
-    const user = userData.user;
-    if (!user) throw new Error("User not authenticated");
-
     const { sessionId, productType } = await req.json();
+
+    // Try to get authenticated user, but allow guest verification
+    let user = null;
+    const authHeader = req.headers.get("Authorization");
+    if (authHeader) {
+      try {
+        const token = authHeader.replace("Bearer ", "");
+        const { data: userData } = await supabaseClient.auth.getUser(token);
+        user = userData.user;
+      } catch (authError) {
+        console.log("No valid auth token, proceeding with guest verification");
+      }
+    }
 
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2025-08-27.basil",
@@ -33,7 +40,25 @@ serve(async (req) => {
 
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-    if (session.payment_status === "paid" && session.metadata?.user_id === user.id) {
+    // For guest checkouts, return needsAccount if payment is successful
+    if (session.payment_status === "paid") {
+      // If no user is authenticated, return needsAccount
+      if (!user) {
+        return new Response(JSON.stringify({ 
+          success: false,
+          needsAccount: true,
+          email: session.customer_details?.email || session.customer_email,
+          sessionId: sessionId
+        }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 200,
+        });
+      }
+
+      // Verify the session belongs to this user
+      if (session.metadata?.user_id !== user.id && session.metadata?.user_id !== 'guest') {
+        throw new Error("Session does not belong to this user");
+      }
       // Handle webinar purchases separately
       if (productType === 'webinar') {
         const { error: webinarError } = await supabaseClient

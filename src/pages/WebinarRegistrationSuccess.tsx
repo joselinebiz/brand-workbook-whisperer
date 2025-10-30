@@ -13,6 +13,8 @@ const WebinarRegistrationSuccess = () => {
   const [loading, setLoading] = useState(true);
   const [verified, setVerified] = useState(false);
   const [purchasing, setPurchasing] = useState(false);
+  const [needsAccount, setNeedsAccount] = useState(false);
+  const [customerEmail, setCustomerEmail] = useState('');
 
   // Webinar date: November 18, 2024 at 6:00 PM CST
   const webinarDate = new Date('2024-11-18T18:00:00-06:00');
@@ -42,35 +44,41 @@ const WebinarRegistrationSuccess = () => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       
-      if (!session) {
-        toast({
-          title: "Authentication required",
-          description: "Please sign in to verify your purchase.",
-          variant: "destructive",
+      // Allow viewing the page without authentication, but verify payment if logged in
+      if (session) {
+        const { data, error } = await supabase.functions.invoke('verify-payment', {
+          body: { sessionId, productType }
         });
-        navigate('/auth');
-        return;
-      }
 
-      const { data, error } = await supabase.functions.invoke('verify-payment', {
-        body: { sessionId, productType }
-      });
+        if (error) throw error;
 
-      if (error) throw error;
-
-      if (data.success) {
-        setVerified(true);
+        if (data.success) {
+          setVerified(true);
+        }
       } else {
-        throw new Error('Payment verification failed');
+        // Guest user - verify the payment succeeded via Stripe
+        const { data, error } = await supabase.functions.invoke('verify-payment', {
+          body: { sessionId, productType }
+        });
+
+        if (error) {
+          console.error('Verification error:', error);
+        }
+
+        if (data?.needsAccount) {
+          setNeedsAccount(true);
+          setCustomerEmail(data.email || '');
+        } else if (data?.success) {
+          setVerified(true);
+        } else {
+          // Show page anyway for guest users to see the offer
+          setNeedsAccount(true);
+        }
       }
     } catch (error: any) {
       console.error('Payment verification error:', error);
-      toast({
-        title: "Verification failed",
-        description: error.message || "Could not verify your payment",
-        variant: "destructive",
-      });
-      navigate('/');
+      // Don't redirect, let them see the page
+      setNeedsAccount(true);
     } finally {
       setLoading(false);
     }
@@ -155,9 +163,7 @@ const WebinarRegistrationSuccess = () => {
     );
   }
 
-  if (!verified) {
-    return null;
-  }
+  // Show page for both verified users and guests who need accounts
 
   return (
     <div className="min-h-screen bg-background">
@@ -369,14 +375,28 @@ const WebinarRegistrationSuccess = () => {
       )}
 
       {/* Navigation Section */}
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 bg-card">
         <div className="container mx-auto max-w-5xl text-center">
-          <Button 
-            size="lg"
-            onClick={() => navigate('/workbook/0')}
-          >
-            Access Workbook 0
-          </Button>
+          {verified ? (
+            <Button 
+              size="lg"
+              onClick={() => navigate('/workbook/0')}
+            >
+              Access Workbook 0
+            </Button>
+          ) : (
+            <div className="space-y-4">
+              <p className="text-muted-foreground mb-4">
+                Create an account to access your workbook and webinar
+              </p>
+              <Button 
+                size="lg"
+                onClick={() => navigate('/auth')}
+              >
+                Create Account to Access Workbook 0
+              </Button>
+            </div>
+          )}
         </div>
       </section>
     </div>
