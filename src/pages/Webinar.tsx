@@ -393,7 +393,7 @@ const Webinar = () => {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-8">
               <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                ⚡ 50% Webinar Attendee Discount
+                ⚡ Limited Time Offer
               </div>
               <h2 className="text-3xl font-bold mb-3 text-foreground">
                 Ready for the Complete System?
@@ -426,25 +426,19 @@ const Webinar = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {/* Workbook Cards */}
               {[
-                { num: 1, title: "Brand Identity", original: 97, discounted: 49 },
-                { num: 2, title: "Marketing Strategy", original: 97, discounted: 49 },
-                { num: 3, title: "Customer Journey", original: 97, discounted: 49 },
-                { num: 4, title: "Growth Systems", original: 97, discounted: 49 },
+                { num: 1, title: "Brand Identity", original: 197 },
+                { num: 2, title: "Marketing Strategy", original: 197 },
+                { num: 3, title: "Customer Journey", original: 197 },
+                { num: 4, title: "Growth Systems", original: 197 },
               ].map((workbook) => (
                 <div key={workbook.num} className="bg-card border border-border rounded-lg p-6 relative">
-                  <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold">
-                    50% OFF
-                  </div>
                   <h3 className="font-bold text-lg mb-2 text-foreground">
                     Workbook {workbook.num}
                   </h3>
                   <p className="text-muted-foreground mb-4">{workbook.title}</p>
                   <div className="mb-4">
-                    <span className="text-lg text-muted-foreground line-through mr-2">
-                      ${workbook.original}
-                    </span>
                     <span className="text-2xl font-bold text-primary">
-                      ${workbook.discounted}
+                      ${workbook.original}
                     </span>
                   </div>
                   <Button 
@@ -462,22 +456,19 @@ const Webinar = () => {
             {/* Bundle Card */}
             <div className="bg-primary/5 border-2 border-primary rounded-lg p-8 relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                BEST VALUE - Save $168
+                BEST VALUE - Save $391
               </div>
               <div className="text-center">
                 <h3 className="text-2xl font-bold mb-2 text-foreground">
                   Complete Bundle (All 4 Workbooks)
                 </h3>
                 <div className="mb-4">
-                  <span className="text-xl text-muted-foreground line-through mr-3">
-                    $297
-                  </span>
                   <span className="text-4xl font-bold text-primary">
-                    $129
+                    $397
                   </span>
                 </div>
                 <p className="text-muted-foreground mb-6">
-                  Save $168 + Get immediate access to all workbooks
+                  Save $391 + Get immediate access to all workbooks
                 </p>
                 <Button 
                   onClick={() => handleWorkbookPurchase('bundle')}
