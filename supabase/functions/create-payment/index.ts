@@ -13,11 +13,11 @@ const PRODUCT_PRICES = {
 
 const PRODUCT_DETAILS: Record<string, { name: string; price: number; discountedPrice: number }> = {
   workbook_0: { name: "Market Opportunity Framework (Workbook 0)", price: 2700, discountedPrice: 2700 },
-  workbook_1: { name: "Brand Identity Workbook", price: 9700, discountedPrice: 6300 },
-  workbook_2: { name: "Marketing Strategy Workbook", price: 9700, discountedPrice: 6300 },
-  workbook_3: { name: "Customer Journey Workbook", price: 9700, discountedPrice: 6300 },
-  workbook_4: { name: "Growth Systems Workbook", price: 9700, discountedPrice: 6300 },
-  bundle: { name: "Complete Brand & Marketing System (All 4 Workbooks)", price: 31000, discountedPrice: 19700 },
+  workbook_1: { name: "Brand Identity Workbook", price: 9700, discountedPrice: 4900 },
+  workbook_2: { name: "Marketing Strategy Workbook", price: 9700, discountedPrice: 4900 },
+  workbook_3: { name: "Customer Journey Workbook", price: 9700, discountedPrice: 4900 },
+  workbook_4: { name: "Growth Systems Workbook", price: 9700, discountedPrice: 4900 },
+  bundle: { name: "Complete Brand & Marketing System (All 4 Workbooks)", price: 29700, discountedPrice: 12900 },
 };
 
 serve(async (req) => {
