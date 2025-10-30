@@ -59,6 +59,16 @@ const Index = () => {
       productType: "workbook_4",
       price: 9700,
     },
+    {
+      number: "BUNDLE",
+      title: "COMPLETE SYSTEM",
+      subtitle: "All Workbooks",
+      timeRequired: "Save $200",
+      description: "Get all 5 workbooks together and build your complete strategic foundation at a discounted rate.",
+      path: "/workbook/0",
+      productType: "bundle",
+      price: 29700,
+    },
   ];
 
   return (
