@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Target, Users, Lightbulb } from "lucide-react";
+import { Target, Users, Lightbulb, Zap, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -54,146 +54,418 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-b from-background to-muted/20">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-chatone mb-6 text-foreground">
-            Build Your Million-Dollar Brand Foundation in Under 2 Hours
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            Get instant access to Workbook 0 - The Market Opportunity Framework
-          </p>
-
-          <div className="max-w-md mx-auto mb-8">
-            <div className="bg-card border border-border rounded-lg p-6 mb-6">
-              <div className="text-center">
-                <div className="text-5xl font-bold text-foreground mb-2">$27</div>
-                <p className="text-muted-foreground">One-time payment • Instant access</p>
+      <section className="relative bg-gradient-to-br from-black via-black to-black/90 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.1) 50px, rgba(255,255,255,0.1) 51px)`,
+          }} />
+        </div>
+        
+        <div className="container mx-auto px-4 py-24 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-block mb-6">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full">
+                <Zap className="w-4 h-4 text-gold" />
+                <span className="text-sm font-sans font-light text-gold">MBA-Level Strategy, Battle-Tested Results</span>
               </div>
             </div>
             
-            <Button 
-              onClick={handlePurchase}
-              size="lg"
-              className="w-full h-14 text-lg"
-              disabled={purchasing}
-            >
-              {purchasing ? "Processing..." : "Get Instant Access"}
-            </Button>
+            <h1 className="text-4xl md:text-5xl font-chatone mb-6 leading-tight">
+              Stop Building on Hope. Start Building on Strategy.
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-4 max-w-3xl mx-auto leading-relaxed">
+              Validate your business idea in 45 minutes using MBA-level frameworks powered by AI. Answer 3 questions. Find your white space. Build on strategy, not guesswork.
+            </p>
+            <p className="text-sm text-white/70 mb-8 max-w-2xl mx-auto">
+              For entrepreneurs, service providers, and professionals ready to validate with strategy, not guesswork.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+              <div className="relative">
+                <div className="absolute -top-3 -right-3 bg-gold text-black text-xs font-bold px-3 py-1 rounded-full">
+                  $27
+                </div>
+                <Button 
+                  onClick={handlePurchase}
+                  size="lg"
+                  className="bg-white text-black hover:bg-white/90"
+                  disabled={purchasing}
+                >
+                  {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+                </Button>
+              </div>
+            </div>
+            <p className="text-xs text-white/60">
+              Interactive web app • DIY with AI • Works on any device
+            </p>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 px-4 bg-muted/10">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-chatone text-center mb-16 text-foreground">
-            What You'll Discover in Workbook 0
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <Target className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Identify Your White Space in 30 Minutes
-              </h3>
-              <p className="text-muted-foreground">
-                Discover the untapped market opportunities where your business can thrive without competition.
+      {/* Bonus Announcement */}
+      <section className="py-12 px-4 bg-accent">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-accent-foreground">
+              🎉 BONUS: FREE Live AI Masterclass
+            </h2>
+            <p className="text-lg font-bold mb-4 text-accent-foreground">
+              Tuesday, November 18th, 7:00 PM CST
+            </p>
+            <p className="text-base md:text-lg mb-6 text-accent-foreground/90 leading-relaxed">
+              Join me live to master ChatGPT, Claude & Perplexity. We'll build a real business together using Workbook 0 frameworks, see how all 4 workbooks connect, and answer your questions. Recording included.
+            </p>
+            <div className="inline-block bg-accent-foreground/10 backdrop-blur-sm px-6 py-3 rounded-lg border border-accent-foreground/20">
+              <p className="text-base font-semibold text-accent-foreground">
+                🎁 Attendee-only pricing: Complete 4-workbook system for $129 (save $168)
               </p>
-            </div>
-
-            <div className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <Users className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Define Your Ideal Customer's #1 Problem
-              </h3>
-              <p className="text-muted-foreground">
-                Learn exactly who needs your solution most and what keeps them up at night.
-              </p>
-            </div>
-
-            <div className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <Lightbulb className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Craft a Solution That Sells Itself
-              </h3>
-              <p className="text-muted-foreground">
-                Position your offering in a way that makes the buying decision obvious for your customers.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-chatone text-center mb-16 text-foreground">
-            Join Founders Who've Built Their Brand Foundation
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card p-8 rounded-lg border border-border">
-              <p className="text-muted-foreground mb-6 italic">
-                "This framework helped me finally understand where my product fits in the market. I went from confused to confident in under an hour."
-              </p>
-              <div>
-                <p className="font-semibold text-foreground">Sarah Chen</p>
-                <p className="text-sm text-muted-foreground">Founder, TechStart Co</p>
-              </div>
-            </div>
-
-            <div className="bg-card p-8 rounded-lg border border-border">
-              <p className="text-muted-foreground mb-6 italic">
-                "The exercises in Workbook 0 are pure gold. I've used expensive consultants before, but this gave me more clarity at a fraction of the cost."
-              </p>
-              <div>
-                <p className="font-semibold text-foreground">Michael Rodriguez</p>
-                <p className="text-sm text-muted-foreground">CEO, Growth Labs</p>
-              </div>
-            </div>
-
-            <div className="bg-card p-8 rounded-lg border border-border">
-              <p className="text-muted-foreground mb-6 italic">
-                "I was ready to give up on my idea until I worked through this framework. Now I have a clear path forward and paying customers."
-              </p>
-              <div>
-                <p className="font-semibold text-foreground">Emma Williams</p>
-                <p className="text-sm text-muted-foreground">Founder, Creative Studio</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 px-4 bg-muted/10">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-chatone mb-6 text-foreground">
-            Ready to Build Your Foundation?
+      {/* The Challenge */}
+      <section className="py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              You're Stuck in Chaos Instead of Strategy
+            </h2>
+            <div className="space-y-4 text-left max-w-2xl mx-auto mb-8">
+              <div className="flex gap-3 items-start">
+                <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-destructive text-sm">✗</span>
+                </div>
+                <p className="text-muted-foreground">
+                  Business ideas without validation, scattered tactics without systems
+                </p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-destructive text-sm">✗</span>
+                </div>
+                <p className="text-muted-foreground">
+                  AI tools that give generic responses, resources that sit unfinished
+                </p>
+              </div>
+              <div className="flex gap-3 items-start">
+                <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-destructive text-sm">✗</span>
+                </div>
+                <p className="text-muted-foreground">
+                  Structure feels overwhelming, execution feels impossible
+                </p>
+              </div>
+            </div>
+            
+            <h3 className="text-2xl font-bold mb-4">
+              Here's what changes everything:
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              You don't need more information. You need an interactive system that guides you from validation to execution in 45 minutes—not months. We replace blank pages with dynamic frameworks and generic AI with market-trained prompts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Discover */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              What You'll Discover in Workbook 0
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Whether you're building a personal brand to claim your thought leadership or ready to launch your product or service—let's do it strategically with an MBA-level strategist and AI as your partners.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Target className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    1. Identify Your White Space in 45 Minutes
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Discover the untapped opportunities where you can stand out without competition—whether that's your unique expertise or your business offering.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Users className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    2. Define Who Desperately Needs You
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Learn exactly who needs your insights, solutions, or services most and what keeps them searching for answers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    3. Position Yourself (or Your Offer) to Stand Out
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Craft positioning so clear that your audience instantly understands why you're the only choice.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">
+                    4. 15 Market-Trained AI Prompts
+                  </h3>
+                  <p className="text-muted-foreground">
+                    → Strategic insights designed to avoid hallucination, not generic fluff
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              You'll never stare at a blank page again. This interactive web app guides you through proven frameworks with AI that accelerates your thinking, not replaces it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* The Complete System */}
+      <section className="py-16 px-4 bg-muted/10">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              The Complete System: 4 Workbooks That Build on Each Other
+            </h2>
+          </div>
+
+          <div className="space-y-6 mb-8">
+            <div className="bg-primary/5 border-2 border-primary rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl font-bold text-primary">00</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2">FIND YOUR WHITE SPACE ← Start here for $27</h3>
+                  <p className="text-muted-foreground mb-2">Validate your market opportunity in 45 minutes with one clear positioning statement</p>
+                  <p className="text-sm text-muted-foreground italic">Interactive: Dynamic Market Analysis, AI Competitor Insights, Positioning Generator</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl font-bold">01</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2">BRAND STRATEGY FOUNDATION ($97)</h3>
+                  <p className="text-muted-foreground mb-2">Build the bulletproof brand foundation that makes marketing effortless</p>
+                  <p className="text-sm text-muted-foreground italic">Interactive: Brand Personality Assessments, Voice Generator, Visual Style Builder</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl font-bold">02</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2">MARKETING STRATEGY EXECUTION ($97)</h3>
+                  <p className="text-muted-foreground mb-2">Turn your brand into a revenue-generating machine with systematic campaigns</p>
+                  <p className="text-sm text-muted-foreground italic">Interactive: Strategy Builder, Content Calendar Generator, Campaign Templates</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl font-bold">03</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2">GROWTH & MEASUREMENT SYSTEMS ($97)</h3>
+                  <p className="text-muted-foreground mb-2">Transform data into decisions and scale what works with testing frameworks</p>
+                  <p className="text-sm text-muted-foreground italic">Interactive: Dashboard Builder, Growth Calculator, Optimization Tracker</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center bg-card border rounded-lg p-8">
+            <p className="text-lg mb-4">
+              Each workbook builds systematically. Validation → Brand → Marketing → Growth. No scattered tactics. No random execution.
+            </p>
+            <p className="text-lg">
+              Get all 4 workbooks: <span className="font-bold line-through">$297 regular</span> | <span className="font-bold text-primary">$129 webinar attendee pricing</span> <span className="text-muted-foreground">(save $168)</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            How It Works
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Get instant access to Workbook 0 for just $27
+          
+          <div className="grid md:grid-cols-5 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                1
+              </div>
+              <h3 className="font-bold mb-2">Purchase Workbook 0</h3>
+              <p className="text-sm text-muted-foreground">($27)</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                2
+              </div>
+              <h3 className="font-bold mb-2">Access interactive app</h3>
+              <p className="text-sm text-muted-foreground">instantly</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                3
+              </div>
+              <h3 className="font-bold mb-2">Complete validation</h3>
+              <p className="text-sm text-muted-foreground">in 45 minutes</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                4
+              </div>
+              <h3 className="font-bold mb-2">Join FREE webinar</h3>
+              <p className="text-sm text-muted-foreground">November 18th</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                5
+              </div>
+              <h3 className="font-bold mb-2">Decide on complete system</h3>
+              <p className="text-sm text-muted-foreground">($129)</p>
+            </div>
+          </div>
+
+          <p className="text-center text-lg text-muted-foreground mt-10">
+            No downloads. No PDFs sitting unfinished. Just interactive frameworks, AI acceleration, and strategic clarity.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 px-4 bg-muted/10">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: Is this really just $27?</h3>
+              <p className="text-muted-foreground">
+                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + option to get the complete system for $129 (save $168).
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: What if the AI gives me wrong information?</h3>
+              <p className="text-muted-foreground">
+                A: The prompts are designed to avoid hallucination using market-research principles. The webinar shows you how to fact-check AI responses. Always verify, never blindly trust.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: What if I can't attend the webinar live?</h3>
+              <p className="text-muted-foreground">
+                A: You get the full recording + all materials within 24 hours. Your $129 bundle discount stays active for 72 hours after the webinar ends.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-2">Q: Do I need all 4 workbooks?</h3>
+              <p className="text-muted-foreground">
+                A: Workbook 0 validates your idea (stands alone). Workbooks 1-3 turn your validated idea into a complete strategic system. Buy individually ($97 each) or as bundle ($297, or $129 for webinar attendees).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 px-4 bg-gradient-to-br from-black via-black to-black/90 text-white">
+        <div className="container mx-auto max-w-3xl text-center">
+          <p className="text-lg md:text-xl mb-4 text-white/80 italic">
+            The people who thrive bet on themselves strategically.
+          </p>
+          
+          <p className="text-base md:text-lg mb-4 text-white/90 leading-relaxed">
+            You have the vision and drive. Now add MBA-level strategy, AI-powered implementation, and battle-tested frameworks.
           </p>
 
-          <div className="max-w-md mx-auto">
-            <Button 
-              onClick={handlePurchase}
-              size="lg"
-              className="w-full h-14 text-lg"
-              disabled={purchasing}
-            >
-              {purchasing ? "Processing..." : "Get Instant Access - $27"}
-            </Button>
+          <p className="text-base md:text-lg mb-4 text-white/90 leading-relaxed">
+            In this economy, there's never been a better opportunity to pour into yourself strategically.
+          </p>
+
+          <p className="text-lg md:text-xl mb-8 text-white font-semibold">
+            Don't build your business on hope. Build it on strategy.
+          </p>
+
+          <Button 
+            onClick={handlePurchase}
+            size="lg"
+            className="mb-4 bg-white text-black hover:bg-white/90"
+            disabled={purchasing}
+          >
+            {purchasing ? "Processing..." : "GET WORKBOOK 0 + FREE WEBINAR ($27) →"}
+          </Button>
+
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-white/80">
+            <span>✅ Instant access</span>
+            <span>✅ Works on any device</span>
+            <span>✅ 30-day money-back guarantee</span>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t py-12 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground mb-4">
+            Questions? <a href="mailto:web@blkbld.co" className="text-primary hover:underline">web@blkbld.co</a> | Response within 24 hours
+          </p>
+          <p className="text-sm text-muted-foreground mb-2">
+            Joseline Nyinawabera, MBA | Founder, BlkBld & Co. | @JoselineBiz
+          </p>
+          <p className="text-xs text-muted-foreground">
+            © 2025 BLKBLD. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
