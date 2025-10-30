@@ -17,11 +17,11 @@ const Webinar = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  // Webinar date: November 18, 2024 at 6:00 PM CST
-  const webinarDate = new Date('2024-11-18T18:00:00-06:00');
+  // Webinar date: November 18, 2025 at 6:00 PM CST
+  const webinarDate = new Date('2025-11-18T18:00:00-06:00');
   
-  // Discount expires November 21, 2024 at 7:00 PM CST
-  const discountExpiryDate = new Date('2024-11-21T19:00:00-06:00');
+  // Discount expires November 21, 2025 at 7:00 PM CST
+  const discountExpiryDate = new Date('2025-11-21T19:00:00-06:00');
   
   const webinarCountdown = useCountdown(webinarDate);
   const discountCountdown = useCountdown(discountExpiryDate);
@@ -332,21 +332,24 @@ const Webinar = () => {
       </section>
 
       {/* Live Event Notice */}
-      <section className="px-4 pb-12">
-        <div className="container mx-auto max-w-5xl">
-          <div className="bg-card border border-border rounded-lg p-6 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <Calendar className="w-6 h-6 text-primary" />
+      {showDiscount && (
+        <section className="px-4 pb-12">
+          <div className="container mx-auto max-w-5xl">
+            <div className="bg-card border border-border rounded-lg p-6 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Calendar className="w-6 h-6 text-primary" />
+              </div>
+              <p className="text-foreground">
+                Join us LIVE on November 18, 2025 at 7:00 PM CST for the complete workshop
+              </p>
             </div>
-            <p className="text-foreground">
-              Join us LIVE on November 18, 2024 at 7:00 PM CST for the complete workshop
-            </p>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Resources Section */}
-      <section className="py-12 px-4 bg-muted/10">
+      {showDiscount && (
+        <section className="py-12 px-4 bg-muted/10">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold mb-6 text-foreground">Your Resources</h2>
           
@@ -383,6 +386,7 @@ const Webinar = () => {
           </div>
         </div>
       </section>
+      )}
 
       {/* Upsell Section */}
       <section className="py-16 px-4">
