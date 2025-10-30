@@ -348,6 +348,17 @@ const Landing = () => {
               Exclusive pricing for Workbook 0 buyers - available until 72 hours after the webinar
             </p>
           </div>
+
+          <div className="text-center mt-8">
+            <Button 
+              onClick={handlePurchase}
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              disabled={purchasing}
+            >
+              {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+            </Button>
+          </div>
         </div>
       </section>
 
