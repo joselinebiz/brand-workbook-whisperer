@@ -215,6 +215,14 @@ export default function Workbook0() {
           </div>
         </Card>
 
+        {/* Why This Order */}
+        <Card className="p-8 mb-8 bg-gradient-to-br from-muted/50 to-muted/20 border-2 border-muted">
+          <h2 className="text-2xl font-bold mb-4">Why This Order?</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            "We validate market demand first, before developing the idea or brand. Only after confirming real-world opportunity do we model the business and prepare for branding, marketing, and scaling."
+          </p>
+        </Card>
+
         {/* THE ONLY 3 QUESTIONS */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent/30">
           <h2 className="text-2xl font-bold mb-4">The Only 3 Questions That Matter</h2>
@@ -245,12 +253,12 @@ export default function Workbook0() {
           <p className="font-semibold text-center">Answer all three in 45 minutes. Speed beats perfection.</p>
         </Card>
 
-        {/* Part 1: The 10 Minute Market Scan */}
+        {/* Part 1: The 15 Minute Market Scan */}
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Part 1: The 15-Minute Market Scan
+                <span>Step 1 of 3: Market Scan</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -337,6 +345,14 @@ Format as: Problem / Cost / Current Solution`}
                 />
               </div>
             </div>
+          </div>
+
+          {/* Quick Tip Before Competition */}
+          <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
+            <p className="font-semibold mb-1">Quick Tip:</p>
+            <p className="text-sm text-muted-foreground">
+              "Don't overthink—just name the first 3 competitors that show up in Google. Speed beats perfection. The goal is momentum, not exhaustive research."
+            </p>
           </div>
 
           {/* Your Competition */}
@@ -500,7 +516,7 @@ Give me 3 specific angles I could take.`}
             </h3>
 
             <div className="space-y-4 pl-10">
-              <Label htmlFor="white-space">I'm the only one who _______ for _______ because _______</Label>
+              <Label htmlFor="white-space">I'm the only one who _______ for _______ because _______.</Label>
               <Textarea 
                 id="white-space" 
                 rows={3}
@@ -508,16 +524,39 @@ Give me 3 specific angles I could take.`}
               />
             </div>
           </div>
+
+          {/* Section Complete Mini-Summary */}
+          <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
+            <p className="font-semibold mb-1">Section Complete:</p>
+            <p className="text-sm text-muted-foreground">
+              "You now have real competitors mapped and a first draft of your unique white space."
+            </p>
+          </div>
             </CollapsibleContent>
         </Card>
         </Collapsible>
+
+        {/* Quick Tip and Intro Before Business Model */}
+        <Card className="p-6 mb-4 bg-accent/10 border-l-4 border-accent">
+          <p className="font-semibold mb-1">Quick Tip:</p>
+          <p className="text-sm text-muted-foreground">
+            "If you can't sketch a path to profit in 90 seconds, don't invest more time. Gut answers are often the most honest."
+          </p>
+        </Card>
+
+        <Card className="p-6 mb-8 bg-muted/30">
+          <h3 className="text-xl font-bold mb-3">Why Rapid Business Modeling Matters</h3>
+          <p className="text-muted-foreground">
+            "Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!"
+          </p>
+        </Card>
 
         {/* Part 2: The 15-Minute Business Model */}
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Part 2: The 15-Minute Business Model
+                <span>Step 2 of 3: Business Model</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -660,7 +699,7 @@ Provide:
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Part 3: The 5-Minute Validation
+                <span>Step 3 of 3: Validation</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -830,16 +869,17 @@ Provide:
           
           <CollapsibleContent>
           <div className="space-y-6">
-            {/* THE OPPORTUNITY */}
+            <p className="text-lg italic text-muted-foreground mb-6">
+              "While everyone else fights over [what competitors chase], I'll own [your white space] by being the only one who [unique approach] for [specific audience] who value [what matters to them]."
+            </p>
+
+            {/* THE DECLARATION */}
             <div>
-              <h3 className="text-xl font-bold mb-4 text-primary">The Opportunity</h3>
-              <p className="text-lg font-medium mb-4">
-                "While everyone else fights over
-              </p>
+              <h3 className="text-xl font-bold mb-4 text-primary">Your White Space Declaration</h3>
               
               <div className="space-y-4 pl-4">
                 <div>
-                  <Label htmlFor="competitors-chase" className="text-base">What competitors chase</Label>
+                  <Label htmlFor="competitors-chase" className="text-base">While everyone else fights over</Label>
                   <Input 
                     id="competitors-chase" 
                     className="text-lg"
@@ -849,10 +889,8 @@ Provide:
                   />
                 </div>
 
-                <p className="text-lg font-medium">I'll own</p>
-
                 <div>
-                  <Label htmlFor="your-whitespace" className="text-base">Your white space</Label>
+                  <Label htmlFor="your-whitespace" className="text-base">I'll own [your white space]</Label>
                   <Input 
                     id="your-whitespace" 
                     className="text-lg"
@@ -862,10 +900,8 @@ Provide:
                   />
                 </div>
 
-                <p className="text-lg font-medium">by being the only one who</p>
-
                 <div>
-                  <Label htmlFor="unique-approach" className="text-base">Your unique approach</Label>
+                  <Label htmlFor="unique-approach" className="text-base">by being the only one who [unique approach]</Label>
                   <Input 
                     id="unique-approach" 
                     className="text-lg"
@@ -875,10 +911,8 @@ Provide:
                   />
                 </div>
 
-                <p className="text-lg font-medium">for</p>
-
                 <div>
-                  <Label htmlFor="specific-audience" className="text-base">Specific audience</Label>
+                  <Label htmlFor="specific-audience" className="text-base">for [specific audience]</Label>
                   <Input 
                     id="specific-audience" 
                     className="text-lg"
@@ -888,10 +922,8 @@ Provide:
                   />
                 </div>
 
-                <p className="text-lg font-medium">who value</p>
-
                 <div>
-                  <Label htmlFor="what-matters" className="text-base">What matters to them</Label>
+                  <Label htmlFor="what-matters" className="text-base">who value [what matters to them]</Label>
                   <Textarea 
                     id="what-matters" 
                     className="text-lg"
@@ -902,31 +934,29 @@ Provide:
                   />
                 </div>
               </div>
-
-              <p className="text-lg font-medium mt-4">"</p>
             </div>
 
-            {/* THE VALIDATION */}
+            {/* VALIDATION CHECKLIST */}
             <div className="pt-6 border-t">
-              <h3 className="text-xl font-bold mb-4 text-primary">The Validation</h3>
+              <h3 className="text-xl font-bold mb-4 text-primary">Validation Checklist</h3>
               <div className="space-y-3 mb-4">
                 <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
                   <input type="checkbox" className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">Problem confirmed (customers nodded)</span>
+                  <span className="text-sm">☐ Problem confirmed (customers nodded)</span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
                   <input type="checkbox" className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">Gap found (competitors miss it)</span>
+                  <span className="text-sm">☐ Gap found (competitors miss it)</span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
                   <input type="checkbox" className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">Math works (3:1 minimum OR strong career ROI)</span>
+                  <span className="text-sm">☐ Math works (3:1 minimum)</span>
                 </label>
               </div>
 
               <div className="bg-accent/10 border border-accent/20 p-4 rounded">
-                <p className="text-sm font-semibold">Success Metric:</p>
-                <p className="text-sm">2 out of 3 coffee shop testers say "I need that!" or "You should apply here!"</p>
+                <p className="text-sm font-semibold mb-1">Success Metric:</p>
+                <p className="text-sm">Get 2 out of 3 coffee shop testers to say "I need that!"</p>
               </div>
             </div>
           </div>
