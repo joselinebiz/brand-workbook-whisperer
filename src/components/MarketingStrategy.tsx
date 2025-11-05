@@ -84,7 +84,7 @@ export const MarketingStrategy = ({ data }: MarketingStrategyProps) => {
           <div className="mb-6">
             <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Business Model</h2>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Value Proposition</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
@@ -117,80 +117,51 @@ export const MarketingStrategy = ({ data }: MarketingStrategyProps) => {
 
           {/* STRATEGIC CONTEXT (5Cs) */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Market Intelligence</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Market Intelligence (5Cs)</h2>
             
-            <div className="space-y-3">
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Company Strengths</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.companyStrengths || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Category Opportunity</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.categoryOpportunity || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Customer Insights</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.customerInsights || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Competition Gap</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.competitionGap || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Context Trend</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.contextTrend || "_____"}</p>
-                </div>
-              </div>
+            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent space-y-2">
+              <p className="text-sm"><strong>Company:</strong> {data?.companyStrengths || "_____"}</p>
+              <p className="text-sm"><strong>Category:</strong> {data?.categoryOpportunity || "_____"}</p>
+              <p className="text-sm"><strong>Customer:</strong> {data?.customerInsights || "_____"}</p>
+              <p className="text-sm"><strong>Competition:</strong> {data?.competitionGap || "_____"}</p>
+              <p className="text-sm"><strong>Context:</strong> {data?.contextTrend || "_____"}</p>
             </div>
           </div>
 
-          {/* PRODUCT STRATEGY */}
+          {/* PRODUCT & PRICING STRATEGY */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Product Strategy</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Product & Pricing</h2>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Value Ladder</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm"><strong>Free Offer:</strong> {data?.valueLadder?.free || "_____"}</p>
-                  <p className="text-sm"><strong>Core Offer:</strong> {data?.valueLadder?.core || "_____"}</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent space-y-1">
+                  <p className="text-sm"><strong>Free:</strong> {data?.valueLadder?.free || "_____"}</p>
+                  <p className="text-sm"><strong>Core:</strong> {data?.valueLadder?.core || "_____"}</p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* PRICING STRATEGY */}
-          <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Pricing Strategy</h2>
-            
-            <div className="space-y-3">
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Pricing Model</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                   <p className="text-sm">{data?.pricingModel || "_____"}</p>
                 </div>
               </div>
+            </div>
+          </div>
 
+          {/* COST & PRICING DETAILS */}
+          <div className="mb-6">
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Cost Structure & Tiers</h2>
+            
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Cost Structure</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm"><strong>Fixed Costs:</strong> {data?.fixedCosts || "_____"}</p>
-                  <p className="text-sm"><strong>Variable Cost:</strong> {data?.variableCost || "_____"}</p>
-                  <p className="text-sm"><strong>Your Price:</strong> {data?.yourPrice || "_____"}</p>
-                  <p className="text-sm"><strong>Break-Even:</strong> {data?.breakEven || "_____"}</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Economics</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent space-y-1 text-xs">
+                  <p><strong>Fixed:</strong> {data?.fixedCosts || "_____"}</p>
+                  <p><strong>Variable:</strong> {data?.variableCost || "_____"}</p>
+                  <p><strong>Price:</strong> {data?.yourPrice || "_____"}</p>
+                  <p><strong>Break-Even:</strong> {data?.breakEven || "_____"}</p>
                 </div>
               </div>
 
@@ -203,59 +174,35 @@ export const MarketingStrategy = ({ data }: MarketingStrategyProps) => {
             </div>
           </div>
 
-          {/* DISTRIBUTION STRATEGY */}
+          {/* DISTRIBUTION & PROMOTION */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Distribution Strategy</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Distribution & Promotion</h2>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Primary Channel</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.primaryChannel || "_____"}</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Distribution Channels</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent space-y-1 text-sm">
+                  <p><strong>Primary:</strong> {data?.primaryChannel || "_____"}</p>
+                  <p><strong>Secondary:</strong> {data?.secondaryChannel || "_____"}</p>
+                  <p><strong>Cut:</strong> {data?.channelToCut || "_____"}</p>
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Secondary Channel</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.secondaryChannel || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Channel to Cut</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.channelToCut || "_____"}</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Content Strategy</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent space-y-1 text-sm">
+                  <p><strong>Platform:</strong> {data?.primaryPlatform || "_____"}</p>
+                  <p><strong>Pillars:</strong> {data?.contentPillars || "_____"}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* PROMOTION STRATEGY */}
+          {/* CONTENT MIX */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Promotion Strategy</h2>
-            
-            <div className="space-y-3">
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Content Pillars</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.contentPillars || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Primary Platform</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.primaryPlatform || "_____"}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Content Mix</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.contentMix || "_____"}</p>
-                </div>
-              </div>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Content Mix</p>
+            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+              <p className="text-sm">{data?.contentMix || "_____"}</p>
             </div>
           </div>
         </div>
