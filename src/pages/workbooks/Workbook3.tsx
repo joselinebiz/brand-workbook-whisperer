@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
-import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
@@ -12,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Users, Mail, Zap, FileText, ChevronDown, PartyPopper, Save, Target, TrendingUp, Download } from "lucide-react";
+import { ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { generateWorkbook3Content, downloadWorkbook } from "@/utils/workbookDownload";
 import { useAuth } from "@/contexts/AuthContext";
@@ -300,15 +299,10 @@ export default function Workbook3() {
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="1"
-                  title="Customer Journey Mapping"
-                  description="From stranger to advocate"
-                  icon={<Users className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 1 of 4: Customer Journey Mapping</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -325,7 +319,12 @@ export default function Workbook3() {
                   </p>
                 </div>
 
-                <h3 className="text-xl font-bold">Customer Journey Mapping Template</h3>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                    1
+                  </span>
+                  Customer Journey Mapping Template
+                </h3>
                 <p className="text-sm text-muted-foreground mb-4">Define your customer journey stages and actions:</p>
                 
                 <div className="space-y-4">
@@ -368,7 +367,7 @@ export default function Workbook3() {
 
                 <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
                   <p className="text-sm font-medium">
-                    💡 <strong className="text-gold">Quick Win:</strong> In your content calendar from Workbook 2, you specifically requested that AI indicate which stage of the customer journey each piece of content targets. That was intentional and crucial because the goal is to deliver the right content to your audience at the right time.
+                    💡 <span className="text-gold">Quick Win:</span> In your content calendar from Workbook 2, you specifically requested that AI indicate which stage of the customer journey each piece of content targets. That was intentional and crucial because the goal is to deliver the right content to your audience at the right time.
                   </p>
                 </div>
 
@@ -442,7 +441,12 @@ export default function Workbook3() {
 
                 {/* The 2-2-2 Follow-Up System */}
                 <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4">The 2-2-2 Follow-Up System (Simple but powerful)</h3>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      2
+                    </span>
+                    The 2-2-2 Follow-Up System <span className="text-sm text-muted-foreground font-normal ml-2">(Simple but powerful)</span>
+                  </h3>
                   <div className="bg-gradient-to-r from-accent/10 to-accent/5 border-2 border-accent/30 p-6 rounded-lg">
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
@@ -481,7 +485,7 @@ export default function Workbook3() {
 
                   {/* 2-2-2 Follow-Up Completion Tracking */}
                   <div className="mt-6 bg-accent/10 border-2 border-accent/30 p-6 rounded-lg">
-                    <h4 className="font-semibold mb-4">Track Your Follow-Up Sequence Completion</h4>
+                    <h4 className="text-lg font-semibold mb-3">Track Your Follow-Up Sequence Completion</h4>
                     <p className="text-sm text-muted-foreground mb-4">Check off each follow-up as you write it:</p>
                     <div className="space-y-3">
                       <div className="flex items-start gap-3">
@@ -547,7 +551,9 @@ Create 5-email follow-up sequence:
 2. Value in each email
 3. Soft CTA (emails 1-4)
 4. Clear ask (email 5)
-Make them feel personal, not automated.`}
+Make them feel personal, not automated.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                   />
                 </div>
 
@@ -574,15 +580,10 @@ Make them feel personal, not automated.`}
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="2"
-                  title="Automation & Systems"
-                  description="Work smarter, not harder"
-                  icon={<Zap className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 2 of 4: Automation & Systems</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -601,11 +602,16 @@ Make them feel personal, not automated.`}
                   </p>
                 </div>
 
-                <h3 className="text-xl font-bold">Quick Automation Wins - Save 10+ hours/week</h3>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                    1
+                  </span>
+                  Quick Automation Wins <span className="text-sm text-muted-foreground font-normal ml-2">Save 10+ hours/week</span>
+                </h3>
                 
                 <div className="grid gap-4">
-                  <Card className="p-6 bg-muted/20">
-                    <h4 className="font-semibold mb-3">Email Automation (5 hrs/week saved):</h4>
+                <Card className="p-6 bg-muted/20">
+                  <h4 className="text-lg font-semibold mb-3">Email Automation (5 hrs/week saved):</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <label className="flex items-center gap-2">
                         <input type="checkbox" className="w-4 h-4" />
@@ -631,7 +637,7 @@ Make them feel personal, not automated.`}
                   </Card>
 
                   <Card className="p-6 bg-muted/20">
-                    <h4 className="font-semibold mb-3">Operations Automation (5 hrs/week saved):</h4>
+                    <h4 className="text-lg font-semibold mb-3">Operations Automation (5 hrs/week saved):</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <label className="flex items-center gap-2">
                         <input type="checkbox" className="w-4 h-4" />
@@ -653,7 +659,7 @@ Make them feel personal, not automated.`}
                   </Card>
 
                   <Card className="p-6 bg-muted/20">
-                    <h4 className="font-semibold mb-3">Marketing Automation (5 hrs/week saved):</h4>
+                    <h4 className="text-lg font-semibold mb-3">Marketing Automation (5 hrs/week saved):</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <label className="flex items-center gap-2">
                         <input type="checkbox" className="w-4 h-4" />
@@ -677,7 +683,12 @@ Make them feel personal, not automated.`}
 
                 {/* Tool Recommendations */}
                 <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4">Tool Recommendations (Free/Low-Cost)</h3>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      2
+                    </span>
+                    Tool Recommendations <span className="text-sm text-muted-foreground font-normal ml-2">(Free/Low-Cost)</span>
+                  </h3>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse text-sm">
                       <thead>
@@ -720,7 +731,12 @@ Make them feel personal, not automated.`}
 
                 {/* Essential SOPs */}
                 <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4">Essential SOPs Every Business Needs</h3>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      3
+                    </span>
+                    Essential SOPs Every Business Needs
+                  </h3>
                   
                   <Card className="p-6 mb-4 bg-muted/20">
                     <h4 className="font-semibold mb-3">1. Customer Inquiry Response SOP</h4>
@@ -733,7 +749,7 @@ Make them feel personal, not automated.`}
                   </Card>
 
                   <Card className="p-6 mb-4 bg-muted/20">
-                    <h4 className="font-semibold mb-3">2. Customer Onboarding SOP</h4>
+                    <h4 className="text-lg font-semibold mb-3">2. Customer Onboarding SOP</h4>
                     <div className="space-y-2 text-sm">
                       <p><strong>Trigger:</strong> New purchase completed</p>
                       <p><strong>Timeline:</strong> Within 24 hours</p>
@@ -743,7 +759,7 @@ Make them feel personal, not automated.`}
                   </Card>
 
                   <div className="bg-muted/30 p-6 rounded-lg">
-                    <h4 className="font-semibold mb-3">SOP Template (Copy-Paste)</h4>
+                    <h4 className="text-lg font-semibold mb-3">SOP Template (Copy-Paste)</h4>
                     <div className="space-y-3">
                       <div>
                         <Label>PROCESS NAME:</Label>
@@ -775,7 +791,7 @@ Make them feel personal, not automated.`}
 
                 {/* Troubleshooting */}
                 <div className="mt-8 bg-muted/30 p-6 rounded-lg">
-                  <h4 className="font-semibold mb-3">🚨 Troubleshooting:</h4>
+                  <h4 className="text-lg font-semibold mb-3">🚨 Troubleshooting:</h4>
                   <ul className="space-y-2 text-sm">
                     <li><strong>"Too complicated?"</strong> → Start with email automation only</li>
                     <li><strong>"Can't afford tools?"</strong> → Use free versions until revenue justifies upgrade</li>
@@ -869,7 +885,9 @@ Recommend:
 • TOP 3 AUTOMATIONS: [Which to implement first] + [Time saved each]
 • TOOL RECOMMENDATIONS: [Specific software] + [Free vs paid options]
 • SETUP SEQUENCE: [Order of implementation] + [Expected difficulty]
-• WHAT TO KEEP MANUAL: [Tasks that need human touch] + [Why]`}
+• WHAT TO KEEP MANUAL: [Tasks that need human touch] + [Why]
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                   />
                 </div>
 
@@ -900,20 +918,20 @@ Recommend:
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="3"
-                  title="Retention & Loyalty Systems"
-                  description="Turn customers into advocates"
-                  icon={<Target className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 3 of 4: Retention & Loyalty Systems</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
               <div className="space-y-6 mt-6">
-                <h3 className="text-xl font-bold">3.1 Customer Success Tracking</h3>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                    1
+                  </span>
+                  Customer Success Tracking
+                </h3>
                 
                 <div className="bg-accent/5 border-l-4 border-accent p-4 rounded">
                   <p className="text-sm font-medium">
@@ -927,7 +945,7 @@ Recommend:
                   </p>
                 </div>
 
-                <h4 className="font-semibold">Customer Health Score Framework</h4>
+                <h4 className="text-lg font-semibold mb-3">Customer Health Score Framework</h4>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-sm">
                     <thead>
@@ -971,7 +989,7 @@ Recommend:
                   </ul>
                 </div>
 
-                <h4 className="font-semibold mt-6">Simple Tracking Template</h4>
+                <h4 className="text-lg font-semibold mt-6 mb-3">Simple Tracking Template</h4>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-sm">
                     <thead>
@@ -1020,7 +1038,12 @@ Recommend:
 
                 {/* Loyalty & Referral Systems */}
                 <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4">3.2 Loyalty & Referral Systems</h3>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      2
+                    </span>
+                    Loyalty & Referral Systems
+                  </h3>
                   
                   <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-4">
                     <p className="text-sm font-medium">
@@ -1034,7 +1057,7 @@ Recommend:
                     </p>
                   </div>
 
-                  <h4 className="font-semibold mb-3">The Loyalty Ladder (Ascending Value)</h4>
+                  <h4 className="text-lg font-semibold mb-3">The Loyalty Ladder (Ascending Value)</h4>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse text-sm">
                       <thead>
@@ -1080,7 +1103,7 @@ Recommend:
                     </table>
                   </div>
 
-                  <h4 className="font-semibold mt-6 mb-3">Referral System Framework</h4>
+                  <h4 className="text-lg font-semibold mt-6 mb-3">Referral System Framework</h4>
                   <Card className="p-6 bg-muted/20">
                     <div className="space-y-3 text-sm">
                       <p><strong>The Ask:</strong> "Who else do you know who struggles with [problem you solve]?"</p>
@@ -1102,7 +1125,7 @@ Recommend:
 
                   {/* Loyalty Examples */}
                   <div className="mt-6">
-                    <h4 className="font-semibold mb-3">Loyalty Examples:</h4>
+                    <h4 className="text-lg font-semibold mb-3">Loyalty Examples:</h4>
                     
                     <Collapsible>
                       <Card className="p-6 mb-4 bg-muted/20">
@@ -1194,7 +1217,9 @@ DESIGN:
 • REFERRAL PROGRAM: [Incentive structure that motivates sharing]
 • IMPLEMENTATION: [Which customers to start with]
 • SUCCESS METRICS: [What to track]
-• COST ANALYSIS: [What this will cost vs expected return]`}
+• COST ANALYSIS: [What this will cost vs expected return]
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                   />
                 </div>
 
@@ -1229,21 +1254,16 @@ DESIGN:
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="4"
-                  title="Your 30-Day System Implementation"
-                  description="Week-by-week action plan"
-                  icon={<TrendingUp className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 4 of 4: Your 30-Day System Implementation</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
               <div className="space-y-6 mt-6">
-                <Card className="p-6 bg-muted/20">
-                  <h4 className="font-semibold mb-3">Week 1: Journey Foundation</h4>
+                <Card className="p-6 mb-4 bg-muted/20">
+                  <h4 className="text-lg font-semibold mb-3">Week 1: Journey Foundation</h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">
                       <input type="checkbox" className="w-4 h-4" />
@@ -1265,7 +1285,7 @@ DESIGN:
                 </Card>
 
                 <Card className="p-6 bg-muted/20">
-                  <h4 className="font-semibold mb-3">Week 2: Automation Setup</h4>
+                  <h4 className="text-lg font-semibold mb-3">Week 2: Automation Setup</h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">
                       <input type="checkbox" className="w-4 h-4" />
@@ -1287,7 +1307,7 @@ DESIGN:
                 </Card>
 
                 <Card className="p-6 bg-muted/20">
-                  <h4 className="font-semibold mb-3">Week 3: Retention Focus</h4>
+                  <h4 className="text-lg font-semibold mb-3">Week 3: Retention Focus</h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">
                       <input type="checkbox" className="w-4 h-4" />
@@ -1309,7 +1329,7 @@ DESIGN:
                 </Card>
 
                 <Card className="p-6 bg-muted/20">
-                  <h4 className="font-semibold mb-3">Week 4: Launch & Optimize</h4>
+                  <h4 className="text-lg font-semibold mb-3">Week 4: Launch & Optimize</h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">
                       <input type="checkbox" className="w-4 h-4" />
