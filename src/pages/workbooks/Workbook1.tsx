@@ -1273,7 +1273,9 @@ DELIVER:
 • CLARITY SCORE: [1-10] + [Biggest confusion to fix]
 • MARKET FIT: [Strong/Weak] + [One positioning adjustment]
 • CONSISTENCY CHECK: [Where brand breaks down] + [Quick fix]
-• READY FOR MARKETING: [Yes/No] + [What to strengthen first]`}
+• READY FOR MARKETING: [Yes/No] + [What to strengthen first]
+
+Cite your sources for each claim in your previous response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                 />
               </div>
             </CollapsibleContent>
