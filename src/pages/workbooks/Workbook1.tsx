@@ -1270,7 +1270,7 @@ DELIVER:
 • CONSISTENCY CHECK: [Where brand breaks down] + [Quick fix]
 • READY FOR MARKETING: [Yes/No] + [What to strengthen first]
 
-Cite your sources for each claim in your previous response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                 />
               </div>
             </CollapsibleContent>

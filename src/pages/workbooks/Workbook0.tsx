@@ -792,7 +792,7 @@ Is this:
 
 Give me a score out of 10 and suggest one improvement.
 
-Cite your sources for each claim in your previous response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                 />
               </div>
 
