@@ -15,6 +15,7 @@ import { ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { generateWorkbook2Content, downloadWorkbook } from "@/utils/workbookDownload";
 import { useAuth } from "@/contexts/AuthContext";
+import { MarketingStrategy } from "@/components/MarketingStrategy";
 
 export default function Workbook2() {
   const { data, updateData } = useWorkbook();
@@ -1460,6 +1461,9 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
             </CollapsibleContent>
           </Card>
         </Collapsible>
+
+        {/* Marketing Strategy Summary */}
+        <MarketingStrategy data={data} />
 
         {/* Manual Save Button */}
         <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
