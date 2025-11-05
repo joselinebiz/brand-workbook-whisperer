@@ -526,8 +526,8 @@ Give me 3 specific angles I could take.`}
           </div>
 
           {/* Section Complete Mini-Summary */}
-          <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
-            <p className="font-semibold mb-1">Section Complete:</p>
+          <div className="mt-8 p-4 bg-emerald/10 border-l-4 border-emerald rounded">
+            <p className="font-semibold mb-1 text-emerald">Section Complete:</p>
             <p className="text-sm text-muted-foreground">
               You now have real competitors mapped and a first draft of your unique white space.
             </p>
@@ -698,8 +698,8 @@ Provide:
               </div>
 
               {/* Section Complete Mini-Summary */}
-              <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
-                <p className="font-semibold mb-1">Section Complete:</p>
+              <div className="mt-8 p-4 bg-emerald/10 border-l-4 border-emerald rounded">
+                <p className="font-semibold mb-1 text-emerald">Section Complete:</p>
                 <p className="text-sm text-muted-foreground">
                   You've sketched a rapid business model and confirmed the math works. Time to validate!
                 </p>
@@ -952,8 +952,8 @@ Cite your sources for each claim in your previous response. Flag any assumptions
               </div>
 
               {/* Section Complete Mini-Summary */}
-              <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
-                <p className="font-semibold mb-1">Section Complete:</p>
+              <div className="mt-8 p-4 bg-emerald/10 border-l-4 border-emerald rounded">
+                <p className="font-semibold mb-1 text-emerald">Section Complete:</p>
                 <p className="text-sm text-muted-foreground">
                   You've validated your white space with real people. You're ready to build!
                 </p>
