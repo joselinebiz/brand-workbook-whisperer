@@ -351,7 +351,7 @@ Format as: Problem / Cost / Current Solution`}
           <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
             <p className="font-semibold mb-1">Quick Tip:</p>
             <p className="text-sm text-muted-foreground">
-              "Don't overthink—just name the first 3 competitors that show up in Google. Speed beats perfection. The goal is momentum, not exhaustive research."
+              Don't overthink—just name the first 3 competitors that show up in Google. Speed beats perfection. The goal is momentum, not exhaustive research.
             </p>
           </div>
 
@@ -529,7 +529,7 @@ Give me 3 specific angles I could take.`}
           <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
             <p className="font-semibold mb-1">Section Complete:</p>
             <p className="text-sm text-muted-foreground">
-              "You now have real competitors mapped and a first draft of your unique white space."
+              You now have real competitors mapped and a first draft of your unique white space.
             </p>
           </div>
             </CollapsibleContent>
@@ -540,14 +540,14 @@ Give me 3 specific angles I could take.`}
         <Card className="p-6 mb-4 bg-accent/10 border-l-4 border-accent">
           <p className="font-semibold mb-1">Quick Tip:</p>
           <p className="text-sm text-muted-foreground">
-            "If you can't sketch a path to profit in 90 seconds, don't invest more time. Gut answers are often the most honest."
+            If you can't sketch a path to profit in 90 seconds, don't invest more time. Gut answers are often the most honest.
           </p>
         </Card>
 
         <Card className="p-6 mb-8 bg-muted/30">
           <h3 className="text-xl font-bold mb-3">Why Rapid Business Modeling Matters</h3>
           <p className="text-muted-foreground">
-            "Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!"
+            Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!
           </p>
         </Card>
 
