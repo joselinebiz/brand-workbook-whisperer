@@ -398,18 +398,33 @@ Format as: Problem / Cost / Current Solution`}
                       />
                     </div>
                   </div>
-                  <div className="mt-3">
-                    <Label htmlFor={`comp-miss-${i}`} className="text-xs">What They Miss</Label>
-                    <Input 
-                      id={`comp-miss-${i}`} 
-                      className="mt-1"
-                      value={localData.competitors[i-1]?.miss || ''}
-                      onChange={(e) => {
-                        const newComps = [...localData.competitors];
-                        newComps[i-1] = { ...newComps[i-1], miss: e.target.value };
-                        setLocalData(prev => ({ ...prev, competitors: newComps }));
-                      }}
-                    />
+                  <div className="mt-3 grid md:grid-cols-2 gap-3">
+                    <div>
+                      <Label htmlFor={`comp-miss-${i}`} className="text-xs">What They Miss</Label>
+                      <Input 
+                        id={`comp-miss-${i}`} 
+                        className="mt-1"
+                        value={localData.competitors[i-1]?.miss || ''}
+                        onChange={(e) => {
+                          const newComps = [...localData.competitors];
+                          newComps[i-1] = { ...newComps[i-1], miss: e.target.value };
+                          setLocalData(prev => ({ ...prev, competitors: newComps }));
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor={`comp-good-${i}`} className="text-xs">What They Do Well</Label>
+                      <Input 
+                        id={`comp-good-${i}`} 
+                        className="mt-1"
+                        value={localData.competitors[i-1]?.goodAt || ''}
+                        onChange={(e) => {
+                          const newComps = [...localData.competitors];
+                          newComps[i-1] = { ...newComps[i-1], goodAt: e.target.value };
+                          setLocalData(prev => ({ ...prev, competitors: newComps }));
+                        }}
+                      />
+                    </div>
                   </div>
                 </Card>
               ))}
@@ -429,9 +444,9 @@ Format as: Problem / Cost / Current Solution`}
                 context="Use this to identify market gaps"
                 prompt={`Here are 3 competitors in [your market]:
 
-1. [Name] - Promise: [X] - Price: $[Y] - Missing: [Z]
-2. [Name] - Promise: [X] - Price: $[Y] - Missing: [Z]
-3. [Name] - Promise: [X] - Price: $[Y] - Missing: [Z]
+1. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
+2. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
+3. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
 
 What gap do ALL three competitors miss? What could someone own that none of them address?
 
