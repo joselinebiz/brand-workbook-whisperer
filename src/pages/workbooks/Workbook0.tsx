@@ -347,14 +347,6 @@ Format as: Problem / Cost / Current Solution`}
             </div>
           </div>
 
-          {/* Quick Tip Before Competition */}
-          <div className="mb-8 p-4 bg-accent/10 border-l-4 border-accent rounded">
-            <p className="font-semibold mb-1">Quick Tip:</p>
-            <p className="text-sm text-muted-foreground">
-              Don't overthink—just name the first 3 competitors that show up in Google. Speed beats perfection. The goal is momentum, not exhaustive research.
-            </p>
-          </div>
-
           {/* Your Competition */}
           <div className="mb-8">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
@@ -368,6 +360,14 @@ Format as: Problem / Cost / Current Solution`}
               <p className="text-muted-foreground mb-6">
                 Search: "[your solution] + [your city]" - List 3
               </p>
+
+              {/* Quick Tip */}
+              <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
+                <p className="font-semibold mb-1">Quick Tip:</p>
+                <p className="text-sm text-muted-foreground">
+                  Don't overthink—just name the first 3 competitors that show up in Google. Speed beats perfection. The goal is momentum, not exhaustive research.
+                </p>
+              </div>
 
               {[1, 2, 3].map((i) => (
                 <Card key={i} className="p-4 bg-muted/30">
