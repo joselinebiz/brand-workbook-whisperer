@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
-import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
@@ -12,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { TrendingUp, DollarSign, BarChart3, ChevronDown, PartyPopper, Save, Download } from "lucide-react";
+import { ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { generateWorkbook2Content, downloadWorkbook } from "@/utils/workbookDownload";
 import { useAuth } from "@/contexts/AuthContext";
@@ -135,15 +134,10 @@ export default function Workbook2() {
         <Collapsible defaultOpen={true}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="1"
-                  title="Business Model Canvas"
-                  description="Understanding how all pieces connect"
-                  icon={<TrendingUp className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 1 of 3: Business Model Canvas</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -162,7 +156,12 @@ export default function Workbook2() {
                 </div>
 
                 {/* Sprint 1 */}
-                <h3 className="text-xl font-bold mb-4">Sprint 1: Core Elements</h3>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                    1
+                  </span>
+                  Sprint 1: Core Elements
+                </h3>
                 <Card className="p-6 bg-muted/20 mb-6">
                   <div className="space-y-4">
                     <div>
@@ -199,7 +198,12 @@ export default function Workbook2() {
                 </Card>
 
                 {/* Sprint 2 */}
-                <h3 className="text-xl font-bold mb-4">Sprint 2: Operations</h3>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                    2
+                  </span>
+                  Sprint 2: Operations
+                </h3>
                 <Card className="p-6 bg-muted/20 mb-6">
                   <div className="space-y-4">
                     <div>
@@ -237,7 +241,7 @@ export default function Workbook2() {
 
                 <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-6">
                   <p className="text-sm font-medium">
-                    💡 <strong className="text-gold">Quick Win:</strong> Overwhelmed? Only fill 'Value Prop' and 'Customer Segments' first.
+                    💡 <span className="text-gold">Quick Win:</span> Overwhelmed? Only fill 'Value Prop' and 'Customer Segments' first.
                   </p>
                 </div>
 
@@ -346,7 +350,9 @@ REQUIRED OUTPUT FORMAT:
 1. BIGGEST RISK: [One sentence]
 2. PROFIT OPPORTUNITY: [Specific element to optimize] + [Expected % improvement]
 3. MISSING REVENUE STREAM: [One realistic addition] + [Implementation steps]
-4. PARTNERSHIP IDEA: [Low-cost, high-impact suggestion] + [How to approach]`}
+4. PARTNERSHIP IDEA: [Low-cost, high-impact suggestion] + [How to approach]
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                   />
                 </div>
 
@@ -373,15 +379,10 @@ REQUIRED OUTPUT FORMAT:
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="2"
-                  title="Consolidated Market Intelligence Sprint"
-                  description="Your complete market reality"
-                  icon={<BarChart3 className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 2 of 3: Consolidated Market Intelligence Sprint</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -400,7 +401,12 @@ REQUIRED OUTPUT FORMAT:
             </div>
 
             {/* 5C Framework */}
-            <h3 className="text-xl font-bold mb-4">5 Min 5C Rapid Scan</h3>
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                1
+              </span>
+              5 Min 5C Rapid Scan
+            </h3>
             <div className="space-y-4">
               <div>
                 <Label htmlFor="company">Company - Your top 3 strengths (Double down here)</Label>
@@ -462,7 +468,12 @@ REQUIRED OUTPUT FORMAT:
 
             {/* Segmentation & Targeting */}
             <div className="mt-8 pt-6 border-t">
-              <h3 className="text-xl font-bold mb-4">Segmentation & Targeting</h3>
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                  2
+                </span>
+                Segmentation & Targeting
+              </h3>
               <p className="text-sm text-muted-foreground mb-4">Your Target Audience</p>
               <div className="bg-muted/20 p-4 rounded">
                 <p className="text-sm mb-2">Primary Segment: <span className="text-xs text-muted-foreground">(Should have highest pain + budget for your product/service + reachable)</span></p>
@@ -557,7 +568,9 @@ OUTPUT:
 - CUSTOMER PAIN POINTS: [Top 3 unmet needs] + [Evidence/source]
 - YOUR ADVANTAGE: [What competitors miss that you can deliver]
 - PRICE POINT: [What they'll pay] + [Market evidence]
-- Conclude with: 'Start with [specific audience] because [compelling reason].'`}
+- Conclude with: 'Start with [specific audience] because [compelling reason].'
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
             </div>
 
@@ -595,15 +608,10 @@ OUTPUT:
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-                <SectionHeader
-                  number="3"
-                  title="4P Marketing Mix"
-                  description="Product, Price, Place, Promotion"
-                  icon={<DollarSign className="w-8 h-8" />}
-                />
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-              </div>
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 3 of 3: 4P Marketing Mix</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -616,8 +624,12 @@ OUTPUT:
 
                 {/* 3.1 Product Strategy */}
                 <div className="mt-8 pt-6 border-t">
-                  <h3 className="text-2xl font-bold mb-2">3.1 Product Strategy</h3>
-                  <p className="text-muted-foreground mb-6">What you're really selling</p>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      1
+                    </span>
+                    Product Strategy <span className="text-sm text-muted-foreground font-normal ml-2">What you're really selling</span>
+                  </h3>
 
                   <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 rounded mb-6">
                     <p className="text-sm font-medium">
@@ -625,7 +637,7 @@ OUTPUT:
                     </p>
                   </div>
 
-                  <h4 className="font-semibold mb-4">Value Ladder Design</h4>
+                  <h4 className="text-lg font-semibold mb-4">Value Ladder Design</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
@@ -665,7 +677,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">Feature-Emotion-Transformation Map</h4>
+                  <h4 className="text-lg font-semibold mb-4">Feature-Emotion-Transformation Map</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-4">
                       <div>
@@ -692,7 +704,7 @@ OUTPUT:
                   </Card>
 
                   {/* Product Examples */}
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="text-lg font-semibold mb-4">Examples:</h4>
                   <div className="space-y-4">
                     <Collapsible>
                       <Card className="p-6 mb-4 bg-muted/20">
@@ -740,8 +752,12 @@ OUTPUT:
 
                 {/* 3.2 Pricing Strategy */}
                 <div className="mt-8 pt-6 border-t">
-                  <h3 className="text-2xl font-bold mb-2">3.2 Pricing Strategy</h3>
-                  <p className="text-muted-foreground mb-6">What you charge and why</p>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      2
+                    </span>
+                    Pricing Strategy <span className="text-sm text-muted-foreground font-normal ml-2">What you charge and why</span>
+                  </h3>
 
                   <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
                     <p className="text-sm font-medium">
@@ -758,7 +774,7 @@ OUTPUT:
                     </ul>
                   </div>
 
-                  <h4 className="font-semibold mb-4">Pricing Model Selection</h4>
+                  <h4 className="text-lg font-semibold mb-4">Pricing Model Selection</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-2">
                       <label className="flex items-center gap-2">
@@ -784,7 +800,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">Break-Even Analysis Must-Do</h4>
+                  <h4 className="text-lg font-semibold mb-4">Break-Even Analysis Must-Do</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
@@ -835,7 +851,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">Good-Better-Best Tiers</h4>
+                  <h4 className="text-lg font-semibold mb-4">Good-Better-Best Tiers</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-4">
                       <div>
@@ -853,7 +869,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">Pricing Psychology Trade Secrets</h4>
+                  <h4 className="text-lg font-semibold mb-4">Pricing Psychology Trade Secrets</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <ul className="space-y-2 text-sm">
                       <li>• End in 7 or 9 for deals ($19, $99; $27, $97) - signals value</li>
@@ -889,7 +905,7 @@ OUTPUT:
                   </div>
 
                   {/* Pricing Examples */}
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="text-lg font-semibold mb-4">Examples:</h4>
                   <div className="space-y-4">
                     <Collapsible>
                       <Card className="p-6 mb-4 bg-muted/20">
@@ -973,7 +989,7 @@ OUTPUT:
                     </p>
                   </div>
 
-                  <h4 className="font-semibold mb-4">Channel ROI Decision Tree</h4>
+                  <h4 className="text-lg font-semibold mb-4">Channel ROI Decision Tree</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
@@ -1046,7 +1062,7 @@ OUTPUT:
 
                   <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-6">
                     <p className="text-sm font-medium">
-                      💡 <strong className="text-gold">Quick Win:</strong> Double down on highest ROI channel, cut lowest performer.
+                      💡 <span className="text-gold">Quick Win:</span> Double down on highest ROI channel, cut lowest performer.
                     </p>
                   </div>
 
@@ -1060,7 +1076,7 @@ OUTPUT:
                   </div>
 
                   {/* Distribution Examples */}
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="text-lg font-semibold mb-4">Examples:</h4>
                   <div className="space-y-4">
                     <Collapsible>
                       <Card className="p-6 mb-4 bg-muted/20">
@@ -1126,8 +1142,12 @@ OUTPUT:
 
                 {/* 3.4 Promotion Strategy */}
                 <div className="mt-8 pt-6 border-t">
-                  <h3 className="text-2xl font-bold mb-2">3.4 Promotion Strategy</h3>
-                  <p className="text-muted-foreground mb-6">How you reach and convert</p>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                      4
+                    </span>
+                    Promotion Strategy <span className="text-sm text-muted-foreground font-normal ml-2">How you reach and convert</span>
+                  </h3>
 
                   <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
                     <p className="text-sm font-medium">
@@ -1135,7 +1155,7 @@ OUTPUT:
                     </p>
                   </div>
 
-                  <h4 className="font-semibold mb-4">Channel Selection (Pick 3-4 to start)</h4>
+                  <h4 className="text-lg font-semibold mb-4">Channel Selection (Pick 3-4 to start)</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-2">
                       <label className="flex items-center gap-2">
@@ -1165,7 +1185,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">Content Pillars (3-5 topics you'll always discuss)</h4>
+                  <h4 className="text-lg font-semibold mb-4">Content Pillars (3-5 topics you'll always discuss)</h4>
                   <p className="text-sm text-muted-foreground mb-4">Based on Workbook 1, from your Brand Pillars, create content themes:</p>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-3">
@@ -1191,7 +1211,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">Content Repurposing Matrix (BLKBLD Proprietary - One Post = 9 Assets)</h4>
+                  <h4 className="text-lg font-semibold mb-4">Content Repurposing Matrix (BLKBLD Proprietary - One Post = 9 Assets)</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="space-y-2 text-sm">
                       <p><strong>1 Blog Post</strong> → 5 Social posts + 1 Email + 3 Stories</p>
@@ -1200,7 +1220,7 @@ OUTPUT:
                     </div>
                   </Card>
 
-                  <h4 className="font-semibold mb-4">30 Day Content Calendar Template (Copy-Paste Ready)</h4>
+                  <h4 className="text-lg font-semibold mb-4">30 Day Content Calendar Template (Copy-Paste Ready)</h4>
                   <Card className="p-6 bg-muted/20 mb-6">
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
@@ -1248,7 +1268,7 @@ OUTPUT:
                   </Card>
 
                   {/* Promotion Examples */}
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="text-lg font-semibold mb-4">Examples:</h4>
                   <div className="space-y-4">
                     <Collapsible>
                       <Card className="p-6 mb-4 bg-muted/20">
@@ -1321,7 +1341,7 @@ OUTPUT:
 
                   <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-6">
                     <p className="text-sm font-medium">
-                      💡 <strong className="text-gold">Quick Win:</strong> Batch create 1 month of content in 4 hours. Use templates and repurpose everything. One blog post = 5 social posts + 1 email + 3 stories
+                      💡 <span className="text-gold">Quick Win:</span> Batch create 1 month of content in 4 hours. Use templates and repurpose everything. One blog post = 5 social posts + 1 email + 3 stories
                     </p>
                   </div>
 
@@ -1353,7 +1373,9 @@ OUTPUT:
 - CONTENT PILLARS: [4 themes] + [% split] + [Customer journey stage each serves]
 - 30-DAY CALENDAR: [2 posts per week with titles, hooks, and CTAs]
 - HASHTAG STRATEGY: [3 hashtags in tiers: High/Medium/Low competition]
-- REPURPOSING MAP: [How to turn each post into 3 additional assets]`}
+- REPURPOSING MAP: [How to turn each post into 3 additional assets]
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                     />
                   </div>
                 </div>
