@@ -718,7 +718,7 @@ Provide:
                 </p>
 
                 <div className="mb-6">
-                  <Label htmlFor="white-space-write">Write yours:</Label>
+                  <Label htmlFor="white-space-write">Write Your White Space Declaration:</Label>
                   <Textarea 
                     id="white-space-write" 
                     className="text-lg mt-2"
@@ -730,7 +730,7 @@ Provide:
                 </div>
 
                 <div className="pt-6 border-t mb-6">
-                  <h4 className="font-semibold mb-4">Validation Checklist (Loveable, Check off each — use ✓ when complete)</h4>
+                  <h4 className="font-semibold mb-4">Validation Checklist</h4>
                   <div className="space-y-3">
                     <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
                       <input type="checkbox" className="w-5 h-5 mt-0.5" />
@@ -791,7 +791,17 @@ Give me a score out of 10 and suggest one improvement.`}
                   Format: "I help [who] achieve [what] by [how] so they can [why it matters]."
                 </p>
                 
-                <div className="space-y-3 mb-6">
+                <Label htmlFor="pitch">Write yours:</Label>
+                <Textarea 
+                  id="pitch" 
+                  rows={3} 
+                  placeholder="I help..." 
+                  className="mt-2 mb-6"
+                  value={localData.pitch}
+                  onChange={(e) => setLocalData(prev => ({ ...prev, pitch: e.target.value }))}
+                />
+
+                <div className="space-y-3">
                   <ExampleBox
                     icon="🏪"
                     title="Business Example"
@@ -808,16 +818,6 @@ Give me a score out of 10 and suggest one improvement.`}
                     content="I help B2B SaaS companies break through revenue plateaus by implementing the same systematic marketing frameworks I used to scale three companies from $1M to $10M ARR so they can achieve predictable, sustainable growth."
                   />
                 </div>
-
-                <Label htmlFor="pitch">Write yours:</Label>
-                <Textarea 
-                  id="pitch" 
-                  rows={3} 
-                  placeholder="I help..." 
-                  className="mt-2"
-                  value={localData.pitch}
-                  onChange={(e) => setLocalData(prev => ({ ...prev, pitch: e.target.value }))}
-                />
               </div>
 
               {/* The Gut Check */}
