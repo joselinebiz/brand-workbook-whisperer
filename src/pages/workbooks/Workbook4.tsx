@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
-import { SectionHeader } from "@/components/SectionHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { BlueprintSection } from "@/components/BlueprintSection";
 import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
@@ -12,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { LineChart, Target, Rocket, Users, ChevronDown, PartyPopper, Save, Download } from "lucide-react";
+import { ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { generateWorkbook4Content, downloadWorkbook } from "@/utils/workbookDownload";
 import { useAuth } from "@/contexts/AuthContext";
@@ -217,12 +216,13 @@ Generated: ${new Date().toLocaleDateString()}
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <SectionHeader
-            number="1"
-            title="Your Performance Dashboard"
-                description="The numbers that actually matter"
-                icon={<LineChart className="w-8 h-8" />}
-              />
+              <div className="text-left">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="text-4xl font-bold text-primary">1</span>
+                  <h2 className="text-2xl font-bold">Your Performance Dashboard</h2>
+                </div>
+                <p className="text-muted-foreground">The numbers that actually matter</p>
+              </div>
               <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
             </div>
           </CollapsibleTrigger>
@@ -230,13 +230,13 @@ Generated: ${new Date().toLocaleDateString()}
           <CollapsibleContent>
           <div className="space-y-6 mt-6">
             <div className="bg-accent/5 border-l-4 border-accent p-4 rounded mb-6">
-              <p className="text-sm font-medium">
-                💡 Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
+              <p className="text-sm">
+                <span className="font-normal">Quick Win:</span> Most businesses either track nothing (flying blind) or everything (analysis paralysis). A good dashboard shows problems before they're crises.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4">Layer 1: Leading Indicators (Weekly)</h3>
+              <h3 className="text-lg font-semibold mb-4">Layer 1: Leading Indicators (Weekly)</h3>
               <p className="text-sm text-muted-foreground mb-4">These predict what will happen next month</p>
               
               <div className="overflow-x-auto">
@@ -284,7 +284,7 @@ Generated: ${new Date().toLocaleDateString()}
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4">Layer 2: Lagging Indicators (Monthly)</h3>
+              <h3 className="text-lg font-semibold mb-4">Layer 2: Lagging Indicators (Monthly)</h3>
               <p className="text-sm text-muted-foreground mb-4">These confirm what actually happened</p>
               
               <div className="space-y-3">
@@ -306,7 +306,7 @@ Generated: ${new Date().toLocaleDateString()}
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4">Your One Number</h3>
+              <h3 className="text-lg font-semibold mb-4">Your One Number</h3>
               <p className="text-sm text-muted-foreground mb-3">
                 If you could only track ONE metric for the next 90 days, what would it be?
               </p>
@@ -330,7 +330,9 @@ Recommend:
 4. Dashboard structure (how to organize)
 5. Warning signs to watch for
 
-Make it specific to my business model.`}
+Make it specific to my business model.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
             />
           </div>
           </CollapsibleContent>
@@ -342,12 +344,13 @@ Make it specific to my business model.`}
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <SectionHeader
-            number="2"
-            title="Testing & Optimization Framework"
-                description="Scientific approach to improvement"
-                icon={<Target className="w-8 h-8" />}
-              />
+              <div className="text-left">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="text-4xl font-bold text-primary">2</span>
+                  <h2 className="text-2xl font-bold">Testing & Optimization Framework</h2>
+                </div>
+                <p className="text-muted-foreground">Scientific approach to improvement</p>
+              </div>
               <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
             </div>
           </CollapsibleTrigger>
@@ -427,7 +430,9 @@ Rank by:
 2. Ease of implementation (easy/medium/hard)
 3. Time to results (days)
 
-Recommend which test to run first and why.`}
+Recommend which test to run first and why.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
             />
           </div>
           </CollapsibleContent>
@@ -439,12 +444,13 @@ Recommend which test to run first and why.`}
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <SectionHeader
-            number="3"
-            title="90-Day Growth Sprint Plan"
-                description="Your roadmap to 20% improvement"
-                icon={<Rocket className="w-8 h-8" />}
-              />
+              <div className="text-left">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="text-4xl font-bold text-primary">3</span>
+                  <h2 className="text-2xl font-bold">90-Day Growth Sprint Plan</h2>
+                </div>
+                <p className="text-muted-foreground">Your roadmap to 20% improvement</p>
+              </div>
               <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
             </div>
           </CollapsibleTrigger>
@@ -483,7 +489,7 @@ Recommend which test to run first and why.`}
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4">Weekly Review Questions</h3>
+              <h3 className="text-lg font-semibold mb-4">Weekly Review Questions</h3>
               <Card className="p-4 bg-muted/30">
                 <ol className="space-y-2 text-sm">
                   <li>1. Are we on track to hit this month's milestone?</li>
@@ -515,7 +521,9 @@ For each month, provide:
 4. Potential roadblocks
 5. Contingency plan
 
-Make it realistic for [solo/small team/company] execution.`}
+Make it realistic for [solo/small team/company] execution.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
             />
           </div>
           </CollapsibleContent>
@@ -527,12 +535,13 @@ Make it realistic for [solo/small team/company] execution.`}
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <SectionHeader
-            number="4"
-            title="Team Building & Delegation"
-                description="Scale yourself by building systems"
-                icon={<Users className="w-8 h-8" />}
-              />
+              <div className="text-left">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="text-4xl font-bold text-primary">4</span>
+                  <h2 className="text-2xl font-bold">Team Building & Delegation</h2>
+                </div>
+                <p className="text-muted-foreground">Scale yourself by building systems</p>
+              </div>
               <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
             </div>
           </CollapsibleTrigger>
@@ -540,7 +549,7 @@ Make it realistic for [solo/small team/company] execution.`}
           <CollapsibleContent>
           <div className="space-y-6 mt-6">
             <div>
-              <h3 className="text-lg font-bold mb-4">Role Mapping</h3>
+              <h3 className="text-lg font-semibold mb-4">Role Mapping</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 What roles do you need to scale? Start by documenting what YOU do, then determine what to delegate.
               </p>
@@ -577,7 +586,7 @@ Make it realistic for [solo/small team/company] execution.`}
             </div>
 
             <div>
-              <h3 className="text-lg font-bold mb-4">First Hire Priority</h3>
+              <h3 className="text-lg font-semibold mb-4">First Hire Priority</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Based on your role mapping, what's the ONE role that would free up the most strategic time?
               </p>
@@ -608,7 +617,9 @@ Provide:
 - Role description for hire recommendations
 - Priority order (what to do first)
 
-Goal: Free up 10 hours/week for strategic work.`}
+Goal: Free up 10 hours/week for strategic work.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
 
               <AIPromptCard
@@ -628,7 +639,9 @@ Include:
 5. Compensation range
 6. Application question (to filter candidates)
 
-Write in my brand voice: [ARE/NOT from Workbook 1]`}
+Write in my brand voice: [ARE/NOT from Workbook 1]
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
             </div>
           </div>
