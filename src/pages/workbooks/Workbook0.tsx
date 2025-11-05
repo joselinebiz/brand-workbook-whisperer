@@ -536,21 +536,6 @@ Give me 3 specific angles I could take.`}
         </Card>
         </Collapsible>
 
-        {/* Quick Tip and Intro Before Business Model */}
-        <Card className="p-6 mb-4 bg-accent/10 border-l-4 border-accent">
-          <p className="font-semibold mb-1">Quick Tip:</p>
-          <p className="text-sm text-muted-foreground">
-            If you can't sketch a path to profit in 90 seconds, don't invest more time. Gut answers are often the most honest.
-          </p>
-        </Card>
-
-        <Card className="p-6 mb-8 bg-muted/30">
-          <h3 className="text-xl font-bold mb-3">Why Rapid Business Modeling Matters</h3>
-          <p className="text-muted-foreground">
-            Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!
-          </p>
-        </Card>
-
         {/* Part 2: The 15-Minute Business Model */}
         <Collapsible>
           <Card className="p-8 mb-8">
@@ -562,6 +547,22 @@ Give me 3 specific angles I could take.`}
             </CollapsibleTrigger>
             
             <CollapsibleContent>
+              {/* Quick Tip */}
+              <div className="mb-4 p-4 bg-accent/10 border-l-4 border-accent rounded">
+                <p className="font-semibold mb-1">Quick Tip:</p>
+                <p className="text-sm text-muted-foreground">
+                  If you can't sketch a path to profit in 90 seconds, don't invest more time. Gut answers are often the most honest.
+                </p>
+              </div>
+
+              {/* Why Rapid Business Modeling Matters */}
+              <div className="mb-6 p-4 bg-muted/30 rounded">
+                <p className="font-semibold mb-2">Why Rapid Business Modeling Matters:</p>
+                <p className="text-sm text-muted-foreground">
+                  Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!
+                </p>
+              </div>
+
               <p className="text-muted-foreground mb-6">Fill each box in 90 seconds. First thought = best thought.</p>
               
               <div className="space-y-4">
