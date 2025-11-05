@@ -200,7 +200,7 @@ export default function Workbook0() {
           </div>
 
           <div className="border-t pt-6">
-            <h3 className="text-xl font-semibold mb-3">Why This Framework Works</h3>
+            <h3 className="text-lg font-semibold mb-3">Why This Framework Works</h3>
             <p className="text-muted-foreground mb-4">
               This isn't theory from a textbook. This framework is built on:
             </p>
@@ -316,7 +316,7 @@ export default function Workbook0() {
                 </div>
               </div>
 
-              <div className="bg-gold/10 border border-gold/30 p-3 rounded">
+              <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
                 <p className="text-sm font-medium text-gold">💡 Stuck? Stop. Call 3 to 5 potential customers today.</p>
               </div>
 
@@ -348,7 +348,7 @@ Format as: Problem / Cost / Current Solution`}
           </div>
 
           {/* Quick Tip Before Competition */}
-          <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
+          <div className="mb-8 p-4 bg-accent/10 border-l-4 border-accent rounded">
             <p className="font-semibold mb-1">Quick Tip:</p>
             <p className="text-sm text-muted-foreground">
               Don't overthink—just name the first 3 competitors that show up in Google. Speed beats perfection. The goal is momentum, not exhaustive research.
@@ -550,7 +550,7 @@ Give me 3 specific angles I could take.`}
               <p className="text-muted-foreground mb-6">Fill each box in 90 seconds. First thought = best thought.</p>
 
               {/* Quick Tip */}
-              <div className="mb-4 p-4 bg-accent/10 border-l-4 border-accent rounded">
+              <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
                 <p className="font-semibold mb-1">Quick Tip:</p>
                 <p className="text-sm text-muted-foreground">
                   If you can't sketch a path to profit in 90 seconds, don't invest more time. Gut answers are often the most honest.
@@ -558,8 +558,8 @@ Give me 3 specific angles I could take.`}
               </div>
 
               {/* Why Rapid Business Modeling Matters */}
-              <div className="mb-6 p-4 bg-muted/30 rounded">
-                <p className="font-semibold mb-2">Why Rapid Business Modeling Matters:</p>
+              <div className="mb-6 p-4 bg-muted/30 border-l-4 border-muted rounded">
+                <p className="font-semibold mb-1">Why Rapid Business Modeling Matters:</p>
                 <p className="text-sm text-muted-foreground">
                   Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!
                 </p>
@@ -592,7 +592,7 @@ Give me 3 specific angles I could take.`}
                 ))}
               </div>
 
-              <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
+              <div className="mt-6 p-4 bg-accent/10 border-l-4 border-accent rounded-lg">
                 <p className="font-semibold mb-3">Quick Math:</p>
                 <div className="grid md:grid-cols-3 gap-4 mb-3">
                   <div>
@@ -647,18 +647,18 @@ Give me 3 specific angles I could take.`}
                 <p className="text-xs text-muted-foreground italic">Include recurring costs (software, ads, payment fees)</p>
               </div>
 
-              <div className="mt-4 p-4 bg-background border-2 border-primary/20 rounded-lg">
+              <div className="mt-6 p-4 bg-background border-2 border-primary/20 rounded-lg">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" className="w-5 h-5" />
                   <span className="font-semibold">✅ Reality Check: Could you serve a customer tomorrow?</span>
                 </label>
-                <p className="text-xs text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   If no, either try again with different customers, problems, gaps or another angle until the answer is a yes.
                 </p>
               </div>
 
               <div className="mt-8 pt-6 border-t">
-                <h3 className="font-semibold mb-4">Business Model Examples:</h3>
+                <h3 className="text-lg font-semibold mb-4">Business Model Examples:</h3>
                 <div className="space-y-4">
                   <ExampleBox
                     icon="🏪"
@@ -721,7 +721,7 @@ Provide:
               <div className="mb-8 p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary rounded-lg">
                 <h3 className="text-xl font-bold mb-4 text-primary">Craft Your White Space Declaration</h3>
                 
-                <p className="text-lg italic text-muted-foreground mb-6">
+                <p className="text-sm italic text-muted-foreground mb-6">
                   "While everyone else fights over [what competitors chase], I'll own [your white space] by being the only one who [unique approach] for [specific audience] who value [what matters to them]."
                 </p>
 
@@ -729,7 +729,7 @@ Provide:
                   <Label htmlFor="white-space-write">Write Your White Space Declaration:</Label>
                   <Textarea 
                     id="white-space-write" 
-                    className="text-lg mt-2"
+                    className="mt-2"
                     rows={4}
                     placeholder="Write your white space declaration..."
                     value={data.whiteSpaceDeclaration}
@@ -738,7 +738,7 @@ Provide:
                 </div>
 
                 <div className="pt-6 border-t mb-6">
-                  <h4 className="font-semibold mb-4">Validation Checklist</h4>
+                  <h4 className="text-lg font-semibold mb-4">Validation Checklist</h4>
                   <div className="space-y-3">
                     <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
                       <input type="checkbox" className="w-5 h-5 mt-0.5" />
@@ -756,7 +756,7 @@ Provide:
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-4">Examples Across Different Brand Types:</h4>
+                  <h4 className="text-lg font-semibold mb-4">Examples Across Different Brand Types:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -899,7 +899,7 @@ Cite your sources for each claim in your previous response. Flag any assumptions
                   </div>
                 </div>
 
-                <div className="bg-background p-4 rounded">
+                <div className="bg-background p-4 rounded border-2 border-muted">
                   <p className="font-semibold mb-2">Decision:</p>
                   <ul className="space-y-1 text-sm">
                     <li>• 25-30: Full speed → Workbook 1</li>
@@ -910,7 +910,7 @@ Cite your sources for each claim in your previous response. Flag any assumptions
               </div>
 
               {/* The Coffee Shop Test */}
-              <div className="mb-6">
+              <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">The Coffee Shop Test</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   <span className="font-bold">Explain to 3 strangers in 30 seconds. Record reactions:</span>
@@ -925,7 +925,7 @@ Cite your sources for each claim in your previous response. Flag any assumptions
                   ))}
                 </div>
 
-                <div className="bg-accent/10 border border-accent/20 p-4 rounded mb-4">
+                <div className="bg-accent/10 border-l-4 border-accent p-4 rounded mb-4">
                   <p className="font-semibold mb-2">Response Cues:</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
@@ -943,7 +943,7 @@ Cite your sources for each claim in your previous response. Flag any assumptions
                   </ul>
                 </div>
 
-                <div className="bg-background p-4 rounded border">
+                <div className="bg-background p-4 rounded border-2 border-muted">
                   <p className="font-semibold mb-1">Success Metric:</p>
                   <p className="text-sm">Get at least 2 out of 3 coffee shop testers to say: "I need that!"</p>
                 </div>
