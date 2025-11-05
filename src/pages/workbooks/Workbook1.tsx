@@ -187,7 +187,7 @@ export default function Workbook1() {
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Section 1: Brand Foundation (Your North Star)
+                <span>Step 1 of 4: Brand Foundation</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -558,7 +558,7 @@ Well articulated mission, values, promise and differentiation that ensures I own
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Section 2: Brand Identity (How You Show Up)
+                <span>Step 2 of 4: Brand Identity</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -883,7 +883,7 @@ CREATE:
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Section 3: Positioning & Experience
+                <span>Step 3 of 4: Positioning & Experience</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -1193,7 +1193,7 @@ IDENTIFY:
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Section 4: Implementation Sprint
+                <span>Step 4 of 4: Implementation Sprint</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>

@@ -215,16 +215,10 @@ Generated: ${new Date().toLocaleDateString()}
         <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
-            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <div className="text-left">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-4xl font-bold text-primary">1</span>
-                  <h2 className="text-2xl font-bold">Step 1 of 4: Your Performance Dashboard</h2>
-                </div>
-                <p className="text-muted-foreground">The numbers that actually matter</p>
-              </div>
-              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-            </div>
+            <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+              <span>Step 1 of 4: Your Performance Dashboard</span>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+            </h2>
           </CollapsibleTrigger>
 
           <CollapsibleContent>
@@ -343,16 +337,10 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
-            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <div className="text-left">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-4xl font-bold text-primary">2</span>
-                  <h2 className="text-2xl font-bold">Step 2 of 4: Testing & Optimization Framework</h2>
-                </div>
-                <p className="text-muted-foreground">Scientific approach to improvement</p>
-              </div>
-              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-            </div>
+            <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+              <span>Step 2 of 4: Testing & Optimization Framework</span>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+            </h2>
           </CollapsibleTrigger>
 
           <CollapsibleContent>
@@ -443,16 +431,10 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
-            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <div className="text-left">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-4xl font-bold text-primary">3</span>
-                  <h2 className="text-2xl font-bold">Step 3 of 4: 90-Day Growth Sprint Plan</h2>
-                </div>
-                <p className="text-muted-foreground">Your roadmap to 20% improvement</p>
-              </div>
-              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-            </div>
+            <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+              <span>Step 3 of 4: 90-Day Growth Sprint Plan</span>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+            </h2>
           </CollapsibleTrigger>
 
           <CollapsibleContent>
@@ -534,16 +516,10 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         <Collapsible>
         <Card className="p-8 mb-8">
           <CollapsibleTrigger className="w-full">
-            <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
-              <div className="text-left">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-4xl font-bold text-primary">4</span>
-                  <h2 className="text-2xl font-bold">Step 4 of 4: Team Building & Delegation</h2>
-                </div>
-                <p className="text-muted-foreground">Scale yourself by building systems</p>
-              </div>
-              <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
-            </div>
+            <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+              <span>Step 4 of 4: Team Building & Delegation</span>
+              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+            </h2>
           </CollapsibleTrigger>
 
           <CollapsibleContent>
