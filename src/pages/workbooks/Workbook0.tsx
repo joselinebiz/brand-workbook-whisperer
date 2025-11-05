@@ -694,6 +694,14 @@ Provide:
 3. 3 risks and mitigation strategies
 4. Suggested pricing models (one-time, subscription, tiered)`}
               />
+
+              {/* Section Complete Mini-Summary */}
+              <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
+                <p className="font-semibold mb-1">Section Complete:</p>
+                <p className="text-sm text-muted-foreground">
+                  You've sketched a rapid business model and confirmed the math works. Time to validate!
+                </p>
+              </div>
             </CollapsibleContent>
           </Card>
         </Collapsible>
@@ -780,7 +788,9 @@ Is this:
 2. Different enough that competitors can't easily copy it?
 3. Believable based on my advantage?
 
-Give me a score out of 10 and suggest one improvement.`}
+Give me a score out of 10 and suggest one improvement.
+
+Cite your sources for each claim in your previous response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                 />
               </div>
 
@@ -937,6 +947,14 @@ Give me a score out of 10 and suggest one improvement.`}
                   <p className="font-semibold mb-1">Success Metric:</p>
                   <p className="text-sm">Get at least 2 out of 3 coffee shop testers to say: "I need that!"</p>
                 </div>
+              </div>
+
+              {/* Section Complete Mini-Summary */}
+              <div className="mt-8 p-4 bg-primary/10 border-l-4 border-primary rounded">
+                <p className="font-semibold mb-1">Section Complete:</p>
+                <p className="text-sm text-muted-foreground">
+                  You've validated your white space with real people. You're ready to build!
+                </p>
               </div>
             </CollapsibleContent>
           </Card>
