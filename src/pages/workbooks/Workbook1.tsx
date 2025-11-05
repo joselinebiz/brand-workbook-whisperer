@@ -155,11 +155,6 @@ export default function Workbook1() {
             </p>
           </div>
 
-          <div className="bg-background/50 p-4 rounded mb-6">
-            <p className="font-semibold mb-1">Success Metric:</p>
-            <p className="text-sm">Score 10+ on final assessment AND consistent brand across 5 touchpoints</p>
-          </div>
-
           <div className="bg-muted/50 border-l-4 border-muted-foreground p-4 rounded mb-6">
             <p className="font-semibold mb-2">🔗 Bridge to Success - The Complete BLKBLD Journey:</p>
             <ul className="text-sm space-y-1">
