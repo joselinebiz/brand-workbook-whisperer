@@ -35,7 +35,9 @@ PROVIDE:
 - MISSING ELEMENT – What's not addressed + Why it matters
 - STRENGTH TO LEVERAGE – Best advantage + How to amplify
 - 3 QUICK FIXES – Immediate improvements + Expected impact
-- GO/NO GO – Ready to launch? + What to fix first`,
+- GO/NO GO – Ready to launch? + What to fix first
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`,
 
       audience: `You are the ideal customer described in this blueprint. Review this brand and marketing strategy from your perspective as someone who has the problem described and needs the desired outcome.
 
@@ -50,7 +52,9 @@ RESPOND AS THE CUSTOMER:
 - DECISION FACTORS – What would make you choose them?
 - MISSING PIECES – What questions aren't answered?
 
-Rate your likelihood to buy: 1-10 + What would increase it`,
+Rate your likelihood to buy: 1-10 + What would increase it
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`,
 
       journey: `You are a customer experience specialist. Review this customer journey and systems setup for gaps and optimization opportunities.
 
@@ -66,7 +70,9 @@ ANALYZE:
 RECOMMEND:
 - TOP 3 IMPROVEMENTS – Priority fixes + Expected impact
 - AUTOMATION SEQUENCE – Next systems to implement + Time savings
-- RETENTION BOOSTERS – Ways to increase loyalty + Implementation steps`,
+- RETENTION BOOSTERS – Ways to increase loyalty + Implementation steps
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`,
 
       launch: `You are a business launch consultant. Assess if this brand and marketing foundation is ready for market launch.
 
@@ -84,7 +90,9 @@ DELIVER VERDICT:
 - CRITICAL GAPS – Must fix before launch + How to fix
 - LAUNCH SEQUENCE – Order of implementation + Timeline
 - SUCCESS PREDICTORS – What indicates this will work + What to watch
-- RISK MITIGATION – Biggest threats + Prevention strategies`
+- RISK MITIGATION – Biggest threats + Prevention strategies
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`
     };
 
     const systemPrompt = validationPrompts[validationType] || validationPrompts.alignment;
