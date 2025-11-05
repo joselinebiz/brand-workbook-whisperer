@@ -186,10 +186,13 @@ export default function Workbook1() {
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 1 of 4: Brand Foundation</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 1 of 4: Brand Foundation</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">Your North Star</p>
+              </div>
             </CollapsibleTrigger>
             
             <CollapsibleContent>
@@ -557,10 +560,13 @@ Well articulated mission, values, promise and differentiation that ensures I own
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 2 of 4: Brand Identity</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 2 of 4: Brand Identity</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">How You Show Up</p>
+              </div>
             </CollapsibleTrigger>
             
             <CollapsibleContent>
@@ -882,10 +888,13 @@ CREATE:
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 3 of 4: Positioning & Experience</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 3 of 4: Positioning & Experience</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">Own Your Position in the Market</p>
+              </div>
             </CollapsibleTrigger>
             
             <CollapsibleContent>
@@ -1192,10 +1201,13 @@ IDENTIFY:
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 4 of 4: Implementation Sprint</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 4 of 4: Implementation Sprint</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">Take Action Now</p>
+              </div>
             </CollapsibleTrigger>
             
             <CollapsibleContent>

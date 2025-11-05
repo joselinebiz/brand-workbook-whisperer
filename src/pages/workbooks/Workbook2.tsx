@@ -134,10 +134,13 @@ export default function Workbook2() {
         <Collapsible defaultOpen={true}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 1 of 3: Business Model Canvas</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 1 of 3: Business Model Canvas</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">Map Your Business Reality</p>
+              </div>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -379,10 +382,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 2 of 3: Consolidated Market Intelligence Sprint</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 2 of 3: Consolidated Market Intelligence Sprint</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">Your Complete Market Reality</p>
+              </div>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
@@ -608,10 +614,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         <Collapsible defaultOpen={false}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
-              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 3 of 3: 4P Marketing Mix</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-              </h2>
+              <div className="hover:opacity-80 transition-opacity">
+                <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
+                  <span>Step 3 of 3: 4P Marketing Mix</span>
+                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2">Strategic Marketing Execution</p>
+              </div>
             </CollapsibleTrigger>
 
             <CollapsibleContent>
