@@ -219,7 +219,7 @@ export default function Workbook0() {
         <Card className="p-8 mb-8 bg-gradient-to-br from-muted/50 to-muted/20 border-2 border-muted">
           <h2 className="text-2xl font-bold mb-4">Why This Order?</h2>
           <p className="text-muted-foreground leading-relaxed">
-            "We validate market demand first, before developing the idea or brand. Only after confirming real-world opportunity do we model the business and prepare for branding, marketing, and scaling."
+            We validate market demand first, before developing the idea or brand. Only after confirming real-world opportunity do we model the business and prepare for branding, marketing, and scaling.
           </p>
         </Card>
 
