@@ -803,7 +803,7 @@ Cite your sources for each claim in your previous response. Flag any assumptions
                   Format: "I help [who] achieve [what] by [how] so they can [why it matters]."
                 </p>
                 
-                <Label htmlFor="pitch">Write yours:</Label>
+                <Label htmlFor="pitch">Write Your 30-Second Pitch:</Label>
                 <Textarea 
                   id="pitch" 
                   rows={3} 
