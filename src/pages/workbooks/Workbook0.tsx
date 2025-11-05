@@ -709,6 +709,132 @@ Provide:
             </CollapsibleTrigger>
             
             <CollapsibleContent>
+              {/* White Space Declaration */}
+              <div className="mb-8 p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary rounded-lg">
+                <h3 className="text-xl font-bold mb-4 text-primary">Your White Space Declaration</h3>
+                
+                <p className="text-lg italic text-muted-foreground mb-6">
+                  "While everyone else fights over [what competitors chase], I'll own [your white space] by being the only one who [unique approach] for [specific audience] who value [what matters to them]."
+                </p>
+
+                <div className="space-y-4 pl-4 mb-6">
+                  <div>
+                    <Label htmlFor="competitors-chase" className="text-base">While everyone else fights over</Label>
+                    <Input 
+                      id="competitors-chase" 
+                      className="text-lg"
+                      placeholder="e.g., same day delivery"
+                      value={localData.competitorsChase}
+                      onChange={(e) => setLocalData(prev => ({ ...prev, competitorsChase: e.target.value }))}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="your-whitespace" className="text-base">I'll own [your white space]</Label>
+                    <Input 
+                      id="your-whitespace" 
+                      className="text-lg"
+                      placeholder="e.g., under 5-minute breakfast guarantee"
+                      value={localData.yourWhitespace}
+                      onChange={(e) => setLocalData(prev => ({ ...prev, yourWhitespace: e.target.value }))}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="unique-approach" className="text-base">by being the only one who [unique approach]</Label>
+                    <Input 
+                      id="unique-approach" 
+                      className="text-lg"
+                      placeholder="e.g., combines chef-made meals with dedicated pickup lane"
+                      value={data.solution}
+                      onChange={(e) => updateData('solution', e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="specific-audience" className="text-base">for [specific audience]</Label>
+                    <Input 
+                      id="specific-audience" 
+                      className="text-lg"
+                      placeholder="e.g., busy Phoenix families with kids"
+                      value={localData.specificAudience}
+                      onChange={(e) => setLocalData(prev => ({ ...prev, specificAudience: e.target.value }))}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="what-matters" className="text-base">who value [what matters to them]</Label>
+                    <Textarea 
+                      id="what-matters" 
+                      className="text-lg"
+                      rows={2}
+                      placeholder="e.g., spending morning time connecting instead of stressing"
+                      value={data.whiteSpaceDeclaration}
+                      onChange={(e) => updateData('whiteSpaceDeclaration', e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t mb-6">
+                  <h4 className="font-semibold mb-4">Validation Checklist</h4>
+                  <div className="space-y-3 mb-4">
+                    <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
+                      <input type="checkbox" className="w-5 h-5 mt-0.5" />
+                      <span className="text-sm">☐ Problem confirmed (customers nodded)</span>
+                    </label>
+                    <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
+                      <input type="checkbox" className="w-5 h-5 mt-0.5" />
+                      <span className="text-sm">☐ Gap found (competitors miss it)</span>
+                    </label>
+                    <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
+                      <input type="checkbox" className="w-5 h-5 mt-0.5" />
+                      <span className="text-sm">☐ Math works (3:1 minimum)</span>
+                    </label>
+                  </div>
+
+                  <div className="bg-accent/10 border border-accent/20 p-4 rounded">
+                    <p className="text-sm font-semibold mb-1">Success Metric:</p>
+                    <p className="text-sm">Get 2 out of 3 coffee shop testers to say "I need that!"</p>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-4">Examples Across Different Brand Types:</h4>
+                  <div className="space-y-3">
+                    <ExampleBox
+                      icon="🏪"
+                      title="Brick-and-Mortar Brand - FreshStart Café"
+                      content="I'm the only café that guarantees healthy breakfast in under 5 minutes for busy Phoenix families because of our chef-made meals and dedicated pickup lane."
+                    />
+                    <ExampleBox
+                      icon="🎯"
+                      title="Service Brand - Business Coach"
+                      content="I'm the only business coach who helps overwhelmed solopreneurs build systems in 90 days because I've scaled 5 businesses myself without burning out."
+                    />
+                    <ExampleBox
+                      icon="👤"
+                      title="Personal Brand - Marketing Executive"
+                      content="I'm the only marketing director you should hire who's helped B2B SaaS companies scale from $1M to $10M ARR using systematic growth frameworks because I've led 3 companies through this exact transition."
+                    />
+                  </div>
+                </div>
+
+                <AIPromptCard
+                  title="AI Prompt: White Space Validation"
+                  context="Use this to test your positioning"
+                  prompt={`My white space statement is:
+
+"I'm the only one who [your action] for [your customer] because [your advantage]."
+
+Is this:
+1. Specific enough that someone would say "that's for me"?
+2. Different enough that competitors can't easily copy it?
+3. Believable based on my advantage?
+
+Give me a score out of 10 and suggest one improvement.`}
+                />
+              </div>
+
               {/* 30-Second Pitch */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">Your 30-Second Pitch</h3>
@@ -861,148 +987,6 @@ Provide:
           </Card>
         </Collapsible>
 
-        {/* White Space Declaration */}
-        <Collapsible>
-        <Card className="p-8 mb-8 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary">
-          <CollapsibleTrigger className="w-full">
-            <h2 className="text-2xl font-bold mb-6 flex items-center justify-between hover:text-primary transition-colors">
-              Your White Space Declaration
-              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
-            </h2>
-          </CollapsibleTrigger>
-          
-          <CollapsibleContent>
-          <div className="space-y-6">
-            <p className="text-lg italic text-muted-foreground mb-6">
-              "While everyone else fights over [what competitors chase], I'll own [your white space] by being the only one who [unique approach] for [specific audience] who value [what matters to them]."
-            </p>
-
-            {/* THE DECLARATION */}
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-primary">Your White Space Declaration</h3>
-              
-              <div className="space-y-4 pl-4">
-                <div>
-                  <Label htmlFor="competitors-chase" className="text-base">While everyone else fights over</Label>
-                  <Input 
-                    id="competitors-chase" 
-                    className="text-lg"
-                    placeholder="e.g., same day delivery"
-                    value={localData.competitorsChase}
-                    onChange={(e) => setLocalData(prev => ({ ...prev, competitorsChase: e.target.value }))}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="your-whitespace" className="text-base">I'll own [your white space]</Label>
-                  <Input 
-                    id="your-whitespace" 
-                    className="text-lg"
-                    placeholder="e.g., under 5-minute breakfast guarantee"
-                    value={localData.yourWhitespace}
-                    onChange={(e) => setLocalData(prev => ({ ...prev, yourWhitespace: e.target.value }))}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="unique-approach" className="text-base">by being the only one who [unique approach]</Label>
-                  <Input 
-                    id="unique-approach" 
-                    className="text-lg"
-                    placeholder="e.g., combines chef-made meals with dedicated pickup lane"
-                    value={data.solution}
-                    onChange={(e) => updateData('solution', e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="specific-audience" className="text-base">for [specific audience]</Label>
-                  <Input 
-                    id="specific-audience" 
-                    className="text-lg"
-                    placeholder="e.g., busy Phoenix families with kids"
-                    value={localData.specificAudience}
-                    onChange={(e) => setLocalData(prev => ({ ...prev, specificAudience: e.target.value }))}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="what-matters" className="text-base">who value [what matters to them]</Label>
-                  <Textarea 
-                    id="what-matters" 
-                    className="text-lg"
-                    rows={2}
-                    placeholder="e.g., spending morning time connecting instead of stressing"
-                    value={data.whiteSpaceDeclaration}
-                    onChange={(e) => updateData('whiteSpaceDeclaration', e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* VALIDATION CHECKLIST */}
-            <div className="pt-6 border-t">
-              <h3 className="text-xl font-bold mb-4 text-primary">Validation Checklist</h3>
-              <div className="space-y-3 mb-4">
-                <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
-                  <input type="checkbox" className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">☐ Problem confirmed (customers nodded)</span>
-                </label>
-                <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
-                  <input type="checkbox" className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">☐ Gap found (competitors miss it)</span>
-                </label>
-                <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
-                  <input type="checkbox" className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">☐ Math works (3:1 minimum)</span>
-                </label>
-              </div>
-
-              <div className="bg-accent/10 border border-accent/20 p-4 rounded">
-                <p className="text-sm font-semibold mb-1">Success Metric:</p>
-                <p className="text-sm">Get 2 out of 3 coffee shop testers to say "I need that!"</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 pt-6 border-t">
-            <h3 className="font-semibold mb-4">Examples Across Different Brand Types:</h3>
-            <div className="space-y-3">
-              <ExampleBox
-                icon="🏪"
-                title="Brick-and-Mortar Brand - FreshStart Café"
-                content="I'm the only café that guarantees healthy breakfast in under 5 minutes for busy Phoenix families because of our chef-made meals and dedicated pickup lane."
-              />
-              <ExampleBox
-                icon="🎯"
-                title="Service Brand - Business Coach"
-                content="I'm the only business coach who helps overwhelmed solopreneurs build systems in 90 days because I've scaled 5 businesses myself without burning out."
-              />
-              <ExampleBox
-                icon="👤"
-                title="Personal Brand - Marketing Executive"
-                content="I'm the only marketing director you should hire who's helped B2B SaaS companies scale from $1M to $10M ARR using systematic growth frameworks because I've led 3 companies through this exact transition."
-              />
-            </div>
-          </div>
-
-          <AIPromptCard
-            title="AI Prompt: White Space Validation"
-            context="Use this to test your positioning"
-            prompt={`My white space statement is:
-
-"I'm the only one who [your action] for [your customer] because [your advantage]."
-
-Is this:
-1. Specific enough that someone would say "that's for me"?
-2. Different enough that competitors can't easily copy it?
-3. Believable based on my advantage?
-
-Give me a score out of 10 and suggest one improvement.`}
-          />
-          </CollapsibleContent>
-        </Card>
-        </Collapsible>
 
 
 
