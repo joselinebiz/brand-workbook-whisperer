@@ -652,6 +652,9 @@ Give me 3 specific angles I could take.`}
                   <input type="checkbox" className="w-5 h-5" />
                   <span className="font-semibold">✅ Reality Check: Could you serve a customer tomorrow?</span>
                 </label>
+                <p className="text-xs text-muted-foreground mt-2">
+                  If no, either try again with different customers, problems, gap or another angle until the answer is a yes.
+                </p>
               </div>
 
               <div className="mt-8 pt-6 border-t">
