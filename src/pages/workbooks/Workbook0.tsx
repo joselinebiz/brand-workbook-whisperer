@@ -547,6 +547,8 @@ Give me 3 specific angles I could take.`}
             </CollapsibleTrigger>
             
             <CollapsibleContent>
+              <p className="text-muted-foreground mb-6">Fill each box in 90 seconds. First thought = best thought.</p>
+
               {/* Quick Tip */}
               <div className="mb-4 p-4 bg-accent/10 border-l-4 border-accent rounded">
                 <p className="font-semibold mb-1">Quick Tip:</p>
@@ -562,8 +564,6 @@ Give me 3 specific angles I could take.`}
                   Most ideas fail because they don't generate profit fast enough. Sketch your business in minutes—if the math and model work at a glance, you're ready!
                 </p>
               </div>
-
-              <p className="text-muted-foreground mb-6">Fill each box in 90 seconds. First thought = best thought.</p>
               
               <div className="space-y-4">
                 {[
