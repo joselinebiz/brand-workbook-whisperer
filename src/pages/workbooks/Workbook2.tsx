@@ -139,7 +139,7 @@ export default function Workbook2() {
                   <span>Step 1 of 3: Business Model Canvas</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Map Your Business Reality</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Map Your Business Reality</p>
               </div>
             </CollapsibleTrigger>
 
@@ -387,7 +387,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <span>Step 2 of 3: Consolidated Market Intelligence Sprint</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Your Complete Market Reality</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Your Complete Market Reality</p>
               </div>
             </CollapsibleTrigger>
 
@@ -619,7 +619,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <span>Step 3 of 3: 4P Marketing Mix</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Strategic Marketing Execution</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Strategic Marketing Execution</p>
               </div>
             </CollapsibleTrigger>
 

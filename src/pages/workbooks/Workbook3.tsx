@@ -304,7 +304,7 @@ export default function Workbook3() {
                   <span>Step 1 of 4: Customer Journey Mapping</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Map Every Touchpoint</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Map Every Touchpoint</p>
               </div>
             </CollapsibleTrigger>
 
@@ -588,7 +588,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <span>Step 2 of 4: Automation & Systems</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Build Once, Scale Forever</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Build Once, Scale Forever</p>
               </div>
             </CollapsibleTrigger>
 
@@ -929,7 +929,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <span>Step 3 of 4: Retention & Loyalty Systems</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Turn Customers into Advocates</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Turn Customers into Advocates</p>
               </div>
             </CollapsibleTrigger>
 
@@ -1268,7 +1268,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <span>Step 4 of 4: Your 30-Day System Implementation</span>
                   <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2">Execute Your Plan</p>
+                <p className="text-sm text-muted-foreground mt-2 text-left">Execute Your Plan</p>
               </div>
             </CollapsibleTrigger>
 

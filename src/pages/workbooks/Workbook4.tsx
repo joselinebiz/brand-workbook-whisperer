@@ -220,7 +220,7 @@ Generated: ${new Date().toLocaleDateString()}
                 <span>Step 1 of 4: Your Performance Dashboard</span>
                 <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
               </h2>
-              <p className="text-sm text-muted-foreground mt-2">The numbers that actually matter</p>
+              <p className="text-sm text-muted-foreground mt-2 text-left">The numbers that actually matter</p>
             </div>
           </CollapsibleTrigger>
 
@@ -345,7 +345,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 <span>Step 2 of 4: Testing & Optimization Framework</span>
                 <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
               </h2>
-              <p className="text-sm text-muted-foreground mt-2">Scientific approach to improvement</p>
+              <p className="text-sm text-muted-foreground mt-2 text-left">Scientific approach to improvement</p>
             </div>
           </CollapsibleTrigger>
 
@@ -442,7 +442,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 <span>Step 3 of 4: 90-Day Growth Sprint Plan</span>
                 <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
               </h2>
-              <p className="text-sm text-muted-foreground mt-2">Your roadmap to 20% improvement</p>
+              <p className="text-sm text-muted-foreground mt-2 text-left">Your roadmap to 20% improvement</p>
             </div>
           </CollapsibleTrigger>
 
@@ -530,7 +530,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 <span>Step 4 of 4: Team Building & Delegation</span>
                 <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
               </h2>
-              <p className="text-sm text-muted-foreground mt-2">Scale yourself by building systems</p>
+              <p className="text-sm text-muted-foreground mt-2 text-left">Scale yourself by building systems</p>
             </div>
           </CollapsibleTrigger>
 
