@@ -788,7 +788,7 @@ Give me a score out of 10 and suggest one improvement.`}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">Your 30-Second Pitch</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Format: "I help [who] achieve [what] by [how] so they can [why it matters]."
+                  <span className="font-bold">Format: "I help [who] achieve [what] by [how] so they can [why it matters]."</span>
                 </p>
                 
                 <Label htmlFor="pitch">Write yours:</Label>
@@ -903,7 +903,7 @@ Give me a score out of 10 and suggest one improvement.`}
               <div className="mb-6">
                 <h3 className="text-xl font-bold mb-4">The Coffee Shop Test</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Explain to 3 strangers in 30 seconds. Record reactions:
+                  <span className="font-bold">Explain to 3 strangers in 30 seconds. Record reactions:</span>
                 </p>
                 
                 <div className="space-y-3 mb-4">
@@ -915,7 +915,8 @@ Give me a score out of 10 and suggest one improvement.`}
                   ))}
                 </div>
 
-                <div className="bg-accent/10 border border-accent/20 p-4 rounded">
+                <div className="bg-accent/10 border border-accent/20 p-4 rounded mb-4">
+                  <p className="font-semibold mb-2">Response Cues:</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-accent">✓</span>
@@ -930,6 +931,11 @@ Give me a score out of 10 and suggest one improvement.`}
                       <span>Confused = Capture questions</span>
                     </li>
                   </ul>
+                </div>
+
+                <div className="bg-background p-4 rounded border">
+                  <p className="font-semibold mb-1">Success Metric:</p>
+                  <p className="text-sm">Get at least 2 out of 3 coffee shop testers to say: "I need that!"</p>
                 </div>
               </div>
             </CollapsibleContent>
