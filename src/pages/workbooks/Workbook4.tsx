@@ -219,7 +219,7 @@ Generated: ${new Date().toLocaleDateString()}
               <div className="text-left">
                 <div className="flex items-baseline gap-3 mb-2">
                   <span className="text-4xl font-bold text-primary">1</span>
-                  <h2 className="text-2xl font-bold">Your Performance Dashboard</h2>
+                  <h2 className="text-2xl font-bold">Step 1 of 4: Your Performance Dashboard</h2>
                 </div>
                 <p className="text-muted-foreground">The numbers that actually matter</p>
               </div>
@@ -347,7 +347,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               <div className="text-left">
                 <div className="flex items-baseline gap-3 mb-2">
                   <span className="text-4xl font-bold text-primary">2</span>
-                  <h2 className="text-2xl font-bold">Testing & Optimization Framework</h2>
+                  <h2 className="text-2xl font-bold">Step 2 of 4: Testing & Optimization Framework</h2>
                 </div>
                 <p className="text-muted-foreground">Scientific approach to improvement</p>
               </div>
@@ -447,7 +447,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               <div className="text-left">
                 <div className="flex items-baseline gap-3 mb-2">
                   <span className="text-4xl font-bold text-primary">3</span>
-                  <h2 className="text-2xl font-bold">90-Day Growth Sprint Plan</h2>
+                  <h2 className="text-2xl font-bold">Step 3 of 4: 90-Day Growth Sprint Plan</h2>
                 </div>
                 <p className="text-muted-foreground">Your roadmap to 20% improvement</p>
               </div>
@@ -538,7 +538,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               <div className="text-left">
                 <div className="flex items-baseline gap-3 mb-2">
                   <span className="text-4xl font-bold text-primary">4</span>
-                  <h2 className="text-2xl font-bold">Team Building & Delegation</h2>
+                  <h2 className="text-2xl font-bold">Step 4 of 4: Team Building & Delegation</h2>
                 </div>
                 <p className="text-muted-foreground">Scale yourself by building systems</p>
               </div>
