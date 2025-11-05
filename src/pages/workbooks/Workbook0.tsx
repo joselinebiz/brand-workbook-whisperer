@@ -721,7 +721,7 @@ Provide:
               <div className="mb-8 p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary rounded-lg">
                 <h3 className="text-xl font-bold mb-4 text-primary">Craft Your White Space Declaration</h3>
                 
-                <p className="text-sm italic text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6">
                   "While everyone else fights over [what competitors chase], I'll own [your white space] by being the only one who [unique approach] for [specific audience] who value [what matters to them]."
                 </p>
 
