@@ -250,7 +250,7 @@ export default function Workbook0() {
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                Part 1: The 10 Minute Market Scan
+                Part 1: The 15-Minute Market Scan
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -309,7 +309,7 @@ export default function Workbook0() {
               </div>
 
               <div className="bg-gold/10 border border-gold/30 p-3 rounded">
-                <p className="text-sm font-medium text-gold">💡 Stuck? Stop. Call 5 potential customers today.</p>
+                <p className="text-sm font-medium text-gold">💡 Stuck? Stop. Call 3 to 5 potential customers today.</p>
               </div>
 
               <AIPromptCard
@@ -326,6 +326,16 @@ Analyze this and tell me:
 
 Format as: Problem / Cost / Current Solution`}
               />
+
+              <div className="mt-4">
+                <Label htmlFor="customer-research-response">AI Response</Label>
+                <Textarea
+                  id="customer-research-response"
+                  rows={6}
+                  placeholder="Add your AI Response"
+                  className="mt-2"
+                />
+              </div>
             </div>
           </div>
 
@@ -339,9 +349,9 @@ Format as: Problem / Cost / Current Solution`}
             </h3>
 
             <div className="space-y-4 pl-10">
-              <p className="text-sm text-muted-foreground mb-4">
+              <Label className="text-sm mb-4 block">
                 Search: "[your solution] + [your city]" - List 3
-              </p>
+              </Label>
 
               {[1, 2, 3].map((i) => (
                 <Card key={i} className="p-4 bg-muted/30">
@@ -443,7 +453,7 @@ Give me 3 specific angles I could take.`}
           </div>
 
           {/* Your Opportunity */}
-          <div>
+          <div className="mb-8">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
               <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
                 3
@@ -462,6 +472,25 @@ Give me 3 specific angles I could take.`}
                   </label>
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* Your White Space */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm">
+                4
+              </span>
+              Your White Space <span className="text-sm text-muted-foreground font-normal">(5 min)</span>
+            </h3>
+
+            <div className="space-y-4 pl-10">
+              <Label htmlFor="white-space">I'm the only one who _______ for _______ because _______</Label>
+              <Textarea 
+                id="white-space" 
+                rows={3}
+                placeholder="Complete this statement..."
+              />
             </div>
           </div>
             </CollapsibleContent>
