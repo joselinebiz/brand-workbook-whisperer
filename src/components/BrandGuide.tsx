@@ -86,10 +86,10 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
           <div className="mb-6">
             <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Foundation</h2>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Purpose</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm space-y-1">
                   <p><strong>Mission:</strong> {data?.mission || "_____"}</p>
                   <p><strong>Vision:</strong> {data?.vision5Year || "_____"}</p>
                   <p><strong>BHAG:</strong> {data?.bhag10Year || "_____"}</p>
@@ -97,33 +97,27 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
               </div>
 
               <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Promise & Audience</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm space-y-1">
+                  <p><strong>Promise:</strong> {data?.brandPromise || "_____"}</p>
+                  <p><strong>Serve:</strong> {data?.targetAudience?.demographics || "_____"}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Values</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                   {data?.coreValues && data.coreValues.length > 0 ? (
-                    <div className="text-sm space-y-1">
+                    <div className="text-xs space-y-1">
                       {data.coreValues.map((v: any, i: number) => (
                         <p key={i}>{v.value} → {v.showsUpAs}</p>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-sm">3-5 core values _____</p>
+                    <p className="text-xs">3-5 core values _____</p>
                   )}
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Who We Serve</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">
-                    {data?.targetAudience?.demographics || "_____"}
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Promise</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.brandPromise || "_____"}</p>
                 </div>
               </div>
 
@@ -131,159 +125,117 @@ export const BrandGuide = ({ data }: BrandGuideProps) => {
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Pillars</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
                   {data?.brandPillars && data.brandPillars.length > 0 ? (
-                    <div className="text-sm space-y-1">
+                    <div className="text-xs space-y-1">
                       {data.brandPillars.map((p: any, i: number) => (
-                        <p key={i}>{p.pillar}: {p.showsUp} | Proof: {p.proof}</p>
+                        <p key={i}>{p.pillar}: {p.showsUp}</p>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-sm">3-5 brand pillars _____</p>
+                    <p className="text-xs">3-5 brand pillars _____</p>
                   )}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* VISUAL */}
+          {/* VISUAL & VERBAL */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Visual</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Visual & Verbal Identity</h2>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Colors</p>
-                <div className="flex gap-3 items-center p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <div className="flex items-center gap-2">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Colors</p>
+                <div className="flex gap-2 items-center p-3 bg-muted/30 rounded border-l-4 border-accent">
+                  <div className="flex items-center gap-1">
                     <div 
-                      className="w-12 h-12 rounded border-2 border-border"
+                      className="w-10 h-10 rounded border-2 border-border"
                       style={{ backgroundColor: data?.primaryColor || '#000000' }}
                     />
-                    <span className="text-xs font-mono">{data?.primaryColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.primaryColor || "#___"}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
                     <div 
-                      className="w-12 h-12 rounded border-2 border-border"
+                      className="w-10 h-10 rounded border-2 border-border"
                       style={{ backgroundColor: data?.secondaryColor || '#666666' }}
                     />
-                    <span className="text-xs font-mono">{data?.secondaryColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.secondaryColor || "#___"}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
                     <div 
-                      className="w-12 h-12 rounded border-2 border-border"
+                      className="w-10 h-10 rounded border-2 border-border"
                       style={{ backgroundColor: data?.accentColor || '#CCCCCC' }}
                     />
-                    <span className="text-xs font-mono">{data?.accentColor || "#_____"}</span>
+                    <span className="text-xs font-mono">{data?.accentColor || "#___"}</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Fonts</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">
-                    {data?.primaryFont || "_____"}, {data?.secondaryFont || "_____"}, {data?.accentFont || "_____"}
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Photography Style</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.photographyStyle || "_____"}</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Fonts & Photography</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-xs space-y-1">
+                  <p><strong>Fonts:</strong> {data?.primaryFont || "_____"}, {data?.secondaryFont || "_____"}</p>
+                  <p><strong>Style:</strong> {data?.photographyStyle || "_____"}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* VERBAL */}
+          {/* MESSAGING */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Verbal</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Messaging</h2>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Voice</p>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                    <p className="text-xs font-semibold mb-1">We Are:</p>
-                    <p className="text-sm">{data?.brandVoiceAre || "_____"}</p>
-                  </div>
-                  <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                    <p className="text-xs font-semibold mb-1">We Are Not:</p>
-                    <p className="text-sm">{data?.brandVoiceNot || "_____"}</p>
-                  </div>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-xs space-y-1">
+                  <p><strong>We Are:</strong> {data?.brandVoiceAre || "_____"}</p>
+                  <p><strong>We Are Not:</strong> {data?.brandVoiceNot || "_____"}</p>
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Tagline</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">"{data?.tagline || "_____"}"</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Tagline & One-liner</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-xs space-y-1">
+                  <p><strong>Tagline:</strong> "{data?.tagline || "_____"}"</p>
+                  <p><strong>One-liner:</strong> "{data?.oneLiner || "_____"}"</p>
                 </div>
               </div>
+            </div>
 
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">One-liner</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">"{data?.oneLiner || "_____"}"</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Story</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.brandStory || "[150-250 words] _____"}</p>
-                </div>
+            <div>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Story</p>
+              <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+                <p className="text-xs">{data?.brandStory || "[150-250 words] _____"}</p>
               </div>
             </div>
           </div>
 
-          {/* POSITIONING & EXPERIENCE */}
+          {/* POSITIONING */}
           <div className="mb-6">
-            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Positioning & Experience</h2>
+            <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Positioning</h2>
             
-            <div className="space-y-3">
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Brand Position</p>
-                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
-                  <p className="text-sm">{data?.positioningStatement || "_____"}</p>
-                </div>
-              </div>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Positioning Statement</p>
+            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent mb-3">
+              <p className="text-xs">{data?.positioningStatement || "_____"}</p>
+            </div>
 
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Journey Map</p>
-                <div className="grid grid-cols-1 gap-2 text-xs">
-                  {data?.journeyStages && data.journeyStages.length > 0 ? (
-                    data.journeyStages.map((stage: any, i: number) => (
-                      <div key={i} className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                        <span className="font-semibold">{stage.stage}:</span>
-                        <span>{stage.action}</span>
-                      </div>
-                    ))
-                  ) : (
-                    <>
-                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                        <span className="font-semibold">Awareness:</span>
-                        <span>Clear value _____</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                        <span className="font-semibold">Consideration:</span>
-                        <span>Social proof _____</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                        <span className="font-semibold">Purchase/Hire:</span>
-                        <span>Easy process _____</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                        <span className="font-semibold">Delivery:</span>
-                        <span>Exceed promise _____</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-muted/30 rounded">
-                        <span className="font-semibold">Post-Purchase:</span>
-                        <span>Stay connected _____</span>
-                      </div>
-                    </>
-                  )}
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Customer Journey</p>
+            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent">
+              {data?.journeyStages && data.journeyStages.length > 0 ? (
+                <div className="text-xs space-y-1">
+                  {data.journeyStages.map((stage: any, i: number) => (
+                    <p key={i}><strong>{stage.stage}:</strong> {stage.action}</p>
+                  ))}
                 </div>
-              </div>
+              ) : (
+                <div className="text-xs space-y-1">
+                  <p><strong>Awareness:</strong> Clear value</p>
+                  <p><strong>Consideration:</strong> Social proof</p>
+                  <p><strong>Purchase:</strong> Easy process</p>
+                  <p><strong>Delivery:</strong> Exceed promise</p>
+                  <p><strong>Post-Purchase:</strong> Stay connected</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
