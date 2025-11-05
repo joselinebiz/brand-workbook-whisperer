@@ -128,20 +128,20 @@ export default function Workbook1() {
 
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
-          <h2 className="text-2xl font-bold mb-4">Who This Is For</h2>
-          <p className="text-muted-foreground mb-6 leading-relaxed">
+          <h2 className="text-2xl font-bold mb-6">Who This Is For</h2>
+          <p className="text-muted-foreground mb-8 leading-relaxed">
             New entrepreneurs, stuck business owners, and those looking to build or enhance their personal brand need clarity on who they are, what they stand for, and how to show up in the market consistently.
           </p>
 
-          <h3 className="text-xl font-semibold mb-3">✅ Prerequisites</h3>
+          <h3 className="text-xl font-bold mb-4">✅ Prerequisites</h3>
           <ul className="space-y-2 text-muted-foreground mb-6">
             <li>• A business idea, service offering, or career positioning goal</li>
             <li>• 2-4 hours of focused time</li>
             <li>• Completed Workbook 0 (or validated your market opportunity)</li>
           </ul>
 
-          <h3 className="text-xl font-semibold mb-3">What You'll Walk Away With</h3>
-          <ul className="space-y-2 text-muted-foreground mb-6">
+          <h3 className="text-xl font-bold mb-4">What You'll Walk Away With</h3>
+          <ul className="space-y-2 text-muted-foreground mb-8">
             <li>• Clear brand foundation that guides every decision</li>
             <li>• Visual and verbal identity system</li>
             <li>• Customer experience blueprint</li>
@@ -172,7 +172,7 @@ export default function Workbook1() {
           </div>
 
           <div className="border-t pt-6">
-            <h3 className="text-xl font-semibold mb-3">Why This Framework Works</h3>
+            <h3 className="text-xl font-bold mb-4">Why This Framework Works</h3>
             <p className="text-muted-foreground mb-4">This isn't theory from a textbook. This framework is built on:</p>
             <ul className="space-y-2 text-muted-foreground">
               <li>• <strong>MBA-Level Strategy:</strong> Proven frameworks from top-tier business education, adapted for real-world application</li>
@@ -207,10 +207,10 @@ export default function Workbook1() {
               {/* 1.1 Brand Purpose & Mission */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">1.1 Brand Purpose & Mission</h3>
-                <p className="text-muted-foreground mb-4">Why you exist beyond profit</p>
+                <p className="text-muted-foreground mb-6">Why you exist beyond profit</p>
 
                 <div className="bg-muted/30 p-4 rounded-lg mb-6">
-                  <h4 className="font-semibold mb-3">Quick Definitions:</h4>
+                  <h4 className="font-bold mb-3">Quick Definitions:</h4>
                   <div className="space-y-2 text-sm">
                     <p><strong>Mission</strong> = What you do daily</p>
                     <p><strong>Vision</strong> = Where you're headed in 5 years</p>
@@ -267,7 +267,7 @@ export default function Workbook1() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t">
-                  <h4 className="font-semibold mb-4">Examples Across Three Brand Types:</h4>
+                  <h4 className="font-bold mb-4">Examples Across Three Brand Types:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -301,7 +301,7 @@ export default function Workbook1() {
               {/* 1.2 Brand Values & Promise */}
               <div className="mb-8 pt-8 border-t">
                 <h3 className="text-xl font-bold mb-4">1.2 Brand Values & Promise</h3>
-                <p className="text-muted-foreground mb-4">What you stand for and guarantee</p>
+                <p className="text-muted-foreground mb-6">What you stand for and guarantee</p>
 
                 <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-6">
                   <p className="text-sm">
@@ -310,7 +310,7 @@ export default function Workbook1() {
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3">Choose 3-5 Core Values</h4>
+                  <h4 className="font-bold mb-3">Choose 3-5 Core Values</h4>
                   <div className="grid md:grid-cols-3 gap-2 mb-4">
                     {["Authenticity", "Excellence", "Innovation", "Integrity", "Simplicity", "Community", "Sustainability", "Empowerment", "Fun"].map((value) => (
                       <label key={value} className="flex items-center gap-2 p-2 hover:bg-muted/50 rounded cursor-pointer">
@@ -370,7 +370,7 @@ export default function Workbook1() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t">
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="font-bold mb-4">Examples:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -423,7 +423,7 @@ Well articulated mission, values, promise and differentiation that ensures I own
               {/* 1.3 Brand Pillars */}
               <div className="pt-8 border-t">
                 <h3 className="text-xl font-bold mb-4">1.3 Brand Pillars</h3>
-                <p className="text-muted-foreground mb-4">Your competitive advantages</p>
+                <p className="text-muted-foreground mb-6">Your competitive advantages</p>
 
                 <div className="bg-muted/30 p-4 rounded-lg mb-6">
                   <p className="text-sm">
@@ -484,7 +484,7 @@ Well articulated mission, values, promise and differentiation that ensures I own
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="font-bold mb-4">Examples:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -534,7 +534,7 @@ Well articulated mission, values, promise and differentiation that ensures I own
 
               {/* Section 1 Checkpoint */}
               <div className="mt-8 pt-6 border-t bg-accent/10 border-l-4 border-accent p-4 rounded">
-                <p className="font-semibold mb-3">Section 1 Checkpoint ✓</p>
+                <p className="font-bold mb-3">Section 1 Checkpoint ✓</p>
                 <div className="space-y-2 text-sm">
                   <label className="flex items-center gap-2">
                     <input type="checkbox" className="w-4 h-4" />
@@ -578,10 +578,10 @@ Well articulated mission, values, promise and differentiation that ensures I own
               {/* 2.1 Visual Identity System */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">2.1 Visual Identity System</h3>
-                <p className="text-muted-foreground mb-4">Your brand's face</p>
+                <p className="text-muted-foreground mb-6">Your brand's face</p>
 
                 <div className="bg-muted/30 p-4 rounded-lg mb-6">
-                  <h4 className="font-semibold mb-3">Color Psychology Quick Guide:</h4>
+                  <h4 className="font-bold mb-3">Color Psychology Quick Guide:</h4>
                   <div className="grid md:grid-cols-2 gap-2 text-sm">
                     <p><strong>Red</strong> = Urgency, passion</p>
                     <p><strong>Blue</strong> = Trust, stability</p>
@@ -594,7 +594,7 @@ Well articulated mission, values, promise and differentiation that ensures I own
                 <div className="space-y-6">
                   {/* Interactive Color Pickers */}
                   <Card className="p-6 bg-muted/20">
-                    <h4 className="font-semibold mb-4">Your Visual Identity</h4>
+                    <h4 className="font-bold mb-4">Your Visual Identity</h4>
                     <div className="space-y-4">
                       {([
                         { id: "primary", label: "Primary Color", desc: "Main recognition", field: "primaryColor" },
@@ -699,7 +699,7 @@ SUGGEST:
               {/* 2.2 Verbal Identity & Voice */}
               <div className="mb-8 pt-8 border-t">
                 <h3 className="text-xl font-bold mb-4">2.2 Verbal Identity & Voice</h3>
-                <p className="text-muted-foreground mb-4">How you sound</p>
+                <p className="text-muted-foreground mb-6">How you sound</p>
 
                 <div className="bg-muted/30 p-4 rounded-lg mb-6">
                   <p className="text-sm mb-3">
@@ -787,7 +787,7 @@ SUGGEST:
               {/* 2.3 Brand Story */}
               <div className="pt-8 border-t">
                 <h3 className="text-xl font-bold mb-4">2.3 Brand Story</h3>
-                <p className="text-muted-foreground mb-4">Your emotional connection</p>
+                <p className="text-muted-foreground mb-6">Your emotional connection</p>
 
                 <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-6">
                   <p className="text-sm">
@@ -796,7 +796,7 @@ SUGGEST:
                 </div>
 
                 <div className="bg-muted/30 p-4 rounded-lg mb-6">
-                  <h4 className="font-semibold mb-3">Story Structure (150 words max)</h4>
+                  <h4 className="font-bold mb-3">Story Structure (150 words max)</h4>
                   <ul className="space-y-2 text-sm">
                     <li><strong>The Problem:</strong> "I saw [problem] and knew there had to be a better way..."</li>
                     <li><strong>The Solution:</strong> "So I created/developed [solution] that [unique approach]..."</li>
@@ -817,7 +817,7 @@ SUGGEST:
                 </div>
 
                 <div className="mt-6">
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="font-bold mb-4">Examples:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -859,7 +859,7 @@ CREATE:
 
               {/* Section 2 Checkpoint */}
               <div className="mt-8 pt-6 border-t bg-accent/10 border-l-4 border-accent p-4 rounded">
-                <p className="font-semibold mb-3">Section 2 Checkpoint ✓</p>
+                <p className="font-bold mb-3">Section 2 Checkpoint ✓</p>
                 <div className="space-y-2 text-sm">
                   <label className="flex items-center gap-2">
                     <input type="checkbox" className="w-4 h-4" />
@@ -903,10 +903,10 @@ CREATE:
               {/* 3.1 Competitive Positioning */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">3.1 Competitive Positioning</h3>
-                <p className="text-muted-foreground mb-4">Your unique space</p>
+                <p className="text-muted-foreground mb-6">Your unique space</p>
 
                 <div className="space-y-4 mb-6">
-                  <h4 className="font-semibold">Competitor Analysis</h4>
+                  <h4 className="font-bold">Competitor Analysis</h4>
                   <p className="text-xs text-muted-foreground mb-3">Data automatically pulled from Workbook 0</p>
                   {(() => {
                     // Get competitor data from localStorage
@@ -958,7 +958,7 @@ CREATE:
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3">Target Audience Snapshot</h4>
+                  <h4 className="font-bold mb-3">Target Audience Snapshot</h4>
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor="demographics">Demographics</Label>
@@ -991,7 +991,7 @@ CREATE:
                 </div>
 
                 <div className="mt-6">
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="font-bold mb-4">Examples:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -1038,7 +1038,7 @@ IDENTIFY:
               {/* 3.2 Customer Experience Blueprint */}
               <div className="pt-8 border-t">
                 <h3 className="text-xl font-bold mb-4">3.2 Customer Experience Blueprint</h3>
-                <p className="text-muted-foreground mb-4">Designing delight</p>
+                <p className="text-muted-foreground mb-6">Designing delight</p>
 
                 <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-6">
                   <p className="text-sm">
@@ -1047,7 +1047,7 @@ IDENTIFY:
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-4">Journey Mapping</h4>
+                  <h4 className="font-bold mb-4">Journey Mapping</h4>
                   <div className="space-y-4">
                     {[
                       { stage: "Awareness", touchpoint: "First contact", feeling: "Curious", action: "Clear value", metric: "Views" },
@@ -1099,7 +1099,7 @@ IDENTIFY:
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3">Design Your Peak Moment</h4>
+                  <h4 className="font-bold mb-3">Design Your Peak Moment</h4>
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor="peak-moment">What's the ONE moment customers remember most?</Label>
@@ -1113,7 +1113,7 @@ IDENTIFY:
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-4">Create One SOP (Standard Operating Procedure)</h4>
+                  <h4 className="font-bold mb-4">Create One SOP (Standard Operating Procedure)</h4>
                   <Card className="p-4 bg-muted/30">
                     <div className="space-y-4">
                       <div>
@@ -1137,7 +1137,7 @@ IDENTIFY:
                 </div>
 
                 <div className="mt-6">
-                  <h4 className="font-semibold mb-4">Examples:</h4>
+                  <h4 className="font-bold mb-4">Examples:</h4>
                   <div className="space-y-3">
                     <ExampleBox
                       icon="🏪"
@@ -1169,7 +1169,7 @@ IDENTIFY:
 
               {/* Section 3 Checkpoint */}
               <div className="mt-8 pt-6 border-t bg-accent/10 border-l-4 border-accent p-4 rounded">
-                <p className="font-semibold mb-3">Section 3 Checkpoint ✓</p>
+                <p className="font-bold mb-3">Section 3 Checkpoint ✓</p>
                 <div className="space-y-2 text-sm">
                   <label className="flex items-center gap-2">
                     <input type="checkbox" className="w-4 h-4" />
@@ -1220,7 +1220,7 @@ IDENTIFY:
                     { days: "Day 7", title: "Consistency Check", items: ["Audit all touchpoints", "Fix misalignments", "Celebrate!"] }
                   ].map((phase, idx) => (
                     <Card key={idx} className="p-4 bg-muted/30">
-                      <p className="font-semibold mb-2">{phase.days}: {phase.title}</p>
+                      <p className="font-bold mb-2">{phase.days}: {phase.title}</p>
                       <ul className="space-y-1 text-sm">
                         {phase.items.map((item, i) => (
                           <li key={i} className="flex items-center gap-2">
@@ -1295,7 +1295,7 @@ DELIVER:
               { problem: "Can't afford design", solution: "Consistency beats fancy. Use Canva free." }
             ].map((item, idx) => (
               <Card key={idx} className="p-4 bg-muted/30">
-                <p className="font-semibold mb-2">"{item.problem}"</p>
+                <p className="font-bold mb-2">"{item.problem}"</p>
                 <p className="text-sm text-muted-foreground">→ {item.solution}</p>
               </Card>
             ))}
@@ -1329,7 +1329,7 @@ DELIVER:
           </div>
 
           <div className="bg-primary/10 border-l-4 border-primary p-4 rounded">
-            <p className="font-semibold mb-3">You're ready for Workbook 2: Marketing Strategy Execution when you have:</p>
+            <p className="font-bold mb-3">You're ready for Workbook 2: Marketing Strategy Execution when you have:</p>
             <div className="space-y-2">
               {[
                 "Clear brand foundation that energizes you",
@@ -1433,7 +1433,7 @@ DELIVER:
                 </p>
                 
                 <div className="bg-background/50 p-4 rounded-lg">
-                  <p className="font-semibold mb-2">What You've Accomplished:</p>
+                  <p className="font-bold mb-2">What You've Accomplished:</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -1459,7 +1459,7 @@ DELIVER:
                 </p>
 
                 <div className="bg-background/50 p-4 rounded-lg">
-                  <p className="font-semibold mb-3">The Complete BLKBLD Journey Ahead:</p>
+                  <p className="font-bold mb-3">The Complete BLKBLD Journey Ahead:</p>
                   <ul className="space-y-2 text-sm">
                     <li>✅ <strong>WORKBOOK 0:</strong> Market opportunity validated</li>
                     <li>✅ <strong>WORKBOOK 1:</strong> Brand foundation built</li>
@@ -1469,7 +1469,7 @@ DELIVER:
                   </ul>
                 </div>
 
-                <p className="text-lg font-semibold mt-6 mb-2">Ready for Workbook 2: Marketing Strategy Execution!</p>
+                <p className="text-lg font-bold mt-6 mb-2">Ready for Workbook 2: Marketing Strategy Execution!</p>
 
                 <p className="text-sm text-muted-foreground italic">
                   This workbook works for brick-and-mortar brands, service brands, and personal brands. Same strategic foundation, different applications. You now have the clarity to build, market, and scale with confidence.
