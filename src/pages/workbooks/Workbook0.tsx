@@ -365,9 +365,9 @@ Format as: Problem / Cost / Current Solution`}
             </h3>
 
             <div className="space-y-4 pl-10">
-              <Label className="text-sm mb-4 block">
+              <p className="text-muted-foreground mb-6">
                 Search: "[your solution] + [your city]" - List 3
-              </Label>
+              </p>
 
               {[1, 2, 3].map((i) => (
                 <Card key={i} className="p-4 bg-muted/30">
@@ -493,7 +493,7 @@ Give me 3 specific angles I could take.`}
             </h3>
 
             <div className="space-y-4 pl-10">
-              <p className="text-sm text-muted-foreground mb-3">Check boxes you can own:</p>
+              <p className="text-muted-foreground mb-6">Check boxes you can own:</p>
               
               <div className="grid md:grid-cols-2 gap-2">
                 {["Faster", "Cheaper", "Premium", "Easier", "More personal", "More technical", "Different audience", "Different problem"].map((opt) => (
@@ -797,8 +797,8 @@ Cite your sources for each claim in your previous response. Flag any assumptions
               {/* 30-Second Pitch */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">Your 30-Second Pitch</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  <span className="font-bold">Format: "I help [who] achieve [what] by [how] so they can [why it matters]."</span>
+                <p className="text-muted-foreground mb-6">
+                  Format: "I help [who] achieve [what] by [how] so they can [why it matters]."
                 </p>
                 
                 <Label htmlFor="pitch">Write yours:</Label>
@@ -833,7 +833,7 @@ Cite your sources for each claim in your previous response. Flag any assumptions
               {/* The Gut Check */}
               <div className="mb-8 p-6 bg-muted/30 rounded-lg">
                 <h3 className="text-xl font-bold mb-4">The Gut Check</h3>
-                <p className="text-sm text-muted-foreground mb-4">Rate 1-10:</p>
+                <p className="text-muted-foreground mb-6">Rate 1-10:</p>
                 
                 <div className="space-y-3 mb-4">
                   <div className="flex items-center gap-3">
@@ -912,8 +912,8 @@ Cite your sources for each claim in your previous response. Flag any assumptions
               {/* The Coffee Shop Test */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">The Coffee Shop Test</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  <span className="font-bold">Explain to 3 strangers in 30 seconds. Record reactions:</span>
+                <p className="text-muted-foreground mb-6">
+                  Explain to 3 strangers in 30 seconds. Record reactions:
                 </p>
                 
                 <div className="space-y-3 mb-4">
