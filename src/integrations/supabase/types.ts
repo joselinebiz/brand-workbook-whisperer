@@ -14,6 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
+      email_logs: {
+        Row: {
+          created_at: string
+          email: string
+          email_type: string
+          id: string
+          metadata: Json | null
+          sent_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          email_type: string
+          id?: string
+          metadata?: Json | null
+          sent_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          email_type?: string
+          id?: string
+          metadata?: Json | null
+          sent_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      email_schedules: {
+        Row: {
+          created_at: string
+          email: string
+          email_type: string
+          error_message: string | null
+          id: string
+          metadata: Json | null
+          scheduled_for: string
+          sent_at: string | null
+          status: string
+          template_name: string
+          updated_at: string
+          user_id: string
+          webinar_event_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          email_type: string
+          error_message?: string | null
+          id?: string
+          metadata?: Json | null
+          scheduled_for: string
+          sent_at?: string | null
+          status?: string
+          template_name: string
+          updated_at?: string
+          user_id: string
+          webinar_event_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          email_type?: string
+          error_message?: string | null
+          id?: string
+          metadata?: Json | null
+          scheduled_for?: string
+          sent_at?: string | null
+          status?: string
+          template_name?: string
+          updated_at?: string
+          user_id?: string
+          webinar_event_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_schedules_webinar_event_id_fkey"
+            columns: ["webinar_event_id"]
+            isOneToOne: false
+            referencedRelation: "webinar_events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           converted: boolean
@@ -124,6 +210,95 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      webinar_events: {
+        Row: {
+          bundle_price_cents: number
+          created_at: string
+          discount_window_hours: number
+          id: string
+          is_active: boolean
+          meeting_id: string
+          passcode: string
+          post_webinar_trigger_offset_minutes: number
+          single_workbook_price_cents: number
+          timezone: string
+          title: string
+          updated_at: string
+          webinar_date: string
+          zoom_link: string
+        }
+        Insert: {
+          bundle_price_cents?: number
+          created_at?: string
+          discount_window_hours?: number
+          id?: string
+          is_active?: boolean
+          meeting_id: string
+          passcode: string
+          post_webinar_trigger_offset_minutes?: number
+          single_workbook_price_cents?: number
+          timezone?: string
+          title: string
+          updated_at?: string
+          webinar_date: string
+          zoom_link: string
+        }
+        Update: {
+          bundle_price_cents?: number
+          created_at?: string
+          discount_window_hours?: number
+          id?: string
+          is_active?: boolean
+          meeting_id?: string
+          passcode?: string
+          post_webinar_trigger_offset_minutes?: number
+          single_workbook_price_cents?: number
+          timezone?: string
+          title?: string
+          updated_at?: string
+          webinar_date?: string
+          zoom_link?: string
+        }
+        Relationships: []
+      }
+      webinar_registrations: {
+        Row: {
+          attended: boolean | null
+          created_at: string
+          email: string
+          id: string
+          registered_at: string
+          user_id: string
+          webinar_event_id: string
+        }
+        Insert: {
+          attended?: boolean | null
+          created_at?: string
+          email: string
+          id?: string
+          registered_at?: string
+          user_id: string
+          webinar_event_id: string
+        }
+        Update: {
+          attended?: boolean | null
+          created_at?: string
+          email?: string
+          id?: string
+          registered_at?: string
+          user_id?: string
+          webinar_event_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "webinar_registrations_webinar_event_id_fkey"
+            columns: ["webinar_event_id"]
+            isOneToOne: false
+            referencedRelation: "webinar_events"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {

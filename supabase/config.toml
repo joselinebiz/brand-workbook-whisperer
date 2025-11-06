@@ -1,1 +1,13 @@
 project_id = "ckuxiaftsbihfmyykbgy"
+
+[functions.schedule-webinar-emails]
+verify_jwt = false
+
+[functions.trigger-post-webinar-sequence]
+verify_jwt = false
+
+[functions.process-email-queue]
+verify_jwt = false
+
+[functions.generate-calendar]
+verify_jwt = false
