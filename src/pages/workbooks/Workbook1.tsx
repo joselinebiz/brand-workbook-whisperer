@@ -81,7 +81,7 @@ export default function Workbook1() {
     
     const saturation = max === 0 ? 0 : delta / max;
     
-    if (hue >= 0 && hue < 20) return "Power, Strength, Passion";
+    if (hue >= 0 && hue < 20) return "Power, Strength, Passion, Stimulates Appetite";
     if (hue >= 20 && hue < 45) return "Courage, Originality, Success";
     if (hue >= 45 && hue < 70) return "Happiness, Originality, Energy";
     if (hue >= 70 && hue < 160) return "Money, Growth, Freshness, Environmental-Friendliness";
