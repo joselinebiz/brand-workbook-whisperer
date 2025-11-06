@@ -101,6 +101,21 @@ serve(async (req) => {
       console.error("Error sending welcome email:", emailError);
     }
 
+    // Schedule webinar reminder emails
+    try {
+      await supabaseClient.functions.invoke('schedule-webinar-emails', {
+        body: { 
+          userId: existingUser.id,
+          email: customerEmail,
+          productType: 'workbook_0' // Webinar purchase acts like workbook_0
+        }
+      });
+      console.log("Webinar reminder emails scheduled for user:", existingUser.id);
+    } catch (webinarEmailError) {
+      console.error("Error scheduling webinar emails:", webinarEmailError);
+      // Don't fail the verification if email scheduling fails
+    }
+
     return new Response(
       JSON.stringify({ 
         success: true, 

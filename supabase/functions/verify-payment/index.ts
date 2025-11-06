@@ -141,6 +141,23 @@ serve(async (req) => {
         console.error("Error sending welcome email:", emailError);
       }
 
+      // Schedule webinar emails for Workbook 0 purchases
+      if (productType === 'workbook_0') {
+        try {
+          await supabaseClient.functions.invoke('schedule-webinar-emails', {
+            body: { 
+              userId: user.id,
+              email: user.email,
+              productType 
+            }
+          });
+          console.log("Webinar emails scheduled for user:", user.id);
+        } catch (webinarEmailError) {
+          console.error("Error scheduling webinar emails:", webinarEmailError);
+          // Don't fail the purchase if email scheduling fails
+        }
+      }
+
       return new Response(JSON.stringify({ success: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,
