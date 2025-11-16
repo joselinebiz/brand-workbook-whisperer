@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Target, Users, Lightbulb, Zap, BookOpen } from "lucide-react";
+import { Target, Users, Lightbulb, Zap, BookOpen, Play } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import demoCover from "@/assets/workbook-laptop-mockup.jpg";
+import demoCover from "@/assets/demo-cover-final.png";
 
 const Landing = () => {
   const [purchasing, setPurchasing] = useState(false);
@@ -202,7 +202,7 @@ const Landing = () => {
               DIY + AI Interactive workbooks walk you through creating the foundation and systems that keep you moving forward.
             </p>
           </div>
-          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-border">
+          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-border group">
             <video 
               controls 
               className="w-full h-auto"
@@ -211,6 +211,11 @@ const Landing = () => {
               <source src="https://blkbld.co/wp-content/uploads/2025/11/demo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-80 transition-opacity">
+              <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-xl">
+                <Play className="w-16 h-16 text-primary fill-primary" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
