@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Target, Users, Lightbulb, Zap, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import demoCover from "@/assets/demo-cover.jpg";
 
 const Landing = () => {
   const [purchasing, setPurchasing] = useState(false);
@@ -205,7 +206,7 @@ const Landing = () => {
             <video 
               controls 
               className="w-full h-auto"
-              poster="/placeholder.svg"
+              poster={demoCover}
             >
               <source src="https://blkbld.co/wp-content/uploads/2025/11/demo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
