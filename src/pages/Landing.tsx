@@ -196,10 +196,10 @@ const Landing = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              A peek at what you'll get
+              Behind the Build: What's Inside the Workbooks
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              DIY + AI Interactive workbooks walk you through creating the foundation and systems that keep you moving forward.
+              A quick walkthrough of the interactive workbooks—what they are, how they work, and why I built them to solve the problem most resources ignore.
             </p>
           </div>
           <div className="relative rounded-xl overflow-hidden shadow-2xl border border-border group">
