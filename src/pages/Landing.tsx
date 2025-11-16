@@ -7,6 +7,7 @@ import demoCover from "@/assets/demo-cover-final.png";
 
 const Landing = () => {
   const [purchasing, setPurchasing] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const { toast } = useToast();
 
   const handlePurchase = async () => {
@@ -207,15 +208,20 @@ const Landing = () => {
               controls 
               className="w-full h-auto"
               poster={demoCover}
+              onPlay={() => setIsVideoPlaying(true)}
+              onPause={() => setIsVideoPlaying(false)}
+              onEnded={() => setIsVideoPlaying(false)}
             >
               <source src="https://blkbld.co/wp-content/uploads/2025/11/demo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-80 transition-opacity">
-              <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-xl">
-                <Play className="w-16 h-16 text-primary fill-primary" />
+            {!isVideoPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-80 transition-opacity">
+                <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-xl">
+                  <Play className="w-16 h-16 text-primary fill-primary" />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
