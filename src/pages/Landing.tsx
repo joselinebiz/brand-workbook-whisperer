@@ -183,9 +183,33 @@ const Landing = () => {
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
                 disabled={purchasing}
               >
-                {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+                {purchasing ? "Processing..." : "START FOR $27 →"}
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Section */}
+      <section className="py-16 px-4 bg-background">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              A peek at what you'll get
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              DIY + AI Interactive workbooks walk you through creating the foundation and systems that keep you moving forward.
+            </p>
+          </div>
+          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-border">
+            <video 
+              controls 
+              className="w-full h-auto"
+              poster="/placeholder.svg"
+            >
+              <source src="https://blkbld.co/wp-content/uploads/2025/11/demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
