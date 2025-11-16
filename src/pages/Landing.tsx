@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Target, Users, Lightbulb, Zap, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import demoCover from "@/assets/demo-cover.jpg";
+import demoCover from "@/assets/demo-cover-custom.jpg";
 
 const Landing = () => {
   const [purchasing, setPurchasing] = useState(false);
