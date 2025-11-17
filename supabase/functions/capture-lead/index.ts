@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 import { Resend } from "https://esm.sh/resend@4.0.0";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -9,8 +10,11 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Email validation regex
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const requestSchema = z.object({
+  email: z.string().email().max(255),
+  source: z.string().max(100).default("landing_page"),
+  metadata: z.record(z.any()).optional().default({}),
+});
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -19,18 +23,8 @@ serve(async (req) => {
   }
 
   try {
-    const { email, source = "landing_page", metadata = {} } = await req.json();
-
-    // Validate email format
-    if (!email || !emailRegex.test(email)) {
-      return new Response(
-        JSON.stringify({ error: "Invalid email format" }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
-    }
+    const body = await req.json();
+    const { email, source, metadata } = requestSchema.parse(body);
 
     // Create Supabase client
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;

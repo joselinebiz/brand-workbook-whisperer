@@ -1,11 +1,17 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+const requestSchema = z.object({
+  sessionId: z.string().min(1).max(500),
+  productType: z.enum(['webinar', 'workbook_0', 'workbook_1', 'workbook_2', 'workbook_3', 'workbook_4', 'bundle']),
+});
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -19,7 +25,8 @@ serve(async (req) => {
   );
 
   try {
-    const { sessionId, productType } = await req.json();
+    const body = await req.json();
+    const { sessionId, productType } = requestSchema.parse(body);
 
     // Try to get authenticated user, but allow guest verification
     let user = null;
@@ -144,11 +151,15 @@ serve(async (req) => {
       // Schedule webinar emails for Workbook 0 purchases
       if (productType === 'workbook_0') {
         try {
+          const internalSecret = Deno.env.get('INTERNAL_FUNCTION_SECRET');
           await supabaseClient.functions.invoke('schedule-webinar-emails', {
             body: { 
               userId: user.id,
               email: user.email,
               productType 
+            },
+            headers: {
+              'X-Internal-Secret': internalSecret || ''
             }
           });
           console.log("Webinar emails scheduled for user:", user.id);

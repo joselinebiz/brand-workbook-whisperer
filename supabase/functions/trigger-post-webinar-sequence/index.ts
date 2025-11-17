@@ -1,14 +1,33 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-internal-secret",
 };
+
+const requestSchema = z.object({
+  webinarEventId: z.string().uuid(),
+});
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Verify internal secret for authentication
+  const authSecret = Deno.env.get('INTERNAL_FUNCTION_SECRET');
+  const providedSecret = req.headers.get('X-Internal-Secret');
+  
+  if (!authSecret || providedSecret !== authSecret) {
+    return new Response(
+      JSON.stringify({ error: "Unauthorized" }),
+      { 
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 401 
+      }
+    );
   }
 
   const supabaseClient = createClient(
@@ -18,7 +37,8 @@ serve(async (req) => {
   );
 
   try {
-    const { webinarEventId } = await req.json();
+    const body = await req.json();
+    const { webinarEventId } = requestSchema.parse(body);
 
     console.log("Triggering post-webinar sequence for event:", webinarEventId);
 
