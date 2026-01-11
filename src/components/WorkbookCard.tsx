@@ -82,12 +82,8 @@ export const WorkbookCard = ({
       return (
         <Link to={path} className="w-full">
           <Button variant="outline" className="w-full group/btn">
-            {productType === 'workbook_0' ? 'Start Workbook' : `Continue to Workbook ${number}`}
-            {productType === 'workbook_0' ? (
-              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            ) : (
-              <CheckCircle2 className="w-4 h-4 text-accent" />
-            )}
+            Continue to Workbook {number}
+            <CheckCircle2 className="w-4 h-4 text-accent" />
           </Button>
         </Link>
       );
@@ -114,8 +110,8 @@ export const WorkbookCard = ({
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl font-bold text-primary">{number}</span>
-            {hasAccess && productType !== 'workbook_0' && <CheckCircle2 className="w-6 h-6 text-accent" />}
-            {!hasAccess && productType !== 'workbook_0' && <Lock className="w-6 h-6 text-muted-foreground" />}
+            {hasAccess && <CheckCircle2 className="w-6 h-6 text-accent" />}
+            {!hasAccess && <Lock className="w-6 h-6 text-muted-foreground" />}
           </div>
           <div className="flex flex-col items-end gap-1">
             <span className="text-2xl font-bold text-foreground">${(price || 0) / 100}</span>

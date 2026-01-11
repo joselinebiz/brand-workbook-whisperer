@@ -90,7 +90,7 @@ export default function Workbook0() {
   return (
     <ProtectedWorkbook
       productType="workbook_0"
-      priceId="price_1SHBiiAnYzcngRwoxSKKMfbP"
+      priceId="price_1SoXezAnYzcngRwoEciOC1NO"
       price={2700}
       workbookTitle="Workbook 0 - Find Your White Space"
     >
