@@ -33,12 +33,13 @@ export default function Workbook0() {
   // Local state for fields not yet in WorkbookData - load from localStorage
   const [localData, setLocalData] = useState(() => {
     const saved = localStorage.getItem('workbook0LocalData');
-    return saved ? JSON.parse(saved) : {
+    const defaultData = {
       cost: '',
       bandaid: '',
-      competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '' }),
+      competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '', goodAt: '' }),
       pattern: '',
       competitiveAnalysisResponse: '',
+      customerResearchResponse: '',
       opportunities: [] as string[],
       quickMathPrice: '',
       quickMathCost: '',
@@ -59,8 +60,19 @@ export default function Workbook0() {
       coffeeTest: ['', '', ''],
       competitorsChase: '',
       yourWhitespace: '',
-      specificAudience: ''
+      yourWhiteSpaceStep1: '',
+      specificAudience: '',
+      validationChecklist: { problemReal: false, competitionGaps: false, businessModelWorks: false },
+      realityCheck: false
     };
+    if (saved) {
+      try {
+        return { ...defaultData, ...JSON.parse(saved) };
+      } catch {
+        return defaultData;
+      }
+    }
+    return defaultData;
   });
 
   // Save localData to localStorage whenever it changes
@@ -309,6 +321,8 @@ Format as: Problem / Cost / Current Solution`}
                   rows={6}
                   placeholder="Add your AI Response"
                   className="mt-2"
+                  value={localData.customerResearchResponse || ''}
+                  onChange={(e) => setLocalData(prev => ({ ...prev, customerResearchResponse: e.target.value }))}
                 />
               </div>
             </div>
@@ -465,7 +479,19 @@ Give me 3 specific angles I could take.`}
               <div className="grid md:grid-cols-2 gap-2">
                 {["Faster", "Cheaper", "Premium", "Easier", "More personal", "More technical", "Different audience", "Different problem"].map((opt) => (
                   <label key={opt} className="flex items-center gap-2 p-2 hover:bg-muted/50 rounded cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4" 
+                      checked={(localData.opportunities as string[])?.includes(opt) || false}
+                      onChange={(e) => {
+                        const current = (localData.opportunities as string[]) || [];
+                        if (e.target.checked) {
+                          setLocalData(prev => ({ ...prev, opportunities: [...current, opt] }));
+                        } else {
+                          setLocalData(prev => ({ ...prev, opportunities: current.filter(o => o !== opt) }));
+                        }
+                      }}
+                    />
                     <span className="text-sm">{opt}</span>
                   </label>
                 ))}
@@ -488,6 +514,8 @@ Give me 3 specific angles I could take.`}
                 id="white-space" 
                 rows={3}
                 placeholder="Complete this statement..."
+                value={localData.yourWhiteSpaceStep1 || ''}
+                onChange={(e) => setLocalData(prev => ({ ...prev, yourWhiteSpaceStep1: e.target.value }))}
               />
             </div>
           </div>
@@ -534,15 +562,15 @@ Give me 3 specific angles I could take.`}
               
               <div className="space-y-4">
                 {[
-                  { num: 1, label: "Who", question: "Who desperately needs this?" },
-                  { num: 2, label: "Problem", question: "What costly problem do you solve?" },
-                  { num: 3, label: "Solution", question: "What's your unique approach?" },
-                  { num: 4, label: "Delivery", question: "How do they get it?" },
-                  { num: 5, label: "Discovery", question: "How do they find you?" },
-                  { num: 6, label: "Price", question: "What will they pay?", prefix: "$" },
-                  { num: 7, label: "Costs", question: "Biggest expense per sale?", prefix: "$" },
-                  { num: 8, label: "Activities", question: "Daily tasks for success?" },
-                  { num: 9, label: "Partners", question: "Who helps you deliver?" }
+                  { num: 1, label: "Who", key: "who", question: "Who desperately needs this?" },
+                  { num: 2, label: "Problem", key: "problem", question: "What costly problem do you solve?" },
+                  { num: 3, label: "Solution", key: "solution", question: "What's your unique approach?" },
+                  { num: 4, label: "Delivery", key: "delivery", question: "How do they get it?" },
+                  { num: 5, label: "Discovery", key: "discovery", question: "How do they find you?" },
+                  { num: 6, label: "Price", key: "price", question: "What will they pay?", prefix: "$" },
+                  { num: 7, label: "Costs", key: "costs", question: "Biggest expense per sale?", prefix: "$" },
+                  { num: 8, label: "Activities", key: "activities", question: "Daily tasks for success?" },
+                  { num: 9, label: "Partners", key: "partners", question: "Who helps you deliver?" }
                 ].map((item) => (
                   <Card key={item.num} className="p-4 bg-muted/30">
                     <div className="flex items-start gap-3">
@@ -552,7 +580,14 @@ Give me 3 specific angles I could take.`}
                       <div className="flex-1">
                         <Label className="text-sm font-bold mb-2 block">{item.label}</Label>
                         <p className="text-sm text-muted-foreground mb-2">{item.question}</p>
-                        <Input placeholder={item.prefix ? `${item.prefix}` : "Your 90-second answer"} />
+                        <Input 
+                          placeholder={item.prefix ? `${item.prefix}` : "Your 90-second answer"} 
+                          value={localData.businessModel[item.key as keyof typeof localData.businessModel] || ''}
+                          onChange={(e) => setLocalData(prev => ({ 
+                            ...prev, 
+                            businessModel: { ...prev.businessModel, [item.key]: e.target.value }
+                          }))}
+                        />
                       </div>
                     </div>
                   </Card>
@@ -616,7 +651,12 @@ Give me 3 specific angles I could take.`}
 
               <div className="mt-6 p-4 bg-background border-2 border-primary/20 rounded-lg">
                 <label className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" className="w-5 h-5" />
+                  <input 
+                    type="checkbox" 
+                    className="w-5 h-5" 
+                    checked={localData.realityCheck || false}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, realityCheck: e.target.checked }))}
+                  />
                   <span className="font-semibold">✅ Reality Check: Could you serve a customer tomorrow?</span>
                 </label>
                 <p className="text-sm text-muted-foreground mt-2">
@@ -710,15 +750,39 @@ Provide:
                   <h4 className="text-lg font-semibold mb-4">Validation Checklist</h4>
                   <div className="space-y-3">
                     <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
-                      <input type="checkbox" className="w-5 h-5 mt-0.5" />
+                      <input 
+                        type="checkbox" 
+                        className="w-5 h-5 mt-0.5" 
+                        checked={localData.validationChecklist?.problemReal || false}
+                        onChange={(e) => setLocalData(prev => ({ 
+                          ...prev, 
+                          validationChecklist: { ...prev.validationChecklist, problemReal: e.target.checked }
+                        }))}
+                      />
                       <span className="text-sm">Problem is real (customers confirm it—customers nodded)</span>
                     </label>
                     <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
-                      <input type="checkbox" className="w-5 h-5 mt-0.5" />
+                      <input 
+                        type="checkbox" 
+                        className="w-5 h-5 mt-0.5" 
+                        checked={localData.validationChecklist?.competitionGaps || false}
+                        onChange={(e) => setLocalData(prev => ({ 
+                          ...prev, 
+                          validationChecklist: { ...prev.validationChecklist, competitionGaps: e.target.checked }
+                        }))}
+                      />
                       <span className="text-sm">Competition has gaps (you found white space—competitors miss it)</span>
                     </label>
                     <label className="flex items-start gap-3 cursor-pointer hover:bg-muted/50 p-2 rounded">
-                      <input type="checkbox" className="w-5 h-5 mt-0.5" />
+                      <input 
+                        type="checkbox" 
+                        className="w-5 h-5 mt-0.5" 
+                        checked={localData.validationChecklist?.businessModelWorks || false}
+                        onChange={(e) => setLocalData(prev => ({ 
+                          ...prev, 
+                          validationChecklist: { ...prev.validationChecklist, businessModelWorks: e.target.checked }
+                        }))}
+                      />
                       <span className="text-sm">Business model works (math checks out—aim for at least 3:1 ratio)</span>
                     </label>
                   </div>
@@ -886,10 +950,20 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 </p>
                 
                 <div className="space-y-3 mb-4">
-                  {[1, 2, 3].map((i) => (
+                  {[0, 1, 2].map((i) => (
                     <div key={i}>
-                      <Label htmlFor={`person-${i}`}>Person {i}</Label>
-                      <Input id={`person-${i}`} placeholder="Their reaction..." className="mt-1" />
+                      <Label htmlFor={`person-${i}`}>Person {i + 1}</Label>
+                      <Input 
+                        id={`person-${i}`} 
+                        placeholder="Their reaction..." 
+                        className="mt-1" 
+                        value={localData.coffeeTest[i] || ''}
+                        onChange={(e) => {
+                          const newTests = [...localData.coffeeTest];
+                          newTests[i] = e.target.value;
+                          setLocalData(prev => ({ ...prev, coffeeTest: newTests }));
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
