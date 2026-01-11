@@ -115,8 +115,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const checkAccess = (productType: string): boolean => {
-    // Workbook 0 is always free
-    if (productType === 'workbook_0') return true;
+    // NOTE: This is a client-side check only used for UI hints.
+    // Actual access control happens server-side in verify-workbook-access.
     
     // Check if user has bundle access
     const bundlePurchase = purchases.find(p => p.product_type === 'bundle');

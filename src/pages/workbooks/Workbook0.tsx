@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ExampleBox } from "@/components/ExampleBox";
+import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,48 +14,21 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Target, Users, TrendingUp, ChevronDown, PartyPopper, Save, Download } from "lucide-react";
 import { useWorkbook } from "@/contexts/WorkbookContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { generateWorkbook0Content, downloadWorkbook } from "@/utils/workbookDownload";
 
 export default function Workbook0() {
   const { data, updateData } = useWorkbook();
-  const { user, loading } = useAuth();
-  const navigate = useNavigate();
+  const { loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
+
   const [isSaving, setIsSaving] = useState(false);
-
-  // Auto-grant free access to Workbook 0 for logged-in users
-  useEffect(() => {
-    const grantFreeAccess = async () => {
-      if (!user) return;
-
-      const expiresAt = new Date();
-      expiresAt.setMonth(expiresAt.getMonth() + 6);
-
-      await supabase
-        .from('purchases')
-        .upsert({
-          user_id: user.id,
-          product_type: 'workbook_0',
-          amount: 0,
-          expires_at: expiresAt.toISOString(),
-        }, {
-          onConflict: 'user_id,product_type'
-        });
-    };
-
-    if (user) {
-      grantFreeAccess();
-    }
-  }, [user]);
-
-  // Redirect to auth if not logged in
-  useEffect(() => {
-    if (!loading && !user) {
-      navigate('/auth');
-    }
-  }, [user, loading, navigate]);
   
   // Local state for fields not yet in WorkbookData - load from localStorage
   const [localData, setLocalData] = useState(() => {
@@ -111,24 +87,15 @@ export default function Workbook0() {
     downloadWorkbook(content, 0);
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return null; // Will redirect in useEffect
-  }
-
   return (
-    <div className="min-h-screen bg-background">
-      <WorkbookHeader
+    <ProtectedWorkbook
+      productType="workbook_0"
+      priceId="price_1SHBiiAnYzcngRwoxSKKMfbP"
+      price={2700}
+      workbookTitle="Workbook 0 - Find Your White Space"
+    >
+      <div className="min-h-screen bg-background">
+        <WorkbookHeader
         number="00"
         title="FIND YOUR WHITE SPACE"
         subtitle="The 45 Minute Market Opportunity Sprint"
@@ -1111,5 +1078,6 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </div>
       </div>
     </div>
+    </ProtectedWorkbook>
   );
 }
