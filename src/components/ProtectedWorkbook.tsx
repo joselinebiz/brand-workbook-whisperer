@@ -131,8 +131,9 @@ export const ProtectedWorkbook = ({
     return null; // Will redirect in useEffect
   }
 
-  // Use server verification result, fall back to client check
-  const hasAccess = serverVerified !== null ? serverVerified : clientHasAccess;
+  // SECURITY: Only trust server verification. Never fall back to client-side check.
+  // If server hasn't verified yet, deny access (handled by verifying state above).
+  const hasAccess = serverVerified === true;
 
   if (!hasAccess) {
     return (
