@@ -30,15 +30,41 @@ export default function Workbook2() {
   }
 
   const [isSaving, setIsSaving] = useState(false);
+  
+  // Local state for fields not in WorkbookContext - load from localStorage
+  const [localData, setLocalData] = useState(() => {
+    const saved = localStorage.getItem('workbook2LocalData');
+    const defaultData = {
+      keyResources: '',
+      costStructure: '',
+      bigOpportunity: '',
+      primarySegment: '',
+      checkpoints: { canvasComplete: false, canvasValidated: false, marketComplete: false, marketValidated: false, strategyComplete: false }
+    };
+    if (saved) {
+      try {
+        return { ...defaultData, ...JSON.parse(saved) };
+      } catch {
+        return defaultData;
+      }
+    }
+    return defaultData;
+  });
+
+  // Save localData to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('workbook2LocalData', JSON.stringify(localData));
+  }, [localData]);
 
   useEffect(() => {
     setIsSaving(true);
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
-  }, [data]);
+  }, [data, localData]);
 
   const handleManualSave = () => {
     localStorage.setItem('workbookData', JSON.stringify(data));
+    localStorage.setItem('workbook2LocalData', JSON.stringify(localData));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
   };
@@ -213,7 +239,12 @@ export default function Workbook2() {
                     <div>
                       <Label htmlFor="key-resources">Key Resources</Label>
                       <p className="text-xs text-muted-foreground mb-2">What do you need to operate?</p>
-                      <Textarea id="key-resources" rows={2} />
+                      <Textarea 
+                        id="key-resources" 
+                        rows={2}
+                        value={localData.keyResources || ''}
+                        onChange={(e) => setLocalData(prev => ({ ...prev, keyResources: e.target.value }))}
+                      />
                     </div>
                     <div>
                       <Label htmlFor="key-activities">Key Activities</Label>
@@ -238,7 +269,12 @@ export default function Workbook2() {
                     <div>
                       <Label htmlFor="cost-structure">Cost Structure</Label>
                       <p className="text-xs text-muted-foreground mb-2">What are the biggest expenses?</p>
-                      <Textarea id="cost-structure" rows={2} />
+                      <Textarea 
+                        id="cost-structure" 
+                        rows={2}
+                        value={localData.costStructure || ''}
+                        onChange={(e) => setLocalData(prev => ({ ...prev, costStructure: e.target.value }))}
+                      />
                     </div>
                   </div>
                 </Card>
@@ -470,7 +506,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
             <div className="mt-6">
               <Label htmlFor="big-opportunity">The Big Opportunity</Label>
               <p className="text-sm text-muted-foreground mb-2">Based on all 5Cs, what opportunity emerges?</p>
-              <Textarea id="big-opportunity" rows={3} placeholder="Your strategic opportunity..." />
+              <Textarea 
+                id="big-opportunity" 
+                rows={3} 
+                placeholder="Your strategic opportunity..." 
+                value={localData.bigOpportunity || ''}
+                onChange={(e) => setLocalData(prev => ({ ...prev, bigOpportunity: e.target.value }))}
+              />
             </div>
 
             {/* Segmentation & Targeting */}
@@ -484,7 +526,11 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               <p className="text-sm text-muted-foreground mb-4">Your Target Audience</p>
               <div className="bg-muted/20 p-4 rounded">
                 <p className="text-sm mb-2">Primary Segment: <span className="text-xs text-muted-foreground">(Should have highest pain + budget for your product/service + reachable)</span></p>
-                <Input placeholder="e.g., Busy parents with household income $75K+" />
+                <Input 
+                  placeholder="e.g., Busy parents with household income $75K+" 
+                  value={localData.primarySegment || ''}
+                  onChange={(e) => setLocalData(prev => ({ ...prev, primarySegment: e.target.value }))}
+                />
               </div>
             </div>
 

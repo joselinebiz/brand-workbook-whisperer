@@ -29,27 +29,38 @@ export default function Workbook3() {
   }
 
   const [isSaving, setIsSaving] = useState(false);
-  const [preWorkScores, setPreWorkScores] = useState({
-    followUp: 0,
-    satisfaction: 0,
-    repeatBusiness: 0,
-    teamConsistency: 0,
-    timeOnAdmin: 0
+  const [preWorkScores, setPreWorkScores] = useState(() => {
+    const saved = localStorage.getItem('workbook3PreWorkScores');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return { followUp: 0, satisfaction: 0, repeatBusiness: 0, teamConsistency: 0, timeOnAdmin: 0 };
+      }
+    }
+    return { followUp: 0, satisfaction: 0, repeatBusiness: 0, teamConsistency: 0, timeOnAdmin: 0 };
   });
 
-  const totalScore = Object.values(preWorkScores).reduce((sum, score) => sum + score, 0);
+  // Save preWorkScores to localStorage
+  useEffect(() => {
+    localStorage.setItem('workbook3PreWorkScores', JSON.stringify(preWorkScores));
+  }, [preWorkScores]);
+
+  const totalScore = Object.values(preWorkScores as Record<string, number>).reduce((sum, score) => sum + score, 0);
 
   useEffect(() => {
     setIsSaving(true);
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
-  }, [data]);
+  }, [data, preWorkScores]);
 
   const handleManualSave = () => {
     localStorage.setItem('workbookData', JSON.stringify(data));
+    localStorage.setItem('workbook3PreWorkScores', JSON.stringify(preWorkScores));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
   };
+
 
   const handleDownload = () => {
     const content = generateWorkbook3Content(data);
@@ -279,7 +290,7 @@ export default function Workbook3() {
             </div>
 
             <div className="p-4 bg-primary/10 rounded-lg border-2 border-primary">
-              <p className="font-bold mb-2">Total Score: {totalScore}/15</p>
+              <p className="font-bold mb-2">Total Score: {String(totalScore)}/15</p>
               <ul className="text-sm space-y-1">
                 <li>13-15: Focus on optimization and automation</li>
                 <li>9-12: Build systems first, then automate</li>
