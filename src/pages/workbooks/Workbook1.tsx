@@ -1042,7 +1042,6 @@ CREATE:
                       onChange={(e) => setLocalData(prev => ({ ...prev, competitiveGap: e.target.value }))}
                     />
                   </div>
-                  </div>
                 </div>
 
                 <div className="mb-6">
