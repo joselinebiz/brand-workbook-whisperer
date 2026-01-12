@@ -30,14 +30,68 @@ export default function Workbook4() {
 
   const [isSaving, setIsSaving] = useState(false);
 
+  // Local state for all Workbook4 fields - load from localStorage
+  const [localData, setLocalData] = useState(() => {
+    const saved = localStorage.getItem('workbook4LocalData');
+    const defaultData = {
+      leadingIndicators: [
+        { metric: 'Leads generated', target: '', w1: '', w2: '', w3: '', w4: '' },
+        { metric: 'Content published', target: '', w1: '', w2: '', w3: '', w4: '' },
+        { metric: 'Outreach activities', target: '', w1: '', w2: '', w3: '', w4: '' },
+        { metric: 'Email list growth', target: '', w1: '', w2: '', w3: '', w4: '' },
+        { metric: 'Engagement rate', target: '', w1: '', w2: '', w3: '', w4: '' },
+      ],
+      laggingIndicators: [
+        { metric: 'Conversion rate', unit: '%', target: '', month1: '', month2: '' },
+        { metric: 'Average order value', unit: '$', target: '', month1: '', month2: '' },
+        { metric: 'Customer acquisition cost', unit: '$', target: '', month1: '', month2: '' },
+        { metric: 'Customer lifetime value', unit: '$', target: '', month1: '', month2: '' },
+        { metric: 'Monthly recurring revenue', unit: '$', target: '', month1: '', month2: '' },
+      ],
+      oneNumber: '',
+      tests: [
+        { hypothesis: '', metric: '', duration: '', baseline: '', target: '', result: '' },
+        { hypothesis: '', metric: '', duration: '', baseline: '', target: '', result: '' },
+        { hypothesis: '', metric: '', duration: '', baseline: '', target: '', result: '' },
+      ],
+      sprintGoal: '',
+      months: [
+        { focus: '', activities: '', milestone: '' },
+        { focus: '', activities: '', milestone: '' },
+        { focus: '', activities: '', milestone: '' },
+      ],
+      roles: [
+        { tasks: '', hours: '', delegate: 'Keep (founder)' },
+        { tasks: '', hours: '', delegate: 'Keep (founder)' },
+        { tasks: '', hours: '', delegate: 'Keep (founder)' },
+        { tasks: '', hours: '', delegate: 'Keep (founder)' },
+      ],
+      firstHire: '',
+    };
+    if (saved) {
+      try {
+        return { ...defaultData, ...JSON.parse(saved) };
+      } catch {
+        return defaultData;
+      }
+    }
+    return defaultData;
+  });
+
+  // Save localData to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('workbook4LocalData', JSON.stringify(localData));
+  }, [localData]);
+
   useEffect(() => {
     setIsSaving(true);
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
-  }, [data]);
+  }, [data, localData]);
 
   const handleManualSave = () => {
     localStorage.setItem('workbookData', JSON.stringify(data));
+    localStorage.setItem('workbook4LocalData', JSON.stringify(localData));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
   };
@@ -98,7 +152,9 @@ Referral System: ${blueprintData.referralSystem || 'Not specified'}
 
 WORKBOOK 4: MEASUREMENT, SCALING & GROWTH
 -------------------------------------------
-Leading Indicators: ${blueprintData.leadingIndicators.map(i => i.indicator).join(', ') || 'Not specified'}
+Leading Indicators: ${localData.leadingIndicators.filter(i => i.target).map(i => `${i.metric}: ${i.target}`).join(', ') || 'Not specified'}
+One Number Focus: ${localData.oneNumber || 'Not specified'}
+Sprint Goal: ${localData.sprintGoal || 'Not specified'}
 Revenue: ${blueprintData.revenue || 'Not specified'}
 Customer Acquisition Cost (CAC): ${blueprintData.cac || 'Not specified'}
 Lifetime Value (LTV): ${blueprintData.ltv || 'Not specified'}
@@ -127,6 +183,8 @@ Generated: ${new Date().toLocaleDateString()}
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+
+  const roleAreas = ["Marketing & Content", "Sales & Customer Success", "Operations & Fulfillment", "Finance & Admin"];
   
   return (
     <ProtectedWorkbook
@@ -249,29 +307,64 @@ Generated: ${new Date().toLocaleDateString()}
                     </tr>
                   </thead>
                   <tbody>
-                    {[
-                      "Leads generated",
-                      "Content published",
-                      "Outreach activities",
-                      "Email list growth",
-                      "Engagement rate",
-                    ].map((metric, i) => (
+                    {localData.leadingIndicators.map((indicator, i) => (
                       <tr key={i} className="hover:bg-muted/50">
-                        <td className="border p-3 font-medium">{metric}</td>
+                        <td className="border p-3 font-medium">{indicator.metric}</td>
                         <td className="border p-3">
-                          <Input className="h-8" placeholder="Target" />
+                          <Input 
+                            className="h-8" 
+                            placeholder="Target"
+                            value={indicator.target}
+                            onChange={(e) => {
+                              const newIndicators = [...localData.leadingIndicators];
+                              newIndicators[i] = { ...newIndicators[i], target: e.target.value };
+                              setLocalData(prev => ({ ...prev, leadingIndicators: newIndicators }));
+                            }}
+                          />
                         </td>
                         <td className="border p-3">
-                          <Input className="h-8 text-center" />
+                          <Input 
+                            className="h-8 text-center"
+                            value={indicator.w1}
+                            onChange={(e) => {
+                              const newIndicators = [...localData.leadingIndicators];
+                              newIndicators[i] = { ...newIndicators[i], w1: e.target.value };
+                              setLocalData(prev => ({ ...prev, leadingIndicators: newIndicators }));
+                            }}
+                          />
                         </td>
                         <td className="border p-3">
-                          <Input className="h-8 text-center" />
+                          <Input 
+                            className="h-8 text-center"
+                            value={indicator.w2}
+                            onChange={(e) => {
+                              const newIndicators = [...localData.leadingIndicators];
+                              newIndicators[i] = { ...newIndicators[i], w2: e.target.value };
+                              setLocalData(prev => ({ ...prev, leadingIndicators: newIndicators }));
+                            }}
+                          />
                         </td>
                         <td className="border p-3">
-                          <Input className="h-8 text-center" />
+                          <Input 
+                            className="h-8 text-center"
+                            value={indicator.w3}
+                            onChange={(e) => {
+                              const newIndicators = [...localData.leadingIndicators];
+                              newIndicators[i] = { ...newIndicators[i], w3: e.target.value };
+                              setLocalData(prev => ({ ...prev, leadingIndicators: newIndicators }));
+                            }}
+                          />
                         </td>
                         <td className="border p-3">
-                          <Input className="h-8 text-center" />
+                          <Input 
+                            className="h-8 text-center"
+                            value={indicator.w4}
+                            onChange={(e) => {
+                              const newIndicators = [...localData.leadingIndicators];
+                              newIndicators[i] = { ...newIndicators[i], w4: e.target.value };
+                              setLocalData(prev => ({ ...prev, leadingIndicators: newIndicators }));
+                            }}
+                          />
                         </td>
                       </tr>
                     ))}
@@ -285,18 +378,36 @@ Generated: ${new Date().toLocaleDateString()}
               <p className="text-sm text-muted-foreground mb-4">These confirm what actually happened</p>
               
               <div className="space-y-3">
-                {[
-                  { metric: "Conversion rate", unit: "%" },
-                  { metric: "Average order value", unit: "$" },
-                  { metric: "Customer acquisition cost", unit: "$" },
-                  { metric: "Customer lifetime value", unit: "$" },
-                  { metric: "Monthly recurring revenue", unit: "$" },
-                ].map((item, i) => (
+                {localData.laggingIndicators.map((item, i) => (
                   <div key={i} className="grid md:grid-cols-5 gap-3 items-center">
                     <Label className="md:col-span-2">{item.metric}</Label>
-                    <Input placeholder={`Target ${item.unit}`} />
-                    <Input placeholder={`Month 1 ${item.unit}`} />
-                    <Input placeholder={`Month 2 ${item.unit}`} />
+                    <Input 
+                      placeholder={`Target ${item.unit}`}
+                      value={item.target}
+                      onChange={(e) => {
+                        const newIndicators = [...localData.laggingIndicators];
+                        newIndicators[i] = { ...newIndicators[i], target: e.target.value };
+                        setLocalData(prev => ({ ...prev, laggingIndicators: newIndicators }));
+                      }}
+                    />
+                    <Input 
+                      placeholder={`Month 1 ${item.unit}`}
+                      value={item.month1}
+                      onChange={(e) => {
+                        const newIndicators = [...localData.laggingIndicators];
+                        newIndicators[i] = { ...newIndicators[i], month1: e.target.value };
+                        setLocalData(prev => ({ ...prev, laggingIndicators: newIndicators }));
+                      }}
+                    />
+                    <Input 
+                      placeholder={`Month 2 ${item.unit}`}
+                      value={item.month2}
+                      onChange={(e) => {
+                        const newIndicators = [...localData.laggingIndicators];
+                        newIndicators[i] = { ...newIndicators[i], month2: e.target.value };
+                        setLocalData(prev => ({ ...prev, laggingIndicators: newIndicators }));
+                      }}
+                    />
                   </div>
                 ))}
               </div>
@@ -307,7 +418,11 @@ Generated: ${new Date().toLocaleDateString()}
               <p className="text-sm text-muted-foreground mb-3">
                 If you could only track ONE metric for the next 90 days, what would it be?
               </p>
-              <Input placeholder="e.g., New qualified leads per week" />
+              <Input 
+                placeholder="e.g., New qualified leads per week"
+                value={localData.oneNumber}
+                onChange={(e) => setLocalData(prev => ({ ...prev, oneNumber: e.target.value }))}
+              />
             </div>
           </div>
 
@@ -361,9 +476,9 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               </ol>
             </div>
 
-            {[1, 2, 3].map((i) => (
+            {localData.tests.map((test, i) => (
               <Card key={i} className="p-6 bg-muted/20">
-                <h4 className="font-semibold mb-4">Test #{i}</h4>
+                <h4 className="font-semibold mb-4">Test #{i + 1}</h4>
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor={`test-${i}-hypothesis`}>Hypothesis</Label>
@@ -371,25 +486,67 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                       id={`test-${i}-hypothesis`}
                       rows={2}
                       placeholder="If we [change], then [result] will improve because [reasoning]"
+                      value={test.hypothesis}
+                      onChange={(e) => {
+                        const newTests = [...localData.tests];
+                        newTests[i] = { ...newTests[i], hypothesis: e.target.value };
+                        setLocalData(prev => ({ ...prev, tests: newTests }));
+                      }}
                     />
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor={`test-${i}-metric`}>Metric to Track</Label>
-                      <Input id={`test-${i}-metric`} placeholder="e.g., Email open rate" />
+                      <Input 
+                        id={`test-${i}-metric`} 
+                        placeholder="e.g., Email open rate"
+                        value={test.metric}
+                        onChange={(e) => {
+                          const newTests = [...localData.tests];
+                          newTests[i] = { ...newTests[i], metric: e.target.value };
+                          setLocalData(prev => ({ ...prev, tests: newTests }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`test-${i}-duration`}>Test Duration</Label>
-                      <Input id={`test-${i}-duration`} placeholder="e.g., 2 weeks" />
+                      <Input 
+                        id={`test-${i}-duration`} 
+                        placeholder="e.g., 2 weeks"
+                        value={test.duration}
+                        onChange={(e) => {
+                          const newTests = [...localData.tests];
+                          newTests[i] = { ...newTests[i], duration: e.target.value };
+                          setLocalData(prev => ({ ...prev, tests: newTests }));
+                        }}
+                      />
                     </div>
                   </div>
                   <div>
                     <Label htmlFor={`test-${i}-baseline`}>Baseline (current performance)</Label>
-                    <Input id={`test-${i}-baseline`} placeholder="e.g., 22% open rate" />
+                    <Input 
+                      id={`test-${i}-baseline`} 
+                      placeholder="e.g., 22% open rate"
+                      value={test.baseline}
+                      onChange={(e) => {
+                        const newTests = [...localData.tests];
+                        newTests[i] = { ...newTests[i], baseline: e.target.value };
+                        setLocalData(prev => ({ ...prev, tests: newTests }));
+                      }}
+                    />
                   </div>
                   <div>
                     <Label htmlFor={`test-${i}-target`}>Target Improvement</Label>
-                    <Input id={`test-${i}-target`} placeholder="e.g., 30% open rate" />
+                    <Input 
+                      id={`test-${i}-target`} 
+                      placeholder="e.g., 30% open rate"
+                      value={test.target}
+                      onChange={(e) => {
+                        const newTests = [...localData.tests];
+                        newTests[i] = { ...newTests[i], target: e.target.value };
+                        setLocalData(prev => ({ ...prev, tests: newTests }));
+                      }}
+                    />
                   </div>
                   <div>
                     <Label htmlFor={`test-${i}-result`}>Results & Decision</Label>
@@ -397,6 +554,12 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                       id={`test-${i}-result`}
                       rows={2}
                       placeholder="Document what happened and what you'll do next..."
+                      value={test.result}
+                      onChange={(e) => {
+                        const newTests = [...localData.tests];
+                        newTests[i] = { ...newTests[i], result: e.target.value };
+                        setLocalData(prev => ({ ...prev, tests: newTests }));
+                      }}
                     />
                   </div>
                 </div>
@@ -454,6 +617,8 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 id="sprint-goal"
                 className="text-lg"
                 placeholder="e.g., Increase qualified leads from 20 to 30 per month"
+                value={localData.sprintGoal}
+                onChange={(e) => setLocalData(prev => ({ ...prev, sprintGoal: e.target.value }))}
               />
             </div>
 
@@ -464,15 +629,44 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor={`month-${i}-focus`} className="text-xs">Primary Focus</Label>
-                      <Textarea id={`month-${i}-focus`} rows={2} className="mt-1" />
+                      <Textarea 
+                        id={`month-${i}-focus`} 
+                        rows={2} 
+                        className="mt-1"
+                        value={localData.months[i]?.focus || ''}
+                        onChange={(e) => {
+                          const newMonths = [...localData.months];
+                          newMonths[i] = { ...newMonths[i], focus: e.target.value };
+                          setLocalData(prev => ({ ...prev, months: newMonths }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`month-${i}-activities`} className="text-xs">Key Activities</Label>
-                      <Textarea id={`month-${i}-activities`} rows={3} className="mt-1" />
+                      <Textarea 
+                        id={`month-${i}-activities`} 
+                        rows={3} 
+                        className="mt-1"
+                        value={localData.months[i]?.activities || ''}
+                        onChange={(e) => {
+                          const newMonths = [...localData.months];
+                          newMonths[i] = { ...newMonths[i], activities: e.target.value };
+                          setLocalData(prev => ({ ...prev, months: newMonths }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`month-${i}-milestone`} className="text-xs">Milestone</Label>
-                      <Input id={`month-${i}-milestone`} className="mt-1" />
+                      <Input 
+                        id={`month-${i}-milestone`} 
+                        className="mt-1"
+                        value={localData.months[i]?.milestone || ''}
+                        onChange={(e) => {
+                          const newMonths = [...localData.months];
+                          newMonths[i] = { ...newMonths[i], milestone: e.target.value };
+                          setLocalData(prev => ({ ...prev, months: newMonths }));
+                        }}
+                      />
                     </div>
                   </div>
                 </Card>
@@ -542,26 +736,48 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 What roles do you need to scale? Start by documenting what YOU do, then determine what to delegate.
               </p>
               
-              {[
-                "Marketing & Content",
-                "Sales & Customer Success",
-                "Operations & Fulfillment",
-                "Finance & Admin",
-              ].map((area, i) => (
-                <Card key={i} className="p-6 bg-muted/20">
+              {roleAreas.map((area, i) => (
+                <Card key={i} className="p-6 bg-muted/20 mb-4">
                   <h4 className="font-semibold mb-4">{area}</h4>
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor={`role-${i}-tasks`}>Tasks (what needs to happen)</Label>
-                      <Textarea id={`role-${i}-tasks`} rows={2} />
+                      <Textarea 
+                        id={`role-${i}-tasks`} 
+                        rows={2}
+                        value={localData.roles[i]?.tasks || ''}
+                        onChange={(e) => {
+                          const newRoles = [...localData.roles];
+                          newRoles[i] = { ...newRoles[i], tasks: e.target.value };
+                          setLocalData(prev => ({ ...prev, roles: newRoles }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`role-${i}-hours`}>Hours per week</Label>
-                      <Input id={`role-${i}-hours`} type="number" />
+                      <Input 
+                        id={`role-${i}-hours`} 
+                        type="number"
+                        value={localData.roles[i]?.hours || ''}
+                        onChange={(e) => {
+                          const newRoles = [...localData.roles];
+                          newRoles[i] = { ...newRoles[i], hours: e.target.value };
+                          setLocalData(prev => ({ ...prev, roles: newRoles }));
+                        }}
+                      />
                     </div>
                     <div>
                       <Label htmlFor={`role-${i}-delegate`}>Delegate to:</Label>
-                      <select id={`role-${i}-delegate`} className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                      <select 
+                        id={`role-${i}-delegate`} 
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                        value={localData.roles[i]?.delegate || 'Keep (founder)'}
+                        onChange={(e) => {
+                          const newRoles = [...localData.roles];
+                          newRoles[i] = { ...newRoles[i], delegate: e.target.value };
+                          setLocalData(prev => ({ ...prev, roles: newRoles }));
+                        }}
+                      >
                         <option>Keep (founder)</option>
                         <option>Hire (employee/contractor)</option>
                         <option>Automate (software/AI)</option>
@@ -578,7 +794,12 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               <p className="text-sm text-muted-foreground mb-4">
                 Based on your role mapping, what's the ONE role that would free up the most strategic time?
               </p>
-              <Textarea rows={3} placeholder="Role title, responsibilities, impact on growth..." />
+              <Textarea 
+                rows={3} 
+                placeholder="Role title, responsibilities, impact on growth..."
+                value={localData.firstHire}
+                onChange={(e) => setLocalData(prev => ({ ...prev, firstHire: e.target.value }))}
+              />
             </div>
           </div>
 
