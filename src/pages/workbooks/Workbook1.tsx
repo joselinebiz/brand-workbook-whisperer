@@ -31,14 +31,52 @@ export default function Workbook1() {
 
   const [isSaving, setIsSaving] = useState(false);
 
+  // Local state for fields not in WorkbookContext - load from localStorage
+  const [localData, setLocalData] = useState(() => {
+    const saved = localStorage.getItem('workbook1LocalData');
+    const defaultData = {
+      selectedValues: [] as string[],
+      checkpoints: {
+        section1: { mission: false, values: false, promise: false, pillars: false },
+        section2: { visual: false, voice: false, tagline: false, story: false },
+        section3: { gaps: false, positioning: false, journey: false, sop: false }
+      },
+      competitiveGap: '',
+      peakMoment: '',
+      makeRemarkable: '',
+      sop: { process: '', trigger: '', steps: '', quality: '' },
+      rollout: {
+        day1: [false, false, false],
+        day3: [false, false, false],
+        day5: [false, false, false],
+        day7: [false, false, false]
+      },
+      quickWins: [false, false, false]
+    };
+    if (saved) {
+      try {
+        return { ...defaultData, ...JSON.parse(saved) };
+      } catch {
+        return defaultData;
+      }
+    }
+    return defaultData;
+  });
+
+  // Save localData to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('workbook1LocalData', JSON.stringify(localData));
+  }, [localData]);
+
   useEffect(() => {
     setIsSaving(true);
     const timer = setTimeout(() => setIsSaving(false), 1000);
     return () => clearTimeout(timer);
-  }, [data]);
+  }, [data, localData]);
 
   const handleManualSave = () => {
     localStorage.setItem('workbookData', JSON.stringify(data));
+    localStorage.setItem('workbook1LocalData', JSON.stringify(localData));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
   };
@@ -312,7 +350,17 @@ export default function Workbook1() {
                   <div className="grid md:grid-cols-3 gap-2 mb-4">
                     {["Authenticity", "Excellence", "Innovation", "Integrity", "Simplicity", "Community", "Sustainability", "Empowerment", "Fun"].map((value) => (
                       <label key={value} className="flex items-center gap-2 p-2 hover:bg-muted/50 rounded cursor-pointer">
-                        <input type="checkbox" className="w-4 h-4" />
+                        <input 
+                          type="checkbox" 
+                          className="w-4 h-4"
+                          checked={localData.selectedValues?.includes(value) || false}
+                          onChange={(e) => {
+                            const newValues = e.target.checked 
+                              ? [...(localData.selectedValues || []), value]
+                              : (localData.selectedValues || []).filter((v: string) => v !== value);
+                            setLocalData(prev => ({ ...prev, selectedValues: newValues }));
+                          }}
+                        />
                         <span className="text-sm">{value}</span>
                       </label>
                     ))}
@@ -535,19 +583,63 @@ Well articulated mission, values, promise and differentiation that ensures I own
                 <p className="font-bold mb-3">Section 1 Checkpoint ✓</p>
                 <div className="space-y-2 text-sm">
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4"
+                      checked={localData.checkpoints?.section1?.mission || false}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        checkpoints: { 
+                          ...prev.checkpoints, 
+                          section1: { ...prev.checkpoints?.section1, mission: e.target.checked } 
+                        } 
+                      }))}
+                    />
                     <span>Mission that energizes you</span>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4"
+                      checked={localData.checkpoints?.section1?.values || false}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        checkpoints: { 
+                          ...prev.checkpoints, 
+                          section1: { ...prev.checkpoints?.section1, values: e.target.checked } 
+                        } 
+                      }))}
+                    />
                     <span>3-5 values with examples</span>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4"
+                      checked={localData.checkpoints?.section1?.promise || false}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        checkpoints: { 
+                          ...prev.checkpoints, 
+                          section1: { ...prev.checkpoints?.section1, promise: e.target.checked } 
+                        } 
+                      }))}
+                    />
                     <span>Promise you can always deliver</span>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4" />
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4"
+                      checked={localData.checkpoints?.section1?.pillars || false}
+                      onChange={(e) => setLocalData(prev => ({ 
+                        ...prev, 
+                        checkpoints: { 
+                          ...prev.checkpoints, 
+                          section1: { ...prev.checkpoints?.section1, pillars: e.target.checked } 
+                        } 
+                      }))}
+                    />
                     <span>3-5 pillars that differentiate</span>
                   </label>
                 </div>
@@ -942,7 +1034,14 @@ CREATE:
 
                   <div>
                     <Label htmlFor="gap">The Gap: What do ALL competitors miss?</Label>
-                    <Textarea id="gap" rows={2} className="mt-2" />
+                    <Textarea 
+                      id="gap" 
+                      rows={2} 
+                      className="mt-2"
+                      value={localData.competitiveGap || ''}
+                      onChange={(e) => setLocalData(prev => ({ ...prev, competitiveGap: e.target.value }))}
+                    />
+                  </div>
                   </div>
                 </div>
 
@@ -1107,11 +1206,22 @@ IDENTIFY:
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor="peak-moment">What's the ONE moment customers remember most?</Label>
-                      <Input id="peak-moment" className="mt-2" />
+                      <Input 
+                        id="peak-moment" 
+                        className="mt-2"
+                        value={localData.peakMoment || ''}
+                        onChange={(e) => setLocalData(prev => ({ ...prev, peakMoment: e.target.value }))}
+                      />
                     </div>
                     <div>
                       <Label htmlFor="make-remarkable">How can you make it remarkable?</Label>
-                      <Textarea id="make-remarkable" rows={2} className="mt-2" />
+                      <Textarea 
+                        id="make-remarkable" 
+                        rows={2} 
+                        className="mt-2"
+                        value={localData.makeRemarkable || ''}
+                        onChange={(e) => setLocalData(prev => ({ ...prev, makeRemarkable: e.target.value }))}
+                      />
                     </div>
                   </div>
                 </div>
@@ -1122,19 +1232,42 @@ IDENTIFY:
                     <div className="space-y-4">
                       <div>
                         <Label htmlFor="sop-process">Process:</Label>
-                        <Input id="sop-process" className="mt-1" placeholder="e.g., Morning Rush" />
+                        <Input 
+                          id="sop-process" 
+                          className="mt-1" 
+                          placeholder="e.g., Morning Rush"
+                          value={localData.sop?.process || ''}
+                          onChange={(e) => setLocalData(prev => ({ ...prev, sop: { ...prev.sop, process: e.target.value } }))}
+                        />
                       </div>
                       <div>
                         <Label htmlFor="sop-trigger">Trigger: What starts it?</Label>
-                        <Input id="sop-trigger" className="mt-1" />
+                        <Input 
+                          id="sop-trigger" 
+                          className="mt-1"
+                          value={localData.sop?.trigger || ''}
+                          onChange={(e) => setLocalData(prev => ({ ...prev, sop: { ...prev.sop, trigger: e.target.value } }))}
+                        />
                       </div>
                       <div>
                         <Label htmlFor="sop-steps">Steps: 1-2-3-4-5</Label>
-                        <Textarea id="sop-steps" rows={3} className="mt-1" placeholder="List each step..." />
+                        <Textarea 
+                          id="sop-steps" 
+                          rows={3} 
+                          className="mt-1" 
+                          placeholder="List each step..."
+                          value={localData.sop?.steps || ''}
+                          onChange={(e) => setLocalData(prev => ({ ...prev, sop: { ...prev.sop, steps: e.target.value } }))}
+                        />
                       </div>
                       <div>
                         <Label htmlFor="sop-quality">Quality Bar: What's "done well"?</Label>
-                        <Input id="sop-quality" className="mt-1" />
+                        <Input 
+                          id="sop-quality" 
+                          className="mt-1"
+                          value={localData.sop?.quality || ''}
+                          onChange={(e) => setLocalData(prev => ({ ...prev, sop: { ...prev.sop, quality: e.target.value } }))}
+                        />
                       </div>
                     </div>
                   </Card>
