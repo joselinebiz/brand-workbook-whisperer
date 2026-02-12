@@ -85,7 +85,7 @@ const Landing = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
               <div className="relative">
                 <div className="absolute -top-3 -right-3 bg-gold text-black text-xs font-bold px-3 py-1 rounded-full">
-                  $27
+                  $47
                 </div>
                 <Button 
                   onClick={handlePurchase}
@@ -185,7 +185,7 @@ const Landing = () => {
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
                 disabled={purchasing}
               >
-                {purchasing ? "Processing..." : "START FOR $27 →"}
+                {purchasing ? "Processing..." : "START FOR $47 →"}
               </Button>
             </div>
           </div>
@@ -315,7 +315,7 @@ const Landing = () => {
               className="bg-primary text-primary-foreground hover:bg-primary/90"
               disabled={purchasing}
             >
-              {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+              {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($47) →"}
             </Button>
           </div>
         </div>
@@ -335,7 +335,7 @@ const Landing = () => {
               <div className="flex items-start gap-4">
                 <div className="text-3xl font-bold text-primary">00</div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">FIND YOUR WHITE SPACE ← Start here for $27</h3>
+                  <h3 className="text-xl font-bold mb-2">FIND YOUR WHITE SPACE ← Start here for $47</h3>
                   <p className="text-muted-foreground mb-2">Validate your market opportunity in 45 minutes with one clear positioning statement</p>
                   <p className="text-sm text-muted-foreground italic">Interactive: Dynamic Market Analysis, AI Competitor Insights, Positioning Generator</p>
                 </div>
@@ -412,7 +412,7 @@ const Landing = () => {
               className="bg-primary text-primary-foreground hover:bg-primary/90"
               disabled={purchasing}
             >
-              {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($27) →"}
+              {purchasing ? "Processing..." : "START SYSTEMIZING SUCCESS ($47) →"}
             </Button>
           </div>
         </div>
@@ -430,7 +430,7 @@ const Landing = () => {
               <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 1
               </div>
-              <h3 className="font-bold mb-2">Purchase Workbook 0 ($27) →</h3>
+              <h3 className="font-bold mb-2">Purchase Workbook 0 ($47) →</h3>
             </div>
 
             <div className="text-center">
@@ -480,9 +480,9 @@ const Landing = () => {
 
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-bold mb-2">Q: Is this really just $27?</h3>
+              <h3 className="text-xl font-bold mb-2">Q: Is this really just $47?</h3>
               <p className="text-muted-foreground">
-                A: Yes. One-time payment. $27 gets you Workbook 0 + free webinar + exclusive buyer pricing: complete 5-workbook bundle for $129 (save $259) or individual workbooks for $49 each (save 50%). Your discount is active from purchase through 72 hours after the webinar.
+                A: Yes. One-time payment. $47 gets you Workbook 0 + free webinar + exclusive buyer pricing: complete 5-workbook bundle for $129 (save $259) or individual workbooks for $49 each (save 50%). Your discount is active from purchase through 72 hours after the webinar.
               </p>
             </div>
 
@@ -535,7 +535,7 @@ const Landing = () => {
             className="mb-4 bg-white text-black hover:bg-white/90"
             disabled={purchasing}
           >
-            {purchasing ? "Processing..." : "GET WORKBOOK 0 + FREE WEBINAR ($27) →"}
+            {purchasing ? "Processing..." : "GET WORKBOOK 0 + FREE WEBINAR ($47) →"}
           </Button>
 
           <div className="flex flex-wrap justify-center gap-4 text-sm text-white/80">

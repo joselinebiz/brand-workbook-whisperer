@@ -103,7 +103,7 @@ export default function Workbook0() {
     <ProtectedWorkbook
       productType="workbook_0"
       priceId="price_1SoXezAnYzcngRwoEciOC1NO"
-      price={2700}
+      price={4700}
       workbookTitle="Workbook 0 - Find Your White Space"
     >
       <div className="min-h-screen bg-background">

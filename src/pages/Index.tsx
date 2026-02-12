@@ -20,7 +20,7 @@ const Index = () => {
       description: "Identify your unique positioning in the market with AI-powered competitive analysis and strategic frameworks.",
       path: "/workbook/0",
       productType: "workbook_0",
-      price: 2700,
+      price: 4700,
     },
     {
       number: "01",
