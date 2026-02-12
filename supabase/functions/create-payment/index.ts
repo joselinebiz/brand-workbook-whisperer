@@ -19,7 +19,7 @@ const PRODUCT_PRICES = {
 };
 
 const PRODUCT_DETAILS: Record<string, { name: string; price: number; discountedPrice: number }> = {
-  workbook_0: { name: "Market Opportunity Framework (Workbook 0)", price: 2700, discountedPrice: 2700 },
+  workbook_0: { name: "Market Opportunity Framework (Workbook 0)", price: 4700, discountedPrice: 4700 },
   workbook_1: { name: "Brand Identity Workbook", price: 9700, discountedPrice: 4900 },
   workbook_2: { name: "Marketing Strategy Workbook", price: 9700, discountedPrice: 4900 },
   workbook_3: { name: "Customer Journey Workbook", price: 9700, discountedPrice: 4900 },

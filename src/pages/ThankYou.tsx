@@ -186,7 +186,7 @@ const ThankYou = () => {
             </div>
 
             <div className="mb-8">
-              <div className="text-5xl font-bold text-foreground mb-2">$27</div>
+              <div className="text-5xl font-bold text-foreground mb-2">$47</div>
               <p className="text-muted-foreground">One-time payment • Lifetime access</p>
             </div>
 
