@@ -13,6 +13,16 @@ const Index = () => {
 
   const workbooks = [
     {
+      number: "FREE",
+      title: "THE IDEAL CLIENT WORKBOOK",
+      subtitle: "Know Who You Serve",
+      timeRequired: "30 min",
+      description: "Build a vivid Ideal Client Profile — the foundation for your offers, pricing, brand voice, and marketing. Free and beginner-friendly.",
+      path: "/workbook/icp",
+      productType: "free",
+      price: 0,
+    },
+    {
       number: "00",
       title: "FIND YOUR WHITE SPACE",
       subtitle: "Market Validation",
