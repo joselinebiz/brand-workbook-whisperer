@@ -68,7 +68,20 @@ export const WorkbookCard = ({
     // Note: Don't set loading to false on success because we're navigating away
   };
 
+  const isFree = price === 0;
+
   const getButtonContent = () => {
+    if (isFree) {
+      return (
+        <Link to={path} className="w-full">
+          <Button variant="outline" className="w-full group/btn">
+            Start Free Workbook
+            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+          </Button>
+        </Link>
+      );
+    }
+
     if (!user) {
       return (
         <Button variant="outline" className="w-full group/btn" onClick={() => navigate('/auth')}>
@@ -114,7 +127,7 @@ export const WorkbookCard = ({
             {!hasAccess && <Lock className="w-6 h-6 text-muted-foreground" />}
           </div>
           <div className="flex flex-col items-end gap-1">
-            <span className="text-2xl font-bold text-foreground">${(price || 0) / 100}</span>
+            <span className="text-2xl font-bold text-foreground">{isFree ? 'FREE' : `$${(price || 0) / 100}`}</span>
             <span className="text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">
               {timeRequired}
             </span>
