@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, Save, Download, Heart, Users, MapPin, Sparkles, CheckCircle2 } from "lucide-react";
+import { ChevronDown, Save, Download, Heart, Users, MapPin, Sparkles, CheckCircle2, PartyPopper } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export default function WorkbookICP() {
@@ -793,23 +793,173 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               </label>
             ))}
           </div>
+        </Card>
 
-          <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mt-6">
-            <p className="font-semibold mb-2">🔗 What's Next?</p>
-            <p className="text-sm text-muted-foreground">
-              Your ICP becomes the "Your Customer" section in Workbook 0. You just completed the hardest part of that sprint.{' '}
-              <Link to="/workbook/0" className="text-primary underline hover:text-primary/80">
-                Continue to Workbook 0: Find Your White Space →
-              </Link>
-            </p>
+        {/* Recommended Tech Stack */}
+        <Collapsible>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <h2 className="text-2xl font-bold flex items-center justify-between hover:text-primary transition-colors">
+                <span>Recommended Tech Stack For ICP Research</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <p className="text-muted-foreground mt-4 mb-6">The right tools help you understand your ideal client faster — most are free:</p>
+              <div className="grid gap-6">
+                <div className="p-4 bg-muted/30 rounded-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🤖</span>
+                    <h3 className="font-bold text-lg">AI ASSISTANT</h3>
+                  </div>
+                  <p className="font-semibold mb-1">ChatGPT or Claude</p>
+                  <p className="text-sm text-muted-foreground mb-2">Your built-in strategist for the AI Boost prompts in this workbook</p>
+                  <p className="text-xs italic">Why it works: Free tiers available on both; paste the pre-engineered prompts from this workbook and get consultant-level insights in minutes</p>
+                </div>
+
+                <div className="p-4 bg-muted/30 rounded-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🔍</span>
+                    <h3 className="font-bold text-lg">SOCIAL LISTENING</h3>
+                  </div>
+                  <p className="font-semibold mb-1">SparkToro</p>
+                  <p className="text-sm text-muted-foreground mb-2">Discover where your ideal client spends attention — podcasts, blogs, social accounts, and hashtags</p>
+                  <p className="text-xs italic">Why it works: Free tier lets you run 5 searches/month; instantly validates your Attention Map from Section 3</p>
+                </div>
+
+                <div className="p-4 bg-muted/30 rounded-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">📝</span>
+                    <h3 className="font-bold text-lg">NOTES & ORGANIZATION</h3>
+                  </div>
+                  <p className="font-semibold mb-1">Google Drive (Docs, Sheets, Slides)</p>
+                  <p className="text-sm text-muted-foreground mb-2">Keep your ICP Snapshot, AI outputs, and research organized in one place you already use</p>
+                  <p className="text-xs italic">Why it works: Free, familiar, and shareable — create a dedicated "My ICP" folder and update it as you learn more about your client. Plus everything you build carries straight into the paid workbooks</p>
+                </div>
+
+                <div className="p-4 bg-muted/30 rounded-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🌐</span>
+                    <h3 className="font-bold text-lg">DOMAIN & HOSTING</h3>
+                  </div>
+                  <p className="font-semibold mb-1"><a href="https://blkbld.host/" target="_blank" rel="noopener noreferrer" className="hover:underline text-accent">BlkBld Host</a></p>
+                  <p className="text-sm text-muted-foreground mb-2">Secure your business domain early; BlkBld is a reseller of GoDaddy</p>
+                  <p className="text-xs italic">Why it works: Securing your domain on websites and social media ensures your brand's name belongs to you. The sooner you lock it in, the better — especially before you start showing up where your ICP hangs out</p>
+                </div>
+
+                <div className="p-4 bg-muted/30 rounded-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🎨</span>
+                    <h3 className="font-bold text-lg">AI IMAGE GENERATION</h3>
+                  </div>
+                  <p className="font-semibold mb-1">ChatGPT, Midjourney, NanBanan, NotebookLM</p>
+                  <p className="text-sm text-muted-foreground mb-2">Generate a realistic lifestyle photo of your ideal client</p>
+                  <p className="text-xs italic">Why it works: A visual of your ICP keeps your brand voice consistent — use the image prompt from Section 5 to bring them to life</p>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
+
+        {/* Congratulations */}
+        <Collapsible>
+          <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
+            <CollapsibleTrigger className="w-full">
+              <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
+                <div className="flex items-center gap-4">
+                  <PartyPopper className="w-12 h-12 text-primary" />
+                  <div className="text-left">
+                    <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
+                    <p className="text-muted-foreground">You've completed the Ideal Client Workbook</p>
+                  </div>
+                </div>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </div>
+            </CollapsibleTrigger>
+            
+            <CollapsibleContent>
+              <div className="space-y-4">
+                <p className="text-lg">
+                  You just did something most business owners skip entirely — you got specific about who you serve. That clarity is a competitive advantage that makes every decision from here easier.
+                </p>
+                
+                <div className="bg-background/50 p-4 rounded-lg">
+                  <p className="font-bold mb-2">What You've Accomplished:</p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">✓</span>
+                      <span>Named your ideal client and described their daily life</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">✓</span>
+                      <span>Identified their #1 pain point in their own words — and what it costs them</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">✓</span>
+                      <span>Mapped where they spend their attention (online and offline)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">✓</span>
+                      <span>Painted a clear Before & After transformation picture</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent mt-1">✓</span>
+                      <span>Confirmed they have high pain AND the budget to pay you</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
+                  <p className="font-semibold mb-2">Next: Validate your market opportunity!</p>
+                  <p className="text-sm text-muted-foreground">
+                    Workbook 0 takes your ICP and puts it to work — your profile becomes the "Your Customer" section, so you're already ahead. From there you'll discover your white space, analyze your competition, validate your business model, and build your 30-Second Pitch. Your "who" is done. Now let's make sure the market is ready for you.
+                  </p>
+                </div>
+
+                <div className="bg-background/50 p-4 rounded-lg">
+                  <p className="font-bold mb-3">The Complete BLKBLD Journey Ahead:</p>
+                  <ul className="space-y-2 text-sm">
+                    <li>✅ <strong>IDEAL CLIENT WORKBOOK:</strong> Know exactly who you serve</li>
+                    <li>→ <strong>WORKBOOK 0:</strong> Validate your market opportunity</li>
+                    <li>→ <strong>WORKBOOK 1:</strong> Build your brand foundation</li>
+                    <li>→ <strong>WORKBOOK 2:</strong> Create a strategic marketing system</li>
+                    <li>→ <strong>WORKBOOK 3:</strong> Measure, optimize, and scale</li>
+                  </ul>
+                </div>
+
+                <p className="text-sm text-muted-foreground italic">
+                  This workbook works whether you're building a brick-and-mortar business, launching a service, creating a product, or establishing a personal brand. Same foundation, different applications. You now have the clarity to build with confidence.
+                </p>
+
+                <p className="text-sm text-muted-foreground">
+                  Grab Workbook 0 at <a href="https://blkbld.co" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">blkbld.co</a> and keep going.
+                </p>
+              </div>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
+
+        {/* Save Your Work */}
+        <Card className="p-6 mb-8 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-bold text-lg mb-1">Save Your Work</h3>
+              <p className="text-sm text-muted-foreground">Your data auto-saves, but you can manually save anytime for peace of mind</p>
+            </div>
+            <Button onClick={handleManualSave} size="lg" className="gap-2">
+              <Save className="w-5 h-5" />
+              Save All Changes
+            </Button>
           </div>
         </Card>
 
-        {/* Bottom Save Button */}
-        <div className="flex justify-center gap-4 mb-12">
-          <Button onClick={handleManualSave} className="gap-2" size="lg">
-            <Save className="w-5 h-5" />
-            Save All Changes
+        {/* Navigation */}
+        <div className="flex justify-between gap-4">
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/">← Back to Overview</Link>
+          </Button>
+          <Button variant="hero" size="lg" asChild>
+            <Link to="/workbook/0">Continue to Workbook 0: Find Your White Space →</Link>
           </Button>
         </div>
       </div>
