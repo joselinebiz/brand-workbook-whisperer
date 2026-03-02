@@ -1142,6 +1142,9 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Card>
 
         <div className="flex justify-between gap-4">
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/workbook/icp">← Back to Ideal Client Workbook</Link>
+          </Button>
           <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
             <Download className="w-5 h-5" />
             Download My Workbook
