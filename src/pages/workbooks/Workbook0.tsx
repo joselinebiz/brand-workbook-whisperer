@@ -1056,7 +1056,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <span className="text-2xl">🌐</span>
                   <h3 className="font-bold text-lg">DOMAIN & HOSTING</h3>
                 </div>
-                <p className="font-semibold mb-1"><a href="https://blkbld.host" target="_blank" rel="noopener noreferrer" className="hover:underline text-accent">BlkBld Host</a></p>
+                <p className="font-semibold mb-1"><a href="https://blkbld.host/" target="_blank" rel="noopener noreferrer" className="hover:underline text-accent">BlkBld Host</a></p>
                 <p className="text-sm text-muted-foreground mb-2">Secure your business domain early; BlkBld is a reseller of GoDaddy</p>
                 <p className="text-xs italic">Why it works: Securing your domain early on websites and social media ensures your brand's name belongs to you. Professional email addresses build credibility during validation phase</p>
               </div>
