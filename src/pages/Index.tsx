@@ -13,7 +13,7 @@ const Index = () => {
 
   const workbooks = [
     {
-      number: "FREE",
+      number: "Start Here",
       title: "THE IDEAL CLIENT WORKBOOK",
       subtitle: "Know Who You Serve",
       timeRequired: "30 min",
