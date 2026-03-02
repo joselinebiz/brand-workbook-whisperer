@@ -826,7 +826,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     <span className="text-2xl">🤖</span>
                     <h3 className="font-bold text-lg">AI ASSISTANT</h3>
                   </div>
-                  <p className="font-semibold mb-1">ChatGPT or Claude</p>
+                  <p className="font-semibold mb-1">ChatGPT, Perplexity, Claude or Your Favorite AI Tool</p>
                   <p className="text-sm text-muted-foreground mb-2">Your built-in strategist for the AI Boost prompts in this workbook</p>
                   <p className="text-xs italic">Why it works: Free tiers available on both; paste the pre-engineered prompts from this workbook and get consultant-level insights in minutes</p>
                 </div>
@@ -836,7 +836,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     <span className="text-2xl">🔍</span>
                     <h3 className="font-bold text-lg">SOCIAL LISTENING</h3>
                   </div>
-                  <p className="font-semibold mb-1">SparkToro</p>
+                  <p className="font-semibold mb-1"><a href="https://sparktoro.com/" target="_blank" rel="noopener noreferrer" className="hover:underline text-accent">SparkToro</a></p>
                   <p className="text-sm text-muted-foreground mb-2">Discover where your ideal client spends attention — podcasts, blogs, social accounts, and hashtags</p>
                   <p className="text-xs italic">Why it works: Free tier lets you run 5 searches/month; instantly validates your Attention Map from Section 3</p>
                 </div>
