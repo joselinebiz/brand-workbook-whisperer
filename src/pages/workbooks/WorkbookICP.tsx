@@ -240,7 +240,7 @@ export default function WorkbookICP() {
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 1 of 5: Give Your Ideal Client a Name</span>
+                <span>Step 1 of 6: Give Your Ideal Client a Name</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -386,7 +386,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 2 of 5: Understand Their Inner World</span>
+                <span>Step 2 of 6: Understand Their Inner World</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -485,7 +485,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 3 of 5: Where Do They Hang Out?</span>
+                <span>Step 3 of 6: Where Do They Hang Out?</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -547,7 +547,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 4 of 5: The Transformation You Deliver</span>
+                <span>Step 4 of 6: The Transformation You Deliver</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
@@ -649,12 +649,50 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
           </Card>
         </Collapsible>
 
-        {/* SECTION 5: Your ICP Snapshot */}
+        {/* SECTION 5: Bring Your Ideal Client to Life */}
         <Collapsible>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
-                <span>Step 5 of 5: Your ICP Snapshot</span>
+                <span>Step 5 of 6: Bring Your Ideal Client to Life</span>
+                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              </h2>
+            </CollapsibleTrigger>
+            <p className="text-sm text-muted-foreground mb-6">Create a visual of your ideal client to keep your brand voice consistent</p>
+            <CollapsibleContent>
+              <div className="space-y-6">
+                <p className="text-muted-foreground leading-relaxed">
+                  Having a photo of your ideal client helps them come to life. It might seem silly, but having a physical image allows you to create a consistent brand voice and content that attracts them — since you'll be talking to them in a way they love, about the things they love.
+                </p>
+
+                <AIPromptCard
+                  title="🤖 AI Boost — ICP Image Prompt"
+                  context="Use this prompt in Midjourney, NanBanan, ChatGPT, or your favorite AI image tool"
+                  prompt={`A high-quality, realistic lifestyle photograph of ${localData.clientName || '[Name]'}, a ${localData.clientAge || '[Age]'}-year-old ${localData.clientJobTitle || '[Job Title]'} living in ${localData.clientLocation || '[Location]'}. They have a ${localData.threeWords || '[3 personality words]'} personality. They are captured in their natural environment, ${localData.afterDayLooksLike || '[Setting from Day in the Life]'}, looking ${localData.afterFeels || '[Emotional State — e.g., confident and at peace]'}. The lighting is natural and bright, with a shallow depth of field. Professional photography, candid style, 8k resolution, cinematic composition.`}
+                />
+
+                <Card className="p-6 border-2 border-dashed border-muted-foreground/30 bg-muted/10">
+                  <div className="flex flex-col items-center justify-center text-center py-8">
+                    <div className="w-32 h-32 rounded-full bg-muted/30 flex items-center justify-center mb-4 border-2 border-dashed border-muted-foreground/20">
+                      <Users className="w-12 h-12 text-muted-foreground/40" />
+                    </div>
+                    <h4 className="font-semibold text-lg mb-2">Your Ideal Client Image</h4>
+                    <p className="text-sm text-muted-foreground max-w-md">
+                      Generate your ICP photo using the AI prompt above, then download this workbook and add your image — so you have your picture and snapshot in one place.
+                    </p>
+                  </div>
+                </Card>
+              </div>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
+
+        {/* SECTION 6: Your ICP Snapshot */}
+        <Collapsible>
+          <Card className="p-8 mb-8">
+            <CollapsibleTrigger className="w-full">
+              <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
+                <span>Step 6 of 6: Your ICP Snapshot</span>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
               </h2>
             </CollapsibleTrigger>
