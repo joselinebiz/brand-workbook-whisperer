@@ -556,7 +556,7 @@ const Landing = () => {
             Joseline Nyinawabera, MBA | Founder, BlkBld & Co. | @JoselineBiz
           </p>
           <p className="text-xs text-muted-foreground">
-            © 2025 BLKBLD. All rights reserved.
+            © BLKBLD & CO. LLC. All rights reserved.
           </p>
         </div>
       </footer>

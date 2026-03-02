@@ -240,7 +240,7 @@ const Index = () => {
             You&apos;re not just learning concepts—you&apos;re implementing the same systems that generate six-figure consulting engagements.
           </p>
           <p className="text-sm text-muted-foreground">
-            © 2025 BLKBLD
+            © BLKBLD & CO. LLC
           </p>
         </div>
       </footer>
