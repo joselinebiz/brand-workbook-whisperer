@@ -945,9 +945,6 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   This workbook works whether you're building a brick-and-mortar business, launching a service, creating a product, or establishing a personal brand. Same foundation, different applications. You now have the clarity to build with confidence.
                 </p>
 
-                <p className="text-sm text-muted-foreground">
-                  Grab Workbook 0 at <a href="https://blkbld.co" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">blkbld.co</a> and keep going.
-                </p>
               </div>
             </CollapsibleContent>
           </Card>
