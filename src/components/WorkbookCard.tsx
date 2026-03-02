@@ -122,7 +122,7 @@ export const WorkbookCard = ({
       <div className="p-8">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
-            <span className="text-4xl font-bold text-primary">{number}</span>
+            <span className="text-4xl font-bold text-primary font-chatone">{number}</span>
             {hasAccess && <CheckCircle2 className="w-6 h-6 text-accent" />}
             {!hasAccess && <Lock className="w-6 h-6 text-muted-foreground" />}
           </div>
