@@ -1,5 +1,108 @@
 import { WorkbookData } from "@/contexts/WorkbookContext";
 
+export const generateWorkbookICPContent = (localData: any): string => {
+  const timestamp = new Date().toLocaleString();
+  
+  return `
+==============================================
+THE IDEAL CLIENT WORKBOOK
+Know Exactly Who You Serve — So They Come to You
+Generated: ${timestamp}
+==============================================
+
+SECTION 1: GIVE YOUR IDEAL CLIENT A NAME
+-----------------------------------------
+Name: ${localData.clientName || 'Not answered'}
+Age: ${localData.clientAge || 'Not answered'}
+Gender: ${localData.clientGender || 'Not answered'}
+Location: ${localData.clientLocation || 'Not answered'}
+Relationship Status: ${localData.clientRelationship || 'Not answered'}
+Kids: ${localData.clientKids || 'Not answered'}
+Education: ${localData.clientEducation || 'Not answered'}
+Job Title: ${localData.clientJobTitle || 'Not answered'}
+Income Range: ${localData.clientIncome || 'Not answered'}
+
+Three Words (best friend describes them): ${localData.threeWords || 'Not answered'}
+Who/What Inspires Them: ${localData.inspires || 'Not answered'}
+Core Desire (Life Force 8): ${localData.coreDesire || 'Not selected'}
+
+AI Consumer Psychologist Response:
+${localData.aiConsumerPsychologist || 'Not generated'}
+
+
+SECTION 2: UNDERSTAND THEIR INNER WORLD
+-----------------------------------------
+Goal 1: ${localData.goal1 || 'Not answered'}
+Goal 2: ${localData.goal2 || 'Not answered'}
+Goal 3: ${localData.goal3 || 'Not answered'}
+
+What keeps them up at night: ${localData.keepsUpAtNight || 'Not answered'}
+Cost in dollars: ${localData.costDollars || 'Not answered'}
+Cost in hours: ${localData.costHours || 'Not answered'}
+Happy with status quo: ${localData.happyWithStatus || 'Not answered'}
+What would change if solved: ${localData.whatWouldChange || 'Not answered'}
+
+AI Empathy Map Response:
+${localData.aiEmpathyMap || 'Not generated'}
+
+
+SECTION 3: MAP THEIR ATTENTION
+-----------------------------------------
+Social Media: ${localData.socialMedia || 'Not answered'}
+Podcasts: ${localData.podcasts || 'Not answered'}
+Books/Blogs: ${localData.booksBlogs || 'Not answered'}
+Online Communities: ${localData.onlineCommunities || 'Not answered'}
+In-Person Events: ${localData.inPersonEvents || 'Not answered'}
+Influencers: ${localData.influencers || 'Not answered'}
+Apps They Use Daily: ${localData.appsDaily || 'Not answered'}
+Weekend Activities: ${localData.weekendActivities || 'Not answered'}
+
+
+SECTION 4: THE TRANSFORMATION
+-----------------------------------------
+BEFORE:
+  Feels: ${localData.beforeFeels || 'Not answered'}
+  Struggles with: ${localData.beforeStruggles || 'Not answered'}
+  Believes: ${localData.beforeBelieves || 'Not answered'}
+  Day looks like: ${localData.beforeDayLooksLike || 'Not answered'}
+
+AFTER:
+  Feels: ${localData.afterFeels || 'Not answered'}
+  Struggles with: ${localData.afterStruggles || 'Not answered'}
+  Believes: ${localData.afterBelieves || 'Not answered'}
+  Day looks like: ${localData.afterDayLooksLike || 'Not answered'}
+
+Premium Offer Idea: ${localData.premiumOffer || 'Not answered'}
+
+AI Transformation Response:
+${localData.aiTransformation || 'Not generated'}
+
+
+SECTION 5: PROFILE SNAPSHOT
+-----------------------------------------
+Name & Age: ${localData.snapshotName || [localData.clientName, localData.clientAge].filter(Boolean).join(', ') || 'Not answered'}
+Location & Role: ${localData.snapshotLocation || [localData.clientLocation, localData.clientJobTitle].filter(Boolean).join(' · ') || 'Not answered'}
+Income: ${localData.snapshotIncome || localData.clientIncome || 'Not answered'}
+Personality: ${localData.snapshotPersonality || localData.threeWords || 'Not answered'}
+Core Desire: ${localData.snapshotDesire || localData.coreDesire || 'Not answered'}
+#1 Pain Point: ${localData.snapshotPainPoint || localData.keepsUpAtNight || 'Not answered'}
+Cost of Problem: ${localData.snapshotCostOfProblem || 'Not answered'}
+Where They Hang Out: ${localData.snapshotWhereTheyHangOut || 'Not answered'}
+Transformation: ${localData.snapshotTransformation || 'Not answered'}
+
+Primary Segment Check:
+  High Pain: ${localData.highPain ? 'Yes' : 'No'}
+  Has Budget: ${localData.hasBudget ? 'Yes' : 'No'}
+  Realistic Pay (one-time): ${localData.realisticPayOneTime || 'Not answered'}
+  Realistic Pay (monthly): ${localData.realisticPayMonthly || 'Not answered'}
+
+==============================================
+End of Ideal Client Workbook
+==============================================
+`.trim();
+};
+
+
 export const generateWorkbook0Content = (localData: any): string => {
   const timestamp = new Date().toLocaleString();
   

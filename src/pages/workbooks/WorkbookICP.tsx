@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, Save, Download, Heart, Users, MapPin, Sparkles, CheckCircle2, PartyPopper } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { generateWorkbookICPContent, downloadWorkbook } from "@/utils/workbookDownload";
 
 export default function WorkbookICP() {
   const { user, loading } = useAuth();
@@ -108,6 +109,19 @@ export default function WorkbookICP() {
     localStorage.setItem('workbookICPData', JSON.stringify(localData));
     setIsSaving(true);
     setTimeout(() => setIsSaving(false), 2000);
+  };
+
+  const handleDownload = () => {
+    const content = generateWorkbookICPContent(localData);
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `BLKBLD-Ideal-Client-Workbook-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const update = (field: string, value: any) => {
@@ -957,6 +971,10 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         <div className="flex justify-between gap-4">
           <Button variant="outline" size="lg" asChild>
             <Link to="/">← Back to Overview</Link>
+          </Button>
+          <Button onClick={handleDownload} size="lg" variant="outline" className="gap-2">
+            <Download className="w-5 h-5" />
+            Download My Workbook
           </Button>
           <Button variant="hero" size="lg" asChild>
             <Link to="/workbook/0">Continue to Workbook 0: Find Your White Space →</Link>
