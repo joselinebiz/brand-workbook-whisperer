@@ -820,7 +820,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   context="Use this to test your positioning"
                   prompt={`My white space statement is:
 
-"I'm the only one who [your action] for [your customer] because [your advantage]."
+"${data.whiteSpaceDeclaration || "I'm the only one who [your action] for [your customer] because [your advantage]."}"
 
 Is this:
 1. Specific enough that someone would say "that's for me"?
