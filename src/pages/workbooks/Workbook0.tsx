@@ -302,7 +302,7 @@ export default function Workbook0() {
               <AIPromptCard
                 title="AI Prompt: Customer Research"
                 context="Use this after speaking with 5 potential customers"
-                prompt={`I interviewed 5 [type of customers]. Here's what they said about [problem]:
+                prompt={`I interviewed 5 ${data.targetCustomer || '[type of customers]'}. Here's what they said about ${data.customerProblem || '[problem]'}:
 
 [Paste quotes/notes]
 
@@ -311,7 +311,9 @@ Analyze this and tell me:
 2. What's this problem costing them in time or money?
 3. What band-aid solutions are they using now?
 
-Format as: Problem / Cost / Current Solution`}
+Format as: Problem / Cost / Current Solution
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
 
               <div className="mt-4">
@@ -439,15 +441,17 @@ Format as: Problem / Cost / Current Solution`}
               <AIPromptCard
                 title="AI Prompt: Competitive Analysis"
                 context="Use this to identify market gaps"
-                prompt={`Here are 3 competitors in [your market]:
+                prompt={`Here are 3 competitors in ${data.targetCustomer ? `the market serving ${data.targetCustomer}` : '[your market]'}:
 
-1. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
-2. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
-3. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
+1. ${localData.competitors[0]?.name || '[Name]'} - Promise: ${localData.competitors[0]?.promise || '[W]'} - Price: $${localData.competitors[0]?.price || '[X]'} - Missing: ${localData.competitors[0]?.miss || '[Y]'} - Good at: ${localData.competitors[0]?.goodAt || '[Z]'}
+2. ${localData.competitors[1]?.name || '[Name]'} - Promise: ${localData.competitors[1]?.promise || '[W]'} - Price: $${localData.competitors[1]?.price || '[X]'} - Missing: ${localData.competitors[1]?.miss || '[Y]'} - Good at: ${localData.competitors[1]?.goodAt || '[Z]'}
+3. ${localData.competitors[2]?.name || '[Name]'} - Promise: ${localData.competitors[2]?.promise || '[W]'} - Price: $${localData.competitors[2]?.price || '[X]'} - Missing: ${localData.competitors[2]?.miss || '[Y]'} - Good at: ${localData.competitors[2]?.goodAt || '[Z]'}
 
 What gap do ALL three competitors miss? What could someone own that none of them address?
 
-Give me 3 specific angles I could take.`}
+Give me 3 specific angles I could take.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
 
               <div className="mt-4">
@@ -690,17 +694,19 @@ Give me 3 specific angles I could take.`}
                   title="AI Prompt: Model Validation"
                   context="Use this to validate your business model"
                   prompt={`Review my business model:
-- Customer: [who]
-- Problem: [what]
-- Solution: [how]
-- Price: [amount]
-- Main cost: [what]
+- Customer: ${localData.businessModel.who || data.targetCustomer || '[who]'}
+- Problem: ${localData.businessModel.problem || data.customerProblem || '[what]'}
+- Solution: ${localData.businessModel.solution || '[how]'}
+- Price: ${localData.businessModel.price || '[amount]'}
+- Main cost: ${localData.businessModel.costs || '[what]'}
 
 Provide:
 1. Similar successful business examples
 2. Potential revenue at 10, 100, 1000 customers
 3. 3 risks and mitigation strategies
-4. Suggested pricing models (one-time, subscription, tiered)`}
+4. Suggested pricing models (one-time, subscription, tiered)
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                 />
               </div>
 
@@ -814,7 +820,7 @@ Provide:
                   context="Use this to test your positioning"
                   prompt={`My white space statement is:
 
-"I'm the only one who [your action] for [your customer] because [your advantage]."
+"${data.whiteSpaceDeclaration || "I'm the only one who [your action] for [your customer] because [your advantage]."}"
 
 Is this:
 1. Specific enough that someone would say "that's for me"?
