@@ -12,6 +12,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown, Save, Download, Heart, Users, MapPin, Sparkles, CheckCircle2, PartyPopper } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { generateWorkbookICPContent, downloadWorkbook } from "@/utils/workbookDownload";
+import { ICPSnapshot } from "@/components/ICPSnapshot";
 
 export default function WorkbookICP() {
   const { user, loading } = useAuth();
@@ -703,84 +704,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   Pull everything together. This is your cheat sheet for every offer, every conversation, every decision.
                 </p>
 
-                <Card className="p-6 bg-gradient-to-br from-accent/5 to-accent/10 border-accent/20">
-                  <h3 className="text-xl font-bold mb-4 text-center">My Ideal Client — Profile Snapshot</h3>
-                  <p className="text-xs text-muted-foreground text-center mb-4">✨ Auto-filled from your answers above. Edit any field to override.</p>
-                  <div className="space-y-3">
-                    <div>
-                      <Label className="text-xs">Name & Age</Label>
-                      <Input 
-                        value={localData.snapshotName || [localData.clientName, localData.clientAge].filter(Boolean).join(', ')} 
-                        onChange={e => update('snapshotName', e.target.value)} 
-                        placeholder="Auto-fills from Section 1"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Location & Role</Label>
-                      <Input 
-                        value={localData.snapshotLocation || [localData.clientLocation, localData.clientJobTitle].filter(Boolean).join(' · ')} 
-                        onChange={e => update('snapshotLocation', e.target.value)} 
-                        placeholder="Auto-fills from Section 1"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Income Range</Label>
-                      <Input 
-                        value={localData.snapshotIncome || localData.clientIncome} 
-                        onChange={e => update('snapshotIncome', e.target.value)} 
-                        placeholder="Auto-fills from Section 1"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Personality (3 words)</Label>
-                      <Input 
-                        value={localData.snapshotPersonality || localData.threeWords} 
-                        onChange={e => update('snapshotPersonality', e.target.value)} 
-                        placeholder="Auto-fills from Section 1"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Core Desire (Life Force 8)</Label>
-                      <Input 
-                        value={localData.snapshotDesire || localData.coreDesire} 
-                        onChange={e => update('snapshotDesire', e.target.value)} 
-                        placeholder="Auto-fills from Section 1"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Top Pain Point (their words)</Label>
-                      <Input 
-                        value={localData.snapshotPainPoint || localData.keepsUpAtNight} 
-                        onChange={e => update('snapshotPainPoint', e.target.value)} 
-                        placeholder="Auto-fills from Section 2"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Cost of Problem ($/mo or hrs/wk)</Label>
-                      <Input 
-                        value={localData.snapshotCostOfProblem || [localData.costDollars ? `${localData.costDollars}/mo` : '', localData.costHours ? `${localData.costHours} hrs/wk` : ''].filter(Boolean).join(' · ')} 
-                        onChange={e => update('snapshotCostOfProblem', e.target.value)} 
-                        placeholder="Auto-fills from Section 2"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Where They Hang Out (top 3)</Label>
-                      <Input 
-                        value={localData.snapshotWhereTheyHangOut || [localData.socialMedia, localData.podcasts, localData.onlineCommunities].filter(Boolean).slice(0, 3).join(' · ')} 
-                        onChange={e => update('snapshotWhereTheyHangOut', e.target.value)} 
-                        placeholder="Auto-fills from Section 3"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">The Transformation (Before → After)</Label>
-                      <Input 
-                        value={localData.snapshotTransformation || (localData.beforeFeels && localData.afterFeels ? `${localData.beforeFeels} → ${localData.afterFeels}` : '')} 
-                        onChange={e => update('snapshotTransformation', e.target.value)} 
-                        placeholder="Auto-fills from Section 4"
-                      />
-                    </div>
-                  </div>
-                </Card>
+                <ICPSnapshot data={localData} />
 
                 <h3 className="text-xl font-bold mt-8">Primary Segment Check</h3>
                 <p className="text-sm text-muted-foreground mb-4">
