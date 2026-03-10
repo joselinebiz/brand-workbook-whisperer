@@ -694,17 +694,19 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   title="AI Prompt: Model Validation"
                   context="Use this to validate your business model"
                   prompt={`Review my business model:
-- Customer: [who]
-- Problem: [what]
-- Solution: [how]
-- Price: [amount]
-- Main cost: [what]
+- Customer: ${localData.businessModel.who || data.targetCustomer || '[who]'}
+- Problem: ${localData.businessModel.problem || data.customerProblem || '[what]'}
+- Solution: ${localData.businessModel.solution || '[how]'}
+- Price: ${localData.businessModel.price || '[amount]'}
+- Main cost: ${localData.businessModel.costs || '[what]'}
 
 Provide:
 1. Similar successful business examples
 2. Potential revenue at 10, 100, 1000 customers
 3. 3 risks and mitigation strategies
-4. Suggested pricing models (one-time, subscription, tiered)`}
+4. Suggested pricing models (one-time, subscription, tiered)
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
                 />
               </div>
 
