@@ -441,15 +441,17 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               <AIPromptCard
                 title="AI Prompt: Competitive Analysis"
                 context="Use this to identify market gaps"
-                prompt={`Here are 3 competitors in [your market]:
+                prompt={`Here are 3 competitors in ${data.targetCustomer ? `the market serving ${data.targetCustomer}` : '[your market]'}:
 
-1. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
-2. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
-3. [Name] - Promise: [W] - Price: $[X] - Missing: [Y] - Good at: [Z]
+1. ${localData.competitors[0]?.name || '[Name]'} - Promise: ${localData.competitors[0]?.promise || '[W]'} - Price: $${localData.competitors[0]?.price || '[X]'} - Missing: ${localData.competitors[0]?.miss || '[Y]'} - Good at: ${localData.competitors[0]?.goodAt || '[Z]'}
+2. ${localData.competitors[1]?.name || '[Name]'} - Promise: ${localData.competitors[1]?.promise || '[W]'} - Price: $${localData.competitors[1]?.price || '[X]'} - Missing: ${localData.competitors[1]?.miss || '[Y]'} - Good at: ${localData.competitors[1]?.goodAt || '[Z]'}
+3. ${localData.competitors[2]?.name || '[Name]'} - Promise: ${localData.competitors[2]?.promise || '[W]'} - Price: $${localData.competitors[2]?.price || '[X]'} - Missing: ${localData.competitors[2]?.miss || '[Y]'} - Good at: ${localData.competitors[2]?.goodAt || '[Z]'}
 
 What gap do ALL three competitors miss? What could someone own that none of them address?
 
-Give me 3 specific angles I could take.`}
+Give me 3 specific angles I could take.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
 
               <div className="mt-4">
