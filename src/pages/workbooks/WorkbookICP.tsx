@@ -620,15 +620,15 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 <AIPromptCard
                   title="🤖 AI Boost — The Transformation Strategist"
                   context="Copy and paste this prompt into ChatGPT, Claude, or your favorite AI tool"
-                  prompt={`Act as a brand strategist. My ideal client is [Name], a [age] [role] who struggles with [pain point — paste from Section 2].
+                  prompt={`Act as a brand strategist. My ideal client is ${localData.clientName || '[Name]'}, a ${localData.clientAge || '[age]'}-year-old ${localData.clientJobTitle || '[role]'} who struggles with ${localData.keepsUpAtNight || '[pain point — paste from Section 2]'}.
 
-Their life BEFORE my solution: [paste your "Before" column notes]
-What solving it would mean to them: [paste from Section 2]
+Their life BEFORE my solution: ${localData.beforeFeels ? `They feel ${localData.beforeFeels}, struggle with ${localData.beforeStruggles || 'unknown'}, believe ${localData.beforeBelieves || 'unknown'}, and their day looks like: ${localData.beforeDayLooksLike || 'unknown'}` : '[paste your "Before" column notes]'}
+What solving it would mean to them: ${localData.whatWouldChange || '[paste from Section 2]'}
 
 TASK:
-1. Write a 'Success Snapshot': A 75-word story of [Name] 30 days after working with me. Focus on the emotional shift (e.g., from 'overwhelmed' to 'in control'). Make it specific and vivid.
-2. Identify the #1 thing [Name] would tell a friend about the transformation — in their own casual language.
-3. Name the single biggest objection [Name] probably has about investing in a solution like mine, and write one sentence that addresses it honestly.
+1. Write a 'Success Snapshot': A 75-word story of ${localData.clientName || '[Name]'} 30 days after working with me. Focus on the emotional shift (e.g., from 'overwhelmed' to 'in control'). Make it specific and vivid.
+2. Identify the #1 thing ${localData.clientName || '[Name]'} would tell a friend about the transformation — in their own casual language.
+3. Name the single biggest objection ${localData.clientName || '[Name]'} probably has about investing in a solution like mine, and write one sentence that addresses it honestly.
 
 TONE: Confident, warm, no fluff.
 
