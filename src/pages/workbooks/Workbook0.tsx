@@ -302,7 +302,7 @@ export default function Workbook0() {
               <AIPromptCard
                 title="AI Prompt: Customer Research"
                 context="Use this after speaking with 5 potential customers"
-                prompt={`I interviewed 5 [type of customers]. Here's what they said about [problem]:
+                prompt={`I interviewed 5 ${data.targetCustomer || '[type of customers]'}. Here's what they said about ${data.customerProblem || '[problem]'}:
 
 [Paste quotes/notes]
 
@@ -311,7 +311,9 @@ Analyze this and tell me:
 2. What's this problem costing them in time or money?
 3. What band-aid solutions are they using now?
 
-Format as: Problem / Cost / Current Solution`}
+Format as: Problem / Cost / Current Solution
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
 
               <div className="mt-4">
