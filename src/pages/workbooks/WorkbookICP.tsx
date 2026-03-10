@@ -347,14 +347,14 @@ export default function WorkbookICP() {
                 <AIPromptCard
                   title="🤖 AI Boost — The Consumer Psychologist"
                   context="Copy and paste this prompt into ChatGPT, Claude, or your favorite AI tool"
-                  prompt={`Act as a senior consumer psychologist. I am building an Ideal Client Profile for my [type of business]. My best customers are [paste your bio build answers here — age, role, situation, etc.].
+                  prompt={`Act as a senior consumer psychologist. I am building an Ideal Client Profile for my business. My best customers are ${localData.clientAge || '[Age]'}-year-old ${localData.clientGender || '[Gender]'} ${localData.clientJobTitle || '[Job Title]'}s living in ${localData.clientLocation || '[Location]'}, ${localData.clientRelationship || '[Relationship Status]'}, ${localData.clientKids || '[Kids]'}, ${localData.clientEducation || '[Education]'}, earning ${localData.clientIncome || '[Income]'}.
 
-Their ONE primary desire is: [paste from Life Force 8 above]
-Their best friend describes them in 3 words: [paste from above]
-Who or what inspires them: [paste from above]
+Their ONE primary desire is: ${localData.coreDesire || '[paste from Life Force 8 above]'}
+Their best friend describes them in 3 words: ${localData.threeWords || '[3 words]'}
+Who or what inspires them: ${localData.inspires || '[who inspires them]'}
 My business helps them by: [briefly describe what you do]
 
-Flesh out a vivid profile for '[Name]'.
+Flesh out a vivid profile for '${localData.clientName || '[Name]'}'.
 
 REQUIREMENTS:
 1. Include name, age, job, and income.
