@@ -12,6 +12,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown, Save, Download, Heart, Users, MapPin, Sparkles, CheckCircle2, PartyPopper } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { generateWorkbookICPContent, downloadWorkbook } from "@/utils/workbookDownload";
+import { ICPSnapshot } from "@/components/ICPSnapshot";
 
 export default function WorkbookICP() {
   const { user, loading } = useAuth();
