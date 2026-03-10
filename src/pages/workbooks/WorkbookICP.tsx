@@ -450,11 +450,11 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                 <AIPromptCard
                   title="🤖 AI Boost — The Empathy Map"
                   context="Copy and paste this prompt into ChatGPT, Claude, or your favorite AI tool"
-                  prompt={`Act as my ideal customer, [ICP name, age, role].
+                  prompt={`Act as my ideal customer, ${localData.clientName || '[ICP name]'}, a ${localData.clientAge || '[age]'}-year-old ${localData.clientJobTitle || '[role]'}.
 
 My business: [briefly describe what you do]
-Their #1 problem: [paste from "what keeps them up at night"]
-What solving it would mean: [paste from "what would change"]
+Their #1 problem: ${localData.keepsUpAtNight || '[paste from "what keeps them up at night"]'}
+What solving it would mean: ${localData.whatWouldChange || '[paste from "what would change"]'}
 
 OUTPUT:
 1. The 'Coffee Shop' Rant: Write 100 words as this person venting to a friend in everyday, messy language (no jargon) about why this problem is ruining their week.
