@@ -155,6 +155,16 @@ export const ICPSnapshot = ({ data }: ICPSnapshotProps) => {
             <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm whitespace-pre-line">{transformation}</div>
           </div>
 
+          {/* THE PROMISE */}
+          {data?.brandPromise && (
+            <div className="mb-6">
+              <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">The Promise</h2>
+              <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm italic">
+                {data.brandPromise}
+              </div>
+            </div>
+          )}
+
           {/* DECISION FILTER */}
           <div className="mb-4">
             <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">Decision Filter</h2>
