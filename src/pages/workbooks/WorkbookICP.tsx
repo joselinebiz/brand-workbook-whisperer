@@ -31,6 +31,7 @@ export default function WorkbookICP() {
       clientEducation: '',
       clientJobTitle: '',
       clientIncome: '',
+      businessHelps: '',
       threeWords: '',
       inspires: '',
       coreDesire: '',
