@@ -61,8 +61,17 @@ export const ICPSnapshot = ({ data }: ICPSnapshotProps) => {
     data?.costHours ? `${data.costHours} hrs/wk` : ''
   ].filter(Boolean));
   const whereTheyHangOut = getValue('snapshotWhereTheyHangOut', ...[data?.socialMedia, data?.podcasts, data?.booksBlogs, data?.onlineCommunities, data?.inPersonEvents, data?.influencers, data?.appsDaily, data?.weekendActivities].filter(Boolean));
-  const transformation = getValue('snapshotTransformation',
-    data?.beforeFeels && data?.afterFeels ? `${data.beforeFeels} → ${data.afterFeels}` : undefined
+  const transformationPairs = [
+    { label: 'Feels', before: data?.beforeFeels, after: data?.afterFeels },
+    { label: 'Struggles', before: data?.beforeStruggles, after: data?.afterStruggles },
+    { label: 'Believes', before: data?.beforeBelieves, after: data?.afterBelieves },
+    { label: 'Day Looks Like', before: data?.beforeDayLooksLike, after: data?.afterDayLooksLike },
+  ].filter(p => p.before || p.after);
+
+  const transformation = data?.snapshotTransformation || (
+    transformationPairs.length > 0
+      ? transformationPairs.map(p => `${p.label}: ${p.before || '_____'} → ${p.after || '_____'}`).join('\n')
+      : '_____'
   );
 
   return (
