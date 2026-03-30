@@ -617,12 +617,6 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <p className="text-sm font-medium text-gold">💡 Speed Tip: Stuck on the "AFTER" column? Run the AI prompt below first — use the 'Success Snapshot' it generates to fill it in.</p>
                 </div>
 
-                <div>
-                  <Label>If your ideal client would pay you anything to get their desired result, what would you do to guarantee their success?</Label>
-                  <p className="text-xs text-muted-foreground mb-2">(This is your premium offer in disguise.)</p>
-                  <Textarea rows={3} value={localData.premiumOffer} onChange={e => update('premiumOffer', e.target.value)} />
-                </div>
-
                 <AIPromptCard
                   title="🤖 AI Boost — The Transformation Strategist"
                   context="Copy and paste this prompt into ChatGPT, Claude, or your favorite AI tool"
@@ -648,6 +642,48 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     placeholder="Paste your AI response here..."
                     value={localData.aiTransformation}
                     onChange={e => update('aiTransformation', e.target.value)}
+                    className="mt-2"
+                  />
+                </div>
+
+                <div className="mt-8">
+                  <Label className="text-base font-semibold">Now that you can see your client's transformation clearly — answer this honestly:</Label>
+                  <p className="text-sm text-muted-foreground mt-1 mb-3">If your ideal client would pay you anything to get their desired result, what would you do to guarantee their success? (This is your premium offer in disguise.)</p>
+                  <Textarea rows={3} value={localData.premiumOffer} onChange={e => update('premiumOffer', e.target.value)} />
+                </div>
+
+                <AIPromptCard
+                  title="🤖 AI Boost — The Offer Gut-Check"
+                  context="Copy and paste this prompt into ChatGPT, Claude, or your favorite AI tool"
+                  prompt={`Act as a business strategist. Here is my ideal client and what I would do to guarantee their success:
+
+My ideal client: ${localData.clientName || '[Name]'}, ${localData.clientAge || '[age]'}-year-old ${localData.clientJobTitle || '[role]'}. Pain point: ${localData.keepsUpAtNight || '[pain point]'}. Cost of problem: ${localData.costDollars ? `$${localData.costDollars}` : '[cost in dollars]'}${localData.costHours ? `, ${localData.costHours} hours` : ''}.
+
+Their transformation:
+${localData.beforeFeels || localData.afterFeels ? `• Feels: ${localData.beforeFeels || '_____'} → ${localData.afterFeels || '_____'}` : '• Feels: [Before] → [After]'}
+${localData.beforeStruggles || localData.afterStruggles ? `• Struggles: ${localData.beforeStruggles || '_____'} → ${localData.afterStruggles || '_____'}` : '• Struggles: [Before] → [After]'}
+${localData.beforeBelieves || localData.afterBelieves ? `• Believes: ${localData.beforeBelieves || '_____'} → ${localData.afterBelieves || '_____'}` : '• Believes: [Before] → [After]'}
+${localData.beforeDayLooksLike || localData.afterDayLooksLike ? `• Day looks like: ${localData.beforeDayLooksLike || '_____'} → ${localData.afterDayLooksLike || '_____'}` : '• Day looks like: [Before] → [After]'}
+
+My answer to "what would I do to guarantee their success": ${localData.premiumOffer || '[your answer from above]'}
+
+Be honest with me:
+1. Does this offer directly solve the pain I identified — or am I solving something easier that I'm more comfortable with?
+2. Would my ideal client read this and immediately say "yes, that's exactly what I need" — or would they need convincing? Why?
+3. What's the ONE thing I should add, remove, or sharpen to make this feel like a no-brainer for this specific person?
+
+Be direct. No fluff.
+
+Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
+                />
+
+                <div className="mt-4">
+                  <Label>AI Response</Label>
+                  <Textarea
+                    rows={6}
+                    placeholder="Paste your AI response here..."
+                    value={localData.aiOfferGutCheck}
+                    onChange={e => update('aiOfferGutCheck', e.target.value)}
                     className="mt-2"
                   />
                 </div>
