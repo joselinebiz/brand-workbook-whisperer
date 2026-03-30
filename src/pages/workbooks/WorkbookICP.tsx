@@ -66,6 +66,7 @@ export default function WorkbookICP() {
       afterDayLooksLike: '',
       premiumOffer: '',
       aiTransformation: '',
+      aiOfferGutCheck: '',
       // Section 5
       snapshotName: '',
       snapshotLocation: '',
