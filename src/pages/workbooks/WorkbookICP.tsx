@@ -904,7 +904,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <PartyPopper className="w-12 h-12 text-primary" />
                   <div className="text-left">
                     <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
-                    <p className="text-muted-foreground">You've completed the Ideal Client Workbook</p>
+                    <p className="text-muted-foreground">You've completed the Ideal Client Workbook — Download your workbook and snapshot now — paste it into any AI tool to keep every conversation dialed in to your ideal client.</p>
                   </div>
                 </div>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
