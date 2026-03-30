@@ -31,6 +31,7 @@ export default function WorkbookICP() {
       clientEducation: '',
       clientJobTitle: '',
       clientIncome: '',
+      businessHelps: '',
       threeWords: '',
       inspires: '',
       coreDesire: '',
@@ -309,6 +310,10 @@ export default function WorkbookICP() {
                     <Label>Household Income Range</Label>
                     <Input placeholder="e.g., $80,000–$120,000" value={localData.clientIncome} onChange={e => update('clientIncome', e.target.value)} />
                   </div>
+                  <div>
+                    <Label>My business helps them by:</Label>
+                    <Input placeholder="Briefly describe what you do" value={localData.businessHelps} onChange={e => update('businessHelps', e.target.value)} />
+                  </div>
                 </div>
 
                 <h3 className="text-xl font-bold mt-8">Now make them real:</h3>
@@ -352,7 +357,7 @@ export default function WorkbookICP() {
 Their ONE primary desire is: ${localData.coreDesire || '[paste from Life Force 8 above]'}
 Their best friend describes them in 3 words: ${localData.threeWords || '[3 words]'}
 Who or what inspires them: ${localData.inspires || '[who inspires them]'}
-My business helps them by: [briefly describe what you do]
+My business helps them by: ${localData.businessHelps || '[briefly describe what you do]'}
 
 Flesh out a vivid profile for '${localData.clientName || '[Name]'}'.
 
