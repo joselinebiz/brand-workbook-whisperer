@@ -152,7 +152,7 @@ export const ICPSnapshot = ({ data }: ICPSnapshotProps) => {
           <div className="mb-6">
             <h2 className="text-lg font-bold mb-3 text-primary uppercase tracking-wide">The Transformation</h2>
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Before → After</p>
-            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">{transformation}</div>
+            <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm whitespace-pre-line">{transformation}</div>
           </div>
 
           {/* DECISION FILTER */}
