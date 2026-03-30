@@ -310,6 +310,10 @@ export default function WorkbookICP() {
                     <Label>Household Income Range</Label>
                     <Input placeholder="e.g., $80,000–$120,000" value={localData.clientIncome} onChange={e => update('clientIncome', e.target.value)} />
                   </div>
+                  <div>
+                    <Label>My business helps them by:</Label>
+                    <Input placeholder="Briefly describe what you do" value={localData.businessHelps} onChange={e => update('businessHelps', e.target.value)} />
+                  </div>
                 </div>
 
                 <h3 className="text-xl font-bold mt-8">Now make them real:</h3>
