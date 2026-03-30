@@ -665,12 +665,13 @@ ${localData.beforeStruggles || localData.afterStruggles ? `• Struggles: ${loca
 ${localData.beforeBelieves || localData.afterBelieves ? `• Believes: ${localData.beforeBelieves || '_____'} → ${localData.afterBelieves || '_____'}` : '• Believes: [Before] → [After]'}
 ${localData.beforeDayLooksLike || localData.afterDayLooksLike ? `• Day looks like: ${localData.beforeDayLooksLike || '_____'} → ${localData.afterDayLooksLike || '_____'}` : '• Day looks like: [Before] → [After]'}
 
-My answer to "what would I do to guarantee their success": ${localData.premiumOffer || '[your answer from above]'}
+My answer to "what would I do to guarantee their success": ${localData.premiumOffer || '[paste your answer from above]'}
 
 Be honest with me:
-1. Does this offer directly solve the pain I identified — or am I solving something easier that I'm more comfortable with?
+1. Does this offer directly solve the pain I identified — or am I solving something easier that I'm more comfortable with? Be specific about the gap.
 2. Would my ideal client read this and immediately say "yes, that's exactly what I need" — or would they need convincing? Why?
-3. What's the ONE thing I should add, remove, or sharpen to make this feel like a no-brainer for this specific person?
+3. What's the ONE thing I should add, remove, or sharpen to make this a no-brainer for this specific person?
+4. Rewrite my offer as ONE sentence that includes: a specific timeframe, an income-tied outcome, and what they'll have at the end. Format: "In [timeframe], you will have [what they walk away with] — so you [the result that matters most to them]."
 
 Be direct. No fluff.
 
