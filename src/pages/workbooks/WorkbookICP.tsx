@@ -904,7 +904,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   <PartyPopper className="w-12 h-12 text-primary" />
                   <div className="text-left">
                     <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
-                    <p className="text-muted-foreground">You've completed the Ideal Client Workbook</p>
+                    <p className="text-muted-foreground">You've completed the Ideal Client Workbook — Download your workbook and snapshot now — paste it into any AI tool to keep every conversation dialed in to your ideal client.</p>
                   </div>
                 </div>
                 <ChevronDown className="h-6 w-6 transition-transform duration-200" />
@@ -941,6 +941,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                       <span>Confirmed they have high pain AND the budget to pay you</span>
                     </li>
                   </ul>
+                </div>
+
+                <div className="bg-primary/5 border-l-4 border-primary p-4 rounded mb-4">
+                  <p className="font-semibold mb-2">Take Your ICP With You</p>
+                  <p className="text-sm text-muted-foreground">
+                    Your downloaded workbook isn't just a record, it's a tool. Paste it into ChatGPT, Claude, or any AI before writing content, planning offers, or making business decisions. The more context AI has about your ideal client, the better every output gets.
+                  </p>
                 </div>
 
                 <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
