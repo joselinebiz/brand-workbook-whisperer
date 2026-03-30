@@ -67,6 +67,7 @@ export default function WorkbookICP() {
       premiumOffer: '',
       aiTransformation: '',
       aiOfferGutCheck: '',
+      brandPromise: '',
       // Section 5
       snapshotName: '',
       snapshotLocation: '',
@@ -686,6 +687,20 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     value={localData.aiOfferGutCheck}
                     onChange={e => update('aiOfferGutCheck', e.target.value)}
                     className="mt-2"
+                  />
+                </div>
+
+                {/* Brand Promise */}
+                <div className="mt-8">
+                  <Label className="text-lg font-semibold">Your Brand Promise</Label>
+                  <p className="text-sm text-muted-foreground mt-1 mb-2">
+                    From your AI response above, copy the rewritten one-sentence offer (the one that starts with "In [timeframe], you will have...") and paste it here.
+                  </p>
+                  <Textarea
+                    rows={3}
+                    placeholder="In [timeframe], you will have [what they walk away with] — so you [the result that matters most to them]."
+                    value={localData.brandPromise}
+                    onChange={e => update('brandPromise', e.target.value)}
                   />
                 </div>
               </div>
