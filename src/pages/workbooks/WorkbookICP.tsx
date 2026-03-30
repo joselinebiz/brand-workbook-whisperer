@@ -943,6 +943,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   </ul>
                 </div>
 
+                <div className="bg-primary/5 border-l-4 border-primary p-4 rounded mb-4">
+                  <p className="font-semibold mb-2">Take Your ICP With You</p>
+                  <p className="text-sm text-muted-foreground">
+                    Your downloaded workbook isn't just a record, it's a tool. Paste it into ChatGPT, Claude, or any AI before writing content, planning offers, or making business decisions. The more context AI has about your ideal client, the better every output gets.
+                  </p>
+                </div>
+
                 <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
                   <p className="font-semibold mb-2">Next: Validate your market opportunity!</p>
                   <p className="text-sm text-muted-foreground">
