@@ -67,6 +67,7 @@ export default function WorkbookICP() {
       premiumOffer: '',
       aiTransformation: '',
       aiOfferGutCheck: '',
+      brandPromise: '',
       // Section 5
       snapshotName: '',
       snapshotLocation: '',
