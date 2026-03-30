@@ -60,7 +60,7 @@ export const ICPSnapshot = ({ data }: ICPSnapshotProps) => {
     data?.costDollars ? `${data.costDollars}/mo` : '',
     data?.costHours ? `${data.costHours} hrs/wk` : ''
   ].filter(Boolean));
-  const whereTheyHangOut = getValue('snapshotWhereTheyHangOut', ...[data?.socialMedia, data?.podcasts, data?.onlineCommunities].filter(Boolean));
+  const whereTheyHangOut = getValue('snapshotWhereTheyHangOut', ...[data?.socialMedia, data?.podcasts, data?.booksBlogs, data?.onlineCommunities, data?.inPersonEvents, data?.influencers, data?.appsDaily, data?.weekendActivities].filter(Boolean));
   const transformation = getValue('snapshotTransformation',
     data?.beforeFeels && data?.afterFeels ? `${data.beforeFeels} → ${data.afterFeels}` : undefined
   );
