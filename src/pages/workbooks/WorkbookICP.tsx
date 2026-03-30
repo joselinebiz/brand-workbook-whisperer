@@ -357,7 +357,7 @@ export default function WorkbookICP() {
 Their ONE primary desire is: ${localData.coreDesire || '[paste from Life Force 8 above]'}
 Their best friend describes them in 3 words: ${localData.threeWords || '[3 words]'}
 Who or what inspires them: ${localData.inspires || '[who inspires them]'}
-My business helps them by: [briefly describe what you do]
+My business helps them by: ${localData.businessHelps || '[briefly describe what you do]'}
 
 Flesh out a vivid profile for '${localData.clientName || '[Name]'}'.
 
