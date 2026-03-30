@@ -457,7 +457,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   context="Copy and paste this prompt into ChatGPT, Claude, or your favorite AI tool"
                   prompt={`Act as my ideal customer, ${localData.clientName || '[ICP name]'}, a ${localData.clientAge || '[age]'}-year-old ${localData.clientJobTitle || '[role]'}.
 
-My business: [briefly describe what you do]
+My business: ${localData.businessHelps || '[briefly describe what you do]'}
 Their #1 problem: ${localData.keepsUpAtNight || '[paste from "what keeps them up at night"]'}
 What solving it would mean: ${localData.whatWouldChange || '[paste from "what would change"]'}
 
