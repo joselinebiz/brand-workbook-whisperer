@@ -846,7 +846,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   prompt={`Review my business model:
 - Customer: ${localData.businessModel.who || data.targetCustomer || '[who]'}
 - Problem: ${localData.businessModel.problem || data.customerProblem || '[what]'}
-- Solution: ${localData.businessModel.solution || '[how]'}
+- Solution: ${localData.businessModel.solution || data.solution || localData.yourWhiteSpaceStep1 || '[how]'}
 - Price: ${localData.businessModel.price || '[amount]'}
 - Main cost: ${localData.businessModel.costs || '[what]'}
 
