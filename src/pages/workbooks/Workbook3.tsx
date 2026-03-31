@@ -99,6 +99,9 @@ export default function Workbook3() {
           </Button>
         </div>
 
+        {/* AI Context Callout */}
+        <AIContextCallout showICPLine={!!localStorage.getItem('workbookICPData')} />
+
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
           <h2 className="text-2xl font-bold mb-4">Who This Is For</h2>
