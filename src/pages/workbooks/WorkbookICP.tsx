@@ -949,7 +949,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Congratulations */}
-        <Collapsible>
+        <Collapsible open={openSections.congrats} onOpenChange={() => toggleSection('congrats')}>
           <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
             <CollapsibleTrigger className="w-full">
               <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
