@@ -317,6 +317,23 @@ export default function WorkbookICP() {
                     <Input placeholder="e.g., $80,000–$120,000" value={localData.clientIncome} onChange={e => update('clientIncome', e.target.value)} />
                   </div>
                   <div>
+                    <Label>What is their #1 problem your business solves?</Label>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Your ideal client's fear is what gets their attention — it's what makes them stop scrolling, click an ad, or walk up to your booth. But the problem is what your offer actually solves. Fear opens the door. The problem closes the sale. You need both to get people to buy, and you need to be able to speak to both.
+                    </p>
+                    <Input
+                      placeholder="In one sentence — not their fear, their actual problem. What's broken, missing, or not working?"
+                      value={localData.numberOneProblem}
+                      onChange={e => update('numberOneProblem', e.target.value)}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1 italic">
+                      Example: She doesn't have a brand foundation or marketing system, so her income is unpredictable and every month feels like starting from scratch.
+                    </p>
+                    <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mt-3">
+                      <p className="text-sm font-medium text-gold">💡 This is who you're building your business around — the person you serve, sell to, and create for. Pick someone you genuinely want to work with, because this ICP shapes your offers, your pricing, your operations, everything.</p>
+                    </div>
+                  </div>
+                  <div>
                     <Label>My business helps them by:</Label>
                     <Input placeholder="Briefly describe what you do" value={localData.businessHelps} onChange={e => update('businessHelps', e.target.value)} />
                   </div>
