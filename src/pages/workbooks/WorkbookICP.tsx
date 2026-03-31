@@ -19,6 +19,39 @@ export default function WorkbookICP() {
   const { user, loading } = useAuth();
   const [isSaving, setIsSaving] = useState(false);
 
+  // Persist which sections are open/closed
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
+    const saved = localStorage.getItem('workbookICP_openSections');
+    if (saved) {
+      try { return JSON.parse(saved); } catch { /* fall through */ }
+    }
+    return { step1: true, step2: false, step3: false, step4: false, step5: false, step6: false, techStack: false, congrats: false };
+  });
+
+  useEffect(() => {
+    localStorage.setItem('workbookICP_openSections', JSON.stringify(openSections));
+  }, [openSections]);
+
+  const toggleSection = (key: string) => {
+    setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  // Save & restore scroll position
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem('workbookICP_scrollY');
+    if (savedScroll) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+      });
+    }
+
+    const handleScroll = () => {
+      sessionStorage.setItem('workbookICP_scrollY', String(window.scrollY));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [localData, setLocalData] = useState(() => {
     const saved = localStorage.getItem('workbookICPData');
     const defaultData = {
