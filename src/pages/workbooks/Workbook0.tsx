@@ -302,6 +302,47 @@ export default function Workbook0() {
             </h3>
 
             <div className="space-y-4 pl-10">
+              {/* Auto-fill note */}
+              {hasICPData && (
+                <div className="p-3 bg-emerald/10 border border-emerald/30 rounded text-sm text-emerald">
+                  ✓ Pre-filled from your Ideal Client Workbook — edit anytime.
+                </div>
+              )}
+
+              {/* Quick context fields (Change 3) */}
+              {!hasICPData && (
+                <p className="text-sm text-muted-foreground italic">Quick context — these help the AI give you better results. Want to go deeper? Start with the free Ideal Client Workbook first.</p>
+              )}
+              <div className="grid md:grid-cols-3 gap-4">
+                <div>
+                  <Label htmlFor="customer-age">Their age</Label>
+                  <Input 
+                    id="customer-age" 
+                    placeholder="e.g., 35"
+                    value={localData.customerAge}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, customerAge: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="customer-role">Their job title or role</Label>
+                  <Input 
+                    id="customer-role" 
+                    placeholder="e.g., Small business owner"
+                    value={localData.customerRole}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, customerRole: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="customer-location">Where they're based</Label>
+                  <Input 
+                    id="customer-location" 
+                    placeholder="e.g., Phoenix, AZ"
+                    value={localData.customerLocation}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, customerLocation: e.target.value }))}
+                  />
+                </div>
+              </div>
+
               <div>
                 <Label htmlFor="customer">One specific person</Label>
                 <Input 
@@ -343,23 +384,46 @@ export default function Workbook0() {
                 </div>
               </div>
 
+              {/* AI Context tip (Change 5) */}
               <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
-                <p className="text-sm font-medium text-gold">💡 Stuck? Stop. Call 3 to 5 potential customers today.</p>
+                <p className="text-sm font-medium text-gold">💡 <strong>For the best results:</strong> Paste your Ideal Client Workbook download (or your ICP Snapshot) into your AI chat before running this prompt. This gives the AI your full context — who you serve, their pain, their goals — so every output is specific to YOUR business. OR Stay in the same AI chat as you move through the workbooks — so the AI remembers everything you've already told it.</p>
               </div>
 
+              <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
+                <p className="text-sm font-medium text-gold">💡 Already talked to potential customers? Even better — paste their actual quotes into your AI chat alongside this prompt. Real language always beats simulated language.</p>
+              </div>
+
+              {/* Change 1: New AI-simulated Customer Research prompt */}
               <AIPromptCard
                 title="AI Prompt: Customer Research"
-                context="Use this after speaking with 5 potential customers"
-                prompt={`I interviewed 5 ${data.targetCustomer || '[type of customers]'}. Here's what they said about ${data.customerProblem || '[problem]'}:
+                context="Let AI simulate 5 potential customers based on your ICP. You'll validate with real people using the Coffee Shop Test in Step 3."
+                prompt={`Act as 5 different potential customers who match this profile:
+${data.targetCustomer || localData.customerAge || localData.customerRole || localData.customerLocation ? `${data.targetCustomer || ''}${localData.customerAge ? `, age ${localData.customerAge}` : ''}${localData.customerRole ? `, ${localData.customerRole}` : ''}${localData.customerLocation ? `, based in ${localData.customerLocation}` : ''}` : '[Name, age, role, location from your ICP]'}
 
-[Paste quotes/notes]
+Their #1 problem: ${data.customerProblem || '[auto-fill from #1 problem field]'}
+What this costs them: ${localData.cost || '[auto-fill from cost field]'}
+Their current band-aid solution: ${localData.bandaid || '[auto-fill from band-aid field]'}
 
-Analyze this and tell me:
-1. What's the #1 problem they ALL mentioned?
-2. What's this problem costing them in time or money?
-3. What band-aid solutions are they using now?
+For each of the 5 people, write:
+1. Their version of the #1 problem — in their own messy, everyday words (not business language)
+2. What it's specifically costing them (time, money, or both)
+3. The band-aid solution they're currently using and why it's not really working
 
-Format as: Problem / Cost / Current Solution
+Then analyze all 5 and tell me:
+- What's the #1 problem they ALL share?
+- What pattern do you see in their band-aid solutions?
+- Where's the gap that none of the band-aids are filling?
+
+Now compare your findings to what I wrote above (my #1 problem, my cost estimate, and my band-aid). Be honest:
+- Did I get the problem right, or am I describing a symptom instead of the root issue?
+- Is my cost estimate realistic, too high, or too low based on what these 5 people would actually experience?
+- Did I identify the right band-aid, or are there more common ones I'm missing?
+
+If anything I wrote needs sharpening, rewrite it in one sentence.
+
+Format as:
+- Problem / Cost / Current Band-Aid / The Gap
+- Then: My Validation — what I got right, what to sharpen
 
 Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
