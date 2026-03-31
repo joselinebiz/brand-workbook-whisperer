@@ -936,6 +936,10 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     />
                   </div>
                 </div>
+                {/* AI Context tip (Change 5) */}
+                <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-4">
+                  <p className="text-sm font-medium text-gold">💡 <strong>For the best results:</strong> Paste your Ideal Client Workbook download (or your ICP Snapshot) into your AI chat before running this prompt. This gives the AI your full context — who you serve, their pain, their goals — so every output is specific to YOUR business. OR Stay in the same AI chat as you move through the workbooks — so the AI remembers everything you've already told it.</p>
+                </div>
 
                 <AIPromptCard
                   title="AI Prompt: White Space Validation"
