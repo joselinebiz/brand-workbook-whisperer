@@ -684,10 +684,33 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               </div>
               
               <div className="space-y-4">
+                {/* Boxes 1-3: Auto-filled from Step 1 */}
                 {[
-                  { num: 1, label: "Who", key: "who", question: "Who desperately needs this?" },
-                  { num: 2, label: "Problem", key: "problem", question: "What costly problem do you solve?" },
-                  { num: 3, label: "Solution", key: "solution", question: "What's your unique approach?" },
+                  { num: 1, label: "Who", key: "who", question: "Who desperately needs this?", autoValue: data.targetCustomer },
+                  { num: 2, label: "Problem", key: "problem", question: "What costly problem do you solve?", autoValue: data.customerProblem },
+                  { num: 3, label: "Solution", key: "solution", question: "What's your unique approach?", autoValue: data.solution || localData.yourWhiteSpaceStep1 },
+                ].map((item) => (
+                  <Card key={item.num} className="p-4 bg-emerald/5 border-emerald/20">
+                    <div className="flex items-start gap-3">
+                      <span className="bg-emerald text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                        {item.num}
+                      </span>
+                      <div className="flex-1">
+                        <Label className="text-sm font-bold mb-2 block">{item.label}</Label>
+                        <p className="text-sm text-muted-foreground mb-2">{item.question}</p>
+                        <Input 
+                          value={item.autoValue || ''}
+                          readOnly
+                          className="bg-muted/50 cursor-default"
+                        />
+                        <p className="text-xs text-emerald mt-1">Pre-filled from Step 1</p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+
+                {/* Boxes 4-9: User fills these */}
+                {[
                   { num: 4, label: "Delivery", key: "delivery", question: "How do they get it?" },
                   { num: 5, label: "Discovery", key: "discovery", question: "How do they find you?" },
                   { num: 6, label: "Price", key: "price", question: "What will they pay?", prefix: "$" },
