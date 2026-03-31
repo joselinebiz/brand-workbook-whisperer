@@ -717,9 +717,9 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   { num: 4, label: "Delivery", key: "delivery", question: "How do they get it?" },
                   { num: 5, label: "Discovery", key: "discovery", question: "How do they find you?" },
                   { num: 6, label: "Price", key: "price", question: "What will they pay?", prefix: "$" },
-                  { num: 7, label: "Costs", key: "costs", question: "Biggest expense per sale?", prefix: "$" },
-                  { num: 8, label: "Activities", key: "activities", question: "Daily tasks for success?" },
-                  { num: 9, label: "Partners", key: "partners", question: "Who helps you deliver?" }
+                  { num: 7, label: "Costs", key: "costs", question: "Major costs to run this business?", placeholder: "Software, contractors, ads, production, events, operations..." },
+                  { num: 8, label: "Key Activities", key: "activities", question: "What must you do well to deliver?", placeholder: "Creating content, designing offers, marketing, sales calls, delivery, systems..." },
+                  { num: 9, label: "Key Partners", key: "partners", question: "Who helps you operate and deliver?", placeholder: "Platforms, affiliates, vendors, collaborators, agencies, tools..." }
                 ].map((item) => (
                   <Card key={item.num} className="p-4 bg-muted/30">
                     <div className="flex items-start gap-3">
@@ -730,7 +730,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                         <Label className="text-sm font-bold mb-2 block">{item.label}</Label>
                         <p className="text-sm text-muted-foreground mb-2">{item.question}</p>
                         <Input 
-                          placeholder={item.prefix ? `${item.prefix}` : "Your 90-second answer"} 
+                          placeholder={(item as any).placeholder || (item.prefix ? `${item.prefix}` : "Your 90-second answer")} 
                           value={localData.businessModel[item.key as keyof typeof localData.businessModel] || ''}
                           onChange={(e) => setLocalData(prev => ({ 
                             ...prev, 
