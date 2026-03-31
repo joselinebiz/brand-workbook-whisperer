@@ -663,7 +663,9 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
             </CollapsibleTrigger>
             
             <CollapsibleContent>
-              <p className="text-muted-foreground mb-6">Fill each box in 90 seconds. First thought = best thought.</p>
+              <div className="mb-6 p-3 bg-emerald/10 border border-emerald/30 rounded text-sm text-emerald">
+                ✓ Your customer, problem, and solution are pre-filled from your Market Scan. Now let's build the business around them — fill boxes 4-9 in 90 seconds each.
+              </div>
 
               {/* Quick Tip */}
               <div className="mb-6 p-4 bg-accent/10 border-l-4 border-accent rounded">
