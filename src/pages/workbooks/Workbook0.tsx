@@ -21,14 +21,6 @@ export default function Workbook0() {
   const { data, updateData } = useWorkbook();
   const { loading } = useAuth();
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin" />
-      </div>
-    );
-  }
-
   const [isSaving, setIsSaving] = useState(false);
   
   // Load ICP data for auto-fill
