@@ -92,6 +92,34 @@ export default function Workbook0() {
     return defaultData;
   });
 
+  // Auto-fill from ICP data on first load (if fields are empty)
+  useEffect(() => {
+    if (!icpData) return;
+    setLocalData(prev => {
+      const updates: any = {};
+      if (!prev.customerAge && icpData.clientAge) updates.customerAge = icpData.clientAge;
+      if (!prev.customerRole && icpData.clientJobTitle) updates.customerRole = icpData.clientJobTitle;
+      if (!prev.customerLocation && icpData.clientLocation) updates.customerLocation = icpData.clientLocation;
+      if (!prev.cost && (icpData.costDollars || icpData.costHours)) {
+        const parts = [];
+        if (icpData.costDollars) parts.push(`$${icpData.costDollars}/month`);
+        if (icpData.costHours) parts.push(`${icpData.costHours} hours/week`);
+        updates.cost = parts.join(' or ');
+      }
+      if (Object.keys(updates).length === 0) return prev;
+      return { ...prev, ...updates };
+    });
+    if (icpData.clientName || icpData.clientAge || icpData.clientJobTitle || icpData.clientLocation) {
+      const parts = [icpData.clientName, icpData.clientAge, icpData.clientGender, icpData.clientLocation, icpData.clientJobTitle].filter(Boolean);
+      if (parts.length > 0 && !data.targetCustomer) {
+        updateData('targetCustomer', parts.join(', '));
+      }
+    }
+    if (icpData.numberOneProblem && !data.customerProblem) {
+      updateData('customerProblem', icpData.numberOneProblem);
+    }
+  }, []);
+
   // Save localData to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('workbook0LocalData', JSON.stringify(localData));
