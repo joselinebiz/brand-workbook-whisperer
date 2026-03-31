@@ -373,6 +373,7 @@ export default function WorkbookICP() {
                   prompt={`Act as a senior consumer psychologist. I am building an Ideal Client Profile for my business. My best customers are ${localData.clientAge || '[Age]'}-year-old ${localData.clientGender || '[Gender]'} ${localData.clientJobTitle || '[Job Title]'}s living in ${localData.clientLocation || '[Location]'}, ${localData.clientRelationship || '[Relationship Status]'}, ${localData.clientKids || '[Kids]'}, ${localData.clientEducation || '[Education]'}, earning ${localData.clientIncome || '[Income]'}.
 
 Their ONE primary desire is: ${localData.coreDesire || '[paste from Life Force 8 above]'}
+Their #1 problem my business solves: ${localData.numberOneProblem || '[their #1 problem]'}
 Their best friend describes them in 3 words: ${localData.threeWords || '[3 words]'}
 Who or what inspires them: ${localData.inspires || '[who inspires them]'}
 My business helps them by: ${localData.businessHelps || '[briefly describe what you do]'}
@@ -381,9 +382,10 @@ Flesh out a vivid profile for '${localData.clientName || '[Name]'}'.
 
 REQUIREMENTS:
 1. Include name, age, job, and income.
-2. Identify their 'Inner Monologue': One sentence they say to themselves at 2 AM about their problem.
-3. Identify their 'Surface Desire' vs. 'Deep Emotional Need.'
-4. Describe a 'Day in the Life' paragraph showing where their frustration shows up most — morning, midday, and evening.
+2. State their #1 problem in one clear sentence — the specific thing that is broken, missing, or not working in their life that my business fixes. This is not their fear. This is the operational reality.
+3. Identify their 'Inner Monologue': One sentence they say to themselves at 2 AM about their problem.
+4. Identify their 'Surface Desire' vs. 'Deep Emotional Need.'
+5. Describe a 'Day in the Life' paragraph showing where their frustration shows up most — morning, midday, and evening.
 
 TONE: Realistic, unsentimental, and actionable.
 

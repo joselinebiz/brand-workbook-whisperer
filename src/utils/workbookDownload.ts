@@ -86,6 +86,7 @@ Location & Role: ${localData.snapshotLocation || [localData.clientLocation, loca
 Income: ${localData.snapshotIncome || localData.clientIncome || 'Not answered'}
 Personality: ${localData.snapshotPersonality || localData.threeWords || 'Not answered'}
 Core Desire: ${localData.snapshotDesire || localData.coreDesire || 'Not answered'}
+#1 Problem: ${localData.numberOneProblem || 'Not answered'}
 #1 Pain Point: ${localData.snapshotPainPoint || localData.keepsUpAtNight || 'Not answered'}
 Cost of Problem: ${localData.snapshotCostOfProblem || 'Not answered'}
 Where They Hang Out: ${localData.snapshotWhereTheyHangOut || 'Not answered'}
