@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
+import { AIContextCallout } from "@/components/AIContextCallout";
 import { ExampleBox } from "@/components/ExampleBox";
 import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
@@ -20,20 +21,28 @@ export default function Workbook0() {
   const { data, updateData } = useWorkbook();
   const { loading } = useAuth();
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin" />
-      </div>
-    );
-  }
-
   const [isSaving, setIsSaving] = useState(false);
   
+  // Load ICP data for auto-fill
+  const [icpData] = useState(() => {
+    try {
+      const saved = localStorage.getItem('workbookICPData');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const hasICPData = !!(icpData && (icpData.clientName || icpData.clientAge || icpData.clientLocation || icpData.clientJobTitle));
+
   // Local state for fields not yet in WorkbookData - load from localStorage
   const [localData, setLocalData] = useState(() => {
     const saved = localStorage.getItem('workbook0LocalData');
     const defaultData = {
+      // Extra context fields
+      customerAge: '',
+      customerRole: '',
+      customerLocation: '',
       cost: '',
       bandaid: '',
       competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '', goodAt: '' }),
@@ -75,6 +84,34 @@ export default function Workbook0() {
     return defaultData;
   });
 
+  // Auto-fill from ICP data on first load (if fields are empty)
+  useEffect(() => {
+    if (!icpData) return;
+    setLocalData(prev => {
+      const updates: any = {};
+      if (!prev.customerAge && icpData.clientAge) updates.customerAge = icpData.clientAge;
+      if (!prev.customerRole && icpData.clientJobTitle) updates.customerRole = icpData.clientJobTitle;
+      if (!prev.customerLocation && icpData.clientLocation) updates.customerLocation = icpData.clientLocation;
+      if (!prev.cost && (icpData.costDollars || icpData.costHours)) {
+        const parts = [];
+        if (icpData.costDollars) parts.push(`$${icpData.costDollars}/month`);
+        if (icpData.costHours) parts.push(`${icpData.costHours} hours/week`);
+        updates.cost = parts.join(' or ');
+      }
+      if (Object.keys(updates).length === 0) return prev;
+      return { ...prev, ...updates };
+    });
+    if (icpData.clientName || icpData.clientAge || icpData.clientJobTitle || icpData.clientLocation) {
+      const parts = [icpData.clientName, icpData.clientAge, icpData.clientGender, icpData.clientLocation, icpData.clientJobTitle].filter(Boolean);
+      if (parts.length > 0 && !data.targetCustomer) {
+        updateData('targetCustomer', parts.join(', '));
+      }
+    }
+    if (icpData.numberOneProblem && !data.customerProblem) {
+      updateData('customerProblem', icpData.numberOneProblem);
+    }
+  }, []);
+
   // Save localData to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('workbook0LocalData', JSON.stringify(localData));
@@ -98,6 +135,14 @@ export default function Workbook0() {
     const content = generateWorkbook0Content(localData);
     downloadWorkbook(content, 0);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <ProtectedWorkbook
@@ -129,6 +174,9 @@ export default function Workbook0() {
             Save All Changes
           </Button>
         </div>
+
+        {/* AI Context Callout */}
+        <AIContextCallout showICPLine={hasICPData} />
 
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">
@@ -254,6 +302,47 @@ export default function Workbook0() {
             </h3>
 
             <div className="space-y-4 pl-10">
+              {/* Auto-fill note */}
+              {hasICPData && (
+                <div className="p-3 bg-emerald/10 border border-emerald/30 rounded text-sm text-emerald">
+                  ✓ Pre-filled from your Ideal Client Workbook — edit anytime.
+                </div>
+              )}
+
+              {/* Quick context fields (Change 3) */}
+              {!hasICPData && (
+                <p className="text-sm text-muted-foreground italic">Quick context — these help the AI give you better results. Want to go deeper? Start with the free Ideal Client Workbook first.</p>
+              )}
+              <div className="grid md:grid-cols-3 gap-4">
+                <div>
+                  <Label htmlFor="customer-age">Their age</Label>
+                  <Input 
+                    id="customer-age" 
+                    placeholder="e.g., 35"
+                    value={localData.customerAge}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, customerAge: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="customer-role">Their job title or role</Label>
+                  <Input 
+                    id="customer-role" 
+                    placeholder="e.g., Small business owner"
+                    value={localData.customerRole}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, customerRole: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="customer-location">Where they're based</Label>
+                  <Input 
+                    id="customer-location" 
+                    placeholder="e.g., Phoenix, AZ"
+                    value={localData.customerLocation}
+                    onChange={(e) => setLocalData(prev => ({ ...prev, customerLocation: e.target.value }))}
+                  />
+                </div>
+              </div>
+
               <div>
                 <Label htmlFor="customer">One specific person</Label>
                 <Input 
@@ -295,23 +384,46 @@ export default function Workbook0() {
                 </div>
               </div>
 
+              {/* AI Context tip (Change 5) */}
               <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
-                <p className="text-sm font-medium text-gold">💡 Stuck? Stop. Call 3 to 5 potential customers today.</p>
+                <p className="text-sm font-medium text-gold">💡 <strong>For the best results:</strong> Paste your Ideal Client Workbook download (or your ICP Snapshot) into your AI chat before running this prompt. This gives the AI your full context — who you serve, their pain, their goals — so every output is specific to YOUR business. OR Stay in the same AI chat as you move through the workbooks — so the AI remembers everything you've already told it.</p>
               </div>
 
+              <div className="bg-gold/10 border-l-4 border-gold p-4 rounded">
+                <p className="text-sm font-medium text-gold">💡 Already talked to potential customers? Even better — paste their actual quotes into your AI chat alongside this prompt. Real language always beats simulated language.</p>
+              </div>
+
+              {/* Change 1: New AI-simulated Customer Research prompt */}
               <AIPromptCard
                 title="AI Prompt: Customer Research"
-                context="Use this after speaking with 5 potential customers"
-                prompt={`I interviewed 5 ${data.targetCustomer || '[type of customers]'}. Here's what they said about ${data.customerProblem || '[problem]'}:
+                context="Let AI simulate 5 potential customers based on your ICP. You'll validate with real people using the Coffee Shop Test in Step 3."
+                prompt={`Act as 5 different potential customers who match this profile:
+${data.targetCustomer || localData.customerAge || localData.customerRole || localData.customerLocation ? `${data.targetCustomer || ''}${localData.customerAge ? `, age ${localData.customerAge}` : ''}${localData.customerRole ? `, ${localData.customerRole}` : ''}${localData.customerLocation ? `, based in ${localData.customerLocation}` : ''}` : '[Name, age, role, location from your ICP]'}
 
-[Paste quotes/notes]
+Their #1 problem: ${data.customerProblem || '[auto-fill from #1 problem field]'}
+What this costs them: ${localData.cost || '[auto-fill from cost field]'}
+Their current band-aid solution: ${localData.bandaid || '[auto-fill from band-aid field]'}
 
-Analyze this and tell me:
-1. What's the #1 problem they ALL mentioned?
-2. What's this problem costing them in time or money?
-3. What band-aid solutions are they using now?
+For each of the 5 people, write:
+1. Their version of the #1 problem — in their own messy, everyday words (not business language)
+2. What it's specifically costing them (time, money, or both)
+3. The band-aid solution they're currently using and why it's not really working
 
-Format as: Problem / Cost / Current Solution
+Then analyze all 5 and tell me:
+- What's the #1 problem they ALL share?
+- What pattern do you see in their band-aid solutions?
+- Where's the gap that none of the band-aids are filling?
+
+Now compare your findings to what I wrote above (my #1 problem, my cost estimate, and my band-aid). Be honest:
+- Did I get the problem right, or am I describing a symptom instead of the root issue?
+- Is my cost estimate realistic, too high, or too low based on what these 5 people would actually experience?
+- Did I identify the right band-aid, or are there more common ones I'm missing?
+
+If anything I wrote needs sharpening, rewrite it in one sentence.
+
+Format as:
+- Problem / Cost / Current Band-Aid / The Gap
+- Then: My Validation — what I got right, what to sharpen
 
 Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
@@ -436,6 +548,11 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                   value={localData.pattern}
                   onChange={(e) => setLocalData(prev => ({ ...prev, pattern: e.target.value }))}
                 />
+              </div>
+
+              {/* AI Context tip (Change 5) */}
+              <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-4">
+                <p className="text-sm font-medium text-gold">💡 <strong>For the best results:</strong> Paste your Ideal Client Workbook download (or your ICP Snapshot) into your AI chat before running this prompt. This gives the AI your full context — who you serve, their pain, their goals — so every output is specific to YOUR business. OR Stay in the same AI chat as you move through the workbooks — so the AI remembers everything you've already told it.</p>
               </div>
 
               <AIPromptCard
@@ -690,6 +807,11 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
               </div>
 
               <div className="mt-8">
+                {/* AI Context tip (Change 5) */}
+                <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-4">
+                  <p className="text-sm font-medium text-gold">💡 <strong>For the best results:</strong> Paste your Ideal Client Workbook download (or your ICP Snapshot) into your AI chat before running this prompt. This gives the AI your full context — who you serve, their pain, their goals — so every output is specific to YOUR business. OR Stay in the same AI chat as you move through the workbooks — so the AI remembers everything you've already told it.</p>
+                </div>
+
                 <AIPromptCard
                   title="AI Prompt: Model Validation"
                   context="Use this to validate your business model"
@@ -813,6 +935,10 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                       content="I'm the only marketing director you should hire who's helped B2B SaaS companies scale from $1M to $10M ARR using systematic growth frameworks because I've led 3 companies through this exact transition."
                     />
                   </div>
+                </div>
+                {/* AI Context tip (Change 5) */}
+                <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mb-4">
+                  <p className="text-sm font-medium text-gold">💡 <strong>For the best results:</strong> Paste your Ideal Client Workbook download (or your ICP Snapshot) into your AI chat before running this prompt. This gives the AI your full context — who you serve, their pain, their goals — so every output is specific to YOUR business. OR Stay in the same AI chat as you move through the workbooks — so the AI remembers everything you've already told it.</p>
                 </div>
 
                 <AIPromptCard
