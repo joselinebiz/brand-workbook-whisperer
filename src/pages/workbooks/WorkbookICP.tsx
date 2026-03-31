@@ -35,6 +35,7 @@ export default function WorkbookICP() {
       threeWords: '',
       inspires: '',
       coreDesire: '',
+      numberOneProblem: '',
       aiConsumerPsychologist: '',
       // Section 2
       goal1: '',
