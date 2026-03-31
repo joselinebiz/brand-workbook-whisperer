@@ -348,6 +348,21 @@ export default function WorkbookICP() {
                   ))}
                 </div>
 
+                <div className="mt-6">
+                  <Label>What is their #1 problem your business solves?</Label>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Your ideal client's fear is what gets their attention — it's what makes them stop scrolling, click an ad, or walk up to your booth. But the problem is what your offer actually solves. Fear opens the door. The problem closes the sale. You need both to get people to buy, and you need to be able to speak to both.
+                  </p>
+                  <Input
+                    placeholder="In one sentence — not their fear, their actual problem. What's broken, missing, or not working?"
+                    value={localData.numberOneProblem}
+                    onChange={e => update('numberOneProblem', e.target.value)}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1 italic">
+                    Example: She doesn't have a brand foundation or marketing system, so her income is unpredictable and every month feels like starting from scratch.
+                  </p>
+                </div>
+
                 <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mt-6">
                   <p className="text-sm font-medium text-gold">💡 This is who you're building your business around — the person you serve, sell to, and create for. Pick someone you genuinely want to work with, because this ICP shapes your offers, your pricing, your operations, everything.</p>
                 </div>
