@@ -19,6 +19,39 @@ export default function WorkbookICP() {
   const { user, loading } = useAuth();
   const [isSaving, setIsSaving] = useState(false);
 
+  // Persist which sections are open/closed
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
+    const saved = localStorage.getItem('workbookICP_openSections');
+    if (saved) {
+      try { return JSON.parse(saved); } catch { /* fall through */ }
+    }
+    return { step1: true, step2: false, step3: false, step4: false, step5: false, step6: false, techStack: false, congrats: false };
+  });
+
+  useEffect(() => {
+    localStorage.setItem('workbookICP_openSections', JSON.stringify(openSections));
+  }, [openSections]);
+
+  const toggleSection = (key: string) => {
+    setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  // Save & restore scroll position
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem('workbookICP_scrollY');
+    if (savedScroll) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+      });
+    }
+
+    const handleScroll = () => {
+      sessionStorage.setItem('workbookICP_scrollY', String(window.scrollY));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [localData, setLocalData] = useState(() => {
     const saved = localStorage.getItem('workbookICPData');
     const defaultData = {
@@ -244,7 +277,7 @@ export default function WorkbookICP() {
         </Card>
 
         {/* SECTION 1: Give Your Ideal Client a Name */}
-        <Collapsible defaultOpen>
+        <Collapsible open={openSections.step1} onOpenChange={() => toggleSection('step1')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -410,7 +443,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* SECTION 2: Understand Their Inner World */}
-        <Collapsible>
+        <Collapsible open={openSections.step2} onOpenChange={() => toggleSection('step2')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -509,7 +542,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* SECTION 3: Where Do They Hang Out? */}
-        <Collapsible>
+        <Collapsible open={openSections.step3} onOpenChange={() => toggleSection('step3')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -571,7 +604,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* SECTION 4: The Transformation You Deliver */}
-        <Collapsible>
+        <Collapsible open={openSections.step4} onOpenChange={() => toggleSection('step4')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -729,7 +762,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* SECTION 5: Bring Your Ideal Client to Life */}
-        <Collapsible>
+        <Collapsible open={openSections.step5} onOpenChange={() => toggleSection('step5')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -767,7 +800,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* SECTION 6: Your ICP Snapshot */}
-        <Collapsible>
+        <Collapsible open={openSections.step6} onOpenChange={() => toggleSection('step6')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
@@ -850,7 +883,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Card>
 
         {/* Recommended Tech Stack */}
-        <Collapsible>
+        <Collapsible open={openSections.techStack} onOpenChange={() => toggleSection('techStack')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold flex items-center justify-between hover:text-primary transition-colors">
@@ -916,7 +949,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Congratulations */}
-        <Collapsible>
+        <Collapsible open={openSections.congrats} onOpenChange={() => toggleSection('congrats')}>
           <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
             <CollapsibleTrigger className="w-full">
               <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
