@@ -35,6 +35,7 @@ export default function WorkbookICP() {
       threeWords: '',
       inspires: '',
       coreDesire: '',
+      numberOneProblem: '',
       aiConsumerPsychologist: '',
       // Section 2
       goal1: '',
@@ -347,6 +348,21 @@ export default function WorkbookICP() {
                   ))}
                 </div>
 
+                <div className="mt-6">
+                  <Label>What is their #1 problem your business solves?</Label>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Your ideal client's fear is what gets their attention — it's what makes them stop scrolling, click an ad, or walk up to your booth. But the problem is what your offer actually solves. Fear opens the door. The problem closes the sale. You need both to get people to buy, and you need to be able to speak to both.
+                  </p>
+                  <Input
+                    placeholder="In one sentence — not their fear, their actual problem. What's broken, missing, or not working?"
+                    value={localData.numberOneProblem}
+                    onChange={e => update('numberOneProblem', e.target.value)}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1 italic">
+                    Example: She doesn't have a brand foundation or marketing system, so her income is unpredictable and every month feels like starting from scratch.
+                  </p>
+                </div>
+
                 <div className="bg-gold/10 border-l-4 border-gold p-4 rounded mt-6">
                   <p className="text-sm font-medium text-gold">💡 This is who you're building your business around — the person you serve, sell to, and create for. Pick someone you genuinely want to work with, because this ICP shapes your offers, your pricing, your operations, everything.</p>
                 </div>
@@ -357,6 +373,7 @@ export default function WorkbookICP() {
                   prompt={`Act as a senior consumer psychologist. I am building an Ideal Client Profile for my business. My best customers are ${localData.clientAge || '[Age]'}-year-old ${localData.clientGender || '[Gender]'} ${localData.clientJobTitle || '[Job Title]'}s living in ${localData.clientLocation || '[Location]'}, ${localData.clientRelationship || '[Relationship Status]'}, ${localData.clientKids || '[Kids]'}, ${localData.clientEducation || '[Education]'}, earning ${localData.clientIncome || '[Income]'}.
 
 Their ONE primary desire is: ${localData.coreDesire || '[paste from Life Force 8 above]'}
+Their #1 problem my business solves: ${localData.numberOneProblem || '[their #1 problem]'}
 Their best friend describes them in 3 words: ${localData.threeWords || '[3 words]'}
 Who or what inspires them: ${localData.inspires || '[who inspires them]'}
 My business helps them by: ${localData.businessHelps || '[briefly describe what you do]'}
@@ -365,9 +382,10 @@ Flesh out a vivid profile for '${localData.clientName || '[Name]'}'.
 
 REQUIREMENTS:
 1. Include name, age, job, and income.
-2. Identify their 'Inner Monologue': One sentence they say to themselves at 2 AM about their problem.
-3. Identify their 'Surface Desire' vs. 'Deep Emotional Need.'
-4. Describe a 'Day in the Life' paragraph showing where their frustration shows up most — morning, midday, and evening.
+2. State their #1 problem in one clear sentence — the specific thing that is broken, missing, or not working in their life that my business fixes. This is not their fear. This is the operational reality.
+3. Identify their 'Inner Monologue': One sentence they say to themselves at 2 AM about their problem.
+4. Identify their 'Surface Desire' vs. 'Deep Emotional Need.'
+5. Describe a 'Day in the Life' paragraph showing where their frustration shows up most — morning, midday, and evening.
 
 TONE: Realistic, unsentimental, and actionable.
 

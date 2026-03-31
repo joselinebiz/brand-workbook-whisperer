@@ -25,6 +25,7 @@ Income Range: ${localData.clientIncome || 'Not answered'}
 Three Words (best friend describes them): ${localData.threeWords || 'Not answered'}
 Who/What Inspires Them: ${localData.inspires || 'Not answered'}
 Core Desire (Life Force 8): ${localData.coreDesire || 'Not selected'}
+#1 Problem My Business Solves: ${localData.numberOneProblem || 'Not answered'}
 
 AI Consumer Psychologist Response:
 ${localData.aiConsumerPsychologist || 'Not generated'}
@@ -85,6 +86,7 @@ Location & Role: ${localData.snapshotLocation || [localData.clientLocation, loca
 Income: ${localData.snapshotIncome || localData.clientIncome || 'Not answered'}
 Personality: ${localData.snapshotPersonality || localData.threeWords || 'Not answered'}
 Core Desire: ${localData.snapshotDesire || localData.coreDesire || 'Not answered'}
+#1 Problem: ${localData.numberOneProblem || 'Not answered'}
 #1 Pain Point: ${localData.snapshotPainPoint || localData.keepsUpAtNight || 'Not answered'}
 Cost of Problem: ${localData.snapshotCostOfProblem || 'Not answered'}
 Where They Hang Out: ${localData.snapshotWhereTheyHangOut || 'Not answered'}

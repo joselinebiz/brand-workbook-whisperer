@@ -134,6 +134,10 @@ export const ICPSnapshot = ({ data }: ICPSnapshotProps) => {
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">{desire}</div>
               </div>
               <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">#1 Problem (What's Broken)</p>
+                <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">{data?.numberOneProblem || '_____'}</div>
+              </div>
+              <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Top Pain Point (Their Words)</p>
                 <div className="p-3 bg-muted/30 rounded border-l-4 border-accent text-sm">{painPoint}</div>
               </div>
