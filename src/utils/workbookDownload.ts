@@ -25,6 +25,7 @@ Income Range: ${localData.clientIncome || 'Not answered'}
 Three Words (best friend describes them): ${localData.threeWords || 'Not answered'}
 Who/What Inspires Them: ${localData.inspires || 'Not answered'}
 Core Desire (Life Force 8): ${localData.coreDesire || 'Not selected'}
+#1 Problem My Business Solves: ${localData.numberOneProblem || 'Not answered'}
 
 AI Consumer Psychologist Response:
 ${localData.aiConsumerPsychologist || 'Not generated'}
