@@ -453,7 +453,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
 
             <div className="space-y-4 pl-10">
               <p className="text-muted-foreground mb-6">
-                Search: "[your solution] + [your city]" - List 3
+                Search Google or ask AI: "[your solution] + [your city]" — list the first 3 that come up. If you'd like to go beyond your city, feel free to leave out your city. Speed beats perfection.
               </p>
 
               {/* Quick Tip */}
