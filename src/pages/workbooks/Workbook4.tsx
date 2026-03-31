@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { BlueprintSection } from "@/components/BlueprintSection";
+import { AIContextCallout } from "@/components/AIContextCallout";
 import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

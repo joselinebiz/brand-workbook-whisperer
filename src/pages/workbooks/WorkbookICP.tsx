@@ -177,6 +177,8 @@ export default function WorkbookICP() {
             Save All Changes
           </Button>
         </div>
+        {/* AI Context Callout */}
+        <AIContextCallout />
 
         {/* Introduction */}
         <Card className="p-8 mb-8 bg-gradient-to-br from-card to-muted/20">

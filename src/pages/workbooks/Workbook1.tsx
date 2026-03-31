@@ -5,6 +5,7 @@ import { WorkbookHeader } from "@/components/WorkbookHeader";
 import { AIPromptCard } from "@/components/AIPromptCard";
 import { ExampleBox } from "@/components/ExampleBox";
 import { BrandGuide } from "@/components/BrandGuide";
+import { AIContextCallout } from "@/components/AIContextCallout";
 import { ProtectedWorkbook } from "@/components/ProtectedWorkbook";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
