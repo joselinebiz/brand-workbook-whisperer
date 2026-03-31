@@ -632,6 +632,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
             </h3>
 
             <div className="space-y-4 pl-10">
+              <p className="text-sm text-muted-foreground">Your AI just showed you the gap in the market. The checkboxes above filtered what you can realistically own. Now put it in your words. This doesn't have to be perfect — you'll sharpen it in Step 3.</p>
               <Label htmlFor="white-space">I'm the only one who _______ for _______ because _______.</Label>
               <Textarea 
                 id="white-space" 
