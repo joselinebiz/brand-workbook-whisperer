@@ -277,7 +277,7 @@ export default function WorkbookICP() {
         </Card>
 
         {/* SECTION 1: Give Your Ideal Client a Name */}
-        <Collapsible defaultOpen>
+        <Collapsible open={openSections.step1} onOpenChange={() => toggleSection('step1')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
