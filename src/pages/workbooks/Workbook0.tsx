@@ -31,10 +31,26 @@ export default function Workbook0() {
 
   const [isSaving, setIsSaving] = useState(false);
   
+  // Load ICP data for auto-fill
+  const [icpData] = useState(() => {
+    try {
+      const saved = localStorage.getItem('workbookICPData');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const hasICPData = !!(icpData && (icpData.clientName || icpData.clientAge || icpData.clientLocation || icpData.clientJobTitle));
+
   // Local state for fields not yet in WorkbookData - load from localStorage
   const [localData, setLocalData] = useState(() => {
     const saved = localStorage.getItem('workbook0LocalData');
     const defaultData = {
+      // Extra context fields
+      customerAge: '',
+      customerRole: '',
+      customerLocation: '',
       cost: '',
       bandaid: '',
       competitors: Array(3).fill({ name: '', promise: '', price: '', miss: '', goodAt: '' }),
