@@ -730,7 +730,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                         <Label className="text-sm font-bold mb-2 block">{item.label}</Label>
                         <p className="text-sm text-muted-foreground mb-2">{item.question}</p>
                         <Input 
-                          placeholder={item.prefix ? `${item.prefix}` : "Your 90-second answer"} 
+                          placeholder={(item as any).placeholder || (item.prefix ? `${item.prefix}` : "Your 90-second answer")} 
                           value={localData.businessModel[item.key as keyof typeof localData.businessModel] || ''}
                           onChange={(e) => setLocalData(prev => ({ 
                             ...prev, 
