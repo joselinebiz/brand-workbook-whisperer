@@ -568,6 +568,8 @@ What gap do ALL three competitors miss? What could someone own that none of them
 
 Give me 3 specific angles I could take.
 
+Then give me the sharp insight: In ONE sentence, name the specific gap all three competitors leave open — the unmet need or unfulfilled promise that none of them own. Don't write my positioning for me. Just show me the opening.
+
 Cite your sources for each claim in your response. Flag any assumptions, inferences, or gaps you filled in without direct evidence.`}
               />
 
@@ -630,6 +632,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
             </h3>
 
             <div className="space-y-4 pl-10">
+              <p className="text-sm text-muted-foreground">Your AI just showed you the gap in the market. The checkboxes above filtered what you can realistically own. Now put it in your words. This doesn't have to be perfect — you'll sharpen it in Step 3.</p>
               <Label htmlFor="white-space">I'm the only one who _______ for _______ because _______.</Label>
               <Textarea 
                 id="white-space" 
