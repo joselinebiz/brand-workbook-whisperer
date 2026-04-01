@@ -315,12 +315,12 @@ export default function Workbook0() {
         </Card>
 
         {/* Part 1: The 15 Minute Market Scan */}
-        <Collapsible>
+        <Collapsible open={!!expandedSections['step1']} onOpenChange={() => toggleSection('step1')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
                 <span>Step 1 of 3: Market Scan</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+                <ChevronDown className={`h-6 w-6 transition-transform duration-200 ${expandedSections['step1'] ? 'rotate-180' : ''}`} />
               </h2>
             </CollapsibleTrigger>
             
