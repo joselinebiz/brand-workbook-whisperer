@@ -1261,18 +1261,15 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Congratulations Section */}
-        <Collapsible>
+        <Collapsible open={!!expandedSections['congrats']} onOpenChange={() => toggleSection('congrats')}>
         <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
               <div className="flex items-center gap-4">
-                <PartyPopper className="w-12 h-12 text-primary" />
-                <div className="text-left">
-                  <h2 className="text-2xl font-bold">Congratulations! 🎉</h2>
-                  <p className="text-muted-foreground">You've completed Workbook 0</p>
-                </div>
+                <PartyPopper className="h-8 w-8 text-primary" />
+                <h2 className="text-2xl font-bold">🎉 Congratulations!</h2>
               </div>
-              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              <ChevronDown className={`h-6 w-6 transition-transform duration-200 ${expandedSections['congrats'] ? 'rotate-180' : ''}`} />
             </div>
           </CollapsibleTrigger>
           <CollapsibleContent>
