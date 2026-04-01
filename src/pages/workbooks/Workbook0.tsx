@@ -1201,12 +1201,12 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
 
 
         {/* Recommended Tech Stack */}
-        <Collapsible>
+        <Collapsible open={!!expandedSections['techStack']} onOpenChange={() => toggleSection('techStack')}>
         <Card className="p-8 mb-8 border-2 border-muted">
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
               <h2 className="text-2xl font-bold">Recommended Tech Stack For Validation</h2>
-              <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+              <ChevronDown className={`h-6 w-6 transition-transform duration-200 ${expandedSections['techStack'] ? 'rotate-180' : ''}`} />
             </div>
           </CollapsibleTrigger>
           
