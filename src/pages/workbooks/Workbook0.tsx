@@ -22,6 +22,40 @@ export default function Workbook0() {
   const { loading } = useAuth();
 
   const [isSaving, setIsSaving] = useState(false);
+
+  // UI state persistence: expanded sections
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>(() => {
+    try {
+      const saved = localStorage.getItem('workbook0_expandedSections');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  const toggleSection = (key: string) => {
+    setExpandedSections(prev => {
+      const next = { ...prev, [key]: !prev[key] };
+      localStorage.setItem('workbook0_expandedSections', JSON.stringify(next));
+      return next;
+    });
+  };
+
+  // Save & restore scroll position
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem('workbook0_scrollY');
+    if (savedScroll) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, Number(savedScroll));
+      });
+    }
+
+    const handleScroll = () => {
+      sessionStorage.setItem('workbook0_scrollY', String(window.scrollY));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   // Load ICP data for auto-fill
   const [icpData] = useState(() => {
