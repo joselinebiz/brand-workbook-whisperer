@@ -690,12 +690,12 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Part 2: The 15-Minute Business Model */}
-        <Collapsible>
+        <Collapsible open={!!expandedSections['step2']} onOpenChange={() => toggleSection('step2')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <h2 className="text-2xl font-bold mb-6 pb-3 border-b flex items-center justify-between hover:text-primary transition-colors">
                 <span>Step 2 of 3: Business Model</span>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+                <ChevronDown className={`h-6 w-6 transition-transform duration-200 ${expandedSections['step2'] ? 'rotate-180' : ''}`} />
               </h2>
             </CollapsibleTrigger>
             
