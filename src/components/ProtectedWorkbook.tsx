@@ -33,12 +33,18 @@ export const ProtectedWorkbook = ({
   const [redeemingCode, setRedeemingCode] = useState(false);
   const clientHasAccess = checkAccess(productType);
 
-  // Redirect to auth if not logged in
+  // Read code from URL param
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlCode = urlParams.get('code');
+
+  // Redirect to auth if not logged in, preserving the code param
   useEffect(() => {
     if (!loading && !user) {
-      navigate('/auth');
+      const currentPath = window.location.pathname;
+      const redirectPath = urlCode ? `${currentPath}?code=${urlCode}` : currentPath;
+      navigate(`/auth?redirectTo=${encodeURIComponent(redirectPath)}`);
     }
-  }, [user, loading, navigate]);
+  }, [user, loading, navigate, urlCode]);
 
   // Server-side access verification
   useEffect(() => {
