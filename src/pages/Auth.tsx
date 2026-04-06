@@ -28,9 +28,11 @@ export default function Auth() {
   useEffect(() => {
     if (emailParam) {
       setEmail(emailParam);
-      setIsSignUp(true); // Default to signup for new users from funnel
+      setIsSignUp(true);
+    } else if (redirectTo?.includes('code=')) {
+      setIsSignUp(true); // Default to signup for event code flow
     }
-  }, [emailParam]);
+  }, [emailParam, redirectTo]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -209,6 +211,8 @@ export default function Auth() {
           <p className="text-muted-foreground">
             {isPasswordReset 
               ? 'Enter your new password below' 
+              : redirectTo?.includes('code=')
+              ? 'Create a free account to unlock your workbook'
               : redirectTo 
               ? 'Create your free account to access Workbook 0'
               : isSignUp 
