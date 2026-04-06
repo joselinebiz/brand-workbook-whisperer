@@ -30,6 +30,31 @@ export default function Workbook3() {
   }
 
   const [isSaving, setIsSaving] = useState(false);
+
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>(() => {
+    try {
+      const saved = localStorage.getItem('workbook3_expandedSections');
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  });
+
+  const toggleSection = (key: string) => {
+    const next = { ...expandedSections, [key]: !expandedSections[key] };
+    setExpandedSections(next);
+    localStorage.setItem('workbook3_expandedSections', JSON.stringify(next));
+  };
+
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem('workbook3_scrollY');
+    if (savedScroll) {
+      requestAnimationFrame(() => window.scrollTo(0, Number(savedScroll)));
+    }
+    const handleScroll = () => {
+      sessionStorage.setItem('workbook3_scrollY', String(window.scrollY));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const [preWorkScores, setPreWorkScores] = useState(() => {
     const saved = localStorage.getItem('workbook3PreWorkScores');
     if (saved) {
@@ -311,13 +336,13 @@ export default function Workbook3() {
         </Card>
 
         {/* Section 1: Customer Journey Mapping */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['step1']} onOpenChange={() => toggleSection('step1')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 1 of 4: Customer Journey Mapping</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['step1'] ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Map Every Touchpoint</p>
               </div>
@@ -595,13 +620,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Section 2: Automation & Systems */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['step2']} onOpenChange={() => toggleSection('step2')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 2 of 4: Automation & Systems</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['step2'] ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Build Once, Scale Forever</p>
               </div>
@@ -936,13 +961,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Section 3: Retention & Loyalty Systems */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['step3']} onOpenChange={() => toggleSection('step3')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 3 of 4: Retention & Loyalty Systems</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['step3'] ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Turn Customers into Advocates</p>
               </div>
@@ -1275,13 +1300,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* 30-Day Implementation */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['step4']} onOpenChange={() => toggleSection('step4')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 4 of 4: Your 30-Day System Implementation</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['step4'] ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Execute Your Plan</p>
               </div>
@@ -1462,7 +1487,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Card>
 
         {/* Congratulations */}
-        <Collapsible>
+        <Collapsible open={!!expandedSections['congrats']} onOpenChange={() => toggleSection('congrats')}>
           <Card className="p-8 mb-8 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-primary">
             <CollapsibleTrigger className="w-full">
               <div className="flex items-center gap-4 mb-4 justify-between hover:opacity-80 transition-opacity">
@@ -1473,7 +1498,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     <p className="text-muted-foreground">You've completed Workbook 3</p>
                   </div>
                 </div>
-                <ChevronDown className="h-6 w-6 transition-transform duration-200" />
+                <ChevronDown className={`h-6 w-6 transition-transform duration-200 ${expandedSections['congrats'] ? 'rotate-180' : ''}`} />
               </div>
             </CollapsibleTrigger>
             
@@ -1550,12 +1575,12 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Recommended Tech Stack */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['techStack']} onOpenChange={() => toggleSection('techStack')}>
           <Card className="p-8 mb-8 bg-muted/20">
             <CollapsibleTrigger className="w-full text-left flex items-center justify-between group">
               <h2 className="text-2xl font-bold">Recommended Tech Stack For Customer Systems</h2>
               <ChevronDown 
-                className="transition-transform duration-200 group-data-[state=open]:rotate-180"
+                className={`transition-transform duration-200 ${expandedSections['techStack'] ? 'rotate-180' : ''}`}
                 size={24}
               />
             </CollapsibleTrigger>

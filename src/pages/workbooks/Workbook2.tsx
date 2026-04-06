@@ -31,6 +31,31 @@ export default function Workbook2() {
   }
 
   const [isSaving, setIsSaving] = useState(false);
+
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>(() => {
+    try {
+      const saved = localStorage.getItem('workbook2_expandedSections');
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  });
+
+  const toggleSection = (key: string) => {
+    const next = { ...expandedSections, [key]: !expandedSections[key] };
+    setExpandedSections(next);
+    localStorage.setItem('workbook2_expandedSections', JSON.stringify(next));
+  };
+
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem('workbook2_scrollY');
+    if (savedScroll) {
+      requestAnimationFrame(() => window.scrollTo(0, Number(savedScroll)));
+    }
+    const handleScroll = () => {
+      sessionStorage.setItem('workbook2_scrollY', String(window.scrollY));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   // Local state for fields not in WorkbookContext - load from localStorage
   const [localData, setLocalData] = useState(() => {
@@ -162,13 +187,13 @@ export default function Workbook2() {
         </Card>
 
         {/* SECTION 1: Business Model Canvas */}
-        <Collapsible defaultOpen={true}>
+        <Collapsible open={expandedSections['step1'] !== undefined ? expandedSections['step1'] : true} onOpenChange={() => toggleSection('step1')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 1 of 3: Business Model Canvas</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${(expandedSections['step1'] !== undefined ? expandedSections['step1'] : true) ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Map Your Business Reality</p>
               </div>
@@ -420,13 +445,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* SECTION 2: Consolidated Market Intelligence Sprint */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['step2']} onOpenChange={() => toggleSection('step2')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 2 of 3: Consolidated Market Intelligence Sprint</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['step2'] ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Your Complete Market Reality</p>
               </div>
@@ -662,13 +687,13 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
     </Collapsible>
 
         {/* SECTION 3: 4P Marketing Mix */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['step3']} onOpenChange={() => toggleSection('step3')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="hover:opacity-80 transition-opacity">
                 <h2 className="text-2xl font-bold mb-2 pb-3 border-b flex items-center justify-between">
                   <span>Step 3 of 3: 4P Marketing Mix</span>
-                  <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                  <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['step3'] ? 'rotate-180' : ''}`} />
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 text-left">Strategic Marketing Execution</p>
               </div>
@@ -1472,7 +1497,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
         </Collapsible>
 
         {/* Congratulations */}
-        <Collapsible defaultOpen={false}>
+        <Collapsible open={!!expandedSections['congrats']} onOpenChange={() => toggleSection('congrats')}>
           <Card className="p-8 mb-8">
             <CollapsibleTrigger className="w-full">
               <div className="flex items-center justify-between hover:opacity-80 transition-opacity">
@@ -1483,7 +1508,7 @@ Cite your sources for each claim in your response. Flag any assumptions, inferen
                     <p className="text-sm text-muted-foreground text-left">You've completed Workbook 2</p>
                   </div>
                 </div>
-                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
+                <ChevronDown className={`h-6 w-6 shrink-0 transition-transform duration-200 ${expandedSections['congrats'] ? 'rotate-180' : ''}`} />
               </div>
             </CollapsibleTrigger>
 
