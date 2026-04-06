@@ -28,9 +28,11 @@ export default function Auth() {
   useEffect(() => {
     if (emailParam) {
       setEmail(emailParam);
-      setIsSignUp(true); // Default to signup for new users from funnel
+      setIsSignUp(true);
+    } else if (redirectTo?.includes('code=')) {
+      setIsSignUp(true); // Default to signup for event code flow
     }
-  }, [emailParam]);
+  }, [emailParam, redirectTo]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
