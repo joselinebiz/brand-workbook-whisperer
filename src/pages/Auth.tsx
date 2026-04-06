@@ -238,6 +238,11 @@ export default function Auth() {
               required
               minLength={8}
             />
+            {(isSignUp || isPasswordReset) && (
+              <p className="text-xs text-muted-foreground mt-1.5">
+                Must be at least 8 characters with one uppercase letter, one lowercase letter, and one number.
+              </p>
+            )}
           </div>
           
           {!isSignUp && !isPasswordReset && (
