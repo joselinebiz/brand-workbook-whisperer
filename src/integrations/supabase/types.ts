@@ -187,6 +187,42 @@ export type Database = {
         }
         Relationships: []
       }
+      event_codes: {
+        Row: {
+          access_duration_days: number
+          code: string
+          created_at: string
+          current_uses: number
+          expires_at: string
+          id: string
+          is_active: boolean
+          max_uses: number | null
+          product_type: string
+        }
+        Insert: {
+          access_duration_days?: number
+          code: string
+          created_at?: string
+          current_uses?: number
+          expires_at: string
+          id?: string
+          is_active?: boolean
+          max_uses?: number | null
+          product_type?: string
+        }
+        Update: {
+          access_duration_days?: number
+          code?: string
+          created_at?: string
+          current_uses?: number
+          expires_at?: string
+          id?: string
+          is_active?: boolean
+          max_uses?: number | null
+          product_type?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           converted: boolean
