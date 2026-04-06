@@ -95,6 +95,71 @@ export const ProtectedWorkbook = ({
     verifyAccess();
   }, [user, loading, productType, toast]);
 
+  // Auto-redeem code from URL param
+  useEffect(() => {
+    const autoRedeem = async () => {
+      if (!urlCode || !user || loading || verifying) return;
+      if (serverVerified === true) return; // already has access
+      if (serverVerified === null) return; // still checking
+
+      setRedeemingCode(true);
+      setEventCode(urlCode);
+
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          const { data: refreshData } = await supabase.auth.refreshSession();
+          if (!refreshData.session) {
+            toast({ title: "Session Expired", description: "Please sign out and sign back in.", variant: "destructive" });
+            setRedeemingCode(false);
+            return;
+          }
+        }
+
+        const activeSession = (await supabase.auth.getSession()).data.session;
+        if (!activeSession) {
+          setRedeemingCode(false);
+          return;
+        }
+
+        const { data, error } = await supabase.functions.invoke('redeem-event-code', {
+          body: { code: urlCode.trim().toUpperCase() },
+          headers: { Authorization: `Bearer ${activeSession.access_token}` },
+        });
+
+        if (error) {
+          toast({ title: "Code Error", description: "Could not redeem that code. Try entering it manually below.", variant: "destructive" });
+          setRedeemingCode(false);
+          return;
+        }
+
+        if (data?.success) {
+          toast({ title: "Success!", description: data.message || "Access granted!" });
+          // Re-verify access
+          setVerifying(true);
+          setServerVerified(null);
+          const { data: verifyData } = await supabase.functions.invoke('verify-workbook-access', {
+            body: { productType },
+            headers: { Authorization: `Bearer ${activeSession.access_token}` },
+          });
+          setServerVerified(verifyData?.hasAccess || false);
+          setVerifying(false);
+          // Clean up URL
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, '', cleanUrl);
+        } else {
+          toast({ title: "Invalid Code", description: data?.error || "That code didn't work.", variant: "destructive" });
+        }
+      } catch {
+        toast({ title: "Error", description: "Something went wrong. Try entering the code manually.", variant: "destructive" });
+      } finally {
+        setRedeemingCode(false);
+      }
+    };
+
+    autoRedeem();
+  }, [urlCode, user, loading, verifying, serverVerified, productType, toast]);
+
   const handlePurchase = async () => {
     if (!productType) return;
     
