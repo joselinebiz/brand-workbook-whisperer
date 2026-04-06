@@ -120,18 +120,43 @@ export const ProtectedWorkbook = ({
     setRedeemingCode(true);
     
     try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
+      // Refresh the session first to avoid stale tokens
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError || !session) {
+        // Try refreshing
+        const { data: refreshData } = await supabase.auth.refreshSession();
+        if (!refreshData.session) {
+          toast({ 
+            title: "Session Expired", 
+            description: "Please sign out and sign back in, then try your code again.", 
+            variant: "destructive" 
+          });
+          setRedeemingCode(false);
+          return;
+        }
+      }
+
+      const activeSession = (await supabase.auth.getSession()).data.session;
+      if (!activeSession) {
         toast({ title: "Error", description: "Please log in first.", variant: "destructive" });
+        setRedeemingCode(false);
         return;
       }
 
       const { data, error } = await supabase.functions.invoke('redeem-event-code', {
         body: { code: eventCode.trim() },
-        headers: { Authorization: `Bearer ${session.access_token}` },
+        headers: { Authorization: `Bearer ${activeSession.access_token}` },
       });
 
-      if (error) throw error;
+      // supabase.functions.invoke wraps non-2xx as error, but also check data
+      if (error) {
+        // Try to extract a useful message from the error
+        const errorMsg = typeof error === 'object' && error.message 
+          ? error.message 
+          : 'Something went wrong. Please try again.';
+        toast({ title: "Error", description: errorMsg, variant: "destructive" });
+        return;
+      }
 
       if (data?.success) {
         toast({ title: "Success!", description: data.message || "Access granted!" });
@@ -140,15 +165,24 @@ export const ProtectedWorkbook = ({
         setServerVerified(null);
         const { data: verifyData } = await supabase.functions.invoke('verify-workbook-access', {
           body: { productType },
-          headers: { Authorization: `Bearer ${session.access_token}` },
+          headers: { Authorization: `Bearer ${activeSession.access_token}` },
         });
         setServerVerified(verifyData?.hasAccess || false);
         setVerifying(false);
       } else {
-        toast({ title: "Invalid Code", description: data?.error || "Code could not be redeemed.", variant: "destructive" });
+        toast({ 
+          title: "Invalid Code", 
+          description: data?.error || "That code didn't work. Double-check and try again.", 
+          variant: "destructive" 
+        });
       }
     } catch (error: any) {
-      toast({ title: "Error", description: error.message || "Failed to redeem code.", variant: "destructive" });
+      console.error('Redeem code error:', error);
+      toast({ 
+        title: "Something went wrong", 
+        description: "Please try again. If it still doesn't work, refresh the page and re-enter your code.", 
+        variant: "destructive" 
+      });
     } finally {
       setRedeemingCode(false);
     }
