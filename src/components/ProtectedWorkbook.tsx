@@ -3,7 +3,8 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Lock, ShoppingCart } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Lock, ShoppingCart, Ticket } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -28,6 +29,8 @@ export const ProtectedWorkbook = ({
   const [serverVerified, setServerVerified] = useState<boolean | null>(null);
   const [verifying, setVerifying] = useState(true);
   const [purchasing, setPurchasing] = useState(false);
+  const [eventCode, setEventCode] = useState('');
+  const [redeemingCode, setRedeemingCode] = useState(false);
   const clientHasAccess = checkAccess(productType);
 
   // Redirect to auth if not logged in
@@ -45,7 +48,6 @@ export const ProtectedWorkbook = ({
       try {
         setVerifying(true);
         
-        // Get the current session to pass the auth token
         const { data: { session } } = await supabase.auth.getSession();
         
         if (!session) {
@@ -100,7 +102,6 @@ export const ProtectedWorkbook = ({
       if (error) throw error;
 
       if (data?.url) {
-        // Use window.location.href to redirect in same window
         window.location.href = data.url;
       }
     } catch (error: any) {
@@ -109,9 +110,48 @@ export const ProtectedWorkbook = ({
         description: error.message || "Failed to create checkout session",
         variant: "destructive",
       });
-      setPurchasing(false); // Only re-enable on error, since we navigate away on success
+      setPurchasing(false);
     }
-    // Note: Don't set purchasing to false on success because we're navigating away
+  };
+
+  const handleRedeemCode = async () => {
+    if (!eventCode.trim()) return;
+    
+    setRedeemingCode(true);
+    
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        toast({ title: "Error", description: "Please log in first.", variant: "destructive" });
+        return;
+      }
+
+      const { data, error } = await supabase.functions.invoke('redeem-event-code', {
+        body: { code: eventCode.trim() },
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+
+      if (error) throw error;
+
+      if (data?.success) {
+        toast({ title: "Success!", description: data.message || "Access granted!" });
+        // Re-verify access
+        setVerifying(true);
+        setServerVerified(null);
+        const { data: verifyData } = await supabase.functions.invoke('verify-workbook-access', {
+          body: { productType },
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+        setServerVerified(verifyData?.hasAccess || false);
+        setVerifying(false);
+      } else {
+        toast({ title: "Invalid Code", description: data?.error || "Code could not be redeemed.", variant: "destructive" });
+      }
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message || "Failed to redeem code.", variant: "destructive" });
+    } finally {
+      setRedeemingCode(false);
+    }
   };
 
   if (loading || verifying) {
@@ -128,11 +168,9 @@ export const ProtectedWorkbook = ({
   }
 
   if (!user) {
-    return null; // Will redirect in useEffect
+    return null;
   }
 
-  // SECURITY: Only trust server verification. Never fall back to client-side check.
-  // If server hasn't verified yet, deny access (handled by verifying state above).
   const hasAccess = serverVerified === true;
 
   if (!hasAccess) {
@@ -148,7 +186,7 @@ export const ProtectedWorkbook = ({
             <p className="text-2xl font-bold mb-2">${price / 100}</p>
             <p className="text-sm text-muted-foreground">6 months access</p>
           </div>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center mb-8">
             <Button onClick={handlePurchase} size="lg" disabled={purchasing}>
               <ShoppingCart className="w-5 h-5 mr-2" />
               {purchasing ? 'Processing...' : 'Purchase Now'}
@@ -156,6 +194,30 @@ export const ProtectedWorkbook = ({
             <Button variant="outline" onClick={() => navigate('/')} size="lg">
               Back to Home
             </Button>
+          </div>
+
+          {/* Event Access Code */}
+          <div className="border-t pt-6">
+            <div className="flex items-center gap-2 justify-center mb-3">
+              <Ticket className="w-5 h-5 text-muted-foreground" />
+              <p className="text-sm text-muted-foreground font-medium">Have an event access code?</p>
+            </div>
+            <div className="flex gap-2 max-w-sm mx-auto">
+              <Input
+                placeholder="Enter code"
+                value={eventCode}
+                onChange={(e) => setEventCode(e.target.value.toUpperCase())}
+                onKeyDown={(e) => e.key === 'Enter' && handleRedeemCode()}
+                className="text-center tracking-widest font-mono"
+              />
+              <Button 
+                onClick={handleRedeemCode} 
+                disabled={redeemingCode || !eventCode.trim()}
+                variant="secondary"
+              >
+                {redeemingCode ? 'Checking...' : 'Redeem'}
+              </Button>
+            </div>
           </div>
         </Card>
       </div>
