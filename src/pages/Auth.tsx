@@ -209,6 +209,8 @@ export default function Auth() {
           <p className="text-muted-foreground">
             {isPasswordReset 
               ? 'Enter your new password below' 
+              : redirectTo?.includes('code=')
+              ? 'Create a free account to unlock your workbook'
               : redirectTo 
               ? 'Create your free account to access Workbook 0'
               : isSignUp 
