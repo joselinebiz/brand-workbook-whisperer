@@ -14,17 +14,14 @@ const requestSchema = z.object({
   discounted: z.boolean().optional(),
 });
 
-const PRODUCT_PRICES = {
+const PRODUCT_PRICES: Record<string, string> = {
   webinar: "price_1QlhXdDDqZaEKHOxJFtKY3x5",
-};
-
-const PRODUCT_DETAILS: Record<string, { name: string; price: number; discountedPrice: number }> = {
-  workbook_0: { name: "Market Opportunity Framework (Workbook 0)", price: 4700, discountedPrice: 4700 },
-  workbook_1: { name: "Brand Identity Workbook", price: 9700, discountedPrice: 4900 },
-  workbook_2: { name: "Marketing Strategy Workbook", price: 9700, discountedPrice: 4900 },
-  workbook_3: { name: "Customer Journey Workbook", price: 9700, discountedPrice: 4900 },
-  workbook_4: { name: "Growth Systems Workbook", price: 9700, discountedPrice: 4900 },
-  bundle: { name: "Complete Brand & Marketing System (All 4 Workbooks)", price: 29700, discountedPrice: 12900 },
+  workbook_0: "price_1TJKywAnYzcngRwoaNO6CW71",
+  workbook_1: "price_1TJbBpAnYzcngRwo8wsPRJ1l",
+  workbook_2: "price_1TJbJzAnYzcngRwoYGlRGkVY",
+  workbook_3: "price_1TJbMIAnYzcngRwob7RKFqcp",
+  workbook_4: "price_1TJbNFAnYzcngRwo1b4XBomj",
+  bundle: "price_1TJbNjAnYzcngRwoJe2Hrtqg",
 };
 
 serve(async (req) => {
