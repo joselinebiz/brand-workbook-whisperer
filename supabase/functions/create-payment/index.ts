@@ -83,39 +83,18 @@ serve(async (req) => {
       },
     };
 
-    // Handle webinar with price ID, workbooks with price_data
-    if (productType === 'webinar') {
-      if (!PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES]) {
-        throw new Error("Invalid product type");
-      }
-      sessionConfig.line_items = [
-        {
-          price: PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES],
-          quantity: 1,
-        },
-      ];
-    } else {
-      const product = PRODUCT_DETAILS[productType as keyof typeof PRODUCT_DETAILS];
-      if (!product) {
-        throw new Error("Invalid product type");
-      }
-      // Use discounted price if specified, otherwise use regular price
-      const finalPrice = discounted ? product.discountedPrice : product.price;
-      
-      sessionConfig.line_items = [
-        {
-          price_data: {
-            currency: "usd",
-            unit_amount: finalPrice,
-            product_data: {
-              name: product.name,
-              description: "Digital workbook with AI implementation guide",
-            },
-          },
-          quantity: 1,
-        },
-      ];
+    // All products now use Stripe Price IDs
+    const priceId = PRODUCT_PRICES[productType as keyof typeof PRODUCT_PRICES];
+    if (!priceId) {
+      throw new Error("Invalid product type");
     }
+
+    sessionConfig.line_items = [
+      {
+        price: priceId,
+        quantity: 1,
+      },
+    ];
 
     // Only add customer/email if we have valid data
     if (customerId) {
