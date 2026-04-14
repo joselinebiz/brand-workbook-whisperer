@@ -18,26 +18,6 @@ import { ICPSnapshot } from "@/components/ICPSnapshot";
 export default function WorkbookICP() {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
-  const [isSaving, setIsSaving] = useState(false);
-
-  // Require authentication
-  useEffect(() => {
-    if (!loading && !user) {
-      navigate('/auth?redirectTo=' + encodeURIComponent('/workbook/icp'));
-    }
-  }, [user, loading, navigate]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return null;
-  }
 
   // Persist which sections are open/closed
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
