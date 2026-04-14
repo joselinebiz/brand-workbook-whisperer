@@ -72,6 +72,14 @@ export const WorkbookCard = ({
 
   const getButtonContent = () => {
     if (isFree) {
+      if (!user) {
+        return (
+          <Button variant="outline" className="w-full group/btn" onClick={() => navigate('/auth?redirectTo=' + encodeURIComponent(path))}>
+            Sign In to Start Free Workbook
+            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+          </Button>
+        );
+      }
       return (
         <Link to={path} className="w-full">
           <Button variant="outline" className="w-full group/btn">
