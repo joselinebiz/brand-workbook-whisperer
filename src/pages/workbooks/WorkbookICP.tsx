@@ -167,12 +167,23 @@ export default function WorkbookICP() {
     setLocalData(prev => ({ ...prev, [field]: value }));
   };
 
+  // Require authentication - redirect to auth if not signed in
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/auth?redirectTo=' + encodeURIComponent('/workbook/icp'));
+    }
+  }, [user, loading, navigate]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin" />
       </div>
     );
+  }
+
+  if (!user) {
+    return null;
   }
 
   const lifeForce8Options = [
