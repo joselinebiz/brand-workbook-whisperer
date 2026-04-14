@@ -17,6 +17,7 @@ import { ICPSnapshot } from "@/components/ICPSnapshot";
 
 export default function WorkbookICP() {
   const { user, loading } = useAuth();
+  const navigate = useNavigate();
   const [isSaving, setIsSaving] = useState(false);
 
   // Persist which sections are open/closed
